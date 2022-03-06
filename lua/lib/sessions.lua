@@ -2,7 +2,7 @@ local M = {}
 
 
 M.save_session = function(auto)
-  local session_path = vim.fn.expand("~/.nvim/newest_nvim_session")
+  local session_path = "~/.nvim/newest_nvim_session"
   if auto ~= true then
     session_path = vim.fn.input("[?] Session path : ", "")
   end
@@ -11,6 +11,8 @@ M.save_session = function(auto)
     print(" Aborted!")
     return false
   end
+
+  session_path = vim.fn.expand(session_path)
 
   local result = vim.api.nvim_exec(":silent! mksession! "..session_path, true)
 
@@ -24,10 +26,12 @@ M.save_session = function(auto)
 end
 
 M.load_session = function(auto)
-  local session_path = vim.fn.expand("~/.nvim/newest_nvim_session")
+  local session_path = "~/.nvim/newest_nvim_session"
   if auto ~= true then
     session_path = vim.fn.input("[?] Session path : ", "", "file")
   end
+
+  session_path = vim.fn.expand(session_path)
 
   local is_existed_session = vim.fn.filereadable(session_path)
 
