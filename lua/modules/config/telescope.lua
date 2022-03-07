@@ -3,16 +3,23 @@ local finders = require('telescope.finders')
 local action_state = require('telescope.actions.state')
 local action_set = require('telescope.actions.set')
 local previewers = require("telescope.previewers")
+local layout_actions = require('telescope.actions.layout')
 
 local _, telescope = pcall(require, "telescope")
 
 telescope.setup {
   defaults = {
+    cycle_layout_list = {"horizontal", "vertical", "center", "bottom_pane"},
     mappings = {
       i = {
+        ["<M-h>"] = layout_actions.toggle_preview,
+        ["<M-i>"] = layout_actions.toggle_prompt_position,
+        ["<M-o>"] = layout_actions.toggle_mirror,
+        ["<M-n>"] = layout_actions.cycle_layout_next,
+        ["<M-p>"] = layout_actions.cycle_layout_prev,
         ["<esc>"] = actions.close,
-        ["<S-Up>"] = actions.preview_scrolling_up,
-        ["<S-Down>"] = actions.preview_scrolling_down,
+        ["<M-k>"] = actions.preview_scrolling_up,
+        ["<M-j>"] = actions.preview_scrolling_down,
         ["<C-v>"] = actions.file_vsplit,
         ["<C-s>"] = actions.file_split,
         ["Tab"] = actions.toggle_selection + actions.send_to_qflist,
@@ -33,16 +40,31 @@ telescope.setup {
     },
     layout_config = {
       prompt_position = "top",
-      width = 0.8,
-      preview_cutoff = 120,
+
       horizontal = {
+        width = 0.8,
         mirror = false,
-        preview_width = 0.6
+        preview_cutoff = 40,
+        preview_width = 0.7
       },
       vertical = {
+        width = 0.5,
+        height = 0.7,
         mirror = false,
-        preview_width = 0.5
-      }
+        preview_cutoff = 60,
+        preview_width = 0.7
+      },
+      center = {
+        width = 0.4,
+        mirror = false,
+        preview_cutoff = 40,
+      },
+      bottom_pane = {
+        height = 25,
+        preview_cutoff = 120,
+        prompt_position = "top",
+        preview_width = 0.7
+      },
     },
     prompt_prefix = " 🧭 ",
     selection_caret = " ",
