@@ -1,12 +1,15 @@
+local git_util = require("lib.git")
+
 return {
 
   name = "Git",
 
   f     = {":Telescope git_files<cr>",    "files"    },
-  s     = {":Telescope git_status<cr>",   "status"   },
+  s     = {git_util.my_git_status,        "status"   },
   S     = {":Telescope git_stash<cr>",    "stash"    },
   b     = {":Telescope git_branches<cr>", "branches" },
-  c     = {":Telescope git_commits<cr>",  "commits"  },
+  B     = {git_util.my_git_bcommits,      "buffer commits"},
+  c     = {git_util.my_git_commits,       "commits"  },
   ["."] = {":Git<cr>",                    "Git here" },
 
   d = {
