@@ -1,6 +1,9 @@
+local lib = require("lib")
+
 local E = {}
 
 function init()
+  lib.load_module('telescope')
   local previewers = require('telescope.previewers')
   local builtin = require('telescope.builtin')
 
@@ -20,10 +23,10 @@ E.my_git_commits = function(opts)
       -- just do an if and return a different command
       if entry.status == '??' then
         -- return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
-        return { 'bat', '--style=plain', entry.value }
+        return { 'bat', '--style=plain', '--pager', 'less -R', entry.value }
       end
 
-      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+      return { 'git', '-c', 'core.pager="delta --paging=always"', '-c', 'delta.side-by-side=false', 'diff', entry.value }
     end
   }
 
@@ -39,7 +42,7 @@ E.my_git_bcommits = function(opts)
 
   local delta = config.previewers.new_termopen_previewer {
     get_command = function(entry)
-      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value, current_file }
+      return { 'git', '-c', 'core.pager="delta --paging=always"', '-c', 'delta.side-by-side=false', 'diff', entry.value, current_file }
     end
   }
 
@@ -59,10 +62,10 @@ E.my_git_status = function(opts)
       -- just do an if and return a different command
       if entry.status == '??' then
         -- return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
-        return { 'bat', '--style=plain', entry.value }
+        return { 'bat', '--style=plain', '--pager', 'less -R', entry.value }
       end
 
-      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+      return { 'git', '-c', 'core.pager=delta --paging=always', '-c', 'delta.side-by-side=false', 'diff', entry.value }
     end
   }
 
