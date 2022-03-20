@@ -5,6 +5,18 @@ return {
     cmd = "LspStart"
   },
 
+  -- Lsp servers manager
+  ["lspinstaller"] = {
+    path = "williamboman/nvim-lsp-installer",
+    after = "lspconfig"
+  },
+
+  ["grammarguard"] = {
+    path = "brymer-meneses/grammar-guard.nvim",
+    after = "lspconfig"
+  },
+
+
   -- Enhance lsp ui
   ["lspsaga"] = {
     path = "tami5/lspsaga.nvim",
