@@ -101,7 +101,7 @@ return {
   -- Move around with speed of light
   ["lightspeed"] = {
     path = "ggandor/lightspeed.nvim",
-    keys = {"s", "S"}
+    keys = {"gz", "gZ"}
   },
 
   -- Interact with databases inside Neovim

@@ -19,10 +19,10 @@ return {
   },
 
   -- Like its name, open markdown preview on browser
-  -- whenever you open a markdown file
-  ["instant-markdown"] = {
-    path = "instant-markdown/vim-instant-markdown",
-    ft = "markdown"
+  ["mdpreview"] = {
+    path = "iamcco/markdown-preview.nvim",
+    ft = {"markdown"},
+    run = "cd app && npm install"
   },
 
   -- Emmet, quickly expand code html, jsx, tsx
