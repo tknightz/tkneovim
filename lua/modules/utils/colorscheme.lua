@@ -1,7 +1,10 @@
 local M = {}
 
 local color_lua_setup = function(colorname)
-  require(colorname).setup{}
+  require(colorname).setup{
+    style = "cool",
+    transparent = true
+  }
 end
 
 M.config_colorscheme = function(colorname)

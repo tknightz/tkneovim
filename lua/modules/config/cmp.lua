@@ -1,5 +1,18 @@
 vim.o.completeopt = "menu,menuone,noselect"
 local cmp = require'cmp'
+local icons = require("modules.config.lspconfig.icons")
+local lib = require("lib")
+
+lib.load_module("luasnip")
+local luasnip = require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
+
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 
 cmp.setup({
   enabled = true,
@@ -19,29 +32,59 @@ cmp.setup({
 
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-k>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
     ['('] = cmp.mapping(function(fallback)
       cmp.mapping.complete()
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("()<left>", true, false, true), "n", true)
     end, { 'i', 's' }),
   },
 
+  snippet = {
+    -- We recommend using *actual* snippet engine.
+    -- It's a simple implementation so it might not work in some of the cases.
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = "luasnip"},
     { name = 'path' },
     { name = 'buffer' },
     { name = 'emoji' },
     { name = 'nvim_lua' },
-    { name = 'vsnip' },
   }),
 
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = require('modules.config.lspconfig.icons').icons[vim_item.kind] .. vim_item.kind
+      local icon = icons.icons[vim_item.kind]
+
+      vim_item.kind = (icon ~= nil and icon or "icon") .. vim_item.kind
+      
 
       -- set a name for each source
       vim_item.menu = ({
@@ -52,6 +95,7 @@ cmp.setup({
         spell = "[Spell]",
         treesitter = "[Treesitter]",
         nvim_lua = "[Neovim]",
+        luasnip = "[Snip]",
       })[entry.source.name]
 
       return vim_item

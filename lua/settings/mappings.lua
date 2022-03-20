@@ -4,6 +4,8 @@ local keymaps = {
       to    = ":set hlsearch!<CR>",
       opt   = {}
     },
+    ["gz"] = "<Plug>Lightspeed_s",
+    ["gZ"] = "<Plug>Lightspeed_S",
 
     ["<C-_>"]       = ":lua require('Comment.api').toggle_current_linewise()<cr>",
     ["<C-y>"]       = ":%y+",

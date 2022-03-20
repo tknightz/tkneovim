@@ -40,7 +40,11 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {
-      'branch'
+      'branch',
+      {
+        'filename',
+        mode = 1
+      }
     },
     lualine_c = {
       {
@@ -67,7 +71,7 @@ require('lualine').setup {
   inactive_sections = {
     lualine_a = {
       function()
-        vim.cmd[[hi lualine_a_inactive guibg=#16327F guifg=#541b6a gui=bold]]
+        -- vim.cmd[[hi lualine_a_inactive guibg=#16327F guifg=#541b6a gui=bold]]
         return '😴'
       end
     },

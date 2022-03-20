@@ -14,6 +14,7 @@ local options = {
     eob  = " ",
     diff = "╱"
   },
+
   list          = true,
 
   termguicolors = true,
@@ -22,14 +23,15 @@ local options = {
   encoding      = "UTF-8",
   background    = "dark",
   ignorecase    = true,
+  smartcase     = true,
   cmdheight     = 1,
   tw            = 79,
   foldmethod    = "indent",
   foldlevel     = 99,
-  updatetime    = 100,
+  updatetime    = 1000,
   timeoutlen    = 500,
   hidden        = true,
-  inccommand    = "nosplit",
+  inccommand    = "split",
   splitbelow    = true,
   splitright    = true,
   ts            = 2,
@@ -39,8 +41,24 @@ local options = {
   number        = true,
   wrap          = false,
   cursorline    = true,
+  swapfile      = false,
+  incsearch     = true,
+
+  shada         = {"!", "'1000", "<50", "s10", "h"},
 }
 
 for option, value in pairs(options) do
   vim.opt[option] = value
 end
+
+-- the special case
+vim.opt.formatoptions = vim.opt.formatoptions
+- "a"
+- "t"
++ "c"
++ "q"
+- "o"
++ "r"
++ "n"
++ "j"
+- "2"
