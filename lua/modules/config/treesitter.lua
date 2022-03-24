@@ -94,5 +94,6 @@ ts_config.setup {
     disable = {"python", "html"},
     extended_mode = true,
     max_file_lines = nil,
+    colors = {"#95B594", "#E7BDD1", "#FCDED7", "#F0BEA6", "#88BACD", "#6FACC8"}
   }
 }

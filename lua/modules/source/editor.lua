@@ -8,6 +8,7 @@ return {
       { 'hrsh7th/cmp-buffer', after = "cmp" },
       { 'hrsh7th/cmp-path', after = "cmp" },
       { 'hrsh7th/cmp-emoji', after = "cmp" },
+      { 'hrsh7th/cmp-cmdline', after = "cmp" },
       { 'saadparwaiz1/cmp_luasnip', after = "cmp" },
     },
     event = "InsertEnter",

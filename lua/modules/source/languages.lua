@@ -37,6 +37,15 @@ return {
     ft = "org"
   },
 
+  -- Nice heading line
+  ["headlines"] = {
+    path = "lukas-reineke/headlines.nvim",
+    ft = { "org", "markdown" },
+    config = function()
+      require("headlines").setup()
+    end
+  },
+
   -- Nice looking heading in orgmode
   ["orgbullets"] = {
     path = "akinsho/org-bullets.nvim",

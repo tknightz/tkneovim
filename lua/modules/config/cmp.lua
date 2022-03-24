@@ -98,6 +98,8 @@ cmp.setup({
         luasnip = "[Snip]",
       })[entry.source.name]
 
+      vim_item.abbr = string.sub(vim_item.abbr, 1, 30)
+
       return vim_item
     end,
   },
@@ -112,5 +114,17 @@ cmp.setup({
 
   experimental = {
     ghost_text = false
+  }
+})
+
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
   }
 })

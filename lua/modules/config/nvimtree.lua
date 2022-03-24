@@ -5,6 +5,7 @@ nvim_tree.setup {
   hijack_cursor = true,
   update_cwd = true,
   view = {
+    width = 35,
     mappings = {
       custom_only = false,
       list = {

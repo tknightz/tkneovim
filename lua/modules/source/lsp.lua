@@ -26,7 +26,10 @@ return {
   -- Find trouble in your code
   ["trouble"] = {
     path = "folke/trouble.nvim",
-    cmd = {"LspTrouble", "LspTroubleToggle", "LspTroubleOpen", "LspWorkplaceOpen"}
+    cmd = {"Trouble", "TroubleToggle", "TroubleOpen"},
+    config = function()
+      require("trouble").setup{}
+    end
   },
 
   -- Show signature while typing code
