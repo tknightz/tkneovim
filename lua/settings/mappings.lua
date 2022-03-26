@@ -19,7 +19,7 @@ local keymaps = {
   },
 
   visual_select = {
-    ["<C-y>"] = ":%y+",
+    ["<C-y>"] = '"+y',
     ["<C-_>"] = ":lua require('Comment.api').toggle_blockwise_op('V', {})<cr>",
   },
 
@@ -31,7 +31,8 @@ local keymaps = {
     ["]"]  = "<Plug>(operator-sandwich-add)]",
     ["}"]  = "<Plug>(operator-sandwich-add)}",
     ["'"]  = "<Plug>(operator-sandwich-add)'",
-    ["\""] = "<Plug>(operator-sandwich-add)\""
+    ["\""] = "<Plug>(operator-sandwich-add)\"",
+    ["<C-y>"] = '"+y',
   },
 
   insert = {
