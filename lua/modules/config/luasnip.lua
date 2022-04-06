@@ -15,5 +15,20 @@ ls.snippets = {
     s("from", {
       t("from "), i(1, "name"), t(" import "), i(2, "module")
     })
+  },
+
+  javascript = {
+    s(
+      "newpromise",
+      fmt(
+       [[
+       new Promise((resolve, reject) => {{
+          {1}
+       }})
+       ]], {
+         i(1)
+       }
+      )
+    )
   }
 }

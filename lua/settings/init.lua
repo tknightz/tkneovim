@@ -1,3 +1,5 @@
 require("settings.preload")
 require("settings.editor")
+require("settings.mappings")
+require("settings.postload")
 require("settings.autocmd")

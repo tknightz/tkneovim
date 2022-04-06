@@ -14,8 +14,7 @@ return {
   },
 
   ["luasnip"] = {
-    path = "L3MON4D3/LuaSnip",
-    opt = true
+    path = "L3MON4D3/LuaSnip"
   },
   
   ["friendlysnippet"] = {

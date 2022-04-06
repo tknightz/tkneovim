@@ -11,6 +11,7 @@ return {
   B     = {git_util.my_git_bcommits,      "buffer commits"},
   c     = {git_util.my_git_commits,       "commits"  },
   ["."] = {":Git<cr>",                    "Git here" },
+  w     = {":Gitsigns blame_line<cr>",      "who code it"},
 
   d = {
     name = "diff",
@@ -36,7 +37,6 @@ return {
     n = {":Gitsigns next_hunk<cr>",       "next hunk"        },
     p = {":Gitsigns previous_hunk<cr>",   "previous hunk"    },
     v = {":Gitsigns preview_hunk<cr>",    "view hunk"        },
-    w = {":Gitsigns blame_line<cr>",      "who code it"      },
     h = {":Gitsigns toggle_linehl<cr>",   "highlight toggle" },
     s = {":Gitsigns stage_hunk<cr>",      "stage hunk"       },
     u = {":Gitsigns undo_stage_hunk<cr>", "undo stage hunk"  },

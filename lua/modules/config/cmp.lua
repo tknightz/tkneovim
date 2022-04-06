@@ -53,13 +53,8 @@ cmp.setup({
       end
     end, { "i", "s" }),
     ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
-    ['('] = cmp.mapping(function(fallback)
-      cmp.mapping.complete()
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("()<left>", true, false, true), "n", true)
-    end, { 'i', 's' }),
   },
 
   snippet = {

@@ -1,7 +1,6 @@
 local nvim_tree = require('nvim-tree')
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 nvim_tree.setup {
-  auto_close = true,
   hijack_cursor = true,
   update_cwd = true,
   view = {

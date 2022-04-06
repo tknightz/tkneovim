@@ -1,7 +1,7 @@
 local options = {
   listchars     = {
     -- tab      = "│·",
-    tab         = "|-",
+    tab         = "|·",
     trail       = "·",
     -- space    = "·",
     -- precedes = "←",
@@ -15,7 +15,7 @@ local options = {
     diff = "╱"
   },
 
-  list          = true,
+  list          = false,
 
   termguicolors = true,
   undofile      = true,

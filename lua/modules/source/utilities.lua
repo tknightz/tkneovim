@@ -8,6 +8,7 @@ return {
       { "nvim-telescope/telescope-symbols.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       { "nvim-telescope/telescope-project.nvim", after = "telescope" },
+      { 'nvim-telescope/telescope-live-grep-raw.nvim', before = "telescope" },
     },
 
     cmd = "Telescope",
@@ -146,12 +147,31 @@ return {
   -- Float terminals
   ["ezterm"] = {
     path = "tknightz/ezterm.nvim",
-    cmd = {"Ezterm", "EztermFind"}
+    cmd = {"Ezterm", "EztermFind"},
+    module = "ezterm"
   },
   
+  -- Really fast minimap renderer
   ["minimap"] = {
     path = "wfxr/minimap.vim",
     cmd = {"Minimap", "MinimapToggle"}
   },
+
+  -- Prettier format code
+  ["prettier"] = {
+    path = "prettier/vim-prettier",
+    run = "yarn install --frozen-lockfile --production",
+    cmd = {"Prettier", "PrettierAsync", "PrettierFragment"}
+  },
+
+  --[[-- Modern nvim tree
+  ["neotree"] = {
+    path = "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      { "MunifTanjim/nui.nvim", module="nui" },
+    },
+    cmd = {"Neotree", "NeoTreeRevealToggle"},
+  },]]
 
 }

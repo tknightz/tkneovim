@@ -10,10 +10,10 @@ local keymaps = {
     ["<C-_>"]       = ":lua require('Comment.api').toggle_current_linewise()<cr>",
     ["<C-y>"]       = ":%y+",
 
-    ["<C-S-Left>"]  = ":vertical resize +3<cr>",
-    ["<C-S-Right>"] = ":vertical resize -3<cr>",
-    ["<C-S-Up>"]    = ":resize +3<cr>",
-    ["<C-S-Down>"]  = ":resize -3<cr>",
+    ["<M-h>"]  = ":vertical resize +3<cr>",
+    ["<M-l>"] = ":vertical resize -3<cr>",
+    ["<M-k>"]    = ":resize +3<cr>",
+    ["<M-j>"]  = ":resize -3<cr>",
 
     ["<Esc>"]       = "<C-\\><C-n>",
   },

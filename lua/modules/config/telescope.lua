@@ -7,6 +7,39 @@ local layout_actions = require('telescope.actions.layout')
 
 local _, telescope = pcall(require, "telescope")
 
+
+local telescope_custom_actions = {}
+
+function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
+    local picker = action_state.get_current_picker(prompt_bufnr)
+    local selected_entry = action_state.get_selected_entry()
+    
+    if selected_entry == nil then
+      actions.close(prompt_bufnr)
+      return
+    end
+
+    local num_selections = #picker:get_multi_selection()
+
+    if not num_selections or num_selections <= 1 then
+        actions.add_selection(prompt_bufnr)
+    end
+    actions.send_selected_to_qflist(prompt_bufnr)
+    vim.cmd("cfdo " .. open_cmd)
+end
+function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
+    telescope_custom_actions._multiopen(prompt_bufnr, "vsplit")
+end
+function telescope_custom_actions.multi_selection_open_split(prompt_bufnr)
+    telescope_custom_actions._multiopen(prompt_bufnr, "split")
+end
+function telescope_custom_actions.multi_selection_open_tab(prompt_bufnr)
+    telescope_custom_actions._multiopen(prompt_bufnr, "tabe")
+end
+function telescope_custom_actions.multi_selection_open(prompt_bufnr)
+    telescope_custom_actions._multiopen(prompt_bufnr, "edit")
+end
+
 telescope.setup {
   defaults = {
     cycle_layout_list = {"horizontal", "vertical", "center", "bottom_pane"},
@@ -22,9 +55,15 @@ telescope.setup {
         ["<M-j>"] = actions.preview_scrolling_down,
         ["<C-v>"] = actions.file_vsplit,
         ["<C-s>"] = actions.file_split,
-        ["Tab"] = actions.toggle_selection + actions.send_to_qflist,
+        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+        ['<CR>'] = telescope_custom_actions.multi_selection_open,
+        ['<C-v>'] = telescope_custom_actions.multi_selection_open_vsplit,
+        ['<C-s>'] = telescope_custom_actions.multi_selection_open_split,
+        ['<C-t>'] = telescope_custom_actions.multi_selection_open_tab,
+        ['<C-l>'] = actions.send_selected_to_qflist + actions.open_qflist,
+        ['<C-a>'] = actions.select_all,
+        ['<C-u>'] = actions.drop_all,
         -- ["<cr>"] = actions.file_edit,
-        -- ["<cr>"] = custom_actions.fzf_multi_select
       },
     },
     vimgrep_arguments = {
@@ -93,6 +132,7 @@ telescope.setup {
     find_files = {
       previewer = false,
       theme = "dropdown",
+      find_command = {"rg", "--ignore", "--hidden", "--files"},
       file_ignore_patterns = { "%.gif", "%.png", "%.jpg", "%.jpeg", "%.webp", "%.ico", "%.min.js", "%.min.css", "%.map", ".git/.*" },
     },
     buffers = {
@@ -167,10 +207,10 @@ telescope.setup {
 
 
 pcall(require("telescope").load_extension, "fzf") -- superfast sorter
-pcall(require("telescope").load_extension, "media_files") -- media preview
 pcall(require("telescope").load_extension, "arecibo") -- arecibo
 pcall(require("telescope").load_extension, "project") -- project
 pcall(require("telescope").load_extension, "ezterm") -- ezterm
+pcall(require("telescope").load_extension, "live_grep_raw") -- live_grep_raw
 
 
 -- highlights
