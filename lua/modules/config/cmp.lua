@@ -1,11 +1,10 @@
 vim.o.completeopt = "menu,menuone,noselect"
-local cmp = require'cmp'
+local cmp = require("cmp")
 local icons = require("modules.config.lspconfig.icons")
 local lib = require("lib")
 
 lib.load_module("luasnip")
 local luasnip = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
 
 
 local has_words_before = function()

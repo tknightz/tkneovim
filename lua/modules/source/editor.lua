@@ -14,11 +14,13 @@ return {
   },
 
   ["luasnip"] = {
-    path = "L3MON4D3/LuaSnip"
+    path = "L3MON4D3/LuaSnip",
+    module = "luasnip",
   },
   
   ["friendlysnippet"] = {
-    path = "rafamadriz/friendly-snippets"
+    path = "rafamadriz/friendly-snippets",
+    module = "friendlysnippet"
   },
 
   -- Smart and powerful comment plugin for neovim
