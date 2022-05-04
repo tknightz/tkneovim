@@ -22,7 +22,7 @@ return {
   ["mdpreview"] = {
     path = "iamcco/markdown-preview.nvim",
     ft = {"markdown"},
-    run = "cd app && npm install"
+    run = "cd app && yarn install"
   },
 
   -- Emmet, quickly expand code html, jsx, tsx

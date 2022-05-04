@@ -15,11 +15,12 @@ return {
 
   ["luasnip"] = {
     path = "L3MON4D3/LuaSnip",
-    opt = true
+    module = "luasnip",
   },
   
   ["friendlysnippet"] = {
-    path = "rafamadriz/friendly-snippets"
+    path = "rafamadriz/friendly-snippets",
+    module = "friendlysnippet"
   },
 
   -- Smart and powerful comment plugin for neovim
@@ -52,9 +53,8 @@ return {
     ft = {"html", "xml", "javascriptreact", "javascript"},
   },
   
-  -- Indent guides for Neovim
-  ["indentguide"] = {
-    path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead"
+  ["modes"] = {
+    path = "mvllow/modes.nvim",
+    event = "BufRead",
   },
 }

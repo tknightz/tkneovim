@@ -1,7 +1,7 @@
 local options = {
   listchars     = {
     -- tab      = "│·",
-    tab         = "|-",
+    tab         = "|·",
     trail       = "·",
     -- space    = "·",
     -- precedes = "←",
@@ -15,7 +15,7 @@ local options = {
     diff = "╱"
   },
 
-  list          = true,
+  list          = false,
 
   termguicolors = true,
   undofile      = true,
@@ -28,10 +28,9 @@ local options = {
   tw            = 79,
   foldmethod    = "indent",
   foldlevel     = 99,
-  updatetime    = 1000,
+  updatetime    = 300,
   timeoutlen    = 500,
   hidden        = true,
-  inccommand    = "split",
   splitbelow    = true,
   splitright    = true,
   ts            = 2,

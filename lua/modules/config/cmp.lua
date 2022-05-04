@@ -1,11 +1,10 @@
 vim.o.completeopt = "menu,menuone,noselect"
-local cmp = require'cmp'
+local cmp = require("cmp")
 local icons = require("modules.config.lspconfig.icons")
 local lib = require("lib")
 
 lib.load_module("luasnip")
 local luasnip = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
 
 
 local has_words_before = function()
@@ -25,12 +24,11 @@ cmp.setup({
   max_abbr_width = 100,
   max_kind_width = 100,
   max_menu_width = 100,
-  documentation = {
-    border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+  window = {
+    documentation = cmp.config.window.bordered(),
   },
 
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-k>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -53,14 +51,9 @@ cmp.setup({
       end
     end, { "i", "s" }),
     ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
-    ['('] = cmp.mapping(function(fallback)
-      cmp.mapping.complete()
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("()<left>", true, false, true), "n", true)
-    end, { 'i', 's' }),
-  },
+  }),
 
   snippet = {
     -- We recommend using *actual* snippet engine.

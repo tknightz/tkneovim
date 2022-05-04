@@ -26,7 +26,7 @@ return {
   -- Find trouble in your code
   ["trouble"] = {
     path = "folke/trouble.nvim",
-    cmd = {"LspTrouble", "LspTroubleToggle", "LspTroubleOpen", "LspWorkplaceOpen"}
+    cmd = {"Trouble"}
   },
 
   -- Show signature while typing code
