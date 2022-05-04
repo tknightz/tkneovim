@@ -1,21 +1,21 @@
 local keymaps = {
   normal = {
-    ["<Leader>h"]   = {
-      to    = ":set hlsearch!<CR>",
-      opt   = {}
+    ["<Leader>h"] = {
+      to          = ":set hlsearch!<CR>",
+      opt         = {}
     },
-    ["gz"] = "<Plug>Lightspeed_s",
-    ["gZ"] = "<Plug>Lightspeed_S",
+    ["gz"]        = "<Plug>Lightspeed_s",
+    ["gZ"]        = "<Plug>Lightspeed_S",
 
-    ["<C-_>"]       = ":lua require('Comment.api').toggle_current_linewise()<cr>",
-    ["<C-y>"]       = ":%y+",
+    ["<C-_>"]     = ":lua require('Comment.api').toggle_current_linewise()<cr>",
+    ["<C-y>"]     = ":%y+",
 
-    ["<M-h>"]  = ":vertical resize +3<cr>",
-    ["<M-l>"] = ":vertical resize -3<cr>",
-    ["<M-k>"]    = ":resize +3<cr>",
-    ["<M-j>"]  = ":resize -3<cr>",
+    ["<M-h>"]     = ":vertical resize +3<cr>",
+    ["<M-l>"]     = ":vertical resize -3<cr>",
+    ["<M-k>"]     = ":resize +3<cr>",
+    ["<M-j>"]     = ":resize -3<cr>",
 
-    ["<Esc>"]       = "<C-\\><C-n>",
+    ["<Esc>"]     = "<C-\\><C-n>",
   },
 
   visual_select = {
