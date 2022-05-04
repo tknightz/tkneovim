@@ -53,9 +53,8 @@ return {
     ft = {"html", "xml", "javascriptreact", "javascript"},
   },
   
-  -- Indent guides for Neovim
-  ["indentguide"] = {
-    path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead"
+  ["modes"] = {
+    path = "mvllow/modes.nvim",
+    event = "BufRead",
   },
 }

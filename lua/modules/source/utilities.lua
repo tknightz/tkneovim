@@ -23,6 +23,9 @@ return {
   -- Faster filetype detection
   ["filetype"] = {
     path = "nathom/filetype.nvim",
+    config = function()
+      require("filetype").setup{}
+    end,
   },
 
   -- Tired of Undo things?
@@ -34,12 +37,6 @@ return {
   -- Pretty fold with preview feature
   ["prettyfold"] = {
     path = "anuvyklack/pretty-fold.nvim",
-    event = "BufRead",
-  },
-
-  -- Move by word (e, w, b)
-  ["wordmotion"] = {
-    path = "chaoren/vim-wordmotion",
     event = "BufRead",
   },
 
@@ -64,7 +61,7 @@ return {
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead"
+    event = "BufReadPre"
   },
 
   -- Extended f, F, t and T key mappings
@@ -163,6 +160,21 @@ return {
     run = "yarn install --frozen-lockfile --production",
     cmd = {"Prettier", "PrettierAsync", "PrettierFragment"}
   },
+
+  ["bracey"] = {
+    path = "turbio/bracey.vim",
+    run = "npm install --prefix server",
+    cmd = "Bracey",
+  },
+
+  -- A plugin to visualise and resolve merge conflicts in neovim
+  ["gitconflict"] = {
+    path = "akinsho/git-conflict.nvim",
+    config = function()
+      require('git-conflict').setup()
+    end,
+    event = "BufRead"
+  }
 
   --[[-- Modern nvim tree
   ["neotree"] = {

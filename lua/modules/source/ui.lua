@@ -2,9 +2,9 @@ return {
   -- Colorscheme here
   -- set colorname to automate set colorscheme
   ["theme"] = {
-    path = "tknightz/colorful.vim",
+    path = "navarasu/onedark.nvim",
     event = "VimEnter",
-    colorname = "colorful"
+    colorname = "onedark"
   },
 
   -- Show dashboard first come
