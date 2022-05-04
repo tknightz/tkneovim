@@ -25,7 +25,7 @@ function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
         actions.add_selection(prompt_bufnr)
     end
     actions.send_selected_to_qflist(prompt_bufnr)
-    vim.cmd("cfdo " .. open_cmd)
+    vim.cmd("silent cfdo " .. open_cmd)
 end
 function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
     telescope_custom_actions._multiopen(prompt_bufnr, "vsplit")
