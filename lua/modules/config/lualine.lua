@@ -34,7 +34,7 @@ require('lualine').setup {
     theme = 'material',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
-    disabled_filetypes = {"NvimTree", "Mundo", "MudoDiff", "packer", "minimap", "dbui", "DiffviewFiles", "neo-tree"},
+    disabled_filetypes = {"NvimTree", "Mundo", "MudoDiff", "packer", "minimap", "dbui", "DiffviewFiles", "neo-tree", "Outline"},
     always_divide_middle = true,
   },
   sections = {

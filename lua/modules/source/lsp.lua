@@ -40,4 +40,9 @@ return {
     path = "rmagatti/goto-preview",
     cmd = {"PreviewDef", "PreviewImpl", "PreviewClose"},
   },
+
+  ["symbolsoutline"] = {
+    path = "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+  },
 }

@@ -3,7 +3,7 @@ return {
   ["telescope"] = {
     path = "nvim-telescope/telescope.nvim",
     requires = {
-      { "nvim-lua/popup.nvim", module = "popup" },
+      -- { "nvim-lua/popup.nvim", module = "popup" },
       { "nvim-lua/plenary.nvim", module = "plenary" },
       { "nvim-telescope/telescope-symbols.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
@@ -64,7 +64,7 @@ return {
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead"
+    event = "BufReadPre"
   },
 
   -- Extended f, F, t and T key mappings
@@ -151,21 +151,20 @@ return {
     module = "ezterm"
   },
   
-  -- Really fast minimap renderer
-  ["minimap"] = {
-    path = "wfxr/minimap.vim",
-    cmd = {"Minimap", "MinimapToggle"}
+  ["bqf"] = {
+    path = "kevinhwang91/nvim-bqf",
+    ft = {"qf"}
   },
 
   -- Prettier format code
   ["prettier"] = {
     path = "prettier/vim-prettier",
-    run = "yarn install --frozen-lockfile --production",
-    cmd = {"Prettier", "PrettierAsync", "PrettierFragment"}
+    cmd = {"Prettier", "PrettierAsync", "PrettierFragment"},
+    run = "npm install"
   },
 
-  --[[-- Modern nvim tree
-  ["neotree"] = {
+  -- Modern nvim tree
+  --[[["neotree"] = {
     path = "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     requires = {
@@ -173,5 +172,4 @@ return {
     },
     cmd = {"Neotree", "NeoTreeRevealToggle"},
   },]]
-
 }

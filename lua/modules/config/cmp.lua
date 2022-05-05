@@ -24,12 +24,11 @@ cmp.setup({
   max_abbr_width = 100,
   max_kind_width = 100,
   max_menu_width = 100,
-  documentation = {
-    border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+  window = {
+    documentation = false,
   },
 
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-k>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -54,7 +53,7 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm {
       select = false,
     },
-  },
+  }),
 
   snippet = {
     -- We recommend using *actual* snippet engine.
