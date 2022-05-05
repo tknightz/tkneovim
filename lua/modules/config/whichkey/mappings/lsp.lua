@@ -8,5 +8,6 @@ return {
   i = {":Lspsaga show_line_diagnostics<CR>",  "issues"},
   n = {":lua vim.diagnostic.goto_next()<CR>", "next"},
   p = {":lua vim.diagnostic.goto_prev()<CR>", "prev"},
+  q = {":lua vim.diagnostic.setloclist()<CR>","quickfix"},
   f = {":lua vim.lsp.buf.formatting()<CR>",   "format"},
 }

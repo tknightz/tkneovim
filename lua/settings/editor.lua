@@ -31,7 +31,6 @@ local options = {
   updatetime    = 300,
   timeoutlen    = 500,
   hidden        = true,
-  -- inccommand    = "split",
   splitbelow    = true,
   splitright    = true,
   ts            = 2,

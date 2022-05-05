@@ -4,7 +4,7 @@ require('indent_blankline').setup {
   show_current_context = true,
   show_current_context_start = true,
   show_end_of_line = false,
-  filetype_exclude = {'help', 'packer', 'txt', 'alpha', 'dashboard'},
+  filetype_exclude = {'help', 'packer', 'txt', 'alpha', 'dashboard', 'nofile', 'prompt', 'TelescopePrompt', ""},
   buftype_exclude = {'terminal', 'packer'},
   term = 238,
   gui = '#1E272C',

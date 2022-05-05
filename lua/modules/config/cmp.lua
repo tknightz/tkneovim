@@ -25,7 +25,7 @@ cmp.setup({
   max_kind_width = 100,
   max_menu_width = 100,
   window = {
-    documentation = false,
+    documentation = cmp.config.window.bordered(),
   },
 
   mapping = cmp.mapping.preset.insert({

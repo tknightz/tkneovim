@@ -8,6 +8,8 @@ require('modes').setup({
 
   -- opacity
   line_opacity = 0.5,
+  -- Cursorline highlight opacity
+  line_opacity = 0.6,
 
   -- Highlight cursor
   set_cursor = true,

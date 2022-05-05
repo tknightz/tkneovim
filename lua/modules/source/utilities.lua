@@ -23,6 +23,9 @@ return {
   -- Faster filetype detection
   ["filetype"] = {
     path = "nathom/filetype.nvim",
+    config = function()
+      require("filetype").setup{}
+    end,
   },
 
   -- Tired of Undo things?
@@ -34,12 +37,6 @@ return {
   -- Pretty fold with preview feature
   ["prettyfold"] = {
     path = "anuvyklack/pretty-fold.nvim",
-    event = "BufRead",
-  },
-
-  -- Move by word (e, w, b)
-  ["wordmotion"] = {
-    path = "chaoren/vim-wordmotion",
     event = "BufRead",
   },
 
@@ -153,7 +150,15 @@ return {
   
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
-    ft = {"qf"}
+    after = "pqf",
+  },
+
+  -- pretty quickfix UI
+  ["pqf"] = {
+    path = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+    config = function()
+      require('pqf').setup()
+    end,
   },
 
   -- Prettier format code
@@ -163,13 +168,34 @@ return {
     run = "npm install"
   },
 
-  -- Modern nvim tree
-  --[[["neotree"] = {
-    path = "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
-      { "MunifTanjim/nui.nvim", module="nui" },
-    },
-    cmd = {"Neotree", "NeoTreeRevealToggle"},
-  },]]
+  ["bracey"] = {
+    path = "turbio/bracey.vim",
+    run = "npm install --prefix server",
+    cmd = "Bracey",
+  },
+
+  -- A plugin to visualise and resolve merge conflicts in neovim
+  ["gitconflict"] = {
+    path = "akinsho/git-conflict.nvim",
+    config = function()
+      require('git-conflict').setup()
+    end,
+    event = "BufRead"
+  },
+
+  -- Jump to last edit
+  ["lastplace"] = {
+    path = "ethanholz/nvim-lastplace",
+    config = function()
+      require('nvim-lastplace').setup{}
+    end,
+  },
+
+  ["winshift"] = {
+    path = "sindrets/winshift.nvim",
+    cmd = "WinShift",
+    config = function()
+      require("winshift").setup()
+    end
+  },
 }

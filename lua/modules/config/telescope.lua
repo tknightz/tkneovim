@@ -21,11 +21,16 @@ function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
 
     local num_selections = #picker:get_multi_selection()
 
-    if not num_selections or num_selections <= 1 then
-        actions.add_selection(prompt_bufnr)
+    if num_selections == 0 then
+      return actions.file_edit(prompt_bufnr)
     end
+
+    if not num_selections or num_selections <= 1 then
+      actions.add_selection(prompt_bufnr)
+    end
+
     actions.send_selected_to_qflist(prompt_bufnr)
-    vim.cmd("silent! cfdo " .. open_cmd)
+    vim.cmd("silent cfdo " .. open_cmd)
 end
 
 function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
@@ -64,6 +69,7 @@ telescope.setup {
         ['<C-l>'] = actions.send_selected_to_qflist + actions.open_qflist,
         ['<C-a>'] = actions.select_all,
         ['<C-u>'] = actions.drop_all,
+        ['<CR>'] = telescope_custom_actions.multi_selection_open,
       },
     },
     vimgrep_arguments = {

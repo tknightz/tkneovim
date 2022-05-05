@@ -1,5 +1,6 @@
 local M = {}
 
+-- this is comment
 local color_lua_setup = function(colorname)
   require(colorname).setup{
     style = "deep",
