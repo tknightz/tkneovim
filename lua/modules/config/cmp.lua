@@ -14,7 +14,9 @@ end
 
 
 cmp.setup({
-  enabled = true,
+  enabled = function()
+    return vim.bo.filetype ~= "TelescopePrompt"
+  end,
   debug = false,
   min_length = 1,
   preselect = "enable",

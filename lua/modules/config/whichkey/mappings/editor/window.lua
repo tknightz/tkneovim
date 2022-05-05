@@ -16,7 +16,7 @@ return {
   L     = {'<C-W>5>',                    'expand-window-right'   },
   K     = {'<cmd>resize -5<cr>',         'expand-window-up'      },
   ["="] = {'<C-W>=',                     'balance-window'        },
-  s     = {'<C-W>x',                     'swap window'           },
+  s     = {'<cmd>WinShift<cr>',          'shift window'          },
   v     = {'<C-W>v',                     'split-window-below'    },
   m     = {'<cmd>MaximizerToggle<cr>',   'toggle maximize window'},
 

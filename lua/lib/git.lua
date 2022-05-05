@@ -60,12 +60,15 @@ E.my_git_status = function(opts)
       -- this is for status
       -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
       -- just do an if and return a different command
+      if entry.status == ' D' then
+        return
+      end
+
       if entry.status == '??' then
-        -- return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
         return { 'bat', '--style=plain', '--pager', 'less -R', entry.value }
       end
 
-      return { 'git', '-c', 'core.pager=delta --paging=always', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
     end
   }
 
@@ -73,6 +76,21 @@ E.my_git_status = function(opts)
   opts.previewer = delta
 
   config.builtin.git_status(opts)
+end
+
+E.my_git_stash = function(opts)
+  local config = init()
+
+  local delta = config.previewers.new_termopen_previewer {
+    get_command = function(entry)
+      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'stash', 'show', entry.value }
+    end
+  }
+
+  opts = opts or {}
+  opts.previewer = delta
+
+  config.builtin.git_stash(opts)
 end
 
 return E

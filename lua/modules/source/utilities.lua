@@ -157,7 +157,14 @@ return {
   ["pqf"] = {
     path = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
     config = function()
-      require('pqf').setup()
+      require('pqf').setup({
+        signs = {
+          error = ' ',
+          warning = ' ',
+          info = ' ',
+          hint = ' '
+        }
+      })
     end,
   },
 

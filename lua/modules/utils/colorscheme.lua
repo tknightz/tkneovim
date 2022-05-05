@@ -3,12 +3,12 @@ local M = {}
 -- this is comment
 local color_lua_setup = function(colorname)
   require(colorname).setup{
-    style = "deep",
+    style = "darker",
     transparent = true,
     code_style = {
       keywords = "italic,bold",
       functions = "bold"
-    }
+    },
   }
 end
 
