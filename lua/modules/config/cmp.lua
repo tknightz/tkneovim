@@ -31,8 +31,8 @@ cmp.setup({
   },
 
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-k>'] = cmp.mapping.scroll_docs(4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -75,24 +75,14 @@ cmp.setup({
   }),
 
   formatting = {
+    fields = { "kind", "abbr", "menu" },
+
     format = function(entry, vim_item)
       local icon = icons.icons[vim_item.kind]
 
-      vim_item.kind = (icon ~= nil and icon or "icon") .. vim_item.kind
+      vim_item.menu = vim_item.kind
+      vim_item.kind = (icon ~= nil and icon or "icon")
       
-
-      -- set a name for each source
-      vim_item.menu = ({
-        buffer = "[Buffer]",
-        emoji = "[Emoji]",
-        nvim_lsp = "[LSP]",
-        path = "[Path]",
-        spell = "[Spell]",
-        treesitter = "[Treesitter]",
-        nvim_lua = "[Neovim]",
-        luasnip = "[Snip]",
-      })[entry.source.name]
-
       return vim_item
     end,
   },
