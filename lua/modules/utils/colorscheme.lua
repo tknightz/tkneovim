@@ -9,6 +9,13 @@ local color_lua_setup = function(colorname)
       keywords = "italic,bold",
       functions = "bold"
     },
+
+    highlights = {
+      Folded = {fg = "#7a818e", bg = "#131421", fmt = "bold"},
+      NvimTreeNormal = { fg = "#a0a8b7", bg = "#181b20" },
+      NvimTreeFolderIcon = { fg = "#61afef" },
+      QuickFixLine = { bg = "#7e3992", fg = "NONE", fmt = "NONE" }
+    }
   }
 end
 
