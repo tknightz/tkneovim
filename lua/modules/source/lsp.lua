@@ -2,7 +2,7 @@ return {
   -- Neovim lsp function
   ["lspconfig"] = {
     path = "neovim/nvim-lspconfig",
-    cmd = "LspStart"
+    cmd = {"LspStart"}
   },
 
   -- Lsp servers manager

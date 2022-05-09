@@ -150,7 +150,7 @@ return {
   
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
-    after = "pqf",
+    ft = "qf"
   },
 
   -- pretty quickfix UI
