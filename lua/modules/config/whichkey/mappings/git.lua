@@ -4,12 +4,15 @@ return {
 
   name = "Git",
 
-  f     = {":Telescope git_files<cr>",    "files"    },
-  s     = {git_util.my_git_status,        "status"   },
-  b     = {":Telescope git_branches<cr>", "branches" },
-  c     = {":Git commit<cr>",             "commit"},
+  f     = {":Telescope git_files<cr>",    "files"},
+  s     = {git_util.my_git_status,        "status"},
+  b     = {":Telescope git_branches<cr>", "branches"},
+  c     = {":Git commit --quiet<cr>",     "commit"},
   ["."] = {":Git<cr>",                    "Git here" },
   w     = {":Gitsigns blame_line<cr>",    "who code it"},
+  P     = {":Git push -u --quiet<cr>",    "Push"},
+  n     = {":Gitsigns next_hunk<cr>",     "next hunk"},
+  p     = {":Gitsigns previous_hunk<cr>", "previous hunk"},
 
   ["/"] = {
     name  = "browse",
@@ -46,7 +49,4 @@ return {
     s = {":Gitsigns stage_hunk<cr>",      "stage hunk"       },
     u = {":Gitsigns undo_stage_hunk<cr>", "undo stage hunk"  },
   },
-
-  n = {":Gitsigns next_hunk<cr>",     "next hunk"        },
-  p = {":Gitsigns previous_hunk<cr>", "previous hunk"    },
 }
