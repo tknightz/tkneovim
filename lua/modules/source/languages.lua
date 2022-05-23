@@ -4,13 +4,19 @@ return {
   -- properly now.
   ["pyindent"] = {
     path = "Vimjas/vim-python-pep8-indent",
-    ft = "python"
+    ft = {"python"},
+  },
+
+  ["sphinx"] = {
+    path = "stsewd/sphinx.nvim",
+    run = ":UpdateRemotePlugins",
+    ft = {"python"},
   },
 
   -- Better indentation for js over treesitter ident feature now.
   ["jsxpretty"] = {
     path = "maxmellon/vim-jsx-pretty",
-    ft = {"javascript", "javascriptreact", "typescriptreact"}
+    ft = {"javascript", "javascriptreact", "typescriptreact", "typescript"}
   },
 
   ["go"] = {

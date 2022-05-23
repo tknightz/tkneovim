@@ -45,4 +45,9 @@ return {
     path = "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
   },
+
+  ["nullls"] = {
+    path = "jose-elias-alvarez/null-ls.nvim",
+    after = "lspconfig"
+  }
 }
