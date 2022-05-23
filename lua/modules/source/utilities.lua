@@ -61,7 +61,8 @@ return {
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre"
+    event = "BufReadPre",
+    commit = "045d9582"
   },
 
   -- Extended f, F, t and T key mappings
