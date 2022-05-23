@@ -20,7 +20,7 @@ local CUSTOM_CONFIGS = {
 
   eslint = {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = util.root_pattern("package.json", ".eslintrc.json")
+    root_dir = util.root_pattern("package.json", ".eslintrc.json", ".eslintrc.js")
   }
 }
 

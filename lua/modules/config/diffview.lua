@@ -4,9 +4,11 @@ require'diffview'.setup {
   diff_binaries = false,    -- Show diffs for binaries
   use_icons = true,        -- Requires nvim-web-devicons
   file_panel = {
-    position = "left",      -- One of 'left', 'right', 'top', 'bottom'
-    width = 35,             -- Only applies when position is 'left' or 'right'
-    height = 10,            -- Only applies when position is 'top' or 'bottom'
+    win_config = {
+      position = "left",      -- One of 'left', 'right', 'top', 'bottom'
+      width = 35,             -- Only applies when position is 'left' or 'right'
+      height = 10,            -- Only applies when position is 'top' or 'bottom'
+    }
   },
   key_bindings = {
     disable_defaults = false,                   -- Disable the default key bindings

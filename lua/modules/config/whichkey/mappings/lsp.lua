@@ -20,5 +20,6 @@ return {
   p = {":lua vim.diagnostic.goto_prev()<CR>",  "prev"},
   q = {":lua vim.diagnostic.setloclist()<CR>", "quickfix"},
   f = {":lua vim.lsp.buf.formatting()<CR>",    "format"},
-  t = {toggle_lsp,                             "toggle"}
+  t = {toggle_lsp,                             "toggle"},
+  s = {":SymbolsOutline<cr>",                  "browse"},
 }

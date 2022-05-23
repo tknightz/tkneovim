@@ -16,7 +16,7 @@ local color_lua_setup = function(colorname)
       NvimTreeFolderIcon = { fg = "#61afef" },
       QuickFixLine = { bg = "#7e3992", fg = "NONE", fmt = "NONE" },
       CmpBorder = { fg = "#2e3c43" },
-      CmpWin = { bg = "#191919"},
+      CmpWin = { bg = "NONE"},
       FloatBorder = { fg = "#2e3c43", bg = "NONE" },
       NormalFloat = { bg = "NONE" },
       PmenuSel = { fg = "NONE", bg = "#305676" }

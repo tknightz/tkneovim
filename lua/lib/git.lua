@@ -26,7 +26,7 @@ E.my_git_commits = function(opts)
         return { 'bat', '--style=plain', '--pager', 'less -R', entry.value }
       end
 
-      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'show', entry.value }
     end
   }
 
@@ -42,7 +42,7 @@ E.my_git_bcommits = function(opts)
 
   local delta = config.previewers.new_termopen_previewer {
     get_command = function(entry)
-      return { 'git', '-c', 'core.pager="delta --paging=always"', '-c', 'delta.side-by-side=false', 'diff', entry.value, current_file }
+      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'show', entry.value, current_file }
     end
   }
 

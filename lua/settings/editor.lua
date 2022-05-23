@@ -7,12 +7,15 @@ local options = {
     -- precedes = "←",
     extends     = "→",
     eol         = "↩",
-    -- nbsp     = "␣"
+    -- nbsp     = "␣",
   },
 
   fillchars     = {
-    eob  = " ",
-    diff = "╱"
+    eob       = " ",
+    diff      = "╱",
+    foldopen  = "",
+    foldsep   = "│",
+    foldclose = "»"
   },
 
   list          = false,
