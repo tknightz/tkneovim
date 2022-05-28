@@ -1,10 +1,13 @@
 require('modes').setup({
   colors = {
-    copy = "#477975",
-    delete = "#8a414b",
-    insert = "#1e3a76",
-    visual = "#602d79",
+    copy = "#5a2971",
+    delete = "#7a3841",
+    insert = "#2d4c49",
+    visual = "#6887cc",
   },
+
+  -- opacity
+  line_opacity = 0.5,
   -- Cursorline highlight opacity
   line_opacity = 0.6,
 

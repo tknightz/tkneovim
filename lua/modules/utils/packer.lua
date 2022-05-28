@@ -29,7 +29,7 @@ local packer_reversed_key = {
 
 M.build_packer_object = function(name, module)
   local obj = {module.path, as = name} 
-  local home_config = vim.fn.expand('~') .. '/.config/nvim/lua/'
+  local home_config = vim.fn.stdpath('config') .. '/lua/'
 
   local setup_path = 'modules/setup/' .. name
   local config_path = 'modules/config/' .. name

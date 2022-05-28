@@ -11,3 +11,6 @@ require("neo-tree").setup({
     async_directory_scan = false
   },
 })
+
+vim.cmd("hi NeoTreeNormal guibg=#2d3343")
+vim.cmd("hi NeoTreeNormalNC guibg=#2d3343")

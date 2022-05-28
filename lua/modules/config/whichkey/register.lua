@@ -27,7 +27,7 @@ wk.register({
 
   y = {"<cmd>%y+<cr>",            "yank to clipboard"},
 
-  n = {"<cmd>NvimTreeToggle<cr>", "nvimtree" },
+  n = {"<cmd>NvimTreeToggle<cr>", "neotree" },
 
 },
 {

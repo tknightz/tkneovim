@@ -3,7 +3,7 @@ return {
   ["telescope"] = {
     path = "nvim-telescope/telescope.nvim",
     requires = {
-      { "nvim-lua/popup.nvim", module = "popup" },
+      -- { "nvim-lua/popup.nvim", module = "popup" },
       { "nvim-lua/plenary.nvim", module = "plenary" },
       { "nvim-telescope/telescope-symbols.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
@@ -61,7 +61,8 @@ return {
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre"
+    event = "BufReadPre",
+    commit = "045d9582"
   },
 
   -- Extended f, F, t and T key mappings
@@ -148,17 +149,31 @@ return {
     module = "ezterm"
   },
   
-  -- Really fast minimap renderer
-  ["minimap"] = {
-    path = "wfxr/minimap.vim",
-    cmd = {"Minimap", "MinimapToggle"}
+  ["bqf"] = {
+    path = "kevinhwang91/nvim-bqf",
+    ft = "qf"
+  },
+
+  -- pretty quickfix UI
+  ["pqf"] = {
+    path = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+    config = function()
+      require('pqf').setup({
+        signs = {
+          error = ' ',
+          warning = ' ',
+          info = ' ',
+          hint = ' '
+        }
+      })
+    end,
   },
 
   -- Prettier format code
   ["prettier"] = {
     path = "prettier/vim-prettier",
-    run = "yarn install --frozen-lockfile --production",
-    cmd = {"Prettier", "PrettierAsync", "PrettierFragment"}
+    cmd = {"Prettier", "PrettierAsync", "PrettierFragment"},
+    run = "npm install"
   },
 
   ["bracey"] = {
@@ -174,16 +189,35 @@ return {
       require('git-conflict').setup()
     end,
     event = "BufRead"
+  },
+
+  -- Jump to last edit
+  ["lastplace"] = {
+    path = "ethanholz/nvim-lastplace",
+    config = function()
+      require('nvim-lastplace').setup{}
+    end,
+  },
+
+  ["winshift"] = {
+    path = "sindrets/winshift.nvim",
+    cmd = "WinShift",
+    config = function()
+      require("winshift").setup()
+    end
+  },
+
+  ["toggleterm"] = {
+    path = "akinsho/toggleterm.nvim",
+    tag = "v1.*",
+    cmd = "ToggleTerm",
+    config = function()
+      require("toggleterm").setup()
+    end
+  },
+
+  ["toggletermfinder"] = {
+    path = "tknightz/telescope-termfinder.nvim",
+    after = "telescope"
   }
-
-  --[[-- Modern nvim tree
-  ["neotree"] = {
-    path = "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
-      { "MunifTanjim/nui.nvim", module="nui" },
-    },
-    cmd = {"Neotree", "NeoTreeRevealToggle"},
-  },]]
-
 }

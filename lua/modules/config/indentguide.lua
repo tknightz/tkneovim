@@ -1,9 +1,9 @@
 require('indent_blankline').setup {
-  use_treesitter = true,
+  use_treesitter = false,
   show_trailing_blankline_indent = false,
   show_current_context = true,
-  show_end_of_line = true,
-  filetype_exclude = {'help', 'packer', 'txt', 'alpha', 'dashboard', 'nofile', 'prompt', 'TelescopePrompt', ""},
+  show_end_of_line = false,
+  filetype_exclude = {'help', 'packer', 'txt', 'alpha', 'dashboard', 'nofile', 'prompt', 'TelescopePrompt', "DiffviewFiles", "fugitive",  ""},
   buftype_exclude = {'terminal', 'packer'},
   term = 238,
   gui = '#1E272C',

@@ -1,13 +1,26 @@
-vim.api.nvim_command('augroup terminal_settings')
-vim.api.nvim_command('autocmd WinEnter term://* startinsert')
-vim.api.nvim_command('autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no')
-vim.api.nvim_command('autocmd TermClose term://* :call nvim_input("<CR>")')
-vim.api.nvim_command('augroup END')
+local terminal_group = vim.api.nvim_create_augroup("Terminal", {})
+vim.api.nvim_create_autocmd("WinEnter", {
+  pattern = "term://*",
+  group = terminal_group,
+  command = 'startinsert'
+})
 
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  group = terminal_group,
+  command = "setlocal nonumber norelativenumber signcolumn=no"
+})
 
--- Auto jump to the last edit
-vim.api.nvim_command('augroup editor')
--- vim.api.nvim_command('autocmd BufReadPost * normal! g`"zv')
-vim.api.nvim_command('augroup END')
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    local tabpage = vim.api.nvim_get_current_tabpage()
+    local tabpage_number = vim.api.nvim_tabpage_get_number(tabpage)
+    local win_ids = vim.api.nvim_tabpage_list_wins(tabpage)
+    local bufname = vim.fn.expand('%')
 
-vim.api.nvim_command("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
+    if #win_ids == 1 and bufname == 'NvimTree_' .. tabpage_number then
+      vim.api.nvim_exec("quit", false)
+    end
+  end
+})

@@ -34,7 +34,7 @@ require('lualine').setup {
     theme = 'material',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
-    disabled_filetypes = {"NvimTree", "Mundo", "MudoDiff", "packer", "minimap", "dbui", "DiffviewFiles", "neo-tree"},
+    disabled_filetypes = {"NvimTree", "Mundo", "MudoDiff", "packer", "minimap", "dbui", "DiffviewFiles", "neo-tree", "Outline"},
     always_divide_middle = true,
   },
   sections = {
@@ -72,7 +72,7 @@ require('lualine').setup {
     lualine_a = {
       function()
         -- vim.cmd[[hi lualine_a_inactive guibg=#16327F guifg=#541b6a gui=bold]]
-        return '😴'
+        return ''
       end
     },
     lualine_b = {},

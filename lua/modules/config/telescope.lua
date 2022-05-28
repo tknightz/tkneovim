@@ -21,12 +21,18 @@ function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
 
     local num_selections = #picker:get_multi_selection()
 
-    if not num_selections or num_selections <= 1 then
-        actions.add_selection(prompt_bufnr)
+    if num_selections == 0 then
+      return actions.file_edit(prompt_bufnr)
     end
+
+    if not num_selections or num_selections <= 1 then
+      actions.add_selection(prompt_bufnr)
+    end
+
     actions.send_selected_to_qflist(prompt_bufnr)
     vim.cmd("silent cfdo " .. open_cmd)
 end
+
 function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
     telescope_custom_actions._multiopen(prompt_bufnr, "vsplit")
 end
@@ -50,20 +56,19 @@ telescope.setup {
         ["<M-o>"] = layout_actions.toggle_mirror,
         ["<M-n>"] = layout_actions.cycle_layout_next,
         ["<M-p>"] = layout_actions.cycle_layout_prev,
-        ["<esc>"] = actions.close,
         ["<M-k>"] = actions.preview_scrolling_up,
         ["<M-j>"] = actions.preview_scrolling_down,
-        ["<C-v>"] = actions.file_vsplit,
-        ["<C-s>"] = actions.file_split,
+        ["<Esc>"] = actions.close,
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        ['<CR>'] = telescope_custom_actions.multi_selection_open,
+        ['<CR>']  = telescope_custom_actions.multi_selection_open,
         ['<C-v>'] = telescope_custom_actions.multi_selection_open_vsplit,
         ['<C-s>'] = telescope_custom_actions.multi_selection_open_split,
         ['<C-t>'] = telescope_custom_actions.multi_selection_open_tab,
         ['<C-l>'] = actions.send_selected_to_qflist + actions.open_qflist,
         ['<C-a>'] = actions.select_all,
         ['<C-u>'] = actions.drop_all,
-        -- ["<cr>"] = actions.file_edit,
+        ['<C-n>'] = actions.move_selection_next,
+        ['<C-p>'] = actions.move_selection_previous,
       },
     },
     vimgrep_arguments = {
@@ -187,13 +192,6 @@ telescope.setup {
         ["alacritty"] = "/home/tulen/.config/alacritty",
       },
     },
-    arecibo = {
-      previewer = false,
-      ["selected_engine"]   = 'duckduckgo',
-      ["url_open_command"]  = 'xdg-open',
-      ["show_http_headers"] = false,
-      ["show_domain_icons"] = false,
-    },
     ezterm = {
       theme = "dropdown",
       enter_insert = true,
@@ -201,20 +199,18 @@ telescope.setup {
     },
     project = {
       hidden_files = true
+    },
+    termfinder = {
+      options = {
+        start_to_insert = true
+      }
     }
   }
 }
 
 
 pcall(require("telescope").load_extension, "fzf") -- superfast sorter
-pcall(require("telescope").load_extension, "arecibo") -- arecibo
 pcall(require("telescope").load_extension, "project") -- project
 pcall(require("telescope").load_extension, "ezterm") -- ezterm
 pcall(require("telescope").load_extension, "live_grep_raw") -- live_grep_raw
-
-
--- highlights
-vim.cmd[[highlight TelescopeAreciboNumber guifg=#9bca68]]
-vim.cmd[[highlight TelescopeAreciboUrl guifg=#555d86]]
-vim.cmd[[highlight TelescopeAreciboPrompt guifg=#ff6c22]]
-vim.cmd[[highlight TelescopeAreciboPromptPrefix guifg=#ff6c22]]
+pcall(require('telescope').load_extension, "termfinder")

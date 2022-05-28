@@ -2,7 +2,7 @@ return {
   -- Neovim lsp function
   ["lspconfig"] = {
     path = "neovim/nvim-lspconfig",
-    cmd = "LspStart"
+    cmd = {"LspStart"}
   },
 
   -- Lsp servers manager
@@ -40,4 +40,14 @@ return {
     path = "rmagatti/goto-preview",
     cmd = {"PreviewDef", "PreviewImpl", "PreviewClose"},
   },
+
+  ["symbolsoutline"] = {
+    path = "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+  },
+
+  ["nullls"] = {
+    path = "jose-elias-alvarez/null-ls.nvim",
+    after = "lspconfig"
+  }
 }

@@ -16,6 +16,23 @@ require "bufferline".setup {
     show_buffer_close_icons = false,
     separator_style = "thin",
     diagnostics = "nvim_lsp",
+    custom_filter = function(buf_number, buf_numbers)
+      -- filter out filetypes you don't want to see
+      if
+        vim.bo[buf_number].filetype ~= "packer" and
+        vim.bo[buf_number].filetype ~= "terminal" and
+        vim.bo[buf_number].filetype ~= "TelescopePrompt" and
+        vim.bo[buf_number].filetype ~= "alpha" and
+        vim.bo[buf_number].filetype ~= "fugitive" and
+        vim.bo[buf_number].filetype ~= "qf" and
+        vim.bo[buf_number].filetype ~= "gitcommit" and
+        vim.bo[buf_number].filetype ~= "NvimTree"
+      then
+        return true
+      else
+        return false
+      end
+    end,
     custom_areas = {
       right = function()
         local result = {}

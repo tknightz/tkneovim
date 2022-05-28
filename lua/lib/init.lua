@@ -1,7 +1,7 @@
 local M = {}
 
 M.build_init_module = function(path)
-  local home_config_path = vim.fn.expand("~") .. '/.config/nvim/lua/'
+  local home_config_path = vim.fn.stdpath("config") .. '/lua/'
   local module_files = vim.fn.globpath(home_config_path .. path, "*", 0, 1)
   local exported_module = {}
 
@@ -20,12 +20,12 @@ end
 M.load_module = function(name)
   vim.cmd("packadd ".. name)
 
-  local home_config = vim.fn.expand('~') .. '/.config/nvim/lua/'
+  local home_config_path = vim.fn.stdpath('config') .. '/lua/'
   local setup_path = 'modules/setup/' .. name
   local config_path = 'modules/config/' .. name
 
-  local is_existed_setup_file = vim.fn.filereadable(home_config .. setup_path .. '.lua') + vim.fn.isdirectory(home_config .. setup_path)
-  local is_existed_config_file = vim.fn.filereadable(home_config .. config_path .. '.lua') + vim.fn.isdirectory(home_config .. config_path)
+  local is_existed_setup_file = vim.fn.filereadable(home_config_path .. setup_path .. '.lua') + vim.fn.isdirectory(home_config_path .. setup_path)
+  local is_existed_config_file = vim.fn.filereadable(home_config_path .. config_path .. '.lua') + vim.fn.isdirectory(home_config_path .. config_path)
 
   if is_existed_setup_file ~= 0 then
     vim.cmd("lua require('" .. setup_path .. "')")
