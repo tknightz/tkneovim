@@ -72,7 +72,7 @@ require('lualine').setup {
     lualine_a = {
       function()
         -- vim.cmd[[hi lualine_a_inactive guibg=#16327F guifg=#541b6a gui=bold]]
-        return '😴'
+        return ''
       end
     },
     lualine_b = {},

@@ -8,6 +8,10 @@ local f = ls.function_node
 vim.cmd("packadd friendlysnippet")
 require("luasnip.loaders.from_vscode").lazy_load()
 
+ls.config.setup({
+  delete_check_events = "TextChanged"
+})
+
 ls.add_snippets("all", {
   s("now", f(function() return os.date "%d/%m/%Y - %H:%M" end))
 })

@@ -33,7 +33,7 @@ ts_config.setup {
   highlight = {
     enable = true,
     use_languagetree = true,
-    additional_vim_regex_highlighting = {"javascript", "javascriptreact","python", "tsx", "markdown", "org", "sql"}
+    additional_vim_regex_highlighting = {"javascript", "javascriptreact","python", "ts", "tsx", "markdown", "org", "sql"}
   },
   incremental_selection = {
     enable = true,

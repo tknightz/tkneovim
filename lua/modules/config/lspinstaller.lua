@@ -15,7 +15,15 @@ local DEFAULT_CONFIGS = {
 local CUSTOM_CONFIGS = {
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
+    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+    handlers = {
+      ['textDocument/publishDiagnostics'] = function() end
+    },
+    init_options = {
+      preferences = {
+        disableSuggestions = true
+      }
+    }
   },
 
   eslint = {

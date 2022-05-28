@@ -206,4 +206,18 @@ return {
       require("winshift").setup()
     end
   },
+
+  ["toggleterm"] = {
+    path = "akinsho/toggleterm.nvim",
+    tag = "v1.*",
+    cmd = "ToggleTerm",
+    config = function()
+      require("toggleterm").setup()
+    end
+  },
+
+  ["toggletermfinder"] = {
+    path = "tknightz/telescope-termfinder.nvim",
+    after = "telescope"
+  }
 }

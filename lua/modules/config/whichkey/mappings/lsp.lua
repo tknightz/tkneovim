@@ -1,11 +1,24 @@
 function toggle_lsp()
+  local has_nullls, nullls = pcall(require, "null-ls")
+
   if vim.g.loaded_lsp == 1 then
     vim.cmd("LspStop")
+
+    if has_nullls then
+      nullls.disable{}
+    end
+
     vim.g.loaded_lsp = 0
   else
     vim.cmd("LspStart")
+
+    if has_nullls then
+      nullls.enable{}
+    end
+
     vim.g.loaded_lsp = 1
   end
+
 end
 
 return {

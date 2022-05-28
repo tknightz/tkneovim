@@ -18,7 +18,7 @@ local color_lua_setup = function(colorname)
       CmpBorder = { fg = "#2e3c43" },
       CmpWin = { bg = "NONE"},
       FloatBorder = { fg = "#2e3c43", bg = "NONE" },
-      NormalFloat = { bg = "NONE" },
+      NormalFloat = { bg = "#191919" },
       PmenuSel = { fg = "NONE", bg = "#305676" }
     }
   }
