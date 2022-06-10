@@ -61,8 +61,6 @@ telescope.setup {
         ["<Esc>"] = actions.close,
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ['<CR>']  = telescope_custom_actions.multi_selection_open,
-        ['<C-v>'] = telescope_custom_actions.multi_selection_open_vsplit,
-        ['<C-s>'] = telescope_custom_actions.multi_selection_open_split,
         ['<C-t>'] = telescope_custom_actions.multi_selection_open_tab,
         ['<C-l>'] = actions.send_selected_to_qflist + actions.open_qflist,
         ['<C-a>'] = actions.select_all,

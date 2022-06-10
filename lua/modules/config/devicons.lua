@@ -55,6 +55,16 @@ require "nvim-web-devicons".setup {
       color = "#C8CCD4",
       name = "out"
     },
+    ["Dockerfile.dev"] = {
+      icon = "",
+      color = "#b8b5ff",
+      name = "Dockerfile"
+    },
+    ["Dockerfile.proc"] = {
+      icon = "",
+      color = "#b8b5ff",
+      name = "Dockerfile"
+    },
     Dockerfile = {
       icon = "",
       color = "#b8b5ff",
