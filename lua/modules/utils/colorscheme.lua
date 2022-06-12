@@ -1,9 +1,9 @@
 local M = {}
 
--- this is comment
 local color_lua_setup = function(colorname)
   require(colorname).setup{
     style = "darker",
+    dark_theme = "onedark",
     transparent = true,
     code_style = {
       keywords = "italic,bold",
@@ -19,7 +19,16 @@ local color_lua_setup = function(colorname)
       CmpWin = { bg = "NONE"},
       FloatBorder = { fg = "#2e3c43", bg = "NONE" },
       NormalFloat = { bg = "#191919" },
-      PmenuSel = { fg = "NONE", bg = "#305676" }
+      PmenuSel = { fg = "NONE", bg = "#305676" },
+      LspSagaHoverBorder = { fg = "#2e3c43" },
+      BufferLineBufferVisible = { fg = "gray", bg = "#212535" },
+      BufferLineBufferSelected = { bg = "#0c0411" },
+      BufferLineFill = { bg = "#1a1d2a" },
+      BufferLineSeparator = { fg = "#1a1d2a" },
+      BufferLineSeparatorSelected = { fg = "#1a1d2a", bg = "#0c0411" },
+      BufferLineSeparatorVisible = { fg = "#1a1d2a", bg = "#212535" },
+      BufferLineDuplicateVisible = { fg = "gray", bg = "#212535" },
+      BufferLineDuplicateSelected = { fg = "gray", bg = "#c0411" },
     }
   }
 end
