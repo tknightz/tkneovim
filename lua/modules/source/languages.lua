@@ -39,7 +39,7 @@ return {
 
   -- Note-taking in neovim, orgmode is ported from Emacs
   ["orgmode"] = {
-    path = "kristijanhusak/orgmode.nvim",
+    path = "nvim-orgmode/orgmode",
     ft = "org"
   },
 
