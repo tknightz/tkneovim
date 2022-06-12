@@ -2,6 +2,21 @@ local nvim_tree = require('nvim-tree')
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 nvim_tree.setup {
   hijack_cursor = true,
+
+  renderer = {
+    highlight_git = true,
+    root_folder_modifier = ":t",
+    icons = {
+      padding = "  ",
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      },
+    }
+  },
+
   view = {
     width = 35,
     mappings = {

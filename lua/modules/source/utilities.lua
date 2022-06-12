@@ -219,5 +219,10 @@ return {
   ["toggletermfinder"] = {
     path = "tknightz/telescope-termfinder.nvim",
     after = "telescope"
-  }
+  },
+
+  ["editorconfig"] = {
+    path = "gpanders/editorconfig.nvim",
+    event = "VimEnter",
+  },
 }

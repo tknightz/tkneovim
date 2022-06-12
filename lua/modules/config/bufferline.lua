@@ -1,6 +1,7 @@
 require "bufferline".setup {
   options = {
     offsets = {{filetype = "NvimTree", text = "Explorer"}},
+    themable = true,
     buffer_close_icon = "",
     modified_icon = "",
     indicator_icon = '|',
@@ -14,7 +15,7 @@ require "bufferline".setup {
     enforce_regular_tabs = false,
     view = "multiwindow",
     show_buffer_close_icons = false,
-    separator_style = "thin",
+    separator_style = "slant",
     diagnostics = "nvim_lsp",
     custom_filter = function(buf_number, buf_numbers)
       -- filter out filetypes you don't want to see
