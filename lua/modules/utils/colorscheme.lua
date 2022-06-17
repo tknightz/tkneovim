@@ -29,6 +29,10 @@ local color_lua_setup = function(colorname)
       BufferLineSeparatorVisible = { fg = "#1a1d2a", bg = "#212535" },
       BufferLineDuplicateVisible = { fg = "gray", bg = "#212535" },
       BufferLineDuplicateSelected = { fg = "gray", bg = "#c0411" },
+      DashboardHeader = { fg = "#555555" }, 
+      DashboardCenter = { fg = "#555555" }, 
+      DashboardFooter = { fg = "#555555" }, 
+      DashboardShortcut = { fg = "#555555" }, 
     }
   }
 end

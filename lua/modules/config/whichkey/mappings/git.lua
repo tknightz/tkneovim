@@ -6,6 +6,7 @@ return {
 
   f     = {":Telescope git_files<cr>",    "files"},
   s     = {git_util.my_git_status,        "status"},
+  S     = {":Gitsigns stage_hunk<cr>",    "stage hunk"},
   b     = {":Telescope git_branches<cr>", "branches"},
   c     = {":Git commit --quiet<cr>",     "commit"},
   ["."] = {":Git<cr>",                    "Git here" },
