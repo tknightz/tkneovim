@@ -38,7 +38,10 @@ return {
   -- Show definitions without moving
   ["preview"] = {
     path = "rmagatti/goto-preview",
-    cmd = {"PreviewDef", "PreviewImpl", "PreviewClose"},
+    config = function()
+      require("goto-preview").setup{}
+    end,
+    after = "lspconfig",
   },
 
   ["symbolsoutline"] = {

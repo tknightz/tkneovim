@@ -35,4 +35,11 @@ return {
   f = {":lua vim.lsp.buf.formatting()<CR>",    "format"},
   t = {toggle_lsp,                             "toggle"},
   s = {":SymbolsOutline<cr>",                  "browse"},
+  v = {
+    name = "view",
+    d = {"<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "definition"},
+    i = {"<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "definition"},
+    r = {"<cmd>lua require('goto-preview').goto_preview_references()<CR>", "definition"},
+    x = {"<cmd>lua require('goto-preview').close_all_win()<CR>", "close all"},
+  }
 }
