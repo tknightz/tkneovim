@@ -8,7 +8,7 @@ return {
       { "nvim-telescope/telescope-symbols.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       { "nvim-telescope/telescope-project.nvim", after = "telescope" },
-      { 'nvim-telescope/telescope-live-grep-raw.nvim', before = "telescope" },
+      { 'nvim-telescope/telescope-live-grep-args.nvim', before = "telescope" },
     },
 
     cmd = "Telescope",
