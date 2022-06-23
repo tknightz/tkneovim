@@ -1,0 +1,23 @@
+function! s:UppercaseWithCondition(keyword)
+  let isFirstOfLine = col('.') - len(a:keyword)
+  return isFirstOfLine <= 1 ? toupper(a:keyword) : a:keyword
+endfunction
+
+iabbrev <expr> <buffer> from <SID>UppercaseWithCondition('from')
+iabbrev <expr> <buffer> maintainer <SID>UppercaseWithCondition('maintainer')
+iabbrev <expr> <buffer> run <SID>UppercaseWithCondition('run')
+iabbrev <expr> <buffer> cmd <SID>UppercaseWithCondition('cmd')
+iabbrev <expr> <buffer> label <SID>UppercaseWithCondition('label')
+iabbrev <expr> <buffer> expose <SID>UppercaseWithCondition('expose')
+iabbrev <expr> <buffer> env <SID>UppercaseWithCondition('env')
+iabbrev <expr> <buffer> add <SID>UppercaseWithCondition('add')
+iabbrev <expr> <buffer> copy <SID>UppercaseWithCondition('copy')
+iabbrev <expr> <buffer> entrypoint <SID>UppercaseWithCondition('entrypoint')
+iabbrev <expr> <buffer> volume <SID>UppercaseWithCondition('volume')
+iabbrev <expr> <buffer> user <SID>UppercaseWithCondition('user')
+iabbrev <expr> <buffer> workdir <SID>UppercaseWithCondition('workdir')
+iabbrev <expr> <buffer> arg <SID>UppercaseWithCondition('arg')
+iabbrev <expr> <buffer> onbuild <SID>UppercaseWithCondition('onbuild')
+iabbrev <expr> <buffer> stopsignal <SID>UppercaseWithCondition('stopsignal')
+iabbrev <expr> <buffer> healthcheck <SID>UppercaseWithCondition('healthcheck')
+iabbrev <expr> <buffer> shell <SID>UppercaseWithCondition('shell')
