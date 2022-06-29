@@ -3,7 +3,7 @@ local options = {
     -- tab      = "│·",
     tab         = "» ",
     trail       = "·",
-    -- space       = "·",
+    space       = "⋅",
     -- precedes = "←",
     extends     = "→",
     eol         = "↩",
@@ -18,7 +18,7 @@ local options = {
     foldclose = "»"
   },
 
-  list          = false,
+  list          = true,
 
   termguicolors = true,
   undofile      = true,

@@ -45,10 +45,16 @@ local color_lua_setup = function(colorname)
       BufferLineHintSelected = { bg = "#0c0411" },
       BufferLineHintDiagnosticVisible = { bg = "#212535" },
       BufferLineHintDiagnosticSelected = { bg = "#0c0411" },
-      DashboardHeader = { fg = "#555555" }, 
-      DashboardCenter = { fg = "#555555" }, 
-      DashboardFooter = { fg = "#555555" }, 
-      DashboardShortcut = { fg = "#555555" }, 
+      DashboardHeader = { fg = "#555555" },
+      DashboardCenter = { fg = "#555555" },
+      DashboardFooter = { fg = "#555555" },
+      DashboardShortcut = { fg = "#555555" },
+      BufferLineModifiedVisible = { bg = "#212535" },
+      BufferLineModifiedSelected = { bg = "#0c0411" },
+      NvimTreeVertSplit = { fg = "#3c3c3c" },
+      IndentBlanklineChar = { fg = "#3b3b3b" },
+      Whitespace = { fg = "#353535", fmt = "nocombine" },
+      Nontext = { fg = "#353535", fmt = "nocombine" },
     }
   }
 end
