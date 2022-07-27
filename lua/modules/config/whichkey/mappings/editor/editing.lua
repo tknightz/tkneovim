@@ -8,4 +8,6 @@ return {
   h = {":set hlsearch!<cr>", "toggle hlsearch"},
   m = {":set mouse=a<cr>",   "mouse on"},
   M = {":set mouse=<cr>",    "mouse off"},
+  n = {":tabnext<cr>",       "next tab"},
+  p = {":tabprevious<cr>",   "prev tab"},
 }
