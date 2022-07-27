@@ -97,18 +97,18 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = "luasnip"},
+    { name = 'nvim_lsp', priority = 2 },
+    { name = "luasnip", priority = 1 },
     { name = 'path' },
-    { name = 'buffer' },
     { name = 'emoji' },
     { name = 'nvim_lua' },
+    { name = 'buffer' },
   }),
 
   formatting = {
     fields = { "kind", "abbr", "menu" },
 
-    format = function(entry, vim_item)
+    format = function(_, vim_item)
       local icon = icons.icons[vim_item.kind]
 
       local label = vim_item.abbr
