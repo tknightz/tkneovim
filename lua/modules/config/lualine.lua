@@ -16,7 +16,6 @@ local function shorten_str(str, size)
 end
 
 local function shorten_bufname()
-
   local path = vim.api.nvim_buf_get_name(0)
   local filename = vim.api.nvim_call_function('fnamemodify', {path, ':t'})
   local ext = vim.api.nvim_call_function('fnamemodify', {path, ':e'})
@@ -26,6 +25,10 @@ local function shorten_bufname()
 
   local modified_indicator = is_modified and "" or ""
   return icon .. " " .. shorten_str(filename) .. " " .. modified_indicator
+end
+
+local function maximize_status()
+  return vim.t.maximized and '   ' or ''
 end
 
 require('lualine').setup {
@@ -64,7 +67,7 @@ require('lualine').setup {
         symbols = { error = " ", warning = " ", hint = "", info = " " }
       },
     },
-    lualine_x = {'encoding', 'filetype'},
+    lualine_x = { maximize_status, 'encoding', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },

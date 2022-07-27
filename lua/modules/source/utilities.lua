@@ -85,8 +85,9 @@ return {
   -- Sometimes need to focus in one window
   -- but dont want to close others
   ["maximizer"] = {
-    path = "szw/vim-maximizer",
-    cmd = "MaximizerToggle"
+    path = "declancm/maximize.nvim",
+    config = function() require('maximize').setup() end,
+    module = "maximize",
   },
 
   -- Run code inside Nvim
