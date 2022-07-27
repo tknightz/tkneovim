@@ -19,7 +19,7 @@ return {
 
   -- Enhance lsp ui
   ["lspsaga"] = {
-    path = "tami5/lspsaga.nvim",
+    path = "glepnir/lspsaga.nvim",
     after = "lspconfig"
   },
 
