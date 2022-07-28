@@ -8,7 +8,7 @@ return {
   ['.']   = {":Telescope current_buffer_fuzzy_find<cr>", "current_buffer"},
   b       = {":Telescope buffers<cr>",                   "buffers"},
   o       = {":Telescope oldfiles<cr>",                  "oldfiles"},
-  p       = {":Telescope project project<cr>",           "project"},
+  p       = {":Telescope projects<cr>",                  "project"},
   e       = {":Telescope symbols<cr>",                   "emoji"},
   ['/']   = {":Telescope<cr>",                           "overview"},
 

@@ -20,7 +20,6 @@ return {
   -- Enhance lsp ui
   ["lspsaga"] = {
     path = "glepnir/lspsaga.nvim",
-    branch = "main",
     after = "lspconfig"
   },
 

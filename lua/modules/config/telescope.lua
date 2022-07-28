@@ -208,7 +208,7 @@ telescope.setup {
 
 
 pcall(require("telescope").load_extension, "fzf") -- superfast sorter
-pcall(require("telescope").load_extension, "project") -- project
+pcall(require("telescope").load_extension, "projects") -- project
 pcall(require("telescope").load_extension, "ezterm") -- ezterm
 pcall(require("telescope").load_extension, "live_grep_args") -- live_grep_raw
 pcall(require('telescope').load_extension, "termfinder")

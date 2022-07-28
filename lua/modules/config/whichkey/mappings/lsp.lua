@@ -34,9 +34,9 @@ return {
   q = {":lua vim.diagnostic.setloclist()<CR>", "quickfix"},
   f = {":lua vim.lsp.buf.formatting()<CR>",    "format"},
   t = {toggle_lsp,                             "toggle"},
-  s = {":SymbolsOutline<cr>",                  "browse"},
-  ['/'] = {":Lspsaga lsp_finder<CR>", "finder"},
-  ['.'] = {":Telescope lsp_references<CR>", "references"},
+  S = {":SymbolsOutline<cr>",                  "browse"},
+  ["/"] = {":Lspsaga lsp_finder<CR>",          "finder-saga"},
+  ["."] = {":Telescope lsp_references<CR>",    "finder-tele"},
   v = {
     name = "view",
     d = {"<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "definition"},

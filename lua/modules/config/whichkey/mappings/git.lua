@@ -1,12 +1,23 @@
 local git_util = require("lib.git")
 
+local function stage_hunk()
+  if vim.api.nvim_win_get_option(0, "diff") then
+    vim.cmd("diffput")
+  else
+    vim.cmd("Gitsigns stage_hunk")
+  end
+
+  -- little hacking here cause I don't know how to back to normal mode
+  vim.api.nvim_input("<esc>")
+end
+
 return {
 
   name = "Git",
 
   f     = {":Telescope git_files<cr>",    "files"},
   s     = {git_util.my_git_status,        "status"},
-  S     = {":Gitsigns stage_hunk<cr>",    "stage hunk"},
+  S     = {stage_hunk,                    "stage hunk"},
   b     = {":Telescope git_branches<cr>", "branches"},
   c     = {":Git commit --quiet<cr>",     "commit"},
   ["."] = {":Git<cr>",                    "Git here" },
@@ -47,7 +58,7 @@ return {
     p = {":Gitsigns previous_hunk<cr>",   "previous hunk"    },
     v = {":Gitsigns preview_hunk<cr>",    "view hunk"        },
     h = {":Gitsigns toggle_linehl<cr>",   "highlight toggle" },
-    s = {":Gitsigns stage_hunk<cr>",      "stage hunk"       },
+    s = {stage_hunk,                      "stage hunk"       },
     u = {":Gitsigns undo_stage_hunk<cr>", "undo stage hunk"  },
   },
 }

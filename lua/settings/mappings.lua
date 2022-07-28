@@ -24,14 +24,6 @@ local keymaps = {
   },
 
   visual_only = {
-    ["("]  = "<Plug>(operator-sandwich-add))",
-    ["["]  = "<Plug>(operator-sandwich-add)]",
-    ["{"]  = "<Plug>(operator-sandwich-add)}",
-    [")"]  = "<Plug>(operator-sandwich-add))",
-    ["]"]  = "<Plug>(operator-sandwich-add)]",
-    ["}"]  = "<Plug>(operator-sandwich-add)}",
-    ["'"]  = "<Plug>(operator-sandwich-add)'",
-    ["\""] = "<Plug>(operator-sandwich-add)\"",
     ["<C-y>"] = '"+y',
   },
 
@@ -62,7 +54,7 @@ local name_conversion = {
   terminal = "t",
 }
 
-function setup_keymap()
+local function setup_keymap()
   for mode, mappings in pairs(keymaps) do
     local named_mode = name_conversion[mode]
     for key, map in pairs(mappings) do

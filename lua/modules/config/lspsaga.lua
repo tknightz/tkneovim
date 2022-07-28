@@ -1,10 +1,6 @@
-local lspsage = require 'lspsaga'
+local lspsage = require('lspsaga')
 
-lspsage.setup {
-  error_sign = ' ',
-  warn_sign = ' ',
-  infor_sign = ' ',
-  hint_sign = ' ',
-
-  border_style = 'round'
-}
+lspsage.init_lsp_saga({
+  border_style = 'rounded',
+  diagnostic_header = { "😡", "😥", "😤", "😐" },
+})

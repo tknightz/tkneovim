@@ -7,7 +7,6 @@ return {
       { "nvim-lua/plenary.nvim", module = "plenary" },
       { "nvim-telescope/telescope-symbols.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      { "nvim-telescope/telescope-project.nvim", after = "telescope" },
       { 'nvim-telescope/telescope-live-grep-args.nvim', before = "telescope" },
     },
 
@@ -86,8 +85,9 @@ return {
   -- Sometimes need to focus in one window
   -- but dont want to close others
   ["maximizer"] = {
-    path = "szw/vim-maximizer",
-    cmd = "MaximizerToggle"
+    path = "declancm/maximize.nvim",
+    config = function() require('maximize').setup() end,
+    module = "maximize",
   },
 
   -- Run code inside Nvim

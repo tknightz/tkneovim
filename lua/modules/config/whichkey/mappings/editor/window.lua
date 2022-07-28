@@ -18,7 +18,7 @@ return {
   ["="] = {'<C-W>=',                     'balance-window'        },
   s     = {'<cmd>WinShift<cr>',          'shift window'          },
   v     = {'<C-W>v',                     'split-window-below'    },
-  m     = {'<cmd>MaximizerToggle<cr>',   'toggle maximize window'},
+  m     = {'<cmd>lua require("maximize").toggle()<cr>',   'toggle maximize window'},
 
   t = {
     name    = 'transform',

@@ -36,8 +36,13 @@ return {
   },
 
   -- Better playing with brackets
-  ["sandwich"] = {
-    path = "machakann/vim-sandwich",
+  ["nvim-surround"] = {
+    path = "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup {
+        move_cursor = false,
+      }
+    end,
     event = "BufRead"
   },
 
