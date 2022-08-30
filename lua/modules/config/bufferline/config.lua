@@ -1,10 +1,17 @@
+local highlights = require("modules.config.bufferline.highlights")
+
+require("modules.config.bufferline.mappings")
+
 require "bufferline".setup {
+  highlights = highlights,
   options = {
     offsets = {{filetype = "NvimTree", text = "Explorer"}},
     themable = true,
     buffer_close_icon = "",
     modified_icon = "",
-    indicator_icon = '|',
+    indicator = {
+      icon = '|',
+    },
     close_icon = "",
     left_trunc_marker = " ",
     right_trunc_marker = " ",
@@ -62,15 +69,3 @@ require "bufferline".setup {
     },
   },
 }
-
-local opt = {silent = true}
-local map = vim.api.nvim_set_keymap
-vim.g.mapleader = " "
-
--- MAPPINGS
-map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
-map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt) -- close tab
-
--- move between tabs
-map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
