@@ -27,7 +27,7 @@ return {
   a = {":Lspsaga code_action<CR>",             "actions"},
   s = {":Lspsaga signature_help<CR>",          "signature_help"},
   r = {":Lspsaga rename<CR>",                  "rename"},
-  d = {":Lspsaga show_line_diagnostics<CR>",   "definitions"},
+  d = {":Lspsaga preview_definition<CR>",      "definitions"},
   i = {":Lspsaga show_line_diagnostics<CR>",   "issues"},
   n = {":Lspsaga diagnostic_jump_next<CR>",    "next"},
   p = {":Lspsaga diagnostic_jump_prev<CR>",    "prev"},
@@ -40,8 +40,8 @@ return {
   v = {
     name = "view",
     d = {"<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "definition"},
-    i = {"<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "definition"},
-    r = {"<cmd>lua require('goto-preview').goto_preview_references()<CR>", "definition"},
+    i = {"<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "implementation"},
+    r = {"<cmd>lua require('goto-preview').goto_preview_references()<CR>", "references"},
     x = {"<cmd>lua require('goto-preview').close_all_win()<CR>", "close all"},
   }
 }

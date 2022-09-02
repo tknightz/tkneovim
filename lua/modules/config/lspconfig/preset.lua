@@ -2,10 +2,11 @@ local function on_attach(client, bufnr)
   -- Load signature_help
   require('lsp_signature').on_attach({
     bind = true,
-    hint_prefix = "👉 ",
+    hint_prefix = "🌸 ",
     handler_opts = {
-      border = "single"
-    }
+      border = "rounded"
+    },
+    transparency = 1,
   }, bufnr)
 
 
@@ -21,11 +22,11 @@ local function on_attach(client, bufnr)
 
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gs", "<Cmd>split | lua vim.lsp.buf.definition()<CR>", opts)
+  buf_set_keymap("n", "gs", "<Cmd>split | exec 'lua vim.lsp.buf.definition()' | exec 'norm zt'<CR>", opts)
   buf_set_keymap("n", "gv", "<Cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
   buf_set_keymap("i", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   buf_set_keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "<space>D", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   buf_set_keymap("n", "<space>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)

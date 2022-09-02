@@ -32,7 +32,16 @@ return {
   -- Show signature while typing code
   ["signature"] = {
     path = "ray-x/lsp_signature.nvim",
-    module = "lsp_signature"
+    module = "lsp_signature",
+    config = function()
+      require("lsp_signature").setup({
+        bind = true,
+        handler_opts = {
+          border = "rounded"
+        },
+        transparency = 1,
+      })
+    end
   },
 
   -- Show definitions without moving
