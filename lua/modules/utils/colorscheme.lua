@@ -37,6 +37,7 @@ local color_lua_setup = function(colorname)
       IndentBlanklineChar = { fg = "#3b3b3b" },
       Whitespace = { fg = "#353535", fmt = "nocombine" },
       Nontext = { fg = "#353535", fmt = "nocombine" },
+
       TreesitterContext = { bg = "#342b27" },
       TreesitterContextLineNumber = { fg = "#00d364" },
       NormalFloat = { bg = "NONE" },
@@ -48,6 +49,8 @@ local color_lua_setup = function(colorname)
       IlluminatedWordText = { bg = "#39435a", fmt = "NONE" },
       IlluminatedWordRead = { bg = "#39435a", fmt = "NONE" },
       IlluminatedWordWrite = { bg = "#49212d", fmt = "NONE" },
+
+      MatchWord = { bg = "#2E3C43" },
     }
   }
 end

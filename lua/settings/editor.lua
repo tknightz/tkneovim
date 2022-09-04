@@ -42,6 +42,7 @@ local options = {
   re            = 0,
   number        = true,
   wrap          = false,
+  linebreak     = true,
   cursorline    = true,
   swapfile      = false,
   incsearch     = true,

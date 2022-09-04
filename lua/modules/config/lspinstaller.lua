@@ -31,6 +31,19 @@ local CUSTOM_CONFIGS = {
   emmet_ls = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   },
+
+  yamlls = {
+    settings = {
+      yaml = {
+        schemas = {
+          ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"] = "*/openapi.(yml|yaml)"
+        },
+        schemaDownload = { enable = true },
+        completion = true,
+        validate = true,
+      }
+    }
+  }
 }
 
 local installed_servers = lsp_installer.get_installed_servers()

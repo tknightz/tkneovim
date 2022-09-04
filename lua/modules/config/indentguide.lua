@@ -9,10 +9,11 @@ require('indent_blankline').setup {
   gui = '#1E272C',
   -- char_list = {'|', '¦', '┆', '┊'},
   char_list = {'│'},
+  context_char = "│",
   concealcursor = 'inc',
   conceallevel = 2,
   faster = 1,
-  context_patterns = {'class', 'function', 'def', 'method', 'if', 'for', 'while'},
+  context_patterns = {'class', 'function', 'def', 'method', 'if', 'for', 'while', 'block'},
   space_char_blankline = ' ',
   char_highlight_list = {
     'IndentBlanklineChar'

@@ -49,4 +49,12 @@ return {
     ft = "org",
   },
 
+  ["headlines"] = {
+    path = "lukas-reineke/headlines.nvim",
+    config = function()
+      require('headlines').setup{}
+    end,
+    ft = {"org", "markdown"}
+  },
+
 }

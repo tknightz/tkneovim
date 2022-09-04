@@ -42,7 +42,10 @@ return {
   -- Highlight cursor word
   ["illuminate"] = {
     path = "RRethy/vim-illuminate",
-    event = "BufRead"
+    event = "BufRead",
+    config = function()
+      require('illuminate').configure()
+    end
   },
 
   -- Better buffer delete
@@ -224,5 +227,50 @@ return {
   ["editorconfig"] = {
     path = "gpanders/editorconfig.nvim",
     event = "VimEnter",
+  },
+
+  ["fcursorhold"] = {
+    path = "antoinemadec/FixCursorHold.nvim",
+    event = "CursorHold",
+  },
+
+  ["vgit"] = {
+    path = "tanvirtin/vgit.nvim",
+    config = function()
+      require("vgit").setup()
+    end,
+    cmd = "VGit"
+  },
+
+  ["stablize"] = {
+    path = "luukvbaal/stabilize.nvim",
+    config = function() require("stabilize").setup() end,
+    event = "WinNew",
+  },
+
+  ["scope"] = {
+    path = "tiagovla/scope.nvim",
+    config = function()
+      require("scope").setup()
+    end,
+    after = "theme"
+  },
+
+  ["hlargs"] = {
+    path = "m-demare/hlargs.nvim",
+    config = function()
+      require("hlargs").setup({
+        color = "#f34b7d"
+      })
+    end,
+    after = "treesitter",
+  },
+
+  ["scrollbar"] = {
+    path = "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup()
+    end,
+    event = "BufRead",
   },
 }

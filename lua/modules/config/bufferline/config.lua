@@ -6,6 +6,9 @@ require "bufferline".setup {
   highlights = highlights,
   options = {
     offsets = {{filetype = "NvimTree", text = "Explorer"}},
+    indicator = {
+      icon = '|',
+    },
     themable = true,
     buffer_close_icon = "",
     modified_icon = "",

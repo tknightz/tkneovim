@@ -7,7 +7,7 @@ local keymaps = {
     ["gz"]        = "<Plug>Lightspeed_s",
     ["gZ"]        = "<Plug>Lightspeed_S",
 
-    ["<C-_>"]     = ":lua require('Comment.api').toggle_current_linewise()<cr>",
+    ["<C-_>"]     = "<Plug>(comment_toggle_linewise_current)",
     ["<C-y>"]     = ":%y+",
 
     ["<M-h>"]     = ":vertical resize +3<cr>",
@@ -20,7 +20,7 @@ local keymaps = {
 
   visual_select = {
     ["<C-y>"] = '"+y',
-    ["<C-_>"] = ":lua require('Comment.api').toggle_blockwise_op('V', {})<cr>",
+    ["<C-_>"] = "<Plug>(comment_toggle_blockwise_visual)",
   },
 
   visual_only = {
