@@ -11,26 +11,26 @@ local _, telescope = pcall(require, "telescope")
 local telescope_custom_actions = {}
 
 function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
-    local picker = action_state.get_current_picker(prompt_bufnr)
-    local selected_entry = action_state.get_selected_entry()
-    
-    if selected_entry == nil then
-      actions.close(prompt_bufnr)
-      return
-    end
+  local picker = action_state.get_current_picker(prompt_bufnr)
+  local selected_entry = action_state.get_selected_entry()
 
-    local num_selections = #picker:get_multi_selection()
+  if selected_entry == nil then
+    actions.close(prompt_bufnr)
+    return
+  end
 
-    if num_selections == 0 then
-      return actions.file_edit(prompt_bufnr)
-    end
+  local num_selections = #picker:get_multi_selection()
 
-    if not num_selections or num_selections <= 1 then
-      actions.add_selection(prompt_bufnr)
-    end
+  if num_selections == 0 then
+    return actions.file_edit(prompt_bufnr)
+  end
 
-    actions.send_selected_to_qflist(prompt_bufnr)
-    vim.cmd("silent cfdo " .. open_cmd)
+  if not num_selections or num_selections <= 1 then
+    actions.add_selection(prompt_bufnr)
+  end
+
+  actions.send_selected_to_qflist(prompt_bufnr)
+  vim.cmd("silent cfdo " .. open_cmd)
 end
 
 function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
@@ -116,7 +116,7 @@ telescope.setup {
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
     file_sorter = require "telescope.sorters".get_fzy_sorter,
-    file_ignore_patterns = {"%node_modules%", "build", ".git/.*", "%.min.js", "%.min.css", "%.map"},
+    -- file_ignore_patterns = {"%node_modules%", "build", ".git/.*", "%.min.js", "%.min.css", "%.map"},
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
