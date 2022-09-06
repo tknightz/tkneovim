@@ -27,17 +27,13 @@ local function shorten_bufname()
   return icon .. " " .. shorten_str(filename) .. " " .. modified_indicator
 end
 
-local function maximize_status()
-  return vim.t.maximized and '   ' or ''
-end
-
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'material',
+    theme = 'horizon',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
-    disabled_filetypes = {"NvimTree", "Mundo", "MudoDiff", "packer", "minimap", "dbui", "DiffviewFiles", "neo-tree", "Outline"},
+    -- disabled_filetypes = {"NvimTree", "Mundo", "MudoDiff", "packer", "minimap", "dbui", "DiffviewFiles", "neo-tree", "Outline"},
     always_divide_middle = true,
   },
   sections = {
@@ -45,8 +41,14 @@ require('lualine').setup {
     lualine_b = {
       'branch',
       {
+        'filetype',
+        icon_only = true,
+        separator = '',
+        padding={right=0, left=1}
+      },
+      {
         'filename',
-        mode = 1
+        path = 1,
       }
     },
     lualine_c = {
@@ -67,7 +69,7 @@ require('lualine').setup {
         symbols = { error = " ", warning = " ", hint = "", info = " " }
       },
     },
-    lualine_x = { maximize_status, 'encoding', 'filetype'},
+    lualine_x = { 'encoding', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },

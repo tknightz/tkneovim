@@ -116,7 +116,7 @@ telescope.setup {
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
     file_sorter = require "telescope.sorters".get_fzy_sorter,
-    file_ignore_patterns = {"%node_modules%", "build", ".git/.*", "%.min.js", "%.min.css", "%.map"},
+    -- file_ignore_patterns = {"%node_modules%", "build", ".git/.*", "%.min.js", "%.min.css", "%.map"},
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -202,6 +202,9 @@ telescope.setup {
       options = {
         start_to_insert = true
       }
+    },
+    live_grep_args = {
+      auto_quoting = true
     }
   }
 }

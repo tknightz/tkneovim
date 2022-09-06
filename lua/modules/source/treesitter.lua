@@ -26,4 +26,19 @@ return {
     path = "p00f/nvim-ts-rainbow",
     after = "treesitter"
   },
+
+  ["treesitter-context"] = {
+    path = "nvim-treesitter/nvim-treesitter-context",
+    cmd = {"TSContextEnable", "TSContextToggle"},
+  },
+
+  ["hlargs"] = {
+    path = "m-demare/hlargs.nvim",
+    after = "treesitter",
+    config = function()
+      require('hlargs').setup({
+        color = "#f34b7d"
+      })
+    end
+  }
 }

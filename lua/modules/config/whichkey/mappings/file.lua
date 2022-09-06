@@ -7,5 +7,6 @@ return {
   h = { ":Telescope oldfiles<cr>",               "History Files" },
   n = { ":new<cr>",                              "New File" },
   m = { ":Telescope media_files<cr>",            "media_files" },
-  r = { ":Telescope live_grep_args<cr>",         "Grep" }
+  r = { ":Telescope live_grep_args<cr>",         "Grep" },
+  d = { ":Telescope find_files cwd=~/.config/nvim<cr>",         "dotfiles" }
 }

@@ -45,21 +45,39 @@ return {
   },
 
   -- Show definitions without moving
-  ["preview"] = {
+  --[[["preview"] = {
     path = "rmagatti/goto-preview",
     config = function()
       require("goto-preview").setup{}
     end,
     after = "lspconfig",
-  },
+  },]]
 
   ["symbolsoutline"] = {
     path = "simrat39/symbols-outline.nvim",
+    config = function()
+      require("symbols-outline").setup()
+    end,
     cmd = "SymbolsOutline",
   },
 
   ["nullls"] = {
     path = "jose-elias-alvarez/null-ls.nvim",
     after = "lspconfig"
-  }
+  },
+--[[
+  ["fidget"] = {
+    path = "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup{
+        text = {
+          spinner = "dots",
+        },
+        window = {
+          blend = 0,
+        }
+      }
+    end,
+    after = "lspconfig"
+  } ]]
 }

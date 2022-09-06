@@ -24,7 +24,7 @@ return {
   w     = {":Gitsigns blame_line<cr>",    "who code it"},
   P     = {":Git push -u --quiet<cr>",    "Push"},
   n     = {":Gitsigns next_hunk<cr>",     "next hunk"},
-  p     = {":Gitsigns previous_hunk<cr>", "previous hunk"},
+  p     = {":Gitsigns prev_hunk<cr>", "previous hunk"},
 
   ["/"] = {
     name  = "browse",

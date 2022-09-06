@@ -42,7 +42,18 @@ return {
   -- Highlight cursor word
   ["illuminate"] = {
     path = "RRethy/vim-illuminate",
-    event = "BufRead"
+    event = "BufRead",
+    config = function()
+      require('illuminate').configure({
+        filetypes_denylist = {
+          "TelescopePrompt",
+          "prompt",
+          "dashboard",
+          "dirvish",
+          "fugitive"
+        }
+      });
+    end
   },
 
   -- Better buffer delete
@@ -70,7 +81,7 @@ return {
     event = "BufRead"
   },
 
-  -- Even better % navigate and highlight matching words 
+  -- Even better % navigate and highlight matching words
   ["matchup"] = {
     path = "andymass/vim-matchup",
     event = "BufRead"
@@ -85,9 +96,8 @@ return {
   -- Sometimes need to focus in one window
   -- but dont want to close others
   ["maximizer"] = {
-    path = "declancm/maximize.nvim",
-    config = function() require('maximize').setup() end,
-    module = "maximize",
+    path = "szw/vim-maximizer",
+    cmd = "MaximizerToggle"
   },
 
   -- Run code inside Nvim
@@ -132,8 +142,8 @@ return {
 
   -- Measure startup-time
   ["startuptime"] = {
-    path = "tweekmonster/startuptime.vim",
-    cmd = "StartupTime" 
+    path = "dstein64/vim-startuptime",
+    cmd = "StartupTime"
   },
 
   -- Distraction free - writing mode
@@ -148,7 +158,7 @@ return {
     cmd = {"Ezterm", "EztermFind"},
     module = "ezterm"
   },
-  
+
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
     ft = "qf"
@@ -223,6 +233,89 @@ return {
 
   ["editorconfig"] = {
     path = "gpanders/editorconfig.nvim",
-    event = "VimEnter",
+    event = "BufReadPre",
   },
+
+  ["nvimlocalconf"] = {
+    path = "klen/nvim-config-local",
+    config = function()
+      require('config-local').setup()
+    end
+  },
+
+  ["stabilize"] = {
+    path = "luukvbaal/stabilize.nvim",
+    config = function() require("stabilize").setup() end,
+    event = "WinNew"
+  },
+
+  ["nginx"] = {
+    path = "chr4/nginx.vim",
+    ft = {"conf", "nginx"},
+  },
+
+  ["headlines"] = {
+    path = "lukas-reineke/headlines.nvim",
+    ft = {"markdown", "org"},
+    commit = "347ef03",
+    config = function()
+      require('headlines').setup()
+    end,
+  },
+
+  ["scope"] = {
+    path = "tiagovla/scope.nvim",
+    config = function()
+      require("scope").setup()
+    end,
+    after = "theme",
+  },
+
+  ["project_nvim"] = {
+    path = "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {
+        manual_mode = true,
+        patterns = {".git"},
+      }
+    end,
+    module_pattern = {"projects", "telescope._extensions.projects"}
+  },
+
+  --[[ ["incline"] = {
+    path = "b0o/incline.nvim",
+    config = function()
+      require('incline').setup({
+        window = {
+          winhighlight = {
+            active = { Normal = 'InclineActive' },
+            inactive = { Normal = 'InclineInactive' },
+          },
+          placement = {
+            vertical = "top"
+          },
+          margin = {
+            vertical = 0
+          },
+        }
+      })
+    end,
+    after = theme,
+  }, ]]
+
+  ["scrollbar"] = {
+    path = "petertriho/nvim-scrollbar",
+    event = "BufRead",
+    config = function()
+      require("scrollbar").setup()
+    end
+  },
+
+  ["restnvim"] = {
+    path = "NTBBloodbath/rest.nvim",
+    cmd = {"RestNvim"},
+    config = function()
+      require("rest-nvim").setup()
+    end
+  }
 }

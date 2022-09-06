@@ -60,6 +60,6 @@ return {
   
   ["modes"] = {
     path = "mvllow/modes.nvim",
-    event = "BufRead",
+    after = "theme",
   },
 }

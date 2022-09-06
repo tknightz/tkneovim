@@ -4,10 +4,6 @@ nvim_tree.setup {
   hijack_cursor = true,
   update_cwd = true,
   respect_buf_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_cwd = false,
-  },
 
   renderer = {
     highlight_git = true,

@@ -41,7 +41,7 @@ db.custom_center = {
   shortcut = 'SPC f w'},
   {icon = '  ',
   desc = 'Open Neovim Config                      ',
-  action = 'Telescope dotfiles path=~/.config/nvim',
+  action = 'Telescope find_files cwd=~/.config/nvim',
   shortcut = 'SPC f d'},
 }
 

@@ -60,7 +60,6 @@ cmp.setup({
     completion = cmp_win_options,
   },
 
-
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -97,9 +96,10 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', priority = 2 },
-    { name = "luasnip", priority = 1 },
     { name = 'path' },
+    { name = 'nvim_lsp', priority = 2 },
+    { name = "luasnip", priority = 3 },
+    { name = 'buffer' },
     { name = 'emoji' },
     { name = 'nvim_lua' },
     { name = 'buffer' },

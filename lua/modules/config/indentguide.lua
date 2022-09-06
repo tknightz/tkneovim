@@ -12,7 +12,7 @@ require('indent_blankline').setup {
   concealcursor = 'inc',
   conceallevel = 2,
   faster = 1,
-  context_patterns = {'class', 'function', 'def', 'method', 'if', 'for', 'while'},
+  context_patterns = {'class', 'function', 'def', 'method', 'if', 'for', 'while', 'block'},
   space_char_blankline = ' ',
   char_highlight_list = {
     'IndentBlanklineChar'

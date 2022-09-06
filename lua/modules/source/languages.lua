@@ -34,7 +34,7 @@ return {
   -- Emmet, quickly expand code html, jsx, tsx
   ["emmet"] = {
     path = "mattn/emmet-vim",
-    ft = {"html", "css", "javascriptreact", "typescriptreact" }
+    ft = {"html", "css", "javascript", "javascriptreact", "typescriptreact" },
   },
 
   -- Note-taking in neovim, orgmode is ported from Emacs
@@ -46,6 +46,9 @@ return {
   -- Nice looking heading in orgmode
   ["orgbullets"] = {
     path = "akinsho/org-bullets.nvim",
+    config = function()
+      require("org-bullets").setup{}
+    end,
     ft = "org",
   },
 

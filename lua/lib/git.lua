@@ -64,11 +64,15 @@ E.my_git_status = function(opts)
         return
       end
 
+      -- print(vim.inspect(entry.status))
+
       if entry.status == '??' then
-        return { 'bat', '--style=plain', '--pager', 'less -R', entry.value }
+        return { 'bat', '--style=plain', '--pager', 'less -R', entry.path }
+      elseif entry.status == "MM" then
+        return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', '--staged', entry.path }
       end
 
-      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.path }
     end
   }
 

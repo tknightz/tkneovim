@@ -2,70 +2,70 @@ local wk = require('which-key')
 local mappings = require("modules.config.whichkey.mappings")
 
 wk.register({
-  f = mappings.file,
+    f = mappings.file,
 
-  w = mappings.editor.window,
+    w = mappings.editor.window,
 
-  g = mappings.git,
+    g = mappings.git,
 
-  b = mappings.editor.buffer,
+    b = mappings.editor.buffer,
 
-  m = mappings.modules,
+    m = mappings.modules,
 
-  t = mappings.editor.terminal,
+    t = mappings.editor.terminal,
 
-  e = mappings.editor.editing,
+    e = mappings.editor.editing,
 
-  s = mappings.searcher,
+    s = mappings.searcher,
 
-  l = mappings.lsp,
+    l = mappings.lsp,
 
-  q = mappings.editor.quit_and_sessions,
+    q = mappings.editor.quit_and_sessions,
 
-  -- global mappings
-  j = {"<cmd>WindowJumping<cr>",   "jump"},
+    -- global mappings
+    j = {"<cmd>WindowJumping<cr>",   "jump"},
 
-  y = {"<cmd>%y+<cr>",            "yank to clipboard"},
+    y = {"<cmd>%y+<cr>",            "yank to clipboard"},
 
-  n = {"<cmd>NvimTreeToggle<cr>", "neotree" },
+    n = {"<cmd>NvimTreeToggle<cr>", "neotree" },
 
 },
 {
-  prefix = "<Leader>",
-  mode = "n"
+    prefix = "<Leader>",
+    mode = "n"
 })
 
 
 wk.register({
-  f = mappings.file,
+    f = mappings.file,
 
-  w = mappings.editor.window,
+    w = mappings.editor.window,
 
-  g = mappings.git,
+    g = mappings.git,
 
-  b = mappings.editor.buffer,
+    b = mappings.editor.buffer,
 
-  m = mappings.modules,
+    m = mappings.modules,
 
-  t = mappings.editor.terminal,
+    t = mappings.editor.terminal,
 
-  e = mappings.editor.editing,
+    e = mappings.editor.editing,
 
-  s = mappings.searcher,
+    s = mappings.searcher,
 
-  l = mappings.lsp,
+    l = mappings.lsp,
 
-  q = mappings.editor.quit_and_sessions,
+    q = mappings.editor.quit_and_sessions,
 
-  -- global mappings
-  j = {"<cmd>WindowJumping<cr>",   "jump"},
+    -- global mappings
+    j = {"<cmd>WindowJumping<cr>",   "jump"},
 
-  y = {"<cmd>%y+<cr>",            "yank to clipboard"},
+    y = {"<cmd>%y+<cr>",            "yank to clipboard"},
 
-  n = {"<cmd>NvimTreeToggle<cr>", "nvimtree" },
+    n = {"<cmd>NvimTreeToggle<cr>", "nvimtree" },
 
 },
 {
-  prefix = "<Leader>",
-  mode = "v"
+    prefix = "<Leader>",
+    mode = "v"
 })

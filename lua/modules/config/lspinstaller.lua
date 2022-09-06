@@ -15,22 +15,32 @@ local DEFAULT_CONFIGS = {
 local CUSTOM_CONFIGS = {
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
-    init_options = {
-      preferences = {
-        disableSuggestions = true
-      }
-    }
+    cmd = {'/home/tknightz/.nvm/versions/node/v16.14.2/bin/typescript-language-server', '--stdio'},
+    root_dir = util.root_pattern("package.json", ".git"),
   },
 
   eslint = {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = util.root_pattern("package.json", ".eslintrc.json", ".eslintrc.js")
+    -- cmd = {"eslint", "--stdio"},
+    root_dir = util.root_pattern("package.json", ".eslintrc.js", ".eslintrc.json")
   },
 
   emmet_ls = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   },
+
+  yamlls = {
+    settings = {
+      yaml = {
+        schemas = {
+          ["kubernetes"] = "deploy.yaml",
+          ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"] = "*/openapi.(yml|yaml)",
+        },
+        schemaDownload = { enable = true },
+        validate = true,
+      }
+    }
+  }
 }
 
 local installed_servers = lsp_installer.get_installed_servers()

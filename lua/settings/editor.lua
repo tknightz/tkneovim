@@ -1,7 +1,9 @@
+local home_path = vim.fn.expand('~')
+
 local options = {
   listchars     = {
     -- tab      = "│·",
-    tab         = "» ",
+    tab         = "→ ",
     trail       = "·",
     space       = "⋅",
     -- precedes = "←",
@@ -20,8 +22,11 @@ local options = {
 
   list          = true,
 
+  exrc          = true,
+  secure        = true,
   termguicolors = true,
   undofile      = true,
+  undodir       = home_path .. "/.vim/undo",
   signcolumn    = "yes",
   encoding      = "UTF-8",
   background    = "dark",
@@ -36,12 +41,13 @@ local options = {
   hidden        = true,
   splitbelow    = true,
   splitright    = true,
-  ts            = 2,
-  sw            = 2,
+  ts            = 4,
+  sw            = 4,
   expandtab     = true,
   re            = 0,
   number        = true,
   wrap          = false,
+  linebreak     = true,
   cursorline    = true,
   swapfile      = false,
   incsearch     = true,

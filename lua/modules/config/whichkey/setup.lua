@@ -26,7 +26,7 @@ wk.setup {
   operators = { gc = "Comments", ["v"] = "Visual Mode" },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-    separator = "➜", -- symbol used between a key and it's label
+    separator = "", -- symbol used between a key and it's label
     group = "+", -- symbol prepended to a group
   },
   window = {
@@ -36,9 +36,9 @@ wk.setup {
     padding = { 1, 1, 1, 1 }, -- extra window padding [top, right, bottom, left]
   },
   layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
+    height = { min = 3, max = 25 }, -- min and max height of the columns
     width = { min = 25, max = 35 }, -- min and max width of the columns
-    spacing = 4, -- spacing between columns
+    spacing = 6, -- spacing between columns
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate

@@ -1,14 +1,9 @@
 local ts_config = require("nvim-treesitter.configs")
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
-parser_config.markdown = {
-  install_info = {
-    url = "https://github.com/MDeiml/tree-sitter-markdown",
-    branch = "main",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  filetype = "markdown",
-}
+local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
+
+ft_to_parser.ejs = "html"
 
 ts_config.setup {
   ensure_installed = {
@@ -24,12 +19,12 @@ ts_config.setup {
   highlight = {
     enable = true,
     use_languagetree = true,
-    additional_vim_regex_highlighting = {"javascript", "javascriptreact","python", "ts", "tsx", "markdown", "org", "sql"}
+    additional_vim_regex_highlighting = {"javascript", "javascriptreact","python", "ts", "tsx", "markdown", "org", "sql", "nginx"}
   },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gs",
+      init_selection = "gi",
       node_incremental = "gn",
       scope_incremental = "gk",
       node_decremental = "gp",
@@ -56,7 +51,6 @@ ts_config.setup {
         ["ic"] = "@class.inner",
         ["il"] = "@loop.inner",
         ["al"] = "@loop.outer",
-
 
         -- Or you can define your own textobjects like this
       },
