@@ -6,6 +6,7 @@ local function on_attach(client, bufnr)
     handler_opts = {
       border = "rounded"
     },
+    hint_scheme = "LspSignatureHint",
     transparency = 1,
   }, bufnr)
 

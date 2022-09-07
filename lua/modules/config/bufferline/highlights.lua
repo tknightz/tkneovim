@@ -8,6 +8,27 @@ local highlights = {
     italic = true,
   },
 
+  tab_selected = {
+    bg = "NONE",
+    italic = false,
+  },
+
+  tab_separator = {
+    fg = "#1a1c23",
+    bg = "#16181c"
+  },
+
+  tab_separator_selected = {
+    fg = "#131313",
+    bg = "NONE"
+  },
+
+  tab = {
+    fg = "gray",
+    bg = "#1f2227",
+    italic = true,
+  },
+
   buffer_selected = {
     bg = "NONE",
     italic = false,

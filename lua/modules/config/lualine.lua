@@ -31,27 +31,17 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'horizon',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    -- disabled_filetypes = {"NvimTree", "Mundo", "MudoDiff", "packer", "minimap", "dbui", "DiffviewFiles", "neo-tree", "Outline"},
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = { {'mode', fmt = function(str) return " "..str end} },
     lualine_b = {
-      'branch',
-      {
-        'filetype',
-        icon_only = true,
-        separator = '',
-        padding={right=0, left=1}
+      { 
+        'branch',
+        color = { fg = "#00c65c", gui = "bold" },
       },
-      {
-        'filename',
-        path = 1,
-      }
-    },
-    lualine_c = {
       {
         'diff',
         colored = true,
@@ -62,6 +52,19 @@ require('lualine').setup {
           removed = { fg = '#dc1616' },
         }
       },
+    },
+    lualine_c = {
+      {
+        'filetype',
+        icon_only = true,
+        separator = '',
+        padding={ right=0, left=1 },
+      },
+      {
+        'filename',
+        path = 1,
+        color = { fg = "#ffffff" },
+      },
       {
         "diagnostics",
         sources = {"nvim_diagnostic"},
@@ -69,9 +72,25 @@ require('lualine').setup {
         symbols = { error = " ", warning = " ", hint = "", info = " " }
       },
     },
-    lualine_x = { 'encoding', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_x = { 
+      {
+        'filesize',
+        fmt = function(str)
+          local total_lines = vim.api.nvim_buf_line_count(0);
+          return str .. "  " .. total_lines .. " lines"
+        end
+      },
+      {
+        'encoding',
+        fmt = function(str)
+          local fformat = vim.api.nvim_buf_get_option(0, "fileformat");
+          local pre = str ~= "" and " " .. str .. "  " or ""
+          return pre .. "  " .. fformat
+        end
+      }
+    },
+    lualine_y = {'filetype'},
+    lualine_z = {'progress', 'location'}
   },
   inactive_sections = {
     lualine_a = {

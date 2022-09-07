@@ -1,7 +1,13 @@
+function copyFilePath()
+  local path = vim.fn.expand("%:p");
+  vim.api.nvim_command("let @+='" .. path .. "'")
+end
+
 return {
   name = "editing",
 
   a = {":EasyAlign<cr>",     "align"},
+  c = {copyFilePath,         "copy file path"},
   y = {"\"+y",               "yanks"},
   Y = {"%y+<cr>",            "whole yanks"},
   s = {":set spell!<cr>",    "toggle spell"},

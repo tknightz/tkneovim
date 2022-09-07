@@ -58,6 +58,9 @@ local color_lua_setup = function(colorname)
 
       WhichKeyBorder = { fg = "#2e3c43" },
       WhichKeySeparator = { fg = "#00d364", fmt = "NONE" },
+
+      LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", gui="bold" },
+      LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", gui="bold" },
     }
   }
 end

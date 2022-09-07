@@ -65,6 +65,15 @@ return {
     path = "jose-elias-alvarez/null-ls.nvim",
     after = "lspconfig"
   },
+
+  ["neogen"] = {
+    path = "danymat/neogen",
+    cmd = {"Neogen"},
+    config = function()
+      require('neogen').setup { snippet_engine = "luasnip" }
+    end,
+    tag = "*"
+  }
 --[[
   ["fidget"] = {
     path = "j-hui/fidget.nvim",
