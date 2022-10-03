@@ -5,7 +5,7 @@ nvim_tree.setup {
   update_cwd = true,
   respect_buf_cwd = true,
   update_focused_file = {
-    enable = true,
+    enable = false,
     update_cwd = false,
   },
 

@@ -127,6 +127,19 @@ cmp.setup({
     end,
   },
 
+  sorting = {
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      require "cmp-under-comparator".under,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    }
+  },
+
   confirmation = {
     get_commit_characters = function(commit_characters)
       return vim.tbl_filter(function(char)

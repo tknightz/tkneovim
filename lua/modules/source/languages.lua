@@ -15,7 +15,7 @@ return {
 
   -- Better indentation for js over treesitter ident feature now.
   ["jsxpretty"] = {
-    path = "maxmellon/vim-jsx-pretty",
+    path = "MaxMEllon/vim-jsx-pretty",
     ft = {"javascript", "javascriptreact", "typescriptreact", "typescript"}
   },
 

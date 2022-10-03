@@ -21,7 +21,7 @@ null_ls.setup {
         local config_path = root .. "/pyproject.toml"
         local is_exist_config = vim.fn.filereadable(config_path)
 
-        return is_exist_config and { "--config", config_path }
+        return is_exist_config ~= 0 and { "--config", config_path } or {}
       end
     }),
     null_ls.builtins.diagnostics.flake8,

@@ -44,7 +44,16 @@ return {
     path = "RRethy/vim-illuminate",
     event = "BufRead",
     config = function()
-      require('illuminate').configure()
+      require('illuminate').configure({
+        filetypes_denylist = {
+          "TelescopePrompt",
+          "prompt",
+          "dashboard",
+          "NvimTree",
+          "dirvish",
+          "fugitive"
+        }
+      })
     end
   },
 
@@ -212,7 +221,7 @@ return {
 
   ["toggleterm"] = {
     path = "akinsho/toggleterm.nvim",
-    tag = "v1.*",
+    tag = "*",
     cmd = "ToggleTerm",
     config = function()
       require("toggleterm").setup()
@@ -272,5 +281,10 @@ return {
       require("scrollbar").setup()
     end,
     event = "BufRead",
+  },
+
+  ["cmp_comparator"] = {
+    path = "lukas-reineke/cmp-under-comparator",
+    module = "cmp-under-comparator",
   },
 }

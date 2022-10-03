@@ -1,10 +1,16 @@
-local lsp_installer = require("nvim-lsp-installer")
+local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 local preset = require("modules.config.lspconfig.preset")
 
 -- Need to call it, before nvim-lspinstall provides new hooks
-lsp_installer.setup{}
+local INSTALLED_SERVERS = {"sumneko_lua", "tsserver", "eslint", "yamlls", "pyright"};
+mason_lspconfig.setup({
+  ensure_installed = INSTALLED_SERVERS,
+  automatic_installation = true,
+})
+
+
 
 local DEFAULT_CONFIGS = {
   capabilities = preset.capabilities,
@@ -46,10 +52,9 @@ local CUSTOM_CONFIGS = {
   }
 }
 
-local installed_servers = lsp_installer.get_installed_servers()
-for _, server in pairs(installed_servers) do
-  local custom_config = CUSTOM_CONFIGS[server.name]
+for _, server in pairs(INSTALLED_SERVERS) do
+  local custom_config = CUSTOM_CONFIGS[server]
 
   local config = custom_config and vim.tbl_extend("force", DEFAULT_CONFIGS, custom_config) or DEFAULT_CONFIGS
-  lspconfig[server.name].setup(config)
+  lspconfig[server].setup(config)
 end

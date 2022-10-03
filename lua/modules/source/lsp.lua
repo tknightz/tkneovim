@@ -6,9 +6,16 @@ return {
   },
 
   -- Lsp servers manager
-  ["lspinstaller"] = {
-    path = "williamboman/nvim-lsp-installer",
-    after = "lspconfig"
+  ["mason"] = {
+    path = "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+  },
+
+  ["masonlspconfig"] = {
+    path = "williamboman/mason-lspconfig.nvim",
+    after = "lspconfig",
   },
 
   ["grammarguard"] = {
