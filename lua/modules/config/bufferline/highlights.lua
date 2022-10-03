@@ -20,6 +20,26 @@ local highlights = {
     italic = false,
   },
 
+  tab = {
+    fg = "gray",
+    bg = "#212535",
+    italic = true,
+  },
+  tab_selected = {
+    bg = "#0c0411",
+    bold = true,
+    italic = false,
+  },
+
+  tab_separator = {
+    fg = "#1a1d2a",
+    bg = "#1a1d2a"
+  },
+  tab_separator_selected = {
+    fg = "#1a1d2a",
+    bg = "#1a1d2a"
+  },
+
   separator = {
     fg = "#1a1d2a",
     bg = "#212535"

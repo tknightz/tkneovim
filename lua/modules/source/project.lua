@@ -27,5 +27,13 @@ return {
       require("project_nvim").setup{ }
     end,
     cmd = {"ProjectRoot"}
-  }
+  },
+
+  ["scope"] = {
+    path = "tiagovla/scope.nvim",
+    config = function()
+      require("scope").setup()
+    end,
+    event = "TabNew",
+  },
 }
