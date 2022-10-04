@@ -32,7 +32,7 @@ return {
   n = {":Lspsaga diagnostic_jump_next<CR>",    "next"},
   p = {":Lspsaga diagnostic_jump_prev<CR>",    "prev"},
   q = {":lua vim.diagnostic.setloclist()<CR>", "quickfix"},
-  f = {":lua vim.lsp.buf.formatting()<CR>",    "format"},
+  f = {":lua vim.lsp.buf.format({ async = true })<CR>", "format"},
   t = {toggle_lsp,                             "toggle"},
   S = {":SymbolsOutline<cr>",                  "browse"},
   ["/"] = {":Lspsaga lsp_finder<CR>",          "finder-saga"},
