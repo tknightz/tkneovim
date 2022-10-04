@@ -7,11 +7,20 @@ null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.diagnostics.eslint.with({
+      command = require("null-ls.helpers.command_resolver").from_node_modules,
+      dynamic_command = function()
+        return { "eslint", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" }
+      end,
       runtime_condition = function(params)
         return not params.bufname:match "fugitive://"
       end,
     }),
-    null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.code_actions.eslint.with({
+      command = require("null-ls.helpers.command_resolver").from_node_modules,
+      dynamic_command = function()
+        return { "eslint", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" }
+      end,
+    }),
     null_ls.builtins.completion.spell,
 
     -- python

@@ -24,3 +24,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end
 })
+
+vim.api.nvim_create_autocmd("OptionSet", {
+  pattern = "*",
+  callback = function()
+    local winbar_value = vim.opt_local.winbar._value
+    local is_diff_mode = vim.api.nvim_win_get_option(0, "diff")
+
+    if is_diff_mode and winbar_value == "" then
+      vim.opt_local.winbar = "%f "
+    end
+  end
+})

@@ -46,13 +46,23 @@ return {
   -- Nice looking heading in orgmode
   ["orgbullets"] = {
     path = "akinsho/org-bullets.nvim",
+    config = function()
+      require("org-bullets").setup()
+    end,
     ft = "org",
   },
 
   ["headlines"] = {
     path = "lukas-reineke/headlines.nvim",
     config = function()
-      require('headlines').setup{}
+      require('headlines').setup{
+        markdown = {
+          fat_headline_lower_string = "▔",
+        },
+        org = {
+          fat_headline_lower_string = "▔",
+        },
+      }
     end,
     ft = {"org", "markdown"}
   },
