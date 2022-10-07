@@ -4,7 +4,7 @@ local util = require("lspconfig.util")
 local preset = require("modules.config.lspconfig.preset")
 
 -- Need to call it, before nvim-lspinstall provides new hooks
-local INSTALLED_SERVERS = {"sumneko_lua", "tsserver", "eslint", "yamlls", "pyright"};
+local INSTALLED_SERVERS = {"sumneko_lua", "tsserver", "yamlls", "pyright"};
 mason_lspconfig.setup({
   ensure_installed = INSTALLED_SERVERS,
   automatic_installation = true,
