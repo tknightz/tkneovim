@@ -21,7 +21,7 @@ local options = {
   list          = true,
 
   termguicolors = true,
-  undofile      = true,
+  -- undofile      = true,
   signcolumn    = "yes",
   encoding      = "UTF-8",
   background    = "dark",

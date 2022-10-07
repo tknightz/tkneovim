@@ -36,7 +36,7 @@ return {
   -- Rich features buffer indicator
   ["bufferline"] = {
     path = "akinsho/nvim-bufferline.lua",
-    event = "BufRead",
+    after = "theme"
   },
 
   -- Fast status line
