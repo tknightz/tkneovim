@@ -1,5 +1,6 @@
 local M = {}
 
+-- custom icons (mostly used in cmp)
 M.icons = {
   Text = '  ',
   Method = '  ',

@@ -6,6 +6,13 @@ null_ls.setup {
   root_dir = util.root_pattern(".null-ls-root", "package.json", ".eslintrc.json", ".eslintrc.js", "requirements.txt", ".git"),
   sources = {
     null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.sql_formatter.with({
+      extra_args = function()
+        local default_config_path = vim.fn.stdpath("config") .. "/lua/modules/config/masonlspconfig/.sqlformatter.json"
+        print(default_config_path)
+        return { "--config", default_config_path }
+      end
+    }),
     null_ls.builtins.diagnostics.eslint.with({
       condition = function(utils)
         return utils.root_has_file("node_modules/.bin/eslint")

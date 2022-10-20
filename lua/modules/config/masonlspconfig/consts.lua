@@ -1,24 +1,20 @@
-local mason_lspconfig = require("mason-lspconfig")
-local lspconfig = require("lspconfig")
-local util = require("lspconfig.util")
 local preset = require("modules.config.lspconfig.preset")
+local util = require("lspconfig.util")
 
--- Need to call it, before nvim-lspinstall provides new hooks
-local INSTALLED_SERVERS = {"sumneko_lua", "tsserver", "yamlls", "pyright"};
-mason_lspconfig.setup({
-  ensure_installed = INSTALLED_SERVERS,
-  automatic_installation = true,
-})
+local M = {}
 
+-- ensure servers for mason
+M.ensure_installed_servers = {"sumneko_lua", "tsserver", "yamlls", "pyright"};
 
-
-local DEFAULT_CONFIGS = {
+-- config that apply to all servers
+M.general_configs = {
   capabilities = preset.capabilities,
   on_attach = preset.on_attach,
   init_options = { hostInfo = "neovim" },
 }
 
-local CUSTOM_CONFIGS = {
+-- custom configs for specify server
+M.custom_configs = {
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
     root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
@@ -52,9 +48,16 @@ local CUSTOM_CONFIGS = {
   }
 }
 
-for _, server in pairs(INSTALLED_SERVERS) do
-  local custom_config = CUSTOM_CONFIGS[server]
+-- helper function to check if server is lsp
+-- only lsp server will be registered here
+M.is_lsp_server = function(server)
+  for _, name in ipairs(server.spec.categories) do
+    if name == "LSP" then
+      return true
+    end
+  end
 
-  local config = custom_config and vim.tbl_extend("force", DEFAULT_CONFIGS, custom_config) or DEFAULT_CONFIGS
-  lspconfig[server].setup(config)
+  return false
 end
+
+return M

@@ -1,4 +1,4 @@
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
   -- Load signature_help
   require('lsp_signature').on_attach({
     bind = true,
@@ -19,7 +19,6 @@ local function on_attach(client, bufnr)
   end
 
   -- Mappings.
-
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "gs", "<Cmd>split | exec 'lua vim.lsp.buf.definition()' | exec 'norm zt'<CR>", opts)
@@ -34,20 +33,13 @@ local function on_attach(client, bufnr)
   buf_set_keymap("n", "<space>e", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
   buf_set_keymap("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-
-  -- Set some keybinds conditional on server capabilities
-  -- if client.resolved_capabilities.document_formatting then
-  -- 	buf_set_keymap("n", "<space>f", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  -- elseif client.resolved_capabilities.document_range_formatting then
-  -- 	buf_set_keymap("n", "<space>f", "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  -- end
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- setup cmp (completion)
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
   on_attach = on_attach,
   capabilities = capabilities
 }
-
