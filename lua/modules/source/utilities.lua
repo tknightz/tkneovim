@@ -97,9 +97,8 @@ return {
   -- Sometimes need to focus in one window
   -- but dont want to close others
   ["maximizer"] = {
-    path = "declancm/maximize.nvim",
-    config = function() require('maximize').setup() end,
-    module = "maximize",
+    path = "szw/vim-maximizer",
+    cmd = {"MaximizerToggle"}
   },
 
   -- Run code inside Nvim
@@ -118,9 +117,7 @@ return {
   -- Interact with databases inside Neovim
   ["dadbodui"] = {
     path = "kristijanhusak/vim-dadbod-ui",
-    requires = {
-      {"tpope/vim-dadbod", opt = true}
-    },
+    requires = { "tpope/vim-dadbod" },
     cmd = {"DBUI", "DBUIAddConnection", "DBUIToggle"},
   },
 
@@ -269,7 +266,7 @@ return {
     path = "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({
-        color = "#f34b7d"
+        color = "#e2b86b",
       })
     end,
     after = "treesitter",

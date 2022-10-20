@@ -17,8 +17,8 @@ require'diffview'.setup {
     view = {
       ["<tab>"]     = cb("select_next_entry"),  -- Open the diff for the next file
       ["<s-tab>"]   = cb("select_prev_entry"),  -- Open the diff for the previous file
-      ["<leader>e"] = cb("focus_files"),        -- Bring focus to the files panel
-      ["<leader>b"] = cb("toggle_files"),       -- Toggle the files panel.
+      ["<leader>e"] = false,        -- Bring focus to the files panel
+      ["<leader>b"] = false,       -- Toggle the files panel.
     },
     file_panel = {
       ["j"]             = cb("next_entry"),         -- Bring the cursor to the next file entry
@@ -35,8 +35,8 @@ require'diffview'.setup {
       ["R"]             = cb("refresh_files"),      -- Update stats and entries in the file list.
       ["<tab>"]         = cb("select_next_entry"),
       ["<s-tab>"]       = cb("select_prev_entry"),
-      ["<leader>e"]     = cb("focus_files"),
-      ["<leader>b"]     = cb("toggle_files"),
+      ["<leader>e"]     = false,
+      ["<leader>b"]     = false,
     }
   },
 --[[

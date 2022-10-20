@@ -9,16 +9,16 @@ local function shorten_str(str, size)
     return str
   end
 
-  local head = string.sub(str, 0, math.floor(len/2))
-  local tail = string.sub(str, strlen - math.floor(len/2), strlen)
+  local head = string.sub(str, 0, math.floor(len / 2))
+  local tail = string.sub(str, strlen - math.floor(len / 2), strlen)
 
   return head .. '...' .. tail
 end
 
 local function shorten_bufname()
   local path = vim.api.nvim_buf_get_name(0)
-  local filename = vim.api.nvim_call_function('fnamemodify', {path, ':t'})
-  local ext = vim.api.nvim_call_function('fnamemodify', {path, ':e'})
+  local filename = vim.api.nvim_call_function('fnamemodify', { path, ':t' })
+  local ext = vim.api.nvim_call_function('fnamemodify', { path, ':e' })
   local icon = require('nvim-web-devicons').get_icon(filename, ext, { default = true })
 
   local is_modified = vim.bo.modified
@@ -31,14 +31,14 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'horizon',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { {'mode', fmt = function(str) return " "..str end} },
+    lualine_a = { { 'mode', fmt = function(str) return " " .. str end } },
     lualine_b = {
-      { 
+      {
         'branch',
         color = { fg = "#00c65c", gui = "bold" },
       },
@@ -58,7 +58,7 @@ require('lualine').setup {
         'filetype',
         icon_only = true,
         separator = '',
-        padding={ right=0, left=1 },
+        padding = { right = 0, left = 1 },
       },
       {
         'filename',
@@ -75,12 +75,12 @@ require('lualine').setup {
       },
       {
         "diagnostics",
-        sources = {"nvim_diagnostic"},
-        sections = {'error', 'warn', 'info'},
+        sources = { "nvim_diagnostic" },
+        sections = { 'error', 'warn', 'info' },
         symbols = { error = " ", warning = " ", hint = "", info = " " }
       },
     },
-    lualine_x = { 
+    lualine_x = {
       {
         'filesize',
         fmt = function(str)
@@ -97,8 +97,8 @@ require('lualine').setup {
         end
       }
     },
-    lualine_y = {'filetype'},
-    lualine_z = {'progress', 'location'}
+    lualine_y = { 'filetype' },
+    lualine_z = { 'progress', 'location' }
   },
   inactive_sections = {
     lualine_a = {
@@ -108,8 +108,8 @@ require('lualine').setup {
       end
     },
     lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_c = { 'filename' },
+    lualine_x = { 'location' },
     lualine_y = {},
     lualine_z = {}
   },

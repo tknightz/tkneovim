@@ -3,7 +3,7 @@ require('indent_blankline').setup {
   show_trailing_blankline_indent = false,
   show_current_context = true,
   show_end_of_line = false,
-  filetype_exclude = {'help', 'mason', 'packer', 'txt', 'alpha', 'dashboard', 'nofile', 'prompt', 'TelescopePrompt', "DiffviewFiles", "fugitive",  ""},
+  filetype_exclude = {'help', 'mason', 'packer', 'txt', 'alpha', 'dashboard', 'nofile', 'prompt', 'TelescopePrompt', "DiffviewFiles", "fugitive",  "", "dbout"},
   buftype_exclude = {'terminal', 'packer'},
   term = 238,
   gui = '#1E272C',

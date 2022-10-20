@@ -5,10 +5,7 @@ require("modules.config.bufferline.mappings")
 require "bufferline".setup {
   highlights = highlights,
   options = {
-    offsets = {{filetype = "NvimTree", text = "Explorer"}},
-    indicator = {
-      icon = '|',
-    },
+    offsets = {{filetype = "NvimTree", text = "Explorer"}, {filetype = "dbui", text = "DB Explorer"}},
     themable = true,
     buffer_close_icon = "",
     modified_icon = "",

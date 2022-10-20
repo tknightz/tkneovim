@@ -10,7 +10,7 @@ return {
   -- files for any git rev.
   ["diffview"] = {
     path = "sindrets/diffview.nvim",
-    cmd = {"DiffviewOpen", "DiffviewToggleFiles"},
+    cmd = {"DiffviewOpen", "DiffviewToggleFiles", "DiffviewFileHistory"},
   },
 
   -- Git integration for buffers

@@ -46,9 +46,12 @@ local color_lua_setup = function(colorname)
       FidgetTask = { fg = "gray", fmt = "italic,nocombine" },
       FidgetTitle = { fg = "#00d364", fmt = "nocombine" },
 
-      IlluminatedWordText = { bg = "#39435a", fmt = "NONE" },
-      IlluminatedWordRead = { bg = "#39435a", fmt = "NONE" },
+      IlluminatedWordText = { bg = "#1c364b", fmt = "NONE" },
+      IlluminatedWordRead = { bg = "#1c364b", fmt = "NONE" },
       IlluminatedWordWrite = { bg = "#49212d", fmt = "NONE" },
+
+      MatchWord = { bg = "#371d3f", fmt = "underline" },
+      MatchParen = { fmt = "inverse" },
 
       TelescopePromptBorder = { fg = "#2e3c43" },
       TelescopeResultsBorder = { fg = "#2e3c43" },
