@@ -1,9 +1,12 @@
-local lspsage = require('lspsaga')
+local lspsaga = require('lspsaga')
 
-lspsage.init_lsp_saga({
+lspsaga.init_lsp_saga({
   border_style = 'rounded',
   symbol_in_winbar = {
+    enable = true,
+    in_custom = true,
+    show_file = true,
     separator = " ",
   },
-  diagnostic_header = { "😡", "😥", "😤", "😐" },
+  diagnostic_header = { "😡 ", "😥 ", "😤 ", "😐 " },
 })

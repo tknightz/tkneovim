@@ -5,7 +5,12 @@ require("modules.config.bufferline.mappings")
 require "bufferline".setup {
   highlights = highlights,
   options = {
-    offsets = {{filetype = "NvimTree", text = "Explorer"}, {filetype = "dbui", text = "DB Explorer"}},
+    offsets = { 
+      { filetype = "NvimTree", text = "Explorer" },
+      { filetype = "neo-tree", text = "Explorer" },
+      { filetype = "dbui", text = "DB Explorer" },
+      { filetype = "DiffviewFiles", text = "DiffviewFiles" },
+    },
     themable = true,
     buffer_close_icon = "",
     modified_icon = "",
@@ -26,15 +31,14 @@ require "bufferline".setup {
     diagnostics = "nvim_lsp",
     custom_filter = function(buf_number, buf_numbers)
       -- filter out filetypes you don't want to see
-      if
-        vim.bo[buf_number].filetype ~= "packer" and
-        vim.bo[buf_number].filetype ~= "terminal" and
-        vim.bo[buf_number].filetype ~= "TelescopePrompt" and
-        vim.bo[buf_number].filetype ~= "alpha" and
-        vim.bo[buf_number].filetype ~= "fugitive" and
-        vim.bo[buf_number].filetype ~= "qf" and
-        vim.bo[buf_number].filetype ~= "gitcommit" and
-        vim.bo[buf_number].filetype ~= "NvimTree"
+      if vim.bo[buf_number].filetype ~= "packer" and
+          vim.bo[buf_number].filetype ~= "terminal" and
+          vim.bo[buf_number].filetype ~= "TelescopePrompt" and
+          vim.bo[buf_number].filetype ~= "alpha" and
+          vim.bo[buf_number].filetype ~= "fugitive" and
+          vim.bo[buf_number].filetype ~= "qf" and
+          vim.bo[buf_number].filetype ~= "gitcommit" and
+          vim.bo[buf_number].filetype ~= "NvimTree"
       then
         return true
       else
@@ -50,19 +54,19 @@ require "bufferline".setup {
         local hint = vim.diagnostic.get(0, [[Hint]])
 
         if error ~= 0 then
-          table.insert(result, {text = "  " .. error, guifg = "#EC5241"})
+          table.insert(result, { text = "  " .. error, guifg = "#EC5241" })
         end
 
         if warning ~= 0 then
-          table.insert(result, {text = "  " .. warning, guifg = "#EFB839"})
+          table.insert(result, { text = "  " .. warning, guifg = "#EFB839" })
         end
 
         if hint ~= 0 then
-          table.insert(result, {text = "  " .. hint, guifg = "#A3BA5E"})
+          table.insert(result, { text = "  " .. hint, guifg = "#A3BA5E" })
         end
 
         if info ~= 0 then
-          table.insert(result, {text = "   " .. info, guifg = "#7EA9A7"})
+          table.insert(result, { text = "   " .. info, guifg = "#7EA9A7" })
         end
         return result
       end,

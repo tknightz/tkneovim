@@ -29,6 +29,7 @@ require'diffview'.setup {
       ["o"]             = cb("select_entry"),
       ["<2-LeftMouse>"] = cb("select_entry"),
       ["-"]             = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
+      ["s"]             = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
       ["S"]             = cb("stage_all"),          -- Stage all entries.
       ["U"]             = cb("unstage_all"),        -- Unstage all entries.
       ["X"]             = cb("restore_entry"),      -- Restore entry to the state on the left side.
