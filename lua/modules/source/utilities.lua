@@ -14,9 +14,18 @@ return {
   },
 
   -- NvimTree explorer
-  ["nvimtree"] = {
-    path = "kyazdani42/nvim-tree.lua",
-    cmd = {"NvimTreeToggle", "NvimTreeOpen", "NvimTreeFindFile"}
+  -- ["nvimtree"] = {
+  --   path = "kyazdani42/nvim-tree.lua",
+  --   cmd = {"NvimTreeToggle", "NvimTreeOpen", "NvimTreeFindFile"}
+  -- },
+
+  ["neotree"] = {
+    path = "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = { 
+      { "MunifTanjim/nui.nvim", module = "nui" },
+    },
+    cmd = {"NeoTree", "NeoTreeRevealToggle"}
   },
 
   -- Faster filetype detection
@@ -119,6 +128,14 @@ return {
     path = "kristijanhusak/vim-dadbod-ui",
     requires = { "tpope/vim-dadbod" },
     cmd = {"DBUI", "DBUIAddConnection", "DBUIToggle"},
+  },
+
+  ["dadbod_completion"] = {
+    path = "kristijanhusak/vim-dadbod-completion",
+    setup = function()
+      vim.g.vim_dadbod_completion_mark = 'Database'
+    end,
+    after = "dadbodui"
   },
 
   -- Nice looking notifications with animation
@@ -252,14 +269,6 @@ return {
     path = "luukvbaal/stabilize.nvim",
     config = function() require("stabilize").setup() end,
     event = "WinNew",
-  },
-
-  ["scope"] = {
-    path = "tiagovla/scope.nvim",
-    config = function()
-      require("scope").setup()
-    end,
-    after = "theme"
   },
 
   ["hlargs"] = {

@@ -1,6 +1,16 @@
 require("neo-tree").setup({
-  close_if_last_window = true,
-  use_libuv_file_watcher = true,
+  default_component_configs = {
+    git_status = {
+      symbols = {
+        untracked = "כֿ"
+      }
+    }
+  },
+  source_selector = {
+    winbar = true,
+    statusline = true
+  },
+  popup_border_style = "rounded",
   window = {
     width = 35,
     mappings = {
@@ -8,9 +18,10 @@ require("neo-tree").setup({
     }
   },
   filesystem = {
-    async_directory_scan = false
+    find_by_full_path_words = true,
   },
 })
 
-vim.cmd("hi NeoTreeNormal guibg=#2d3343")
-vim.cmd("hi NeoTreeNormalNC guibg=#2d3343")
+vim.cmd("hi NeoTreeNormal guibg=#0a0e10")
+vim.cmd("hi NeoTreeNormalNC guibg=#0a0e10")
+vim.cmd("hi NeoTreeTitleBar guibg=NONE guifg=white")
