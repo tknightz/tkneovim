@@ -1,3 +1,4 @@
+vim.g.vim_dadbod_completion_mark = 'Database'
 vim.g.db_ui_force_echo_notifications = 1
 vim.g.db_ui_show_database_icon = 1
 vim.g.db_ui_icons = {

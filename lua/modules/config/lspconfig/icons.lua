@@ -26,7 +26,8 @@ M.icons = {
   Struct = "פּ  ",
   Event = " ",
   Operator = "  ",
-  TypeParameter = "  "
+  TypeParameter = "  ",
+  Database = " ",
 }
 
 return M

@@ -2,7 +2,7 @@
 vim.o.completeopt = "menu,menuone,noselect"
 
 local cmp = require("cmp")
-local icons = require("modules.config.lspconfig.icons")
+local icons = require("modules.config.lspconfig.icons").icons
 local lib = require("lib")
 
 
@@ -98,6 +98,7 @@ cmp.setup({
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp', priority = 2 },
+    { name = 'vim-dadbod-completion' },
     { name = "luasnip", priority = 1 },
     { name = 'path' },
     { name = 'emoji' },
@@ -109,7 +110,7 @@ cmp.setup({
     fields = { "kind", "abbr", "menu" },
 
     format = function(_, vim_item)
-      local icon = icons.icons[vim_item.kind]
+      local icon = vim_item.menu and icons[vim_item.menu] or icons[vim_item.kind]
 
       local label = vim_item.abbr
       local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
@@ -120,7 +121,7 @@ cmp.setup({
         vim_item.abbr = label .. padding
       end
 
-      vim_item.menu = vim_item.kind
+      vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
       vim_item.kind = (icon ~= nil and icon or "icon")
 
       return vim_item
