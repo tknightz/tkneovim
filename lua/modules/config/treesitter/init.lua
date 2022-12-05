@@ -1,15 +1,6 @@
 local ts_config = require("nvim-treesitter.configs")
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
-parser_config.markdown = {
-  install_info = {
-    url = "https://github.com/MDeiml/tree-sitter-markdown",
-    branch = "split_parser",
-    files = { "tree-sitter-markdown/src/parser.c", "tree-sitter-markdown/src/scanner.cc" },
-  },
-  filetype = "markdown",
-}
-
 ts_config.setup {
   ensure_installed = {
     "javascript",
@@ -19,7 +10,7 @@ ts_config.setup {
     "lua",
     "json",
     "go",
-    "python"
+    "python",
   },
   highlight = {
     enable = true,
@@ -33,7 +24,7 @@ ts_config.setup {
       "tsx",
       "markdown",
       "org",
-      "sql"
+      "sql",
     }
   },
   incremental_selection = {
@@ -45,6 +36,11 @@ ts_config.setup {
       node_decremental = "gp",
     }
   },
+  yati = {
+    enable = true,
+    default_lazy = true,
+    default_fallback = "auto",
+  },
   indent = {
     enable = false
   },
@@ -52,6 +48,14 @@ ts_config.setup {
     enable = true,
   },
   textobjects = {
+    move = {
+      enable = true,
+      goto_previous_start = {
+        ['gap'] = '@parameter.outer',
+        ['gip'] = '@parameter.inner',
+      },
+    },
+
     select = {
       enable = true,
 
@@ -66,7 +70,10 @@ ts_config.setup {
         ["ic"] = "@class.inner",
         ["il"] = "@loop.inner",
         ["al"] = "@loop.outer",
-
+        ["ib"] = "@block.inner",
+        ["ab"] = "@block.outer",
+        ["ip"] = "@parameter.inner",
+        ["ap"] = "@parameter.outer",
 
         -- Or you can define your own textobjects like this
       },
@@ -92,7 +99,7 @@ ts_config.setup {
   },
   rainbow = {
     enable = true,
-    disable = {"python", "html"},
+    disable = { "python", "html" },
     extended_mode = false,
     max_file_lines = nil,
   }

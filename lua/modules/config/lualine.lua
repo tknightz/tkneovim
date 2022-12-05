@@ -66,8 +66,8 @@ require('lualine').setup {
         color = { fg = "#ffffff" },
         fmt = function(str)
           local filetype = vim.api.nvim_buf_get_option(0, "filetype");
-          if filetype == "NvimTree" then
-            return ""
+          if filetype == "NvimTree" or filetype == "neo-tree" then
+            return "Explorer"
           end
 
           return str

@@ -16,6 +16,7 @@ local keymaps = {
     ["<M-j>"]     = ":resize -3<cr>",
 
     ["<Esc>"]     = "<C-\\><C-n>",
+    ["S"]         = ":TSJToggle<CR>",
   },
 
   visual_select = {

@@ -26,4 +26,10 @@ return {
     path = "p00f/nvim-ts-rainbow",
     after = "treesitter"
   },
+
+  ["yati"] = {
+    path = "yioneko/nvim-yati",
+    tag = "*",
+    after = "treesitter",
+  },
 }

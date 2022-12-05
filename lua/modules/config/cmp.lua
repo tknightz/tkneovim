@@ -152,5 +152,42 @@ cmp.setup({
   experimental = {
     native_menu = false,
     ghost_text = false
+  },
+
+  cmdline = {
+    [':'] = { sources = { name = "cmdline" }},
+    ['/'] = { sources = { name = "buffer" }},
   }
+})
+
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  },
+  mapping = cmp.mapping.preset.cmdline({
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item()),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item()),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item()),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+  })
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  },
+  mapping = cmp.mapping.preset.cmdline({
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item()),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item()),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item()),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+  })
 })

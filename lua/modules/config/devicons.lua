@@ -111,7 +111,7 @@ require "nvim-web-devicons".setup {
       name = "org"
     },
     default_icon = {
-      icon = "",
+      icon = "",
       color = "#6d8086",
       name = "Default",
     }

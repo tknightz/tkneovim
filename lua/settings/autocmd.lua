@@ -1,8 +1,13 @@
 local terminal_group = vim.api.nvim_create_augroup("Terminal", {})
 vim.api.nvim_create_autocmd("WinEnter", {
-  pattern = "term://*",
+  pattern = "*",
   group = terminal_group,
-  command = 'startinsert'
+  callback = function()
+    local filetype = vim.api.nvim_buf_get_option(0, "filetype");
+    if filetype == "toggleterm" then
+      vim.cmd[[startinsert]]
+    end
+  end
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {

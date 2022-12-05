@@ -74,15 +74,28 @@ return {
 
   -- Quickly jump between windows
   ["winjumping"] = {
-    path = "tknightz/window-jumping.lua",
-    cmd = "WindowJumping"
+    path = "s1n7ax/nvim-window-picker",
+    module = "window-picker",
+    tag = 'v1.*',
+    config = function()
+      require('window-picker').setup{
+        filter_rules = {
+          bo = {
+            -- if the file type is one of following, the window will be ignored
+            filetype = { "notify" },
+
+            -- if the buffer type is one of following, the window will be ignored
+            buftype = { },
+          },
+        }
+      }
+    end
   },
 
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
-    commit = "045d9582"
   },
 
   -- Extended f, F, t and T key mappings
@@ -275,7 +288,7 @@ return {
     path = "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({
-        color = "#e2b86b",
+        highlight = { fg = "#e95678", italic = true }
       })
     end,
     after = "treesitter",
@@ -289,8 +302,11 @@ return {
     event = "BufRead",
   },
 
-  ["cmp_comparator"] = {
-    path = "lukas-reineke/cmp-under-comparator",
-    module = "cmp-under-comparator",
+  ["treejoin"] = {
+    path = "Wansmer/treesj",
+    cmd = {"TSJToggle"},
+    config = function()
+      require("treesj").setup()
+    end
   },
 }

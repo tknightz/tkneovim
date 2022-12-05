@@ -19,6 +19,10 @@ for _, server in pairs(installed_packages) do
     local custom_config = consts.custom_configs[server_name]
 
     local config = custom_config and vim.tbl_extend("force", consts.general_configs, custom_config) or consts.general_configs
+
+    if server_name == "gopls" then
+      config.init_options = nil
+    end
     lspconfig[server_name].setup(config)
   end
 end

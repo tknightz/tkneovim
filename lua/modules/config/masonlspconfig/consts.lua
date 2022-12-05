@@ -15,6 +15,11 @@ M.general_configs = {
 
 -- custom configs for specify server
 M.custom_configs = {
+  gopls = {
+    cmd = {"gopls", "serve"},
+    filetypes = {"go", "gomod"},
+  },
+
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
     root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),

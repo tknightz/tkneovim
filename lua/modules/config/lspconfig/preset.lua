@@ -36,7 +36,7 @@ local function on_attach(_, bufnr)
 end
 
 -- setup cmp (completion)
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 return {
   on_attach = on_attach,

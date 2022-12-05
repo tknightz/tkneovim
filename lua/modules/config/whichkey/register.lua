@@ -1,6 +1,11 @@
 local wk = require('which-key')
 local mappings = require("modules.config.whichkey.mappings")
 
+function jump_to_window()
+  local window = require('window-picker').pick_window()
+  vim.api.nvim_set_current_win(window)
+end
+
 local base_mappings = {
   f = mappings.file,
   w = mappings.editor.window,
@@ -17,7 +22,7 @@ local base_mappings = {
 
 wk.register(vim.tbl_deep_extend("keep", base_mappings, {
   -- not a group mappings
-  j = { "<cmd>WindowJumping<cr>", "jump" },
+  j = { jump_to_window, "jump" },
   y = { "<cmd>%y+<cr>", "yank to clipboard" },
   n = { "<cmd>NeoTreeRevealToggle<cr>", "neotree" },
 }),
@@ -29,7 +34,7 @@ wk.register(vim.tbl_deep_extend("keep", base_mappings, {
 
 wk.register(vim.tbl_deep_extend("keep", base_mappings, {
   -- not a group mappings
-  j = { "<cmd>WindowJumping<cr>", "jump" },
+  j = { jump_to_window, "jump" },
   y = { "<cmd>%y+<cr>", "yank to clipboard" },
   n = { "<cmd>NeoTreeRevealToggle<cr>", "neotree" },
 }),

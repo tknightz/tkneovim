@@ -199,9 +199,7 @@ telescope.setup {
       hidden_files = true
     },
     termfinder = {
-      options = {
-        start_to_insert = true
-      }
+      start_to_insert = true
     }
   }
 }

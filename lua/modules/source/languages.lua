@@ -1,22 +1,8 @@
 return {
-
-  -- Indentation for python, treesitter is not working
-  -- properly now.
-  ["pyindent"] = {
-    path = "Vimjas/vim-python-pep8-indent",
-    ft = {"python"},
-  },
-
   ["sphinx"] = {
     path = "stsewd/sphinx.nvim",
     run = ":UpdateRemotePlugins",
     ft = {"python"},
-  },
-
-  -- Better indentation for js over treesitter ident feature now.
-  ["jsxpretty"] = {
-    path = "MaxMEllon/vim-jsx-pretty",
-    ft = {"javascript", "javascriptreact", "typescriptreact", "typescript"}
   },
 
   ["go"] = {
