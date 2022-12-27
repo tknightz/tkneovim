@@ -62,14 +62,16 @@ return {
 
   ["symbolsoutline"] = {
     path = "simrat39/symbols-outline.nvim",
-    config = function()
-      require("symbols-outline").setup()
-    end,
     cmd = "SymbolsOutline",
   },
 
   ["nullls"] = {
     path = "jose-elias-alvarez/null-ls.nvim",
     after = "lspconfig"
-  }
+  },
+
+  ["fidget"] = {
+    path = "j-hui/fidget.nvim",
+    after = "theme",
+  },
 }

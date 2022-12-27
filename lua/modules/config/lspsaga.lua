@@ -9,4 +9,5 @@ lspsaga.init_lsp_saga({
     separator = " ",
   },
   diagnostic_header = { "😡 ", "😥 ", "😤 ", "😐 " },
+  code_action_icon = "🍬"
 })

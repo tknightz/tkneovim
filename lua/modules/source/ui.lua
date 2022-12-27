@@ -2,9 +2,9 @@ return {
   -- Colorscheme here
   -- set colorname to automate set colorscheme
   ["theme"] = {
-    path = "navarasu/onedark.nvim",
+    path = "rebelot/kanagawa.nvim",
     event = "VimEnter",
-    colorname = "onedark"
+    colorname = "kanagawa",
   },
 
   -- Show dashboard first come

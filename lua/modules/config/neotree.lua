@@ -1,9 +1,12 @@
 require("neo-tree").setup({
   close_if_last_window = true,
+  follow_current_file = true,
+  use_libuv_file_watcher = true,
   default_component_configs = {
     git_status = {
       symbols = {
-        untracked = "?"
+        untracked = "?",
+        unstaged = "",
       }
     }
   },
@@ -26,3 +29,5 @@ require("neo-tree").setup({
 vim.cmd("hi NeoTreeNormal guibg=#0a0e10")
 vim.cmd("hi NeoTreeNormalNC guibg=#0a0e10")
 vim.cmd("hi NeoTreeTitleBar guibg=NONE guifg=white")
+vim.cmd("hi NeoTreeGitUntracked guibg=NONE guifg=#e95678")
+vim.cmd("hi NeoTreeGitUnstaged guibg=NONE")

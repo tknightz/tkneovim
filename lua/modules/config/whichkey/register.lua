@@ -3,7 +3,9 @@ local mappings = require("modules.config.whichkey.mappings")
 
 function jump_to_window()
   local window = require('window-picker').pick_window()
-  vim.api.nvim_set_current_win(window)
+  if window ~= nil then
+    vim.api.nvim_set_current_win(window)
+  end
 end
 
 local base_mappings = {

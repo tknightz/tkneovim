@@ -5,7 +5,6 @@ return {
   d     = {'<C-W>c',                     'delete-window'         },
   ["-"] = {'<C-W>s',                     'split-window-below'    },
   ["/"] = {'<C-W>v',                     'split-window-right'    },
-  [2]   = {'<C-W>v',                     'layout-double-columns' },
   h     = {'<C-W>h',                     'window-left'           },
   i     = {'<cmd>Telescope windows<cr>', 'iWindows'              },
   j     = {'<C-W>j',                     'window-below'          },

@@ -87,7 +87,9 @@ return {
             -- if the buffer type is one of following, the window will be ignored
             buftype = { },
           },
-        }
+        },
+        fg_color = "#1d1d2c",
+        other_win_hl_color = "#e6c384",
       }
     end
   },
@@ -309,4 +311,14 @@ return {
       require("treesj").setup()
     end
   },
+
+  ["printer"] = {
+    path = "rareitems/printer.nvim",
+    keys = "gp",
+    config = function()
+        require('printer').setup({
+            keymap = "gp" -- Plugin doesn't have any keymaps by default
+          })
+    end
+  }
 }
