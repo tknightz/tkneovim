@@ -320,5 +320,9 @@ return {
             keymap = "gp" -- Plugin doesn't have any keymaps by default
           })
     end
-  }
+  },
+
+  ["navic"] = {
+    path = "SmiteshP/nvim-navic",
+  },
 }

@@ -23,7 +23,6 @@ local color_lua_setup = function(colorname)
       keywords = "italic,bold",
       functions = "bold"
     },
-
   }
 end
 

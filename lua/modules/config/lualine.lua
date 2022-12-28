@@ -1,31 +1,4 @@
-local function shorten_str(str, size)
-  local len = size and size or 27
-
-  local strlen = string.len(str)
-  if string.len(str) == 0 then
-    return '_blank'
-  end
-  if string.len(str) < len then
-    return str
-  end
-
-  local head = string.sub(str, 0, math.floor(len / 2))
-  local tail = string.sub(str, strlen - math.floor(len / 2), strlen)
-
-  return head .. '...' .. tail
-end
-
-local function shorten_bufname()
-  local path = vim.api.nvim_buf_get_name(0)
-  local filename = vim.api.nvim_call_function('fnamemodify', { path, ':t' })
-  local ext = vim.api.nvim_call_function('fnamemodify', { path, ':e' })
-  local icon = require('nvim-web-devicons').get_icon(filename, ext, { default = true })
-
-  local is_modified = vim.bo.modified
-
-  local modified_indicator = is_modified and "" or ""
-  return icon .. " " .. shorten_str(filename) .. " " .. modified_indicator
-end
+local _, navic = pcall(require, "nvim-navic")
 
 require('lualine').setup {
   options = {
@@ -34,6 +7,13 @@ require('lualine').setup {
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     always_divide_middle = true,
+    disabled_filetypes = {
+      winbar = {
+        "neo-tree",
+        "dashboard",
+        "toggleterm",
+      },
+    },
   },
   sections = {
     lualine_a = { { 'mode', fmt = function(str) return " " .. str end } },
@@ -112,6 +92,19 @@ require('lualine').setup {
     lualine_x = { 'location' },
     lualine_y = {},
     lualine_z = {}
+  },
+  winbar = {
+    lualine_b = {
+      { "filetype", icon_only = true, separator = "" },
+      { "filename", path = 0 },
+    },
+    lualine_c = { navic.get_location }
+  },
+  inactive_winbar = {
+    lualine_b = {
+      { "filetype", icon_only = true, separator = "" },
+      { "filename", path = 0 },
+    }
   },
   tabline = {},
   extensions = {}
