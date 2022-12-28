@@ -2,7 +2,24 @@ local lib = require("lib")
 
 local E = {}
 
-function init()
+local function exec(command)
+  local f = io.popen(command)
+  if f == nil then
+    return ""
+  end
+
+  local l = f:read("*a")
+  f:close()
+  return l
+end
+
+local function get_git_root()
+  local raw_git_root = exec("git rev-parse --show-toplevel")
+  local git_root = raw_git_root:gsub("\n[^\n]*$", "")
+  return git_root
+end
+
+local function init()
   lib.load_module('telescope')
   local previewers = require('telescope.previewers')
   local builtin = require('telescope.builtin')
@@ -54,6 +71,7 @@ end
 
 E.my_git_status = function(opts)
   local config = init()
+  local git_root = get_git_root()
 
   local delta = config.previewers.new_termopen_previewer {
     get_command = function(entry)
@@ -65,10 +83,10 @@ E.my_git_status = function(opts)
       end
 
       if entry.status == '??' then
-        return { 'bat', '--style=plain', '--pager', 'less -R', entry.value }
+        return { 'bat', '--style=plain', '--pager', 'less -R', git_root .. "/" .. entry.value }
       end
 
-      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', git_root .. "/" .. entry.value }
     end
   }
 

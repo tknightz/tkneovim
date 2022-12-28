@@ -9,7 +9,7 @@
 return {
   ["treesitter"] = {
     path = "nvim-treesitter/nvim-treesitter",
-    after = "theme"
+    after = "theme",
   },
 
   ["treesitter-textobjects"] = {

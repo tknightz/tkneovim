@@ -181,13 +181,6 @@ return {
     cmd = {"TZMinimalist", "TZFocus", "TZAtaraxis"},
   },
 
-  -- Float terminals
-  ["ezterm"] = {
-    path = "tknightz/ezterm.nvim",
-    cmd = {"Ezterm", "EztermFind"},
-    module = "ezterm"
-  },
-  
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
     ft = "qf"
@@ -293,14 +286,14 @@ return {
     end,
     after = "treesitter",
   },
-
-  ["scrollbar"] = {
-    path = "petertriho/nvim-scrollbar",
-    config = function()
-      require("scrollbar").setup()
-    end,
-    event = "BufRead",
-  },
+  --
+  -- ["scrollbar"] = {
+  --   path = "petertriho/nvim-scrollbar",
+  --   config = function()
+  --     require("scrollbar").setup()
+  --   end,
+  --   event = "BufRead",
+  -- },
 
   ["treejoin"] = {
     path = "Wansmer/treesj",
@@ -308,5 +301,19 @@ return {
     config = function()
       require("treesj").setup()
     end
+  },
+
+  ["printer"] = {
+    path = "rareitems/printer.nvim",
+    keys = "gp",
+    config = function()
+      require('printer').setup({
+        keymap = "gp" -- Plugin doesn't have any keymaps by default
+      })
+    end
+  },
+
+  ["navic"] = {
+    path = "SmiteshP/nvim-navic",
   },
 }

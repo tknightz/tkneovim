@@ -1,4 +1,4 @@
-function toggle_lsp()
+local function toggle_lsp()
   local has_nullls, nullls = pcall(require, "null-ls")
 
   if vim.g.loaded_lsp == 1 then

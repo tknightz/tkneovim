@@ -8,6 +8,7 @@ return {
   -- Lsp servers manager
   ["mason"] = {
     path = "williamboman/mason.nvim",
+    module = "mason",
     config = function()
       require("mason").setup()
     end
@@ -15,14 +16,14 @@ return {
 
   ["masonlspconfig"] = {
     path = "williamboman/mason-lspconfig.nvim",
-    after = "lspconfig",
-  },
-
-  ["grammarguard"] = {
-    path = "brymer-meneses/grammar-guard.nvim",
     after = "lspconfig"
   },
 
+  -- ["grammarguard"] = {
+  --   path = "brymer-meneses/grammar-guard.nvim",
+  --   after = "lspconfig"
+  -- },
+  --
 
   -- Enhance lsp ui
   ["lspsaga"] = {
@@ -71,5 +72,10 @@ return {
   ["nullls"] = {
     path = "jose-elias-alvarez/null-ls.nvim",
     after = "lspconfig"
+  },
+
+  ["fidget"] = {
+    path = "j-hui/fidget.nvim",
+    after = "theme",
   }
 }

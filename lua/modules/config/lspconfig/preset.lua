@@ -1,4 +1,4 @@
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
   -- Load signature_help
   require('lsp_signature').on_attach({
     bind = true,
@@ -9,6 +9,10 @@ local function on_attach(_, bufnr)
     transparency = 1,
   }, bufnr)
 
+  -- load nvim-navic
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 

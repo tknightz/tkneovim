@@ -143,28 +143,11 @@ telescope.setup {
       sort_lastused = true,
       theme = "dropdown",
       default_selection_index = 1,
-      attach_mappings = function(prompt_bufnr, map)
-        local ok_ez, ezterm = pcall(require, 'ezterm')
-        local ok_eza, ezaction = pcall(require, 'ezterm.actions')
-
-        if ok_ez then
-          map('i', '<C-t>', ezaction.change_direction_top)
-          map('i', '<C-l>', ezaction.change_direction_left)
-          map('i', '<C-r>', ezaction.change_direction_right)
-          map('i', '<C-b>', ezaction.change_direction_bottom)
-        end
-
-        action_set.select:replace(function(prompt_bufnr, type)
-          local entry = action_state.get_selected_entry()
-          actions.close(prompt_bufnr)
-          if pcall(function() vim.api.nvim_buf_get_var(entry.bufnr, "ezterm") end) then
-            ezterm.open_term(entry.bufnr)
-          else
-            vim.api.nvim_win_set_buf(0, entry.bufnr)
-          end
-        end)
-        return true
-      end 
+      mappings = {
+        i = {
+          ["<c-x>"] = "delete_buffer"
+        }
+      }
     },
   },
 	symbols = {
@@ -190,11 +173,6 @@ telescope.setup {
         ["alacritty"] = "/home/tulen/.config/alacritty",
       },
     },
-    ezterm = {
-      theme = "dropdown",
-      enter_insert = true,
-      previewer = true
-    },
     project = {
       hidden_files = true
     },
@@ -207,6 +185,5 @@ telescope.setup {
 
 pcall(require("telescope").load_extension, "fzf") -- superfast sorter
 pcall(require("telescope").load_extension, "projects") -- project
-pcall(require("telescope").load_extension, "ezterm") -- ezterm
 pcall(require("telescope").load_extension, "live_grep_args") -- live_grep_raw
 pcall(require('telescope').load_extension, "termfinder")

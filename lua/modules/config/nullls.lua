@@ -5,28 +5,45 @@ null_ls.setup {
   diagnostics_format = "[#{c}] #{m} (#{s})",
   root_dir = util.root_pattern(".null-ls-root", "package.json", ".eslintrc.json", ".eslintrc.js", "requirements.txt", ".git"),
   sources = {
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier.with({
+      condition = function(utils)
+        return utils.root_has_file("node_modules/.bin/prettier") and not utils.root_has_file("node_modules/.bin/prettierd")
+      end,
+    }),
+    null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.sql_formatter.with({
       extra_args = function()
         local default_config_path = vim.fn.stdpath("config") .. "/lua/modules/config/masonlspconfig/.sqlformatter.json"
-        print(default_config_path)
         return { "--config", default_config_path }
       end
     }),
     null_ls.builtins.diagnostics.eslint.with({
       condition = function(utils)
-        return utils.root_has_file("node_modules/.bin/eslint")
+        return utils.root_has_file("node_modules/.bin/eslint") and not utils.root_has_file("node_modules/.bin/eslint_d")
       end,
       runtime_condition = function(params)
         return not params.bufname:match "fugitive://"
       end,
     }),
-    null_ls.builtins.code_actions.eslint.with({
+    -- null_ls.builtins.code_actions.eslint.with({
+    --   condition = function(utils)
+    --     return utils.root_has_file("node_modules/.bin/eslint") and not utils.root_has_file("node_modules/.bin/eslint_d")
+    --   end,
+    -- }),
+    null_ls.builtins.diagnostics.eslint_d.with({
       condition = function(utils)
-        return utils.root_has_file("node_modules/.bin/eslint")
+        return utils.root_has_file("node_modules/.bin/eslint_d")
+      end,
+      runtime_condition = function(params)
+        return not params.bufname:match "fugitive://"
       end,
     }),
-    null_ls.builtins.completion.spell,
+    -- null_ls.builtins.code_actions.eslint_d.with({
+    --   condition = function(utils)
+    --     return utils.root_has_file("node_modules/.bin/eslint_d")
+    --   end,
+    -- }),
+    -- null_ls.builtins.completion.spell,
 
     -- python
     null_ls.builtins.formatting.black.with({

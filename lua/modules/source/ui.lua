@@ -3,8 +3,8 @@ return {
   -- set colorname to automate set colorscheme
   ["theme"] = {
     path = "navarasu/onedark.nvim",
+    colorname = "onedark",
     event = "VimEnter",
-    colorname = "onedark"
   },
 
   -- Show dashboard first come

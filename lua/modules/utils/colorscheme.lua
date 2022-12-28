@@ -21,6 +21,8 @@ local color_lua_setup = function(colorname)
 
     highlights = {
       Folded = {bg = "#181b20", fg = "#485e69", fmt = "bold"},
+      StatusLine = { bg = "NONE" },
+      StatusLineNC = { bg = "NONE" },
       NvimTreeNormal = { bg = "#0a0e10" },
       NvimTreeFolderIcon = { fg = "#61afef" },
       NvimTreeVertSplit = { fg = "#3c3c3c" },
@@ -29,7 +31,7 @@ local color_lua_setup = function(colorname)
       CmpBorder = { fg = "#2e3c43" },
       CmpWin = { bg = "NONE"},
       FloatBorder = { fg = "#2e3c43", bg = "NONE" },
-      PmenuSel = { fg = "NONE", bg = "#305676" },
+      PmenuSel = { fg = "black", bg = "#4fa6ed" },
       LspSagaHoverBorder = { fg = "#2e3c43" },
       DashboardHeader = { fg = "#555555" },
       DashboardCenter = { fg = "#555555" },
