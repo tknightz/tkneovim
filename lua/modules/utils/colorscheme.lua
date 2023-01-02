@@ -20,6 +20,7 @@ local color_lua_setup = function(colorname)
     },
 
     highlights = {
+      WinBar = { bg = "#1a1c23" },
       Folded = {bg = "#181b20", fg = "#485e69", fmt = "bold"},
       StatusLine = { bg = "NONE" },
       StatusLineNC = { bg = "NONE" },

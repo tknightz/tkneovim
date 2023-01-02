@@ -1,4 +1,31 @@
 local _, navic = pcall(require, "nvim-navic")
+local winbar_exclude_bufs = {
+  DiffviewFiles = 1,
+  ["neo-tree"] = 1
+}
+
+local function show_winbar()
+  local buftype = vim.bo.filetype
+  return winbar_exclude_bufs[buftype] ~= 1
+end
+
+local function winbar_fmt()
+  local is_in_diffmode = vim.api.nvim_win_get_option(0, "diff")
+  local location = navic.get_location()
+  local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":.")
+  filename = string.gsub(filename, "/", " > ")
+
+  if is_in_diffmode then
+    return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
+  end
+
+
+  if location ~= "" then
+    return filename .. " > " .. location
+  end
+
+  return filename
+end
 
 require('lualine').setup {
   options = {
@@ -94,16 +121,24 @@ require('lualine').setup {
     lualine_z = {}
   },
   winbar = {
-    lualine_b = {
-      { "filetype", icon_only = true, separator = "" },
-      { "filename", path = 0 },
-    },
-    lualine_c = { navic.get_location }
+    -- lualine_b = {
+    --   { "filetype", icon_only = true, separator = "" },
+    --   { "filename", path = 0 },
+    -- },
+    lualine_c = {
+      {
+        winbar_fmt,
+        cond = show_winbar,
+      }
+    }
   },
   inactive_winbar = {
-    lualine_b = {
-      { "filetype", icon_only = true, separator = "" },
-      { "filename", path = 0 },
+    lualine_c = {
+      {
+        "filename",
+        path = 0,
+        cond = show_winbar,
+      }
     }
   },
   tabline = {},

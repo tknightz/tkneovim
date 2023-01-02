@@ -1,63 +1,29 @@
-vim.api.nvim_set_hl(0, "NavicFile", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicModule", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicNamespace", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicPackage", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicClass", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicMethod", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicProperty", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicField", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicConstructor", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicEnum", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicInterface", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicFunction", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicVariable", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicConstant", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicString", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicNumber", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicBoolean", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicArray", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicObject", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicKey", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicNull", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicEnumMember", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicStruct", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicEvent", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicOperator", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicTypeParameter", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "WinBarContent", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "WinBarSeparator", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsFile", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsModule", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsNamespace", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsPackage", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsClass", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsMethod", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsProperty", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsField", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsConstructor", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsEnum", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsInterface", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsFunction", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsVariable", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsConstant", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsString", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsNumber", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsBoolean", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsArray", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsObject", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsKey", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsNull", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsEnumMember", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsStruct", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsEvent", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsOperator", { default = true, bg = "#000000", fg = "#a0a0ff" })
-vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", { default = true, bg = "#000000", fg = "#a0a0ff" })
-
 local icons = require("modules.config.lspconfig.icons").icons
 
+local function get_color(hl_group)
+  local colors = vim.api.nvim_get_hl_by_name(hl_group, true)
+  colors.foreground = colors.foreground ~= nil and string.format("#%06x", colors.foreground) or nil
+  colors.background = colors.background ~= nil and string.format("#%06x", colors.background) or nil
+  return colors
+end
+
+local function setup_highlights()
+  local winbar_colors = get_color("WinBar")
+  vim.cmd("hi NavicText guibg="..winbar_colors.background)
+  vim.cmd("hi NavicSeparator guibg="..winbar_colors.background)
+
+  for name in pairs(icons) do
+    local done, colors = pcall(get_color, "NavicIcons" .. name)
+    if done then
+      local cmd_hi = string.format("hi %s guifg=%s guibg=%s", "NavicIcons" .. name, colors.foreground, winbar_colors.background)
+      vim.cmd(cmd_hi)
+    end
+  end
+end
+
+setup_highlights()
 require("nvim-navic").setup {
   icons = icons,
   highlight = true,
+  separator = " > ",
 }

@@ -315,5 +315,6 @@ return {
 
   ["navic"] = {
     path = "SmiteshP/nvim-navic",
+    after = "theme",
   },
 }
