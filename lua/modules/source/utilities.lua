@@ -60,7 +60,8 @@ return {
           "dashboard",
           "NvimTree",
           "dirvish",
-          "fugitive"
+          "fugitive",
+          "neo-tree",
         }
       })
     end

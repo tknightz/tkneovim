@@ -1,19 +1,20 @@
 local function winbar_fmt()
-  local status, location = pcall(require("nvim-navic").get_location)
-  local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":.")
+  local bufname = vim.api.nvim_buf_get_name(0)
   local is_in_diffmode = vim.api.nvim_win_get_option(0, "diff")
-  filename = string.gsub(filename, "/", " > ")
 
+  -- if in diffmode I don't wanna it show lsp and long filename
   if is_in_diffmode then
-    return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
+    return vim.fn.fnamemodify(bufname, ":t")
   end
 
-
+  local status, location = pcall(require("nvim-navic").get_location)
+  local filename = vim.fn.fnamemodify(bufname, ":.:h")
+  local result = string.gsub(filename, "/", "  ")
   if location ~= "" then
-    return filename .. " > " .. location
+    result = result .. "  " .. location
   end
 
-  return filename
+  return result
 end
 
 require('lualine').setup {
@@ -30,6 +31,7 @@ require('lualine').setup {
         "toggleterm",
         "DiffviewFiles",
         "lspsagaoutline",
+        "fugitive",
         "Outline",
       },
     },
@@ -113,13 +115,28 @@ require('lualine').setup {
     lualine_z = {}
   },
   winbar = {
-    lualine_c = { winbar_fmt }
+    lualine_c = {
+      {
+        'filetype',
+        icon_only = true,
+        separator = '',
+        padding = { right = 0, left = 1 },
+      },
+      winbar_fmt
+    }
   },
   inactive_winbar = {
     lualine_c = {
       {
+        'filetype',
+        icon_only = true,
+        separator = '',
+        padding = { right = 0, left = 1 },
+      },
+      {
         "filename",
         path = 0,
+        color = { fg = "#6c6f93" },
       }
     }
   },
