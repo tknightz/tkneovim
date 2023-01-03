@@ -30,6 +30,7 @@ return {
   d = {":Lspsaga preview_definition<CR>",      "definitions"},
   i = {":Lspsaga show_line_diagnostics<CR>",   "issues"},
   n = {":Lspsaga diagnostic_jump_next<CR>",    "next"},
+  o = {":SymbolsOutline<CR>",                  "outline"},
   p = {":Lspsaga diagnostic_jump_prev<CR>",    "prev"},
   q = {":lua vim.diagnostic.setloclist()<CR>", "quickfix"},
   f = {":lua vim.lsp.buf.format({ async = true })<CR>", "format"},

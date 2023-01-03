@@ -3,7 +3,7 @@ require("neo-tree").setup({
   default_component_configs = {
     git_status = {
       symbols = {
-        untracked = "?"
+        untracked = "?",
       }
     }
   },
@@ -26,3 +26,4 @@ require("neo-tree").setup({
 vim.cmd("hi NeoTreeNormal guibg=#0a0e10")
 vim.cmd("hi NeoTreeNormalNC guibg=#0a0e10")
 vim.cmd("hi NeoTreeTitleBar guibg=NONE guifg=white")
+vim.cmd("hi NeoTreeGitUnstaged gui=NONE guifg=#e55561")

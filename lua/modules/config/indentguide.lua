@@ -18,6 +18,7 @@ require('indent_blankline').setup {
     "",
     "dbout",
     "neo-tree",
+    "Outline",
   },
   buftype_exclude = {'terminal', 'packer'},
   term = 238,

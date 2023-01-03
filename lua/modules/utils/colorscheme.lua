@@ -24,6 +24,7 @@ local color_lua_setup = function(colorname)
       Folded = {bg = "#181b20", fg = "#485e69", fmt = "bold"},
       StatusLine = { bg = "NONE" },
       StatusLineNC = { bg = "NONE" },
+      SymbolsOutlineBg = { bg = "#131313" },
       NvimTreeNormal = { bg = "#0a0e10" },
       NvimTreeFolderIcon = { fg = "#61afef" },
       NvimTreeVertSplit = { fg = "#3c3c3c" },
