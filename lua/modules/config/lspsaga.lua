@@ -22,4 +22,5 @@ lspsaga.init_lsp_saga({
     auto_refresh = true,
   },
   diagnostic_header = { "😡 ", "😥 ", "😤 ", "😐 " },
+  code_action_icon = "🍬",
 })

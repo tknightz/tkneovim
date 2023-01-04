@@ -1,209 +1,83 @@
-local highlights = {
-  fill = {
-    bg = "#0a0e10"
-  },
-  background = {
-    fg = "gray",
-    bg = "#0f1218",
-    italic = true,
-    nocombine = true,
-  },
-
-  buffer_visible = {
-    fg = "gray",
-    bg = "#14171f",
-    italic = true,
-  },
-  buffer_selected = {
-    bg = "#1a1c23",
-    bold = true,
-    italic = false,
-  },
-
-  tab = {
-    fg = "gray",
-    bg = "#0f1218",
-    italic = true,
-  },
-  tab_selected = {
-    bg = "#1a1c23",
-    bold = true,
-    italic = false,
-  },
-
-  tab_separator = {
-    fg = "#0a0e10",
-    bg = "#0a0e10"
-  },
-  tab_separator_selected = {
-    fg = "#0a0e10",
-    bg = "#0a0e10"
-  },
-
-  separator = {
-    fg = "#0a0e10",
-    bg = "#0f1218"
-  },
-  separator_selected = {
-    fg = "#0a0e10",
-    bg = "#1a1c23"
-  },
-  separator_visible = {
-    fg = "#0a0e10",
-    bg = "#14171f"
-  },
-
-  modified = {
-    bg = "#0f1218",
-    fg = "#00d364"
-  },
-  modified_selected = {
-    bg = "#1a1c23",
-    fg = "#00d364"
-  },
-  modified_visible = {
-    bg = "#14171f",
-    fg = "#00d364",
-  },
-
-  duplicate = {
-    fg = "#3f3b42",
-    bg = "#0f1218"
-  },
-  duplicate_selected = {
-    fg = "#3f3b42",
-    bg = "#1a1c23"
-  },
-  duplicate_visible = {
-    fg = "#3f3b42",
-    bg = "#14171f"
-  },
-
-  warning = {
-    fg = "#a98a50",
-    bg = "#0f1218",
-    italic = true,
-    bold = true,
-  },
-  warning_visible = {
-    fg = "#a98a50",
-    bg = "#14171f",
-    italic = true,
-  },
-  warning_selected = {
-    fg = "#a98a50",
-    bg = "#1a1c23",
-    italic = true,
-  },
-  warning_diagnostic = {
-    fg = "#a98a50",
-    bg = "#0f1218",
-    italic = true,
-  },
-  warning_diagnostic_visible = {
-    fg = "#a98a50",
-    bg = "#14171f",
-  },
-  warning_diagnostic_selected = {
-    fg = "#a98a50",
-    bg = "#1a1c23",
-  },
-
-  info = {
-    fg = "#36848d",
-    bg = "#0f1218",
-    italic = true,
-    bold = true,
-  },
-  info_visible = {
-    fg = "#36848d",
-    bg = "#14171f",
-    italic = true,
-    bold = true,
-  },
-  info_selected = {
-    fg = "#36848d",
-    bg = "#1a1c23",
-    italic = true,
-  },
-  info_diagnostic = {
-    fg = "#36848d",
-    bg = "#0f1218",
-    italic = true,
-  },
-  info_diagnostic_visible = {
-    fg = "#36848d",
-    bg = "#14171f",
-  },
-  info_diagnostic_selected = {
-    fg = "#36848d",
-    bg = "#1a1c23"
-  },
-
-  hint = {
-    fg = "#bf68d9",
-    bg = "#0f1218",
-    italic = true,
-    bold = true,
-  },
-  hint_visible = {
-    fg = "#bf68d9",
-    bg = "#14171f",
-    italic = true,
-    bold = true,
-  },
-  hint_selected = {
-    fg = "#bf68d9",
-    bg = "#1a1c23",
-    italic = true,
-  },
-  hint_diagnostic = {
-    fg = "#bf68d9",
-    bg = "#0f1218",
-    italic = true,
-  },
-  hint_diagnostic_visible = {
-    fg = "#bf68d9",
-    bg = "#14171f",
-  },
-  hint_diagnostic_selected = {
-    fg = "#bf68d9",
-    bg = "#1a1c23"
-  },
-
-  error = {
-    fg = "#ab3f48",
-    bg = "#0f1218",
-    italic = true,
-    bold = true,
-  },
-  error_diagnostic = {
-    fg = "#ab3f48",
-    bg = "#0f1218",
-    italic = true,
-  },
-  error_selected = {
-    fg = "#ab3f48",
-    bg = "#1a1c23",
-    italic = true,
-    bold = true,
-  },
-  error_diagnostic_selected = {
-    fg = "#ab3f48",
-    bg = "#1a1c23",
-    italic = true,
-    bold = true,
-  },
-  error_visible = {
-    fg = "#ab3f48",
-    bg = "#14171f",
-    italic = true,
-  },
-  error_diagnostic_visible = {
-    fg = "#ab3f48",
-    bg = "#14171f",
-    italic = true,
-  },
+local preset = {
+  separator = "#0a0e10",
+  modified = "#00d364",
+  duplicate = "#3f3b42",
+  warning = "#a98a50",
+  hint = "#bf68d9",
+  info = "#36848d",
+  error = "#ab3f48",
 }
 
-return highlights
+local colors = {
+  normal = { fg = "#3f3b42", bg = "#0f1218" },
+  visible = { fg = "gray", bg = "#14171f" },
+  selected = { fg = "#a0a8b7", bg = "#1a1c23" }
+}
+
+local highlights = {
+  fill = { bg = preset.separator },
+  background = { italic = true, nocombine = true },
+
+  buffer_visible = { italic = true },
+  buffer_selected = { bold = true, italic = false },
+
+  tab = { italic = true },
+  tab_selected = { bold = true, italic = false },
+
+  tab_separator = { bg = preset.separator, fg = preset.separator },
+  tab_separator_selected = { bg = preset.separator, fg = preset.separator },
+
+  separator = { fg = preset.separator },
+  separator_selected = { fg = preset.separator },
+  separator_visible = { fg = preset.separator },
+
+  modified = { fg = preset.modified },
+  modified_selected = { fg = preset.modified },
+  modified_visible = { fg = preset.modified },
+
+  duplicate = { fg = preset.duplicate },
+  duplicate_selected = { fg = preset.duplicate },
+  duplicate_visible = { fg = preset.duplicate },
+
+  warning = { fg = preset.warning, bold = true },
+  warning_visible = { fg = preset.warning, italic = true },
+  warning_selected = { fg = preset.warning, italic = true },
+  warning_diagnostic = { fg = preset.warning, italic = false },
+  warning_diagnostic_visible = { fg = preset.warning },
+  warning_diagnostic_selected = { fg = preset.warning, italic = false },
+
+  info = { fg = preset.info, bold = true },
+  info_visible = { fg = preset.info, italic = true },
+  info_selected = { fg = preset.info },
+  info_diagnostic = { fg = preset.info, italic = false },
+  info_diagnostic_visible = { fg = preset.info },
+  info_diagnostic_selected = { fg = preset.info, italic = false },
+
+  hint = { fg = preset.hint, bold = true },
+  hint_visible = { fg = preset.hint, italic = true, bold = true },
+  hint_selected = { fg = preset.hint },
+  hint_diagnostic = { fg = preset.hint, italic = false },
+  hint_diagnostic_visible = { fg = preset.hint },
+  hint_diagnostic_selected = { fg = preset.hint, italic = false },
+
+  error = { fg = preset.error, bold = true },
+  error_visible = { fg = preset.error, italic = true },
+  error_selected = { fg = preset.error, bold = true },
+  error_diagnostic = { fg = preset.error, italic = false },
+  error_diagnostic_visible = { fg = preset.error },
+  error_diagnostic_selected = { fg = preset.error, italic = false, bold = true },
+}
+
+local result = {}
+
+for key, val in pairs(highlights) do
+  if key:find("visible") then
+    result[key] = vim.tbl_extend("keep", val, colors.visible)
+  elseif key:find("selected") then
+    result[key] = vim.tbl_extend("keep", val, colors.selected)
+  else
+    result[key] = vim.tbl_extend("keep", val, colors.normal)
+  end
+end
+
+return result

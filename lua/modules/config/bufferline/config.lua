@@ -5,7 +5,7 @@ require("modules.config.bufferline.mappings")
 require "bufferline".setup {
   highlights = highlights,
   options = {
-    offsets = { 
+    offsets = {
       { filetype = "NvimTree", text = "Explorer" },
       { filetype = "neo-tree", text = "Explorer" },
       { filetype = "dbui", text = "DB Explorer" },
@@ -29,7 +29,18 @@ require "bufferline".setup {
     show_buffer_close_icons = false,
     separator_style = "slant",
     diagnostics = "nvim_lsp",
-    custom_filter = function(buf_number, buf_numbers)
+    diagnostics_indicator = function(count, level, _, _)
+      local icon = " "
+      if level:match("error") then
+        icon = " "
+      elseif level:match("warn") then
+        icon = " "
+      elseif level:match("hint") then
+        icon = " "
+      end
+      return icon .. "(" .. count .. ")"
+    end,
+    custom_filter = function(buf_number, _)
       -- filter out filetypes you don't want to see
       if vim.bo[buf_number].filetype ~= "packer" and
           vim.bo[buf_number].filetype ~= "terminal" and
@@ -45,31 +56,5 @@ require "bufferline".setup {
         return false
       end
     end,
-    custom_areas = {
-      right = function()
-        local result = {}
-        local error = vim.diagnostic.get(0, [[Error]])
-        local warning = vim.diagnostic.get(0, [[Warning]])
-        local info = vim.diagnostic.get(0, [[Information]])
-        local hint = vim.diagnostic.get(0, [[Hint]])
-
-        if error ~= 0 then
-          table.insert(result, { text = "  " .. error, guifg = "#EC5241" })
-        end
-
-        if warning ~= 0 then
-          table.insert(result, { text = "  " .. warning, guifg = "#EFB839" })
-        end
-
-        if hint ~= 0 then
-          table.insert(result, { text = "  " .. hint, guifg = "#A3BA5E" })
-        end
-
-        if info ~= 0 then
-          table.insert(result, { text = "   " .. info, guifg = "#7EA9A7" })
-        end
-        return result
-      end,
-    },
   },
 }
