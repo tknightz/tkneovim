@@ -4,7 +4,7 @@ local highlights = {
   },
   background = {
     fg = "gray",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
     nocombine = true,
   },
@@ -22,7 +22,7 @@ local highlights = {
 
   tab = {
     fg = "gray",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
   },
   tab_selected = {
@@ -42,7 +42,7 @@ local highlights = {
 
   separator = {
     fg = "#0a0e10",
-    bg = "NONE"
+    bg = "#0f1218"
   },
   separator_selected = {
     fg = "#0a0e10",
@@ -54,7 +54,7 @@ local highlights = {
   },
 
   modified = {
-    bg = "NONE",
+    bg = "#0f1218",
     fg = "#00d364"
   },
   modified_selected = {
@@ -68,7 +68,7 @@ local highlights = {
 
   duplicate = {
     fg = "#3f3b42",
-    bg = "NONE"
+    bg = "#0f1218"
   },
   duplicate_selected = {
     fg = "#3f3b42",
@@ -81,12 +81,13 @@ local highlights = {
 
   warning = {
     fg = "#a98a50",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
     bold = true,
   },
   warning_visible = {
     fg = "#a98a50",
+    bg = "#14171f",
     italic = true,
   },
   warning_selected = {
@@ -96,24 +97,27 @@ local highlights = {
   },
   warning_diagnostic = {
     fg = "#a98a50",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
   },
   warning_diagnostic_visible = {
     fg = "#a98a50",
+    bg = "#14171f",
   },
   warning_diagnostic_selected = {
-    bg = "#1a1c23"
+    fg = "#a98a50",
+    bg = "#1a1c23",
   },
 
   info = {
     fg = "#36848d",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
     bold = true,
   },
   info_visible = {
     fg = "#36848d",
+    bg = "#14171f",
     italic = true,
     bold = true,
   },
@@ -124,24 +128,27 @@ local highlights = {
   },
   info_diagnostic = {
     fg = "#36848d",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
   },
   info_diagnostic_visible = {
     fg = "#36848d",
+    bg = "#14171f",
   },
   info_diagnostic_selected = {
+    fg = "#36848d",
     bg = "#1a1c23"
   },
 
   hint = {
     fg = "#bf68d9",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
     bold = true,
   },
   hint_visible = {
     fg = "#bf68d9",
+    bg = "#14171f",
     italic = true,
     bold = true,
   },
@@ -152,25 +159,34 @@ local highlights = {
   },
   hint_diagnostic = {
     fg = "#bf68d9",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
   },
   hint_diagnostic_visible = {
     fg = "#bf68d9",
+    bg = "#14171f",
   },
   hint_diagnostic_selected = {
+    fg = "#bf68d9",
     bg = "#1a1c23"
   },
 
   error = {
     fg = "#ab3f48",
-    bg = "NONE",
+    bg = "#0f1218",
     italic = true,
     bold = true,
   },
-  error_visible = {
+  error_diagnostic = {
     fg = "#ab3f48",
+    bg = "#0f1218",
     italic = true,
+  },
+  error_selected = {
+    fg = "#ab3f48",
+    bg = "#1a1c23",
+    italic = true,
+    bold = true,
   },
   error_diagnostic_selected = {
     fg = "#ab3f48",
@@ -178,13 +194,14 @@ local highlights = {
     italic = true,
     bold = true,
   },
-  error_diagnostic = {
+  error_visible = {
     fg = "#ab3f48",
-    bg = "NONE",
+    bg = "#14171f",
     italic = true,
   },
   error_diagnostic_visible = {
     fg = "#ab3f48",
+    bg = "#14171f",
     italic = true,
   },
 }
