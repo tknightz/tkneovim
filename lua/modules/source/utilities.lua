@@ -96,7 +96,7 @@ return {
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
+    after = "treesitter",
   },
 
   -- Extended f, F, t and T key mappings
@@ -300,7 +300,9 @@ return {
     path = "Wansmer/treesj",
     cmd = {"TSJToggle"},
     config = function()
-      require("treesj").setup()
+      require("treesj").setup({
+        use_default_keymaps = false,
+      })
     end
   },
 

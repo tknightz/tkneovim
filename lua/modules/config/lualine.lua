@@ -7,8 +7,9 @@ local function winbar_fmt()
     return vim.fn.fnamemodify(bufname, ":t")
   end
 
-  local status, location = pcall(require("nvim-navic").get_location)
+  local _, location = pcall(require("nvim-navic").get_location)
   local filename = vim.fn.fnamemodify(bufname, ":.:h")
+  filename = filename ~= "." and filename or vim.fn.fnamemodify(bufname, ":t")
   local result = string.gsub(filename, "/", "  ")
   if location ~= "" then
     result = result .. "  " .. location

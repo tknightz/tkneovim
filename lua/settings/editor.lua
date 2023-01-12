@@ -46,6 +46,7 @@ local options = {
   cursorline    = true,
   swapfile      = false,
   incsearch     = true,
+  showmode      = false,
   laststatus    = 3,
 
   shada         = {"!", "'1000", "<50", "s10", "h"},

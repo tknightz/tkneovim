@@ -20,6 +20,8 @@ local color_lua_setup = function(colorname)
     },
 
     highlights = {
+      ["@keyword.function"] = { fmt = "italic,bold" },
+      DiffviewNormal = { bg = "#0a0e10" },
       WinBar = { bg = "#1a1c23" },
       Folded = {bg = "#181b20", fg = "#485e69", fmt = "bold"},
       StatusLine = { bg = "NONE" },

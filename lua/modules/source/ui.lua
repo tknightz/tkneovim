@@ -30,7 +30,7 @@ return {
   -- Fastest color parser Neovim
   ["colorizer"] = {
     path = "norcalli/nvim-colorizer.lua",
-    event = "BufRead",
+    cmd = {"ColorizerToggle", "ColorizerAttachToBuffer"},
   },
 
   -- Rich features buffer indicator

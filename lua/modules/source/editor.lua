@@ -59,9 +59,9 @@ return {
     path = "AndrewRadev/tagalong.vim",
     ft = {"html", "xml", "typescriptreact", "javascriptreact", "javascript"},
   },
-  
+
   ["modes"] = {
     path = "mvllow/modes.nvim",
-    event = "BufRead",
+    after = "theme",
   },
 }
