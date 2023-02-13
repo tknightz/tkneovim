@@ -23,7 +23,7 @@ return {
   },
 
   ["treesitter-rainbow"] = {
-    path = "p00f/nvim-ts-rainbow",
+    path = "mrjones2014/nvim-ts-rainbow",
     after = "treesitter"
   },
 

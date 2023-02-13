@@ -34,6 +34,7 @@ require('lualine').setup {
         "lspsagaoutline",
         "fugitive",
         "Outline",
+        "dbui",
         "",
       },
     },

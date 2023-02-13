@@ -62,6 +62,7 @@ return {
           "dirvish",
           "fugitive",
           "neo-tree",
+          "dbui"
         }
       })
     end
@@ -112,9 +113,16 @@ return {
   },
 
   -- Better search
-  ["incsearch"] = {
-    path = "haya14busa/is.vim",
-    keys = "/"
+  ["autohls"] = {
+    path = "asiryk/auto-hlsearch.nvim",
+    tag = "1.0.0",
+    config = function()
+      require("auto-hlsearch").setup({
+        remap_keys = { "/", "?", "*", "#", "n", "N" },
+        create_commands = true,
+      })
+    end,
+    keys = {"/", "?", "*", "#"},
   },
 
   -- Sometimes need to focus in one window

@@ -1,11 +1,11 @@
 local lspsaga = require('lspsaga')
 
-lspsaga.init_lsp_saga({
+lspsaga.setup({
   border_style = 'rounded',
   symbol_in_winbar = {
-    enable = true,
-    in_custom = true,
-    show_file = true,
+    enable = false,
+    in_custom = false,
+    show_file = false,
     separator = " ",
   },
   show_outline = {
@@ -21,6 +21,12 @@ lspsaga.init_lsp_saga({
     -- auto refresh when change buffer
     auto_refresh = true,
   },
-  diagnostic_header = { "😡 ", "😥 ", "😤 ", "😐 " },
-  code_action_icon = "🍬",
+  ui = {
+    theme = "round",
+    border = "rounded",
+    code_action = "🍬",
+    colors = {
+      normal_bg = "NONE",
+    }
+  },
 })

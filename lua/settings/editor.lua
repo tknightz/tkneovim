@@ -22,7 +22,7 @@ local options = {
 
   termguicolors = true,
   -- undofile      = true,
-  signcolumn    = "yes",
+  signcolumn    = "auto:1-3",
   encoding      = "UTF-8",
   background    = "dark",
   ignorecase    = true,
@@ -48,6 +48,7 @@ local options = {
   incsearch     = true,
   showmode      = false,
   laststatus    = 3,
+  shortmess     = "IF",
 
   shada         = {"!", "'1000", "<50", "s10", "h"},
 }

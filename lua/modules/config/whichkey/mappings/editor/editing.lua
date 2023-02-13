@@ -9,5 +9,6 @@ return {
   m = {":set mouse=a<cr>",   "mouse on"},
   M = {":set mouse=<cr>",    "mouse off"},
   n = {":tabnext<cr>",       "next tab"},
+  N = {":tabnew<cr>",        "new tab"},
   p = {":tabprevious<cr>",   "prev tab"},
 }

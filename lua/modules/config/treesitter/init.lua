@@ -1,5 +1,6 @@
 local ts_config = require("nvim-treesitter.configs")
-local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+local parser = require("nvim-treesitter.parsers")
+local ft_to_parser = parser.filetype_to_parsername
 ft_to_parser.ejs = "embedded_template"
 
 ts_config.setup {
@@ -16,17 +17,7 @@ ts_config.setup {
   highlight = {
     enable = true,
     use_languagetree = true,
-    additional_vim_regex_highlighting = {
-      "javascript",
-      "jsx",
-      "javascriptreact",
-      "python",
-      "ts",
-      "tsx",
-      "markdown",
-      "org",
-      "sql",
-    }
+    additional_vim_regex_highlighting = {"sql"},
   },
   incremental_selection = {
     enable = true,

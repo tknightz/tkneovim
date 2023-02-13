@@ -2,7 +2,7 @@ local M = {}
 
 local color_lua_setup = function(colorname)
   require(colorname).setup{
-    style = "darker",
+    style = "deep",
     dark_theme = "onedark",
     transparent = true,
     transparent_background = true,
@@ -37,9 +37,10 @@ local color_lua_setup = function(colorname)
       FloatBorder = { fg = "#2e3c43", bg = "NONE" },
       PmenuSel = { fg = "black", bg = "#4fa6ed" },
       LspSagaHoverBorder = { fg = "#2e3c43" },
+      SagaBorder = { fg = "#7e3992" },
       DashboardHeader = { fg = "#555555" },
       DashboardCenter = { fg = "#555555" },
-      DashboardFooter = { fg = "#555555" },
+      DashboardFooter = { fg = "#ed4a7a", fmt = "NONE" },
       DashboardShortcut = { fg = "#555555" },
       IndentBlanklineChar = { fg = "#3b3b3b" },
       Whitespace = { fg = "#353535", fmt = "nocombine" },
@@ -65,6 +66,7 @@ local color_lua_setup = function(colorname)
       TelescopeSelection = { bg = "#2e3c43" },
       TelescopePromptCounter = { fg = "#82aaff" },
 
+      WhichKeyFloat = { bg = "#0a0e10" },
       WhichKeyBorder = { fg = "#2e3c43" },
       WhichKeySeparator = { fg = "#00d364", fmt = "NONE" },
 
