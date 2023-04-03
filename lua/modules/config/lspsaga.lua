@@ -29,4 +29,8 @@ lspsaga.setup({
       normal_bg = "NONE",
     }
   },
+  diagnostic = {
+    on_insert_follow = true,
+    on_insert = false,
+  },
 })

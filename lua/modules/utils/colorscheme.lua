@@ -1,5 +1,7 @@
 local M = {}
 
+vim.g.material_style = "deep ocean"
+
 local color_lua_setup = function(colorname)
   require(colorname).setup{
     style = "deep",
@@ -34,6 +36,7 @@ local color_lua_setup = function(colorname)
       QuickFixLine = { bg = "#7e3992", fg = "NONE", fmt = "NONE" },
       CmpBorder = { fg = "#2e3c43" },
       CmpWin = { bg = "NONE"},
+      CmpItemKindText = { fg = "#dd9046"},
       FloatBorder = { fg = "#2e3c43", bg = "NONE" },
       PmenuSel = { fg = "black", bg = "#4fa6ed" },
       LspSagaHoverBorder = { fg = "#2e3c43" },
@@ -43,6 +46,7 @@ local color_lua_setup = function(colorname)
       DashboardFooter = { fg = "#ed4a7a", fmt = "NONE" },
       DashboardShortcut = { fg = "#555555" },
       IndentBlanklineChar = { fg = "#3b3b3b" },
+      IndentBlanklineContextChar = { fg = "#7e3992" },
       Whitespace = { fg = "#353535", fmt = "nocombine" },
       Nontext = { fg = "#353535", fmt = "nocombine" },
       TreesitterContext = { bg = "#342b27" },

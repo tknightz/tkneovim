@@ -15,7 +15,8 @@ require("neo-tree").setup({
   window = {
     width = 35,
     mappings = {
-      ["<space>"] = "none"
+      ["<space>"] = "none",
+      ["w"] = "open_with_window_picker",
     }
   },
   filesystem = {

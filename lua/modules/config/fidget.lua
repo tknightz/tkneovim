@@ -1,10 +1,11 @@
 require"fidget".setup{
   text = {
-    spinner = "arc"
+    spinner = "arc",
+    done = " ",
   },
   window = {
     blend = 0,
   },
 }
 
-vim.cmd("hi FidgetTitle guifg=#bf68b9 gui=bold")
+vim.cmd("hi FidgetTitle guifg=#bf68b9 gui=bold,nocombine")

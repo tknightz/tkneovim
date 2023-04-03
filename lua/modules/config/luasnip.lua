@@ -9,7 +9,9 @@ vim.cmd("packadd friendlysnippet")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 ls.config.setup({
-  delete_check_events = "TextChanged"
+  -- delete_check_events = "TextChanged"
+  region_check_events = "InsertEnter",
+  delete_check_events = "InsertLeave"
 })
 
 ls.add_snippets("all", {
@@ -25,14 +27,13 @@ ls.add_snippets("python", {
 ls.add_snippets("javascript", {
   s(
     "newpromise",
-    fmt(
-     [[
-     new Promise((resolve, reject) => {{
-        {1}
-     }})
-     ]], {
-       i(1)
-     }
+    fmt([[
+    new Promise((resolve, reject) => {{
+      {1}
+    }})
+    ]], {
+        i(1)
+      }
     )
   )
 })

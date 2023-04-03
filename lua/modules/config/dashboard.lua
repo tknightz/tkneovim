@@ -3,7 +3,7 @@ local db = require("dashboard");
 db.setup{
   config = {
     disable_move = true,
-    project = { limit = 8, icon = ' ', label = 'Project', action = 'Telescope find_files cwd=' },
+    project = { limit = 4, icon = ' ', label = 'Project', action = 'Telescope find_files cwd=' },
     shortcut = {
       { desc = "📦 Packer Update", group = "DashboardShortCut", action = "PackerSync", key = "p" },
       { desc = "🍄 TS Update", group = "DashboardShortCut", action = "TSUpdate", key = "t" },
@@ -21,8 +21,8 @@ db.setup{
       "    ██║   ██╔═██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║ ",
       "    ██║   ██║  ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
       "    ╚═╝   ╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-      "                _____***_____             ",
-      "                My own editor!            ",
+      "               ______***______            ",
+      "               Weapon of Gods!            ",
       "                                          ",
       "                                          ",
     },

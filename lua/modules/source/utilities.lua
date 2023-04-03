@@ -290,7 +290,13 @@ return {
     path = "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({
-        highlight = { fg = "#e95678", italic = true }
+        highlight = { fg = "#dd571c", bold = true },
+        use_colorpalette = true,
+        colorpalette = {
+          { fg = "#dd571c", bold = true },
+          { fg = "#fcae1e", bold = true },
+          { fg = "#ed7014", bold = true },
+        },
       })
     end,
     after = "treesitter",
@@ -327,5 +333,37 @@ return {
   ["navic"] = {
     path = "SmiteshP/nvim-navic",
     after = "theme",
+  },
+
+  ["comment-box"] = {
+    path = "LudoPinelli/comment-box.nvim",
+    cmd = {"CBline", "CBcbox"},
+    config = function()
+      require('comment-box').setup()
+    end
+  },
+
+  ["codeium"] = {
+    path = "Exafunction/codeium.vim",
+    cmd = "Codeium",
+    config = function()
+      vim.keymap.set('i', '<C-l>', function () return vim.fn['codeium#Accept']() end, { silent = true, expr = true })
+      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+    end
+  },
+
+  ["spider"] = {
+    path = "chrisgrieser/nvim-spider",
+    event = "BufRead",
+    config = function()
+      -- Keymaps
+      vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
+      vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
+      vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
+      vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
+      vim.keymap.set({"n", "o", "x"}, "cw", "ce", { desc = "Change word" })
+    end
   },
 }

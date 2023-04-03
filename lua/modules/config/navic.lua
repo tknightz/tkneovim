@@ -9,6 +9,10 @@ end
 
 local function setup_highlights()
   local winbar_colors = get_color("WinBar")
+  if winbar_colors.background == nil then
+    return
+  end
+
   vim.cmd("hi NavicText guibg="..winbar_colors.background)
   vim.cmd("hi NavicSeparator guibg="..winbar_colors.background)
 

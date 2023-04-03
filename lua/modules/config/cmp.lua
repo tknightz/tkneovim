@@ -37,7 +37,7 @@ local cmp_win_options = {
     { "╰", "CmpBorder" },
     { "│", "CmpBorder" },
   },
-  scrollbar = '▌',
+  scrollbar = '│',
   winhighlight = "Normal:CmpWin,CursorLine:PmenuSel"
 }
 
@@ -66,7 +66,7 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping.complete({ select = true }),
     ['<C-e>'] = cmp.mapping.close(),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
@@ -74,6 +74,7 @@ cmp.setup({
       elseif has_words_before() then
         cmp.complete()
       else
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-f>',true,false,true))
         fallback()
       end
     end, { "i", "s" }),

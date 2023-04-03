@@ -10,7 +10,11 @@ null_ls.setup {
         return utils.root_has_file("node_modules/.bin/prettier") and not utils.root_has_file("node_modules/.bin/prettierd")
       end,
     }),
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettierd.with({
+      condition = function(utils)
+        return utils.root_has_file("node_modules/.bin/prettierd") and not utils.root_has_file("node_modules/.bin/prettier")
+      end,
+    }),
     null_ls.builtins.formatting.sql_formatter.with({
       extra_args = function()
         local default_config_path = vim.fn.stdpath("config") .. "/lua/modules/config/masonlspconfig/.sqlformatter.json"
@@ -25,11 +29,6 @@ null_ls.setup {
         return not params.bufname:match "fugitive://"
       end,
     }),
-    -- null_ls.builtins.code_actions.eslint.with({
-    --   condition = function(utils)
-    --     return utils.root_has_file("node_modules/.bin/eslint") and not utils.root_has_file("node_modules/.bin/eslint_d")
-    --   end,
-    -- }),
     null_ls.builtins.diagnostics.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file("node_modules/.bin/eslint_d")
@@ -38,11 +37,6 @@ null_ls.setup {
         return not params.bufname:match "fugitive://"
       end,
     }),
-    -- null_ls.builtins.code_actions.eslint_d.with({
-    --   condition = function(utils)
-    --     return utils.root_has_file("node_modules/.bin/eslint_d")
-    --   end,
-    -- }),
     -- null_ls.builtins.completion.spell,
 
     -- python

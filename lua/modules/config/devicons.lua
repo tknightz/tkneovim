@@ -55,21 +55,6 @@ require "nvim-web-devicons".setup {
       color = "#C8CCD4",
       name = "out"
     },
-    ["Dockerfile.dev"] = {
-      icon = "",
-      color = "#b8b5ff",
-      name = "Dockerfile"
-    },
-    ["Dockerfile.proc"] = {
-      icon = "",
-      color = "#b8b5ff",
-      name = "Dockerfile"
-    },
-    Dockerfile = {
-      icon = "",
-      color = "#b8b5ff",
-      name = "Dockerfile"
-    },
     rb = {
       icon = "",
       color = "#ff75a0",
@@ -115,7 +100,30 @@ require "nvim-web-devicons".setup {
       color = "#6d8086",
       name = "Default",
     }
-  };
+  },
+
+  override_by_filename = {
+    ["Dockerfile.dev"] = {
+      icon = " ",
+      color = "#b8b5ff",
+      name = "Dockerfile"
+    },
+    ["Dockerfile.proc"] = {
+      icon = "",
+      color = "#b8b5ff",
+      name = "Dockerfile"
+    },
+    Dockerfile = {
+      icon = "",
+      color = "#b8b5ff",
+      name = "Dockerfile"
+    },
+    dockerfile = {
+      icon = "",
+      color = "#b8b5ff",
+      name = "Dockerfile"
+    },
+  },
 
   default = true
 }

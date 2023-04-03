@@ -4,7 +4,7 @@ local util = require("lspconfig.util")
 local M = {}
 
 -- ensure servers for mason
-M.ensure_installed_servers = {"sumneko_lua", "tsserver", "yamlls", "pyright"};
+M.ensure_installed_servers = {"tsserver", "yamlls", "pyright"};
 
 -- config that apply to all servers
 M.general_configs = {
