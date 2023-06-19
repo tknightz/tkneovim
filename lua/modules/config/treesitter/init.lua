@@ -1,7 +1,4 @@
 local ts_config = require("nvim-treesitter.configs")
-local parser = require("nvim-treesitter.parsers")
-local ft_to_parser = parser.filetype_to_parsername
-ft_to_parser.ejs = "embedded_template"
 
 ts_config.setup {
   ensure_installed = {

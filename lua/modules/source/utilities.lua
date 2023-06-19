@@ -28,14 +28,6 @@ return {
     cmd = {"NeoTree", "NeoTreeRevealToggle"}
   },
 
-  -- Faster filetype detection
-  ["filetype"] = {
-    path = "nathom/filetype.nvim",
-    config = function()
-      require("filetype").setup{}
-    end,
-  },
-
   -- Tired of Undo things?
   ["mundo"] = {
     path = "simnalamburt/vim-mundo",
@@ -278,12 +270,6 @@ return {
       require("vgit").setup()
     end,
     cmd = "VGit"
-  },
-
-  ["stablize"] = {
-    path = "luukvbaal/stabilize.nvim",
-    config = function() require("stabilize").setup() end,
-    event = "WinNew",
   },
 
   ["hlargs"] = {

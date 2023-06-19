@@ -57,7 +57,7 @@ return {
   -- Change html tags quickly
   ["tagalong"] = {
     path = "AndrewRadev/tagalong.vim",
-    ft = {"html", "xml", "typescriptreact", "javascriptreact", "javascript"},
+    ft = {"html", "typescriptreact", "javascriptreact", "javascript"},
   },
 
   ["modes"] = {

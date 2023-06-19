@@ -23,5 +23,5 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
-g.did_load_filetypes = 1
+-- g.did_load_filetypes = 1
 g.loaded_fzf = 1

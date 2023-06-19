@@ -1,5 +1,5 @@
 -- Python for injecting rst
-require("vim.treesitter.query").set_query("python", "injections", [[
+vim.treesitter.query.set("python", "injections", [[
 ((call
 function: (attribute
   object: (identifier) @_re)

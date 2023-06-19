@@ -21,6 +21,10 @@ require("neo-tree").setup({
   },
   filesystem = {
     find_by_full_path_words = true,
+    bind_to_cwd = false,
+    cwd_target = {
+      sidebar = "none"
+    }
   },
 })
 

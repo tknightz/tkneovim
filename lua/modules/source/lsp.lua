@@ -28,7 +28,10 @@ return {
   -- Enhance lsp ui
   ["lspsaga"] = {
     path = "glepnir/lspsaga.nvim",
-    after = "lspconfig"
+    opt = true,
+    branch = "main",
+    after = "lspconfig",
+    -- event = "LspAttach",
   },
 
   -- Find trouble in your code
@@ -73,6 +76,7 @@ return {
 
   ["fidget"] = {
     path = "j-hui/fidget.nvim",
+    tag = "legacy",
     after = "theme",
   }
 }

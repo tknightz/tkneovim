@@ -41,7 +41,7 @@ local color_lua_setup = function(colorname)
       PmenuSel = { fg = "black", bg = "#4fa6ed" },
       LspSagaHoverBorder = { fg = "#2e3c43" },
       SagaBorder = { fg = "#7e3992" },
-      DashboardHeader = { fg = "#555555" },
+      DashboardHeader = { fg = "#41a7fc" },
       DashboardCenter = { fg = "#555555" },
       DashboardFooter = { fg = "#ed4a7a", fmt = "NONE" },
       DashboardShortcut = { fg = "#555555" },

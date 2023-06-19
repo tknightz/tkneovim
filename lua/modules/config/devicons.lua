@@ -20,6 +20,11 @@ require "nvim-web-devicons".setup {
       color = "#519ABA",
       name = "ts"
     },
+    tsx = {
+      icon = "",
+      color = "#519ABA",
+      name = "tsx"
+    },
     kt = {
       icon = "󱈙",
       color = "#ffcb91",
@@ -102,6 +107,9 @@ require "nvim-web-devicons".setup {
     }
   },
 
+  default = false,
+  strict = true,
+
   override_by_filename = {
     ["Dockerfile.dev"] = {
       icon = " ",
@@ -124,6 +132,4 @@ require "nvim-web-devicons".setup {
       name = "Dockerfile"
     },
   },
-
-  default = true
 }

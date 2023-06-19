@@ -22,7 +22,7 @@ M.custom_configs = {
 
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+    root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
     init_options = {
       preferences = {
         disableSuggestions = true
@@ -30,13 +30,12 @@ M.custom_configs = {
     }
   },
 
-  eslint = {
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = util.root_pattern("package.json", ".eslintrc.json", ".eslintrc.js")
-  },
-
   emmet_ls = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  },
+
+  prismals = {
+    filetypes = { "prisma" }
   },
 
   yamlls = {

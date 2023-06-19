@@ -22,11 +22,12 @@ return {
   -- Projects management and navigation
   ["project_nvim"] = {
     path = "ahmedkhalf/project.nvim",
-    module_pattern = {"projects", "telescope._extensions.projects"},
     config = function()
-      require("project_nvim").setup{ }
+      require("project_nvim").setup{
+        patterns = {".git"},
+        detection_methods = {"pattern"},
+      }
     end,
-    cmd = {"ProjectRoot"}
   },
 
   ["scope"] = {

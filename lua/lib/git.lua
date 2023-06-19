@@ -101,7 +101,7 @@ E.my_git_stash = function(opts)
 
   local delta = config.previewers.new_termopen_previewer {
     get_command = function(entry)
-      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'stash', 'show', entry.value }
+      return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'stash', 'show', '-p', entry.value }
     end
   }
 

@@ -49,6 +49,8 @@ local options = {
   showmode      = false,
   laststatus    = 3,
   shortmess     = "IF",
+  conceallevel  = 2,
+  concealcursor = "n",
 
   shada         = {"!", "'1000", "<50", "s10", "h"},
 }

@@ -31,6 +31,6 @@ return {
     ['.'] = {":Telescope current_buffer_tags<cr>", "current_buffer"},
   },
 
-  w       = {":Telescope grep_string<CR>", "web"},
+  w       = {":Telescope grep_string<CR>", "word"},
 
 }
