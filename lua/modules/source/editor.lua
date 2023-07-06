@@ -9,7 +9,6 @@ return {
       { 'hrsh7th/cmp-path', after = "cmp" },
       { 'hrsh7th/cmp-emoji', after = "cmp" },
       { 'saadparwaiz1/cmp_luasnip', after = "cmp" },
-      { 'lukas-reineke/cmp-under-comparator', module = "cmp-under-comparator" },
       { 'hrsh7th/cmp-cmdline', after = "cmp" },
     },
     event = {"InsertEnter", "CmdlineEnter"},

@@ -112,7 +112,7 @@ require "nvim-web-devicons".setup {
 
   override_by_filename = {
     ["Dockerfile.dev"] = {
-      icon = " ",
+      icon = "",
       color = "#b8b5ff",
       name = "Dockerfile"
     },

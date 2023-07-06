@@ -10,8 +10,8 @@ win.default_opts = function(options)
 end
 
 vim.fn.sign_define("DiagnosticSignError", {text = " ", numhl = "LspDiagnosticsDefaultError", texthl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = " ", numhl = "LspDiagnosticsDefaultWarning", texthl = "LspDiagnosticsDefaultWarning"})
-vim.fn.sign_define("DiagnosticSignInfo", {text = " ", numhl = "LspDiagnosticsDefaultInfo", texthl = "LspDiagnosticsDefaultInformation"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = "󰀦 ", numhl = "LspDiagnosticsDefaultWarning", texthl = "LspDiagnosticsDefaultWarning"})
+vim.fn.sign_define("DiagnosticSignInfo", {text = "󰋼 ", numhl = "LspDiagnosticsDefaultInfo", texthl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("DiagnosticSignHint", {text = " ", numhl = "LspDiagnosticsDefaultHint", texthl = "LspDiagnosticsDefaultHint"})
 
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

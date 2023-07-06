@@ -22,7 +22,7 @@ local function toggle_lsp()
 end
 
 return {
-  name = "LSP",
+  name = "lsp",
 
   a = {":Lspsaga code_action<CR>",             "actions"},
   s = {":Lspsaga signature_help<CR>",          "signature_help"},

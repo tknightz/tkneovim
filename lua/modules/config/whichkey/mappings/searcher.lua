@@ -1,5 +1,5 @@
 return {
-  name = "Search",
+  name = "search",
 
   s       = {":Telescope<cr>",                           "searcher" },
   f       = {":Telescope find_files<cr>",                "file" },

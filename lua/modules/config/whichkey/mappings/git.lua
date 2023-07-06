@@ -13,7 +13,7 @@ end
 
 return {
 
-  name = "Git",
+  name = "git",
 
   f     = {":Telescope git_files<cr>",    "files"},
   s     = {git_util.my_git_status,        "status"},

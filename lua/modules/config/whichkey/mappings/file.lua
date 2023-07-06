@@ -1,5 +1,5 @@
 return {
-  name = "File",
+  name = "files",
 
   b = { ":Telescope marks<cr>",                  "Book marks"},
   f = { ":Telescope find_files hidden=true<cr>", "Find File" },

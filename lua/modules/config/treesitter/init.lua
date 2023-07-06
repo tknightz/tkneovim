@@ -89,8 +89,10 @@ ts_config.setup {
   rainbow = {
     enable = true,
     disable = { "python", "html" },
-    extended_mode = false,
-    max_file_lines = nil,
+    -- Which query to use for finding delimiters
+    query = 'rainbow-parens',
+    -- Highlight the entire buffer all at once
+    strategy = require('ts-rainbow').strategy.global,
   }
 }
 

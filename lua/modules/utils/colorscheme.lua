@@ -7,7 +7,6 @@ local color_lua_setup = function(colorname)
     style = "deep",
     dark_theme = "onedark",
     transparent = true,
-    transparent_background = true,
     code_style = {
       keywords = "italic,bold",
       functions = "bold"
@@ -70,7 +69,7 @@ local color_lua_setup = function(colorname)
       TelescopeSelection = { bg = "#2e3c43" },
       TelescopePromptCounter = { fg = "#82aaff" },
 
-      WhichKeyFloat = { bg = "#0a0e10" },
+      WhichKeyFloat = { bg = "none" },
       WhichKeyBorder = { fg = "#2e3c43" },
       WhichKeySeparator = { fg = "#00d364", fmt = "NONE" },
 

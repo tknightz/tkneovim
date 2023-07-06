@@ -1,5 +1,5 @@
 return {
-  name = "Buffers",
+  name = "buffers",
 
   n     = {"<cmd>bnext<cr>",                                   "next"},
   p     = {"<cmd>bprevious<cr>",                               "previous"},

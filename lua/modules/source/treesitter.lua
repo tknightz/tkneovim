@@ -23,7 +23,8 @@ return {
   },
 
   ["treesitter-rainbow"] = {
-    path = "mrjones2014/nvim-ts-rainbow",
+    path = "HiPhish/nvim-ts-rainbow2",
+    module = "ts-rainbow",
     after = "treesitter"
   },
 

@@ -4,7 +4,7 @@ local util = require("lspconfig.util")
 local M = {}
 
 -- ensure servers for mason
-M.ensure_installed_servers = {"tsserver", "yamlls", "pyright"};
+M.ensure_installed_servers = {"yamlls", "pyright"};
 
 -- config that apply to all servers
 M.general_configs = {
@@ -20,15 +20,19 @@ M.custom_configs = {
     filetypes = {"go", "gomod"},
   },
 
-  tsserver = {
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
-    init_options = {
-      preferences = {
-        disableSuggestions = true
-      }
-    }
+  tailwindcss = {
+    filetypes = {"css", "html", "svelte", "typescriptreact"},
   },
+
+  -- tsserver = {
+  --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  --   root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
+  --   init_options = {
+  --     preferences = {
+  --       disableSuggestions = true
+  --     }
+  --   }
+  -- },
 
   emmet_ls = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
