@@ -46,6 +46,8 @@ local color_lua_setup = function(colorname)
       DashboardShortcut = { fg = "#555555" },
       IndentBlanklineChar = { fg = "#3b3b3b" },
       IndentBlanklineContextChar = { fg = "#7e3992" },
+      MiniIndentscopeSymbol = { fg = "#c75ae8" },
+
       Whitespace = { fg = "#353535", fmt = "nocombine" },
       Nontext = { fg = "#353535", fmt = "nocombine" },
       TreesitterContext = { bg = "#342b27" },

@@ -26,7 +26,7 @@ wk.register(vim.tbl_deep_extend("keep", base_mappings, {
   -- not a group mappings
   j = { jump_to_window, "jump" },
   y = { "<cmd>%y+<cr>", "yank to clipboard" },
-  n = { "<cmd>NeoTreeRevealToggle<cr>", "neotree" },
+  n = { "<cmd>Neotree toggle<cr>", "neotree" },
 }),
   {
     prefix = "<Leader>",
@@ -38,7 +38,7 @@ wk.register(vim.tbl_deep_extend("keep", base_mappings, {
   -- not a group mappings
   j = { jump_to_window, "jump" },
   y = { "<cmd>%y+<cr>", "yank to clipboard" },
-  n = { "<cmd>NeoTreeRevealToggle<cr>", "neotree" },
+  n = { "<cmd>Neotree toggle<cr>", "neotree" },
 }),
   {
     prefix = "<Leader>",

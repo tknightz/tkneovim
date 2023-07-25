@@ -2,12 +2,13 @@ return {
   -- Fuzzy search all the stuffs
   ["telescope"] = {
     path = "nvim-telescope/telescope.nvim",
-    requires = {
+    dependencies = {
       -- { "nvim-lua/popup.nvim", module = "popup" },
       { "nvim-lua/plenary.nvim", module = "plenary" },
       { "nvim-telescope/telescope-symbols.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      { 'nvim-telescope/telescope-live-grep-args.nvim', before = "telescope" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
+      { "tknightz/telescope-termfinder.nvim" }
     },
 
     cmd = "Telescope",
@@ -21,11 +22,11 @@ return {
 
   ["neotree"] = {
     path = "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = { 
+    branch = "v3.x",
+    dependencies = { 
       { "MunifTanjim/nui.nvim", module = "nui" },
     },
-    cmd = {"NeoTree", "NeoTreeRevealToggle"}
+    cmd = {"Neotree"}
   },
 
   -- Tired of Undo things?
@@ -70,7 +71,7 @@ return {
   ["winjumping"] = {
     path = "s1n7ax/nvim-window-picker",
     module = "window-picker",
-    tag = 'v1.*',
+    version = 'v2.*',
     config = function()
       require('window-picker').setup{
         filter_rules = {
@@ -89,7 +90,17 @@ return {
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
-    after = "treesitter",
+  },
+
+  ["indent-scope"] = {
+    path = "echasnovski/mini.indentscope",
+    branch = "stable",
+    config = function()
+      require('mini.indentscope').setup({ 
+        symbol = "│",
+        options = { try_as_border = true },
+      })
+    end,
   },
 
   -- Extended f, F, t and T key mappings
@@ -107,7 +118,7 @@ return {
   -- Better search
   ["autohls"] = {
     path = "asiryk/auto-hlsearch.nvim",
-    tag = "1.0.0",
+    version = "1.0.0",
     config = function()
       require("auto-hlsearch").setup({
         remap_keys = { "/", "?", "*", "#", "n", "N" },
@@ -124,13 +135,6 @@ return {
     cmd = {"MaximizerToggle"}
   },
 
-  -- Run code inside Nvim
-  ["sniprun"] = {
-    path = "michaelb/sniprun",
-    run = "bash ./install.sh",
-    cmd = {"SnipRun", "SnipInfo"}
-  },
-
   -- Move around with speed of light
   ["lightspeed"] = {
     path = "ggandor/lightspeed.nvim",
@@ -140,16 +144,15 @@ return {
   -- Interact with databases inside Neovim
   ["dadbodui"] = {
     path = "kristijanhusak/vim-dadbod-ui",
-    requires = { "tpope/vim-dadbod" },
+    dependencies = {
+      "tpope/vim-dadbod",
+      { 
+        "kristijanhusak/vim-dadbod-completion", init = function()
+          vim.g.vim_dadbod_completion_mark = 'Database'
+        end
+      },
+    },
     cmd = {"DBUI", "DBUIAddConnection", "DBUIToggle"},
-  },
-
-  ["dadbod_completion"] = {
-    path = "kristijanhusak/vim-dadbod-completion",
-    setup = function()
-      vim.g.vim_dadbod_completion_mark = 'Database'
-    end,
-    after = "dadbodui"
   },
 
   -- Nice looking notifications with animation
@@ -176,12 +179,6 @@ return {
     cmd = "StartupTime" 
   },
 
-  -- Distraction free - writing mode
-  ["truezen"] = {
-    path = "Pocco81/TrueZen.nvim",
-    cmd = {"TZMinimalist", "TZFocus", "TZAtaraxis"},
-  },
-
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
     ft = "qf"
@@ -206,13 +203,7 @@ return {
   ["prettier"] = {
     path = "prettier/vim-prettier",
     cmd = {"Prettier", "PrettierAsync", "PrettierFragment"},
-    run = "npm install"
-  },
-
-  ["bracey"] = {
-    path = "turbio/bracey.vim",
-    run = "npm install --prefix server",
-    cmd = "Bracey",
+    build = "npm install"
   },
 
   -- A plugin to visualise and resolve merge conflicts in neovim
@@ -242,26 +233,16 @@ return {
 
   ["toggleterm"] = {
     path = "akinsho/toggleterm.nvim",
-    tag = "*",
+    version = "*",
     cmd = "ToggleTerm",
     config = function()
       require("toggleterm").setup()
     end
   },
 
-  ["toggletermfinder"] = {
-    path = "tknightz/telescope-termfinder.nvim",
-    after = "telescope"
-  },
-
   ["editorconfig"] = {
     path = "gpanders/editorconfig.nvim",
     event = "VimEnter",
-  },
-
-  ["fcursorhold"] = {
-    path = "antoinemadec/FixCursorHold.nvim",
-    event = "CursorHold",
   },
 
   ["vgit"] = {
@@ -285,7 +266,7 @@ return {
         },
       })
     end,
-    after = "treesitter",
+    event = "Bufread",
   },
   --
   -- ["scrollbar"] = {
@@ -306,19 +287,8 @@ return {
     end
   },
 
-  ["printer"] = {
-    path = "rareitems/printer.nvim",
-    keys = "gp",
-    config = function()
-      require('printer').setup({
-        keymap = "gp" -- Plugin doesn't have any keymaps by default
-      })
-    end
-  },
-
   ["navic"] = {
     path = "SmiteshP/nvim-navic",
-    after = "theme",
   },
 
   ["comment-box"] = {

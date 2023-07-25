@@ -21,7 +21,9 @@ require("neo-tree").setup({
   },
   filesystem = {
     find_by_full_path_words = true,
-    follow_current_file = true,
+    follow_current_file = {
+      enabled = true
+    },
     use_libuv_file_watcher = true,
     bind_to_cwd = false,
     cwd_target = {

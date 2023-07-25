@@ -17,6 +17,7 @@ for _, server in pairs(installed_packages) do
   if consts.is_lsp_server(server) then
     local server_name = server_mapping.package_to_lspconfig[server.name]
     local custom_config = consts.custom_configs[server_name]
+    print(custom_config, server)
 
     local config = custom_config and vim.tbl_extend("force", consts.general_configs, custom_config) or consts.general_configs
 

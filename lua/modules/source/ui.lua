@@ -4,7 +4,7 @@ return {
   ["theme"] = {
     path = "navarasu/onedark.nvim",
     colorname = "onedark",
-    event = "VimEnter",
+    priority = 50,
   },
 
   -- Show dashboard first come
@@ -36,12 +36,12 @@ return {
   -- Rich features buffer indicator
   ["bufferline"] = {
     path = "akinsho/nvim-bufferline.lua",
-    after = "theme"
+    priority = 51,
   },
 
   -- Fast status line
   ["lualine"] = {
     path = "nvim-lualine/lualine.nvim",
-    after = "theme",
+    priority = 52,
   },
 }

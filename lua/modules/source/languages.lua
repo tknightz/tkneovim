@@ -1,7 +1,7 @@
 return {
   ["sphinx"] = {
     path = "stsewd/sphinx.nvim",
-    run = ":UpdateRemotePlugins",
+    build = ":UpdateRemotePlugins",
     ft = {"python"},
   },
 
@@ -14,19 +14,18 @@ return {
   ["mdpreview"] = {
     path = "iamcco/markdown-preview.nvim",
     ft = {"markdown"},
-    run = "cd app && yarn install"
+    build = "cd app && yarn install"
   },
 
   -- Emmet, quickly expand code html, jsx, tsx
-  ["emmet"] = {
-    path = "mattn/emmet-vim",
-    ft = {"html", "css", "javascriptreact", "typescriptreact" }
-  },
+  -- ["emmet"] = {
+  --   path = "mattn/emmet-vim",
+  --   ft = {"html", "css", "javascriptreact", "typescriptreact" }
+  -- },
 
   ["typescript-tools"] = {
     path = "pmizio/typescript-tools.nvim",
-    requires = { "nvim-lua/plenary.nvim", module = "plenary" },
-    after = "lspconfig",
+    dependencies = { "nvim-lua/plenary.nvim", module = "plenary" },
     config = function()
       require("typescript-tools").setup {}
     end,
@@ -36,7 +35,6 @@ return {
   ["orgmode"] = {
     path = "nvim-orgmode/orgmode",
     ft = "org",
-    after = "treesitter",
   },
 
   ["neorg"] = {
@@ -57,6 +55,6 @@ return {
         },
       }
     end,
-    run = ":Neorg sync-parsers",
+    build = ":Neorg sync-parsers",
   }
 }

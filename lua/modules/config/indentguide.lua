@@ -1,7 +1,5 @@
 require('indent_blankline').setup {
   use_treesitter = false,
-  show_trailing_blankline_indent = false,
-  show_current_context = true,
   show_end_of_line = false,
   filetype_exclude = {
     "help",
@@ -28,9 +26,12 @@ require('indent_blankline').setup {
   context_char = "│",
   concealcursor = 'inc',
   conceallevel = 2,
-  faster = 1,
   context_patterns = {'class', 'function', 'def', 'method', 'if', 'for', 'while', 'block'},
   space_char_blankline = ' ',
+
+  show_trailing_blankline_indent = false,
+  show_current_context = false,
+
   char_highlight_list = {
     'IndentBlanklineChar'
   },

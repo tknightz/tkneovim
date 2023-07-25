@@ -1,13 +1,13 @@
 local function on_attach(client, bufnr)
   -- Load signature_help
-  require('lsp_signature').on_attach({
-    bind = true,
-    hint_prefix = "🌸 ",
-    handler_opts = {
-      border = "rounded"
-    },
-    transparency = 1,
-  }, bufnr)
+  -- require('lsp_signature').on_attach({
+  --   bind = true,
+  --   hint_prefix = "🌸 ",
+  --   handler_opts = {
+  --     border = "rounded"
+  --   },
+  --   transparency = 1,
+  -- }, bufnr)
 
   -- load nvim-navic
   if client.server_capabilities.documentSymbolProvider then

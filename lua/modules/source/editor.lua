@@ -2,26 +2,22 @@ return {
   -- Providing completion out of the box
   ["cmp"] = {
     path = "hrsh7th/nvim-cmp",
-    module = "cmp",
-    requires = {
-      { 'hrsh7th/cmp-nvim-lsp', after = "cmp" },
-      { 'hrsh7th/cmp-buffer', after = "cmp" },
-      { 'hrsh7th/cmp-path', after = "cmp" },
-      { 'hrsh7th/cmp-emoji', after = "cmp" },
-      { 'saadparwaiz1/cmp_luasnip', after = "cmp" },
-      { 'hrsh7th/cmp-cmdline', after = "cmp" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-emoji",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-cmdline",
     },
-    event = {"InsertEnter", "CmdlineEnter"},
+    event = { "InsertEnter", "CmdlineEnter" },
   },
 
   ["luasnip"] = {
     path = "L3MON4D3/LuaSnip",
-    module = "luasnip",
-  },
-  
-  ["friendlysnippet"] = {
-    path = "rafamadriz/friendly-snippets",
-    module = "friendlysnippet"
+    dependencies = {
+      "rafamadriz/friendly-snippets"
+    },
   },
 
   -- Smart and powerful comment plugin for neovim
@@ -54,13 +50,12 @@ return {
   },
 
   -- Change html tags quickly
-  ["tagalong"] = {
-    path = "AndrewRadev/tagalong.vim",
-    ft = {"html", "typescriptreact", "javascriptreact", "javascript"},
-  },
+  -- ["tagalong"] = {
+  --   path = "AndrewRadev/tagalong.vim",
+  --   ft = {"html", "typescriptreact", "javascriptreact", "javascript"},
+  -- },
 
   ["modes"] = {
     path = "mvllow/modes.nvim",
-    after = "theme",
   },
 }

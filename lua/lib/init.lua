@@ -18,7 +18,8 @@ end
 
 
 M.load_module = function(name)
-  vim.cmd("packadd ".. name)
+  -- vim.cmd("packadd ".. name)
+  vim.cmd("Lazy load ".. name)
 
   local home_config_path = vim.fn.stdpath('config') .. '/lua/'
   local setup_path = 'modules/setup/' .. name

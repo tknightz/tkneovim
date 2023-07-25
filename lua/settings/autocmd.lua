@@ -29,3 +29,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end
 })
+
+vim.api.nvim_create_augroup('IndentBlankLineFix', {})
+vim.api.nvim_create_autocmd('WinScrolled', {
+  group = 'IndentBlankLineFix',
+  callback = function()
+    if vim.v.event.all.leftcol ~= 0 then
+      vim.cmd('silent! IndentBlanklineRefresh')
+    end
+  end,
+})

@@ -100,8 +100,8 @@ cmp.setup({
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp', priority = 2 },
-    { name = 'vim-dadbod-completion' },
-    { name = "luasnip", priority = 1 },
+    -- { name = 'vim-dadbod-completion' },
+    -- { name = "luasnip", priority = 1 },
     { name = 'path' },
     { name = 'emoji' },
     { name = 'nvim_lua' },

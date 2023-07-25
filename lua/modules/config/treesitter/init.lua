@@ -11,6 +11,9 @@ ts_config.setup {
     "go",
     "python",
   },
+  install = {
+    prefer_git = true
+  },
   highlight = {
     enable = true,
     use_languagetree = true,

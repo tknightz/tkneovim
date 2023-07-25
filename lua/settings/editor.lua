@@ -22,7 +22,7 @@ local options = {
 
   termguicolors = true,
   -- undofile      = true,
-  signcolumn    = "auto:1-3",
+  signcolumn    = "yes:2",
   encoding      = "UTF-8",
   background    = "dark",
   ignorecase    = true,
