@@ -5,7 +5,7 @@ db.setup{
     disable_move = true,
     project = { limit = 4, icon = ' ', label = 'Project', action = 'Telescope find_files cwd=' },
     shortcut = {
-      { desc = "📦 Packer Update", group = "DashboardShortCut", action = "PackerSync", key = "p" },
+      { desc = "📦 Modules Update", group = "DashboardShortCut", action = "Lazy update", key = "p" },
       { desc = "🍄 TS Update", group = "DashboardShortCut", action = "TSUpdate", key = "t" },
       { desc = "⚡ Startuptime", group = "DashboardShortCut", action = "StartupTime", key = "s" },
     },

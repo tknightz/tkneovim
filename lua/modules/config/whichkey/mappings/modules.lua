@@ -1,11 +1,10 @@
 return {
   name = "modules",
 
-  i = {":PackerInstall<cr>", "install"},
-  c = {":PackerClean<cr>",   "clean"},
-  C = {":PackerCompile<cr>", "compile"},
-  s = {":PackerSync<cr>",    "sync"},
-  S = {":PackerStatus<cr>",  "status"},
-  u = {":PackerUpdate<cr>",  "update"},
-  l = {":PackerLoad<cr>",    "load"}
+  i = {":Lazy install<cr>", "install"},
+  c = {":Lazy clean<cr>",   "clean"},
+  s = {":Lazy sync<cr>",    "sync"},
+  S = {":Lazy show<cr>",  "status"},
+  u = {":Lazy update<cr>",  "update"},
+  l = {":Lazy load<cr>",    "load"}
 }

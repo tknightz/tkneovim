@@ -13,12 +13,15 @@ local options = {
   fillchars     = {
     eob       = " ",
     diff      = "╱",
+    fold      = " ",
     foldopen  = "",
-    foldsep   = "│",
+    foldsep   = " ",
     foldclose = "»"
   },
 
   list          = true,
+
+  winblend      = 10,
 
   termguicolors = true,
   -- undofile      = true,
@@ -31,6 +34,7 @@ local options = {
   tw            = 79,
   foldmethod    = "indent",
   foldlevel     = 99,
+  foldcolumn    = "0",
   updatetime    = 2000,
   timeoutlen    = 500,
   hidden        = true,

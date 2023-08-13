@@ -24,15 +24,15 @@ M.custom_configs = {
     filetypes = {"css", "html", "svelte", "typescriptreact"},
   },
 
-  -- tsserver = {
-  --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  --   root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
-  --   init_options = {
-  --     preferences = {
-  --       disableSuggestions = true
-  --     }
-  --   }
-  -- },
+  tsserver = {
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
+    init_options = {
+      preferences = {
+        disableSuggestions = true
+      }
+    }
+  },
 
   emmet_ls = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },

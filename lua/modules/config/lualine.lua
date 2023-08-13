@@ -4,7 +4,9 @@ local function winbar_fmt()
 
   -- if in diffmode I don't wanna it show lsp and long filename
   if is_in_diffmode then
-    return vim.fn.fnamemodify(bufname, ":t")
+    local filename = vim.fn.fnamemodify(bufname, ":t")
+    local is_v1 = string.match(bufname, "diffview:///")
+    return is_v1 and filename .. " (v1)" or filename .. " (v2)"
   end
 
   local _, location = pcall(require("nvim-navic").get_location)
@@ -45,6 +47,10 @@ require('lualine').setup {
       {
         'branch',
         color = { fg = "#00c65c", gui = "bold" },
+        fmt = function (str)
+          local end_sign = string.len(str) > 20 and '...' or ''
+          return string.sub(str, 0, 20) .. end_sign;
+        end
       },
       {
         'diff',
@@ -68,6 +74,7 @@ require('lualine').setup {
         'filename',
         path = 1,
         color = { fg = "#ffffff" },
+        shorting_target = 30,
         fmt = function(str)
           local filetype = vim.api.nvim_buf_get_option(0, "filetype");
           if filetype == "NvimTree" or filetype == "neo-tree" then
@@ -136,11 +143,12 @@ require('lualine').setup {
         separator = '',
         padding = { right = 0, left = 1 },
       },
-      {
-        "filename",
-        path = 0,
-        color = { fg = "#6c6f93" },
-      }
+      winbar_fmt
+      -- {
+      --   "filename",
+      --   path = 0,
+      --   color = { fg = "#6c6f93" },
+      -- }
     }
   },
   tabline = {},

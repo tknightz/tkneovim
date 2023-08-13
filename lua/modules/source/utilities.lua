@@ -4,27 +4,23 @@ return {
     path = "nvim-telescope/telescope.nvim",
     dependencies = {
       -- { "nvim-lua/popup.nvim", module = "popup" },
-      { "nvim-lua/plenary.nvim", module = "plenary" },
-      { "nvim-telescope/telescope-symbols.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      { 'nvim-telescope/telescope-live-grep-args.nvim' },
-      { "tknightz/telescope-termfinder.nvim" }
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-symbols.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      "tknightz/telescope-termfinder.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
     },
 
     cmd = "Telescope",
   },
 
-  -- NvimTree explorer
-  -- ["nvimtree"] = {
-  --   path = "kyazdani42/nvim-tree.lua",
-  --   cmd = {"NvimTreeToggle", "NvimTreeOpen", "NvimTreeFindFile"}
-  -- },
-
   ["neotree"] = {
     path = "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    dependencies = { 
-      { "MunifTanjim/nui.nvim", module = "nui" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
     cmd = {"Neotree"}
   },
@@ -36,8 +32,14 @@ return {
   },
 
   -- Pretty fold with preview feature
-  ["prettyfold"] = {
-    path = "anuvyklack/pretty-fold.nvim",
+  -- ["prettyfold"] = {
+  --   path = "anuvyklack/pretty-fold.nvim",
+  --   event = "BufRead",
+  -- },
+
+  ["ufo"] = {
+    path = 'kevinhwang91/nvim-ufo',
+    dependencies = { 'kevinhwang91/promise-async' },
     event = "BufRead",
   },
 
@@ -71,6 +73,7 @@ return {
   ["winjumping"] = {
     path = "s1n7ax/nvim-window-picker",
     module = "window-picker",
+    lazy = true,
     version = 'v2.*',
     config = function()
       require('window-picker').setup{
@@ -84,19 +87,24 @@ return {
           },
         }
       }
-    end
+    end,
   },
 
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead"
   },
 
   ["indent-scope"] = {
     path = "echasnovski/mini.indentscope",
     branch = "stable",
+    event = "BufRead",
     config = function()
-      require('mini.indentscope').setup({ 
+      require('mini.indentscope').setup({
+        draw = {
+          priority = 100,
+        },
         symbol = "│",
         options = { try_as_border = true },
       })
@@ -146,7 +154,7 @@ return {
     path = "kristijanhusak/vim-dadbod-ui",
     dependencies = {
       "tpope/vim-dadbod",
-      { 
+      {
         "kristijanhusak/vim-dadbod-completion", init = function()
           vim.g.vim_dadbod_completion_mark = 'Database'
         end
@@ -176,11 +184,18 @@ return {
   -- Measure startup-time
   ["startuptime"] = {
     path = "tweekmonster/startuptime.vim",
-    cmd = "StartupTime" 
+    cmd = "StartupTime"
   },
 
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
+    config = function ()
+      require("bqf").setup({
+        preview = {
+          winblend = 10,
+        },
+      })
+    end,
     ft = "qf"
   },
 
@@ -197,6 +212,7 @@ return {
         }
       })
     end,
+    ft = "qf"
   },
 
   -- Prettier format code
@@ -240,19 +256,6 @@ return {
     end
   },
 
-  ["editorconfig"] = {
-    path = "gpanders/editorconfig.nvim",
-    event = "VimEnter",
-  },
-
-  ["vgit"] = {
-    path = "tanvirtin/vgit.nvim",
-    config = function()
-      require("vgit").setup()
-    end,
-    cmd = "VGit"
-  },
-
   ["hlargs"] = {
     path = "m-demare/hlargs.nvim",
     config = function()
@@ -268,14 +271,6 @@ return {
     end,
     event = "Bufread",
   },
-  --
-  -- ["scrollbar"] = {
-  --   path = "petertriho/nvim-scrollbar",
-  --   config = function()
-  --     require("scrollbar").setup()
-  --   end,
-  --   event = "BufRead",
-  -- },
 
   ["treejoin"] = {
     path = "Wansmer/treesj",
@@ -289,6 +284,7 @@ return {
 
   ["navic"] = {
     path = "SmiteshP/nvim-navic",
+    event = "LspAttach",
   },
 
   ["comment-box"] = {
@@ -310,16 +306,58 @@ return {
     end
   },
 
-  ["spider"] = {
-    path = "chrisgrieser/nvim-spider",
+  ["textobj"] = {
+    path = "chrisgrieser/nvim-various-textobjs",
+    event = "BufRead",
+    config = function ()
+      require("various-textobjs").setup({ useDefaultKeymaps = true })
+    end,
+  },
+
+  ["move"] = {
+    path = "fedepujol/move.nvim",
+    cmd = {"MoveBlock", "MoveLine", "MoveHBlock", "MoveHChar"},
+  },
+
+  -- ["spider"] = {
+  --   path = "chrisgrieser/nvim-spider",
+  --   event = "BufRead",
+  --   config = function()
+  --     -- Keymaps
+  --     vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
+  --     vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
+  --     vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
+  --     vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
+  --     vim.keymap.set({"n", "o", "x"}, "cw", "ce", { desc = "Change word" })
+  --   end
+  -- },
+
+  ["rainbow"] = {
+    path = "HiPhish/rainbow-delimiters.nvim",
     event = "BufRead",
     config = function()
-      -- Keymaps
-      vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
-      vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
-      vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
-      vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
-      vim.keymap.set({"n", "o", "x"}, "cw", "ce", { desc = "Change word" })
+      -- This module contains a number of default definitions
+      local rainbow_delimiters = require 'rainbow-delimiters'
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          vim = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+        },
+        highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+      }
     end
-  },
+  }
 }

@@ -15,6 +15,7 @@ return {
 
   ["luasnip"] = {
     path = "L3MON4D3/LuaSnip",
+    event = "InsertEnter",
     dependencies = {
       "rafamadriz/friendly-snippets"
     },
@@ -57,5 +58,6 @@ return {
 
   ["modes"] = {
     path = "mvllow/modes.nvim",
+    event = "BufRead",
   },
 }

@@ -6,6 +6,11 @@ require("gitsigns").setup {
     topdelete = {hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr"},
     changedelete = {hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr"}
   },
+  current_line_blame = true,
+  current_line_blame_opts = {
+    virt_text = true,
+    delay = 500,
+  },
   numhl = false,
   watch_gitdir = {
     interval = 100

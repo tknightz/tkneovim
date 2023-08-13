@@ -30,6 +30,7 @@ ts_config.setup {
   },
   yati = {
     enable = true,
+    disable = { "cs" },
     default_lazy = true,
     default_fallback = "auto",
   },
@@ -89,14 +90,6 @@ ts_config.setup {
       show_help = '?',
     },
   },
-  rainbow = {
-    enable = true,
-    disable = { "python", "html" },
-    -- Which query to use for finding delimiters
-    query = 'rainbow-parens',
-    -- Highlight the entire buffer all at once
-    strategy = require('ts-rainbow').strategy.global,
-  }
 }
 
 require("modules.config.treesitter.custom")

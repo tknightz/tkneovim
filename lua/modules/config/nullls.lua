@@ -30,15 +30,15 @@ null_ls.setup {
     --     return not params.bufname:match "fugitive://"
     --   end,
     -- }),
-    null_ls.builtins.diagnostics.eslint_d.with({
-      condition = function(utils)
-        return utils.root_has_file(".eslintrc") or utils.root_has_file(".eslintrc.js") or utils.root_has_file("package.json")
-        -- return utils.root_has_file("node_modules/.bin/eslint_d")
-      end,
-      runtime_condition = function(params)
-        return not params.bufname:match "fugitive://"
-      end,
-    }),
+    -- null_ls.builtins.diagnostics.eslint_d.with({
+    --   condition = function(utils)
+    --     return utils.root_has_file(".eslintrc") or utils.root_has_file(".eslintrc.js") or utils.root_has_file("package.json")
+    --     -- return utils.root_has_file("node_modules/.bin/eslint_d")
+    --   end,
+    --   runtime_condition = function(params)
+    --     return not params.bufname:match "fugitive://"
+    --   end,
+    -- }),
     -- null_ls.builtins.completion.spell,
 
     -- python

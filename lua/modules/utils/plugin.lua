@@ -1,6 +1,6 @@
 local M = {}
 
-local packer_reversed_key = {
+local plugin_reversed_key = {
   enabled = 1,
   name = 1,
   installer = 1,
@@ -25,9 +25,10 @@ local packer_reversed_key = {
   cond = 1,
   module = 1,
   module_pattern = 1,
+  tag = 1,
 }
 
-M.build_packer_object = function(name, module)
+M.build_plugin_spec = function(name, module)
   local obj = {module.path, name = name} 
   local home_config = vim.fn.stdpath('config') .. '/lua/'
 
@@ -38,7 +39,7 @@ M.build_packer_object = function(name, module)
   local is_existed_config_file = vim.fn.filereadable(home_config .. config_path .. '.lua') + vim.fn.isdirectory(home_config .. config_path)
 
   for key, value in pairs(module) do
-    if packer_reversed_key[key] then
+    if plugin_reversed_key[key] then
       obj[key] = value
     end
   end

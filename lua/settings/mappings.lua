@@ -10,10 +10,15 @@ local keymaps = {
     ["<C-_>"]     = "<Plug>(comment_toggle_linewise_current)",
     ["<C-y>"]     = ":%y+",
 
-    ["<M-h>"]     = ":vertical resize +3<cr>",
-    ["<M-l>"]     = ":vertical resize -3<cr>",
-    ["<M-k>"]     = ":resize +3<cr>",
-    ["<M-j>"]     = ":resize -3<cr>",
+    ["<M-Left>"]  = ":vertical resize +3<cr>",
+    ["<M-Right>"] = ":vertical resize -3<cr>",
+    ["<M-Up>"]    = ":resize +3<cr>",
+    ["<M-Down>"]  = ":resize -3<cr>",
+
+    ["<M-h>"]     = ":MoveHChar(-1)<CR>",
+    ["<M-l>"]     = ":MoveHChar(1)<CR>",
+    ["<M-k>"]     = ":MoveLine(-1)<CR>",
+    ["<M-j>"]     = ":MoveLine(1)<CR>",
 
     ["<Esc>"]     = "<C-\\><C-n>",
     ["S"]         = ":TSJToggle<CR>",
@@ -22,22 +27,15 @@ local keymaps = {
   visual_select = {
     ["<C-y>"] = '"+y',
     ["<C-_>"] = "<Plug>(comment_toggle_blockwise_visual)",
+
+    ['<A-j>'] = ':MoveBlock(1)<CR>',
+    ['<A-k>'] = ':MoveBlock(-1)<CR>',
+    ['<A-h>'] = ':MoveHBlock(-1)<CR>',
+    ['<A-l>'] = ':MoveHBlock(1)<CR>',
   },
 
   visual_only = {
     ["<C-y>"] = '"+y',
-  },
-
-  insert = {
-    ["<S-Up>"] = {
-      to = "<Esc>:m-2<CR>",
-      opt ={ noremap = true }
-    },
-
-    ["<S-Down>"] = {
-      to = "<Esc>:m+<CR>",
-      opt = { noremap = true }
-    }
   },
 
   terminal = {

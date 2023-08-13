@@ -117,8 +117,7 @@ telescope.setup {
     layout_strategy = "horizontal",
     file_sorter = require "telescope.sorters".get_fzy_sorter,
     file_ignore_patterns = {"node_modules", "build", ".git/.*", "%.min.js", "%.min.css", "%.map"},
-    generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-    winblend = 0,
+    winblend = 10,
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     color_devicons = true,
@@ -168,7 +167,7 @@ telescope.setup {
   extensions = {
     fzf = {
       fuzzy = true,
-      override_generic_sorter = false,
+      override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case"
     },

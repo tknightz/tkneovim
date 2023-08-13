@@ -23,6 +23,7 @@ lspsaga.setup({
   },
   ui = {
     theme = "round",
+    winblend = 30,
     border = "rounded",
     code_action = "🍬",
     colors = {

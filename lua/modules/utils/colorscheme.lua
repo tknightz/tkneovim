@@ -4,9 +4,9 @@ vim.g.material_style = "deep ocean"
 
 local color_lua_setup = function(colorname)
   require(colorname).setup{
-    style = "deep",
+    style = "warmer",
     dark_theme = "onedark",
-    transparent = true,
+    transparent = false,
     code_style = {
       keywords = "italic,bold",
       functions = "bold"
@@ -22,9 +22,11 @@ local color_lua_setup = function(colorname)
 
     highlights = {
       ["@keyword.function"] = { fmt = "italic,bold" },
-      DiffviewNormal = { bg = "#0a0e10" },
+      -- DiffviewNormal = { bg = "#0a0e10" },
       WinBar = { bg = "#1a1c23" },
-      Folded = {bg = "#181b20", fg = "#485e69", fmt = "bold"},
+      Folded = {bg = "#431e4f", fg = "#485e69", fmt = "bold"},
+      UfoCursorFoldedLine = {bg = "#431e4f", fmt = "bold"},
+      UfoFoldedBg = {bg = "#431e4f" },
       StatusLine = { bg = "NONE" },
       StatusLineNC = { bg = "NONE" },
       SymbolsOutlineBg = { bg = "#131313" },
@@ -44,15 +46,16 @@ local color_lua_setup = function(colorname)
       DashboardCenter = { fg = "#555555" },
       DashboardFooter = { fg = "#ed4a7a", fmt = "NONE" },
       DashboardShortcut = { fg = "#555555" },
+      IndentLine = { fg = "#3b3b3b", fmt = "nocombine" },
       IndentBlanklineChar = { fg = "#3b3b3b" },
       IndentBlanklineContextChar = { fg = "#7e3992" },
       MiniIndentscopeSymbol = { fg = "#c75ae8" },
 
       Whitespace = { fg = "#353535", fmt = "nocombine" },
-      Nontext = { fg = "#353535", fmt = "nocombine" },
+      Nontext = { fg = "#5a5b5e", fmt = "nocombine" },
       TreesitterContext = { bg = "#342b27" },
       TreesitterContextLineNumber = { fg = "#00d364" },
-      NormalFloat = { bg = "NONE" },
+      NormalFloat = { bg = "#0a0e10" },
       InclineActive = { bg = "#61afef", fg = "#000000"},
       InclineInactive = { bg = "#282828", fg = "#515559"},
       FidgetTask = { fg = "gray", fmt = "italic,nocombine" },
@@ -75,8 +78,9 @@ local color_lua_setup = function(colorname)
       WhichKeyBorder = { fg = "#2e3c43" },
       WhichKeySeparator = { fg = "#00d364", fmt = "NONE" },
 
-      LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", gui="bold" },
-      LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", gui="bold" },
+      DiagnosticUnnecessary =  { fg="#455574", fmt="underline" },
+      LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", fmt="bold" },
+      LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", fmt="bold" },
     }
   }
 end
