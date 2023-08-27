@@ -40,18 +40,14 @@ null_ls.setup {
     --   end,
     -- }),
     -- null_ls.builtins.completion.spell,
+    null_ls.builtins.formatting.csharpier,
+
+    -- javascript, typescript
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.formatting.prettier,
 
     -- python
     null_ls.builtins.formatting.black,
-    -- null_ls.builtins.formatting.black.with({
-    --   extra_args = function (params)
-    --     local root = params.root
-    --     local config_path = root .. "/pyproject.toml"
-    --     local is_exist_config = vim.fn.filereadable(config_path)
-    --
-    --     return is_exist_config ~= 0 and { "--config", config_path } or {}
-    --   end
-    -- }),
     null_ls.builtins.diagnostics.flake8,
   },
 }

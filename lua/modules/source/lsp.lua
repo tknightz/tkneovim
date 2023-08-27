@@ -2,6 +2,9 @@ return {
   -- Neovim lsp function
   ["lspconfig"] = {
     path = "neovim/nvim-lspconfig",
+    dependencies = { "mason", "masonlspconfig", "typescript-tools" },
+    lazy = true,
+    cmd = "LspStart",
   },
 
   ["mason"] = {
@@ -15,7 +18,7 @@ return {
 
   ["masonlspconfig"] = {
     path = "williamboman/mason-lspconfig.nvim",
-    dependencies = { "lspconfig", "mason" },
+    lazy = true,
   },
 
   ["lspsaga"] = {
@@ -28,32 +31,11 @@ return {
     lazy = true,
   },
 
-  -- ["grammarguard"] = {
-  --   path = "brymer-meneses/grammar-guard.nvim",
-  --   after = "lspconfig"
-  -- },
-  --
-
   -- Find trouble in your code
   ["trouble"] = {
     path = "folke/trouble.nvim",
     cmd = {"Trouble"}
   },
-
-  -- Show signature while typing code
-  -- ["signature"] = {
-  --   path = "ray-x/lsp_signature.nvim",
-  --   module = "lsp_signature",
-  --   config = function()
-  --     require("lsp_signature").setup({
-  --       bind = true,
-  --       handler_opts = {
-  --         border = "rounded"
-  --       },
-  --       transparency = 1,
-  --     })
-  --   end
-  -- },
 
   ["symbolsoutline"] = {
     path = "simrat39/symbols-outline.nvim",

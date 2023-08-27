@@ -13,6 +13,7 @@ require('indent_blankline').setup {
     "TelescopePrompt",
     "DiffviewFiles",
     "fugitive",
+    "qf",
     "",
     "dbout",
     "neo-tree",

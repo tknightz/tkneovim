@@ -35,11 +35,11 @@ return {
 
   d = {
     name = "diff",
-    o    = {":DiffviewOpen<cr>",         "open"    },
-    v    = {":DiffviewOpen<cr>",         "diffview"},
-    c    = {":DiffviewClose<cr>",        "close"   },
-    h    = {":DiffviewFileHistory<cr>",  "history" },
-    f    = {":DiffviewFocusFiles<cr>",   "files" },
+    o    = {":DiffviewOpen<cr>",          "open"    },
+    v    = {":DiffviewOpen<cr>",          "diffview"},
+    c    = {":DiffviewClose<cr>",         "close"   },
+    h    = {":DiffviewFileHistory<cr>",   "history" },
+    f    = {":DiffviewFileHistory %<cr>", "history of current file" },
   },
 
   t = {

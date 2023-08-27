@@ -25,10 +25,11 @@ return {
 
   ["typescript-tools"] = {
     path = "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim", "lspconfig" },
     config = function()
       require("typescript-tools").setup {}
     end,
-    cmd = "LspStart"
+    after = "lspconfig",
+    lazy = true,
   },
 }

@@ -77,6 +77,8 @@ return {
     version = 'v2.*',
     config = function()
       require('window-picker').setup{
+        show_prompt = false,
+        hint = 'floating-big-letter',
         filter_rules = {
           bo = {
             -- if the file type is one of following, the window will be ignored
@@ -143,19 +145,14 @@ return {
     cmd = {"MaximizerToggle"}
   },
 
-  -- Move around with speed of light
-  ["lightspeed"] = {
-    path = "ggandor/lightspeed.nvim",
-    keys = {"gz", "gZ"}
-  },
-
   -- Interact with databases inside Neovim
   ["dadbodui"] = {
     path = "kristijanhusak/vim-dadbod-ui",
     dependencies = {
       "tpope/vim-dadbod",
       {
-        "kristijanhusak/vim-dadbod-completion", init = function()
+        "kristijanhusak/vim-dadbod-completion",
+        init = function()
           vim.g.vim_dadbod_completion_mark = 'Database'
         end
       },
@@ -189,11 +186,15 @@ return {
 
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
+    after = "pqf",
     config = function ()
       require("bqf").setup({
         preview = {
           winblend = 10,
         },
+        func_map = {
+          pscrollup = "<C-d>"
+        }
       })
     end,
     ft = "qf"
@@ -201,7 +202,8 @@ return {
 
   -- pretty quickfix UI
   ["pqf"] = {
-    path = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+    path = "yorickpeterse/nvim-pqf",
+    dependencies = { "bqf" },
     config = function()
       require('pqf').setup({
         signs = {

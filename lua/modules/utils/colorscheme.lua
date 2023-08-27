@@ -55,7 +55,7 @@ local color_lua_setup = function(colorname)
       Nontext = { fg = "#5a5b5e", fmt = "nocombine" },
       TreesitterContext = { bg = "#342b27" },
       TreesitterContextLineNumber = { fg = "#00d364" },
-      NormalFloat = { bg = "#0a0e10" },
+      NormalFloat = { bg = "#1a1c23" },
       InclineActive = { bg = "#61afef", fg = "#000000"},
       InclineInactive = { bg = "#282828", fg = "#515559"},
       FidgetTask = { fg = "gray", fmt = "italic,nocombine" },
@@ -78,6 +78,7 @@ local color_lua_setup = function(colorname)
       WhichKeyBorder = { fg = "#2e3c43" },
       WhichKeySeparator = { fg = "#00d364", fmt = "NONE" },
 
+      GitSignsCurrentLineBlame = { fg = "#407F7F", fmt = "italic" },
       DiagnosticUnnecessary =  { fg="#455574", fmt="underline" },
       LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", fmt="bold" },
       LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", fmt="bold" },

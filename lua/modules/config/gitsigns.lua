@@ -11,6 +11,7 @@ require("gitsigns").setup {
     virt_text = true,
     delay = 500,
   },
+  current_line_blame_formatter = '  <author>, <author_time:%Y-%m-%d> - <summary>',
   numhl = false,
   watch_gitdir = {
     interval = 100

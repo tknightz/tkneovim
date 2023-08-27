@@ -5,7 +5,7 @@ local function winbar_fmt()
   -- if in diffmode I don't wanna it show lsp and long filename
   if is_in_diffmode then
     local filename = vim.fn.fnamemodify(bufname, ":t")
-    local is_v1 = string.match(bufname, "diffview:///")
+    local is_v1 = string.match(bufname, "/.git/")
     return is_v1 and filename .. " (v1)" or filename .. " (v2)"
   end
 
@@ -37,7 +37,9 @@ require('lualine').setup {
         "fugitive",
         "Outline",
         "dbui",
-        "",
+        "dbout",
+        "qf",
+        ""
       },
     },
   },
@@ -79,6 +81,10 @@ require('lualine').setup {
           local filetype = vim.api.nvim_buf_get_option(0, "filetype");
           if filetype == "NvimTree" or filetype == "neo-tree" then
             return "Explorer"
+          end
+
+          if filetype == "fugitive" then
+            return "FugitiveGit"
           end
 
           return str
@@ -132,7 +138,7 @@ require('lualine').setup {
         separator = '',
         padding = { right = 0, left = 1 },
       },
-      winbar_fmt
+      winbar_fmt,
     }
   },
   inactive_winbar = {
@@ -143,12 +149,7 @@ require('lualine').setup {
         separator = '',
         padding = { right = 0, left = 1 },
       },
-      winbar_fmt
-      -- {
-      --   "filename",
-      --   path = 0,
-      --   color = { fg = "#6c6f93" },
-      -- }
+      'filename'
     }
   },
   tabline = {},

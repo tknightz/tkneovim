@@ -104,7 +104,7 @@ require "nvim-web-devicons".setup {
       icon = "",
       color = "#6d8086",
       name = "Default",
-    }
+    },
   },
 
   default = false,
@@ -132,4 +132,11 @@ require "nvim-web-devicons".setup {
       name = "Dockerfile"
     },
   },
+
+  override_by_extension = {
+    bak = {
+      icon = "󰁯",
+      name = "backup",
+    }
+  }
 }

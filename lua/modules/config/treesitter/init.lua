@@ -44,6 +44,10 @@ ts_config.setup {
     move = {
       enable = true,
       goto_previous_start = {
+        ['gaf'] = '@function.outer',
+        ['gif'] = '@function.outer',
+        ['gac'] = '@class.outer',
+        ['gic'] = '@class.outer',
         ['gap'] = '@parameter.outer',
         ['gip'] = '@parameter.inner',
       },
