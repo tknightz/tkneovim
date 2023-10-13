@@ -10,15 +10,15 @@ local keymaps = {
     ["<C-_>"]     = "<Plug>(comment_toggle_linewise_current)",
     ["<C-y>"]     = ":%y+",
 
-    ["<M-Left>"]  = ":vertical resize +3<cr>",
-    ["<M-Right>"] = ":vertical resize -3<cr>",
-    ["<M-Up>"]    = ":resize +3<cr>",
-    ["<M-Down>"]  = ":resize -3<cr>",
+    ["<M-h>"]  = ":vertical resize +3<cr>",
+    ["<M-l>"] = ":vertical resize -3<cr>",
+    ["<M-k>"]    = ":resize +3<cr>",
+    ["<M-j>"]  = ":resize -3<cr>",
 
-    ["<M-h>"]     = ":MoveHChar(-1)<CR>",
-    ["<M-l>"]     = ":MoveHChar(1)<CR>",
-    ["<M-k>"]     = ":MoveLine(-1)<CR>",
-    ["<M-j>"]     = ":MoveLine(1)<CR>",
+    ["<M-Left>"]     = ":MoveHChar(-1)<CR>",
+    ["<M-Right>"]     = ":MoveHChar(1)<CR>",
+    ["<M-Up>"]     = ":MoveLine(-1)<CR>",
+    ["<M-Down>"]     = ":MoveLine(1)<CR>",
 
     ["<Esc>"]     = "<C-\\><C-n>",
     ["S"]         = ":TSJToggle<CR>",

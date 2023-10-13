@@ -8,6 +8,6 @@ return {
   i     = {"<cmd>Telescope buffers<cr>",                   "iBuffers"},
   j     = {"<cmd>BufferLinePick<cr>",                      "jump"},
   s     = {"<cmd>BufferLineSortByRelativeDirectory<cr>",   "sort"},
-  X     = {"<cmd>BufferLineCloseOthers",                   "close otherse"},
+  X     = {"<cmd>BufferLineCloseOthers<cr>",               "close otherse"},
   c     = {"<cmd>Cppath<cr>",                              "copy file path"},
 }

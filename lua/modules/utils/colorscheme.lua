@@ -4,7 +4,7 @@ vim.g.material_style = "deep ocean"
 
 local color_lua_setup = function(colorname)
   require(colorname).setup{
-    style = "warmer",
+    style = "deep",
     dark_theme = "onedark",
     transparent = false,
     code_style = {
@@ -22,11 +22,12 @@ local color_lua_setup = function(colorname)
 
     highlights = {
       ["@keyword.function"] = { fmt = "italic,bold" },
-      -- DiffviewNormal = { bg = "#0a0e10" },
+      DiffviewNormal = { bg = "#141b24" },
       WinBar = { bg = "#1a1c23" },
-      Folded = {bg = "#431e4f", fg = "#485e69", fmt = "bold"},
-      UfoCursorFoldedLine = {bg = "#431e4f", fmt = "bold"},
-      UfoFoldedBg = {bg = "#431e4f" },
+      Folded = {bg = "#12161f", fmt = "bold"},
+      FoldColumn = { bg = "#1a212e" },
+      UfoCursorFoldedLine = {bg = "#25112C", fmt = "bold"},
+      UfoFoldedBg = {bg = "#25112c" },
       StatusLine = { bg = "NONE" },
       StatusLineNC = { bg = "NONE" },
       SymbolsOutlineBg = { bg = "#131313" },
@@ -67,6 +68,7 @@ local color_lua_setup = function(colorname)
 
       MatchWord = { bg = "#371d3f", fmt = "underline" },
       MatchParen = { fmt = "inverse" },
+      MatchParenCur = { fmt = "nocombine" },
 
       TelescopePromptBorder = { fg = "#2e3c43" },
       TelescopeResultsBorder = { fg = "#2e3c43" },

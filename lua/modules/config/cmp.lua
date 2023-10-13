@@ -5,6 +5,13 @@ local cmp = require("cmp")
 local icons = require("modules.config.lspconfig.icons").icons
 local lib = require("lib")
 
+-- setting up autopairs
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 
 -- I use luasnip, so let's source it to cmp.
 lib.load_module("luasnip")
@@ -16,6 +23,8 @@ local ELLIPSIS_CHAR = '…'
 local MAX_LABEL_WIDTH = 30
 local MIN_LABEL_WIDTH = 20
 
+---@param name string Parameter name
+---@param default number
 local has_words_before = function()
 ---@diagnostic disable-next-line: deprecated
   local unpack = table.unpack or unpack

@@ -16,6 +16,6 @@ require("gitsigns").setup {
   watch_gitdir = {
     interval = 100
   },
-  sign_priority = 5,
+  sign_priority = 100,
   status_formatter = nil -- Use default
 }

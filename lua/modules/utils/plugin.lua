@@ -26,6 +26,7 @@ local plugin_reversed_key = {
   module = 1,
   module_pattern = 1,
   tag = 1,
+  main = 1,
 }
 
 M.build_plugin_spec = function(name, module)
@@ -45,15 +46,15 @@ M.build_plugin_spec = function(name, module)
   end
 
   if is_existed_setup_file ~= 0 then
-      obj["init"] = function()
-        require(setup_path)
-      end
+    obj["init"] = function()
+      require(setup_path)
+    end
   end
 
   if is_existed_config_file ~= 0 then
-      obj["config"] = function()
-        require(config_path)
-      end
+    obj["config"] = function()
+      require(config_path)
+    end
   end
 
 

@@ -9,6 +9,7 @@ return {
       "hrsh7th/cmp-emoji",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-cmdline",
+      "autopairs",
     },
     event = { "InsertEnter", "CmdlineEnter" },
   },
@@ -49,12 +50,6 @@ return {
     path = "windwp/nvim-autopairs",
     event = "InsertEnter"
   },
-
-  -- Change html tags quickly
-  -- ["tagalong"] = {
-  --   path = "AndrewRadev/tagalong.vim",
-  --   ft = {"html", "typescriptreact", "javascriptreact", "javascript"},
-  -- },
 
   ["modes"] = {
     path = "mvllow/modes.nvim",

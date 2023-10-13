@@ -30,12 +30,13 @@ ts_config.setup {
   },
   yati = {
     enable = true,
-    disable = { "cs" },
+    suppress_conflict_warning = true,
     default_lazy = true,
     default_fallback = "auto",
   },
   indent = {
-    enable = false
+    enable = true,
+    disable = {"python", "typescript", "typescriptreact"},
   },
   matchup = {
     enable = true,
@@ -75,6 +76,11 @@ ts_config.setup {
         -- Or you can define your own textobjects like this
       },
     },
+  },
+  autotag = {
+    enable = true,
+    -- enable_rename = true,
+    -- enable_close = true,
   },
   playground = {
     enable = true,

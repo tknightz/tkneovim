@@ -3,14 +3,14 @@ return {
   -- Git inside Vim
   ["fugitive"] = {
     path = "tpope/vim-fugitive",
-    cmd = {"Git"},
+    cmd = { "Git" },
   },
 
   -- Single tabpage interface for easily cycling through diffs for all modified
   -- files for any git rev.
   ["diffview"] = {
     path = "sindrets/diffview.nvim",
-    cmd = {"DiffviewOpen", "DiffviewToggleFiles", "DiffviewFileHistory"},
+    cmd = { "DiffviewOpen", "DiffviewToggleFiles", "DiffviewFileHistory" },
   },
 
   -- Git integration for buffers
@@ -23,9 +23,9 @@ return {
   ["project_nvim"] = {
     path = "ahmedkhalf/project.nvim",
     config = function()
-      require("project_nvim").setup{
-        patterns = {".git"},
-        detection_methods = {"pattern"},
+      require("project_nvim").setup {
+        patterns = { ".git" },
+        detection_methods = { "pattern" },
       }
     end,
   },

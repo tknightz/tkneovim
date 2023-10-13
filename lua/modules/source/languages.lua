@@ -27,7 +27,15 @@ return {
     path = "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "lspconfig" },
     config = function()
-      require("typescript-tools").setup {}
+      require("typescript-tools").setup {
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
+        settings = {
+          tsserver_max_memory = 3072
+        }
+      }
     end,
     after = "lspconfig",
     lazy = true,

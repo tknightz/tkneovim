@@ -26,15 +26,25 @@ return {
     event = "LspAttach",
   },
 
-  ["nullls"] = {
-    path = "jose-elias-alvarez/null-ls.nvim",
+  -- ["nullls"] = {
+  --   path = "nvimtools/none-ls.nvim",
+  --   lazy = true,
+  -- },
+
+  ["lint"] = {
+    path = "mfussenegger/nvim-lint",
+    lazy = true,
+  },
+
+  ["conform"] = {
+    path = "stevearc/conform.nvim",
     lazy = true,
   },
 
   -- Find trouble in your code
   ["trouble"] = {
     path = "folke/trouble.nvim",
-    cmd = {"Trouble"}
+    cmd = { "Trouble" }
   },
 
   ["symbolsoutline"] = {

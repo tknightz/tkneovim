@@ -1,5 +1,4 @@
 local preset = require("modules.config.lspconfig.preset")
-local util = require("lspconfig.util")
 
 local M = {}
 

@@ -14,9 +14,9 @@ local options = {
     eob       = " ",
     diff      = "╱",
     fold      = " ",
-    foldopen  = "",
+    foldopen  = "",
     foldsep   = " ",
-    foldclose = "»"
+    foldclose = ""
   },
 
   list          = true,
@@ -25,7 +25,7 @@ local options = {
 
   termguicolors = true,
   -- undofile      = true,
-  signcolumn    = "yes:2",
+  signcolumn    = "yes:1",
   encoding      = "UTF-8",
   background    = "dark",
   ignorecase    = true,
@@ -34,7 +34,7 @@ local options = {
   tw            = 79,
   foldmethod    = "indent",
   foldlevel     = 99,
-  foldcolumn    = "0",
+  foldcolumn    = "1",
   updatetime    = 2000,
   timeoutlen    = 500,
   hidden        = true,

@@ -95,7 +95,8 @@ return {
   -- Indent guides for Neovim
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead"
+    main = "ibl",
+    event = "BufReadPre"
   },
 
   ["indent-scope"] = {
@@ -217,13 +218,6 @@ return {
     ft = "qf"
   },
 
-  -- Prettier format code
-  ["prettier"] = {
-    path = "prettier/vim-prettier",
-    cmd = {"Prettier", "PrettierAsync", "PrettierFragment"},
-    build = "npm install"
-  },
-
   -- A plugin to visualise and resolve merge conflicts in neovim
   ["gitconflict"] = {
     path = "akinsho/git-conflict.nvim",
@@ -258,21 +252,21 @@ return {
     end
   },
 
-  ["hlargs"] = {
-    path = "m-demare/hlargs.nvim",
-    config = function()
-      require("hlargs").setup({
-        highlight = { fg = "#dd571c", bold = true },
-        use_colorpalette = true,
-        colorpalette = {
-          { fg = "#dd571c", bold = true },
-          { fg = "#fcae1e", bold = true },
-          { fg = "#ed7014", bold = true },
-        },
-      })
-    end,
-    event = "Bufread",
-  },
+  -- ["hlargs"] = {
+  --   path = "m-demare/hlargs.nvim",
+  --   config = function()
+  --     require("hlargs").setup({
+  --       highlight = { fg = "#dd571c", bold = true },
+  --       use_colorpalette = true,
+  --       colorpalette = {
+  --         { fg = "#dd571c", bold = true },
+  --         { fg = "#fcae1e", bold = true },
+  --         { fg = "#ed7014", bold = true },
+  --       },
+  --     })
+  --   end,
+  --   event = "Bufread",
+  -- },
 
   ["treejoin"] = {
     path = "Wansmer/treesj",
@@ -361,5 +355,42 @@ return {
         },
       }
     end
+  },
+
+  ["statuscol"] = {
+    path = "luukvbaal/statuscol.nvim",
+    config = function()
+      local builtin = require("statuscol.builtin")
+      require("statuscol").setup({
+        segments = {
+          { text = { "%s" }, click = "v:lua.ScSa", maxwidth = 1, auto = false },
+          {
+            sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },
+            condition = { builtin.not_empty },
+            click = "v:lua.ScSa"
+          },
+          { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
+          { text = { " ", builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+        }
+      })
+    end
+  },
+
+  ["rest"] = {
+    path = "rest-nvim/rest.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {"<Plug>RestNvim"},
+    config = function()
+      require("rest-nvim").setup()
+    end
+  },
+
+  ["distant"] = {
+    path = "chipsenkbeil/distant.nvim", 
+    branch = 'v0.3',
+    config = function()
+      require('distant'):setup()
+    end,
+    cmd = { "DistantConnect" }
   }
 }

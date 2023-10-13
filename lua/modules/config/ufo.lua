@@ -31,8 +31,8 @@ end
 -- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
 require('ufo').setup({
   fold_virt_text_handler = handler,
-  provider_selector = function(bufnr, filetype, buftype)
-    return ''
+  provider_selector = function()
+    return {'treesitter', 'indent'}
   end
 })
 

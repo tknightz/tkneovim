@@ -1,30 +1,23 @@
 local function start_lsp()
   pcall(require, "lspconfig")
   pcall(require, "mason-lspconfig")
-  local has_nullls, nullls = pcall(require, "null-ls")
-  if has_nullls then
-    nullls.enable{}
-  end
-end
 
-local function stop_lsp()
-  local has_nullls, nullls = pcall(require, "null-ls")
-  if has_nullls then
-    nullls.disable{}
-  end
+  pcall(require, "lint")
 end
 
 local function toggle_lsp()
   if vim.g.loaded_lsp == 1 then
     vim.cmd("LspStop")
-    stop_lsp()
     vim.g.loaded_lsp = 0
   else
     vim.cmd("LspStart")
     start_lsp()
     vim.g.loaded_lsp = 1
   end
+end
 
+local function format()
+  require("conform").format()
 end
 
 return {
@@ -39,10 +32,10 @@ return {
   o = {":SymbolsOutline<CR>",                  "outline"},
   p = {":Lspsaga diagnostic_jump_prev<CR>",    "prev"},
   q = {":lua vim.diagnostic.setloclist()<CR>", "quickfix"},
-  f = {":lua vim.lsp.buf.format({ async = true })<CR>", "format"},
+  f = {format,                                 "format"},
   t = {toggle_lsp,                             "toggle"},
   S = {":SymbolsOutline<cr>",                  "browse"},
-  ["/"] = {":Lspsaga finder<CR>",          "finder-saga"},
+  ["/"] = {":Lspsaga finder<CR>",              "finder-saga"},
   ["."] = {":Telescope lsp_references<CR>",    "finder-tele"},
   v = {
     name = "view",
