@@ -1,10 +1,10 @@
 local M = {}
 
-vim.g.material_style = "deep ocean"
+vim.g.material_style = "darker"
 
 local color_lua_setup = function(colorname)
   require(colorname).setup{
-    style = "deep",
+    style = "darker",
     dark_theme = "onedark",
     transparent = false,
     code_style = {
@@ -23,9 +23,19 @@ local color_lua_setup = function(colorname)
     highlights = {
       ["@keyword.function"] = { fmt = "italic,bold" },
       DiffviewNormal = { bg = "#141b24" },
+      DiffviewEndOfBuffer = { bg = "#141b24" },
+      TroubleNormal = { bg = "#181b20" },
+      EdgyWinbar = { bg = "#12161F" },
+      EdgyTitle = { bg = "#12161F", fg = "#c75ae8", fmt = "italic" },
+      EdgyIcon = { bg = "#12161F", fg = "#c75ae8" },
+      EdgyIconActive = { bg = "#12161F", fg = "#c75ae8" },
+      NeoTreeWinSeparator = { bg = "NONE" },
+      WinSeparator = { bg = "NONE", fg = "#282c34" },
       WinBar = { bg = "#1a1c23" },
       Folded = {bg = "#12161f", fmt = "bold"},
-      FoldColumn = { bg = "#1a212e" },
+      -- FoldColumn = { bg = "#1a212e" },
+      FoldColumn = { bg = "NONE" },
+      CursorLineNr = { fg = "#bf68d9", fmt = "italic,bold" },
       UfoCursorFoldedLine = {bg = "#25112C", fmt = "bold"},
       UfoFoldedBg = {bg = "#25112c" },
       StatusLine = { bg = "NONE" },
@@ -54,8 +64,8 @@ local color_lua_setup = function(colorname)
 
       Whitespace = { fg = "#353535", fmt = "nocombine" },
       Nontext = { fg = "#5a5b5e", fmt = "nocombine" },
-      TreesitterContext = { bg = "#342b27" },
-      TreesitterContextLineNumber = { fg = "#00d364" },
+      TreesitterContext = {bg = "#2e3852"},
+      TreesitterContextLineNumber = {fg = "#c75ae8", fmt="bold,italic"},
       NormalFloat = { bg = "#1a1c23" },
       InclineActive = { bg = "#61afef", fg = "#000000"},
       InclineInactive = { bg = "#282828", fg = "#515559"},
@@ -84,7 +94,7 @@ local color_lua_setup = function(colorname)
       DiagnosticUnnecessary =  { fg="#455574", fmt="underline" },
       LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", fmt="bold" },
       LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", fmt="bold" },
-    }
+    },
   }
 end
 

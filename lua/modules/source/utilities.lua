@@ -8,7 +8,10 @@ return {
       "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
       "tknightz/telescope-termfinder.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+      },
     },
 
     cmd = "Telescope",
@@ -22,13 +25,13 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    cmd = {"Neotree"}
+    cmd = { "Neotree" },
   },
 
   -- Tired of Undo things?
   ["mundo"] = {
     path = "simnalamburt/vim-mundo",
-    cmd = {"MundoShow", "MundoToggle"}
+    cmd = { "MundoShow", "MundoToggle" },
   },
 
   -- Pretty fold with preview feature
@@ -38,8 +41,8 @@ return {
   -- },
 
   ["ufo"] = {
-    path = 'kevinhwang91/nvim-ufo',
-    dependencies = { 'kevinhwang91/promise-async' },
+    path = "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
     event = "BufRead",
   },
 
@@ -48,7 +51,7 @@ return {
     path = "RRethy/vim-illuminate",
     event = "BufRead",
     config = function()
-      require('illuminate').configure({
+      require("illuminate").configure({
         filetypes_denylist = {
           "TelescopePrompt",
           "prompt",
@@ -57,16 +60,16 @@ return {
           "dirvish",
           "fugitive",
           "neo-tree",
-          "dbui"
-        }
+          "dbui",
+        },
       })
-    end
+    end,
   },
 
   -- Better buffer delete
   ["bufdelete"] = {
     path = "famiu/bufdelete.nvim",
-    cmd = {"Bdelete", "Bwipeout"}
+    cmd = { "Bdelete", "Bwipeout" },
   },
 
   -- Quickly jump between windows
@@ -74,21 +77,21 @@ return {
     path = "s1n7ax/nvim-window-picker",
     module = "window-picker",
     lazy = true,
-    version = 'v2.*',
+    version = "v2.*",
     config = function()
-      require('window-picker').setup{
+      require("window-picker").setup({
         show_prompt = false,
-        hint = 'floating-big-letter',
+        hint = "floating-big-letter",
         filter_rules = {
           bo = {
             -- if the file type is one of following, the window will be ignored
             filetype = { "notify" },
 
             -- if the buffer type is one of following, the window will be ignored
-            buftype = { },
+            buftype = {},
           },
-        }
-      }
+        },
+      })
     end,
   },
 
@@ -96,7 +99,7 @@ return {
   ["indentguide"] = {
     path = "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = "BufReadPre"
+    event = "BufReadPre",
   },
 
   ["indent-scope"] = {
@@ -104,7 +107,7 @@ return {
     branch = "stable",
     event = "BufRead",
     config = function()
-      require('mini.indentscope').setup({
+      require("mini.indentscope").setup({
         draw = {
           priority = 100,
         },
@@ -117,13 +120,13 @@ return {
   -- Extended f, F, t and T key mappings
   ["cleverf"] = {
     path = "rhysd/clever-f.vim",
-    event = "BufRead"
+    event = "BufRead",
   },
 
-  -- Even better % navigate and highlight matching words 
+  -- Even better % navigate and highlight matching words
   ["matchup"] = {
     path = "andymass/vim-matchup",
-    event = "BufRead"
+    event = "BufRead",
   },
 
   -- Better search
@@ -136,14 +139,14 @@ return {
         create_commands = true,
       })
     end,
-    keys = {"/", "?", "*", "#"},
+    keys = { "/", "?", "*", "#" },
   },
 
   -- Sometimes need to focus in one window
   -- but dont want to close others
   ["maximizer"] = {
     path = "szw/vim-maximizer",
-    cmd = {"MaximizerToggle"}
+    cmd = { "MaximizerToggle" },
   },
 
   -- Interact with databases inside Neovim
@@ -154,11 +157,11 @@ return {
       {
         "kristijanhusak/vim-dadbod-completion",
         init = function()
-          vim.g.vim_dadbod_completion_mark = 'Database'
-        end
+          vim.g.vim_dadbod_completion_mark = "Database"
+        end,
       },
     },
-    cmd = {"DBUI", "DBUIAddConnection", "DBUIToggle"},
+    cmd = { "DBUI", "DBUIAddConnection", "DBUIToggle" },
   },
 
   -- Nice looking notifications with animation
@@ -176,29 +179,29 @@ return {
   -- Organize keymaps
   ["whichkey"] = {
     path = "folke/which-key.nvim",
-    keys = {"<leader>", "<Space>"},
+    keys = { "<leader>", "<Space>" },
   },
 
   -- Measure startup-time
   ["startuptime"] = {
     path = "tweekmonster/startuptime.vim",
-    cmd = "StartupTime"
+    cmd = "StartupTime",
   },
 
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
     after = "pqf",
-    config = function ()
+    config = function()
       require("bqf").setup({
         preview = {
           winblend = 10,
         },
         func_map = {
-          pscrollup = "<C-d>"
-        }
+          pscrollup = "<C-d>",
+        },
       })
     end,
-    ft = "qf"
+    ft = "qf",
   },
 
   -- pretty quickfix UI
@@ -206,32 +209,32 @@ return {
     path = "yorickpeterse/nvim-pqf",
     dependencies = { "bqf" },
     config = function()
-      require('pqf').setup({
+      require("pqf").setup({
         signs = {
-          error = ' ',
-          warning = ' ',
-          info = ' ',
-          hint = ' '
-        }
+          error = " ",
+          warning = " ",
+          info = " ",
+          hint = " ",
+        },
       })
     end,
-    ft = "qf"
+    ft = "qf",
   },
 
   -- A plugin to visualise and resolve merge conflicts in neovim
   ["gitconflict"] = {
     path = "akinsho/git-conflict.nvim",
     config = function()
-      require('git-conflict').setup()
+      require("git-conflict").setup()
     end,
-    event = "BufRead"
+    event = "BufRead",
   },
 
   -- Jump to last edit
   ["lastplace"] = {
     path = "ethanholz/nvim-lastplace",
     config = function()
-      require('nvim-lastplace').setup{}
+      require("nvim-lastplace").setup({})
     end,
   },
 
@@ -240,7 +243,7 @@ return {
     cmd = "WinShift",
     config = function()
       require("winshift").setup()
-    end
+    end,
   },
 
   ["toggleterm"] = {
@@ -249,7 +252,7 @@ return {
     cmd = "ToggleTerm",
     config = function()
       require("toggleterm").setup()
-    end
+    end,
   },
 
   -- ["hlargs"] = {
@@ -270,12 +273,12 @@ return {
 
   ["treejoin"] = {
     path = "Wansmer/treesj",
-    cmd = {"TSJToggle"},
+    cmd = { "TSJToggle" },
     config = function()
       require("treesj").setup({
         use_default_keymaps = false,
       })
-    end
+    end,
   },
 
   ["navic"] = {
@@ -285,34 +288,42 @@ return {
 
   ["comment-box"] = {
     path = "LudoPinelli/comment-box.nvim",
-    cmd = {"CBline", "CBcbox"},
+    cmd = { "CBline", "CBcbox" },
     config = function()
-      require('comment-box').setup()
-    end
+      require("comment-box").setup()
+    end,
   },
 
   ["codeium"] = {
     path = "Exafunction/codeium.vim",
     cmd = "Codeium",
     config = function()
-      vim.keymap.set('i', '<C-l>', function () return vim.fn['codeium#Accept']() end, { silent = true, expr = true })
-      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-    end
+      vim.keymap.set("i", "<C-l>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { silent = true, expr = true })
+      vim.keymap.set("i", "<c-;>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true })
+      vim.keymap.set("i", "<c-,>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true })
+      vim.keymap.set("i", "<c-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true })
+    end,
   },
 
   ["textobj"] = {
     path = "chrisgrieser/nvim-various-textobjs",
     event = "BufRead",
-    config = function ()
+    config = function()
       require("various-textobjs").setup({ useDefaultKeymaps = true })
     end,
   },
 
   ["move"] = {
     path = "fedepujol/move.nvim",
-    cmd = {"MoveBlock", "MoveLine", "MoveHBlock", "MoveHChar"},
+    cmd = { "MoveBlock", "MoveLine", "MoveHBlock", "MoveHChar" },
   },
 
   -- ["spider"] = {
@@ -333,64 +344,75 @@ return {
     event = "BufRead",
     config = function()
       -- This module contains a number of default definitions
-      local rainbow_delimiters = require 'rainbow-delimiters'
+      local rainbow_delimiters = require("rainbow-delimiters")
 
       vim.g.rainbow_delimiters = {
         strategy = {
-          [''] = rainbow_delimiters.strategy['global'],
-          vim = rainbow_delimiters.strategy['local'],
+          [""] = rainbow_delimiters.strategy["global"],
+          vim = rainbow_delimiters.strategy["local"],
         },
         query = {
-          [''] = 'rainbow-delimiters',
-          lua = 'rainbow-blocks',
+          [""] = "rainbow-delimiters",
+          lua = "rainbow-blocks",
         },
         highlight = {
-          'RainbowDelimiterRed',
-          'RainbowDelimiterYellow',
-          'RainbowDelimiterBlue',
-          'RainbowDelimiterOrange',
-          'RainbowDelimiterGreen',
-          'RainbowDelimiterViolet',
-          'RainbowDelimiterCyan',
+          "RainbowDelimiterRed",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterCyan",
         },
       }
-    end
+    end,
   },
 
   ["statuscol"] = {
     path = "luukvbaal/statuscol.nvim",
-    config = function()
-      local builtin = require("statuscol.builtin")
-      require("statuscol").setup({
-        segments = {
-          { text = { "%s" }, click = "v:lua.ScSa", maxwidth = 1, auto = false },
-          {
-            sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },
-            condition = { builtin.not_empty },
-            click = "v:lua.ScSa"
-          },
-          { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
-          { text = { " ", builtin.foldfunc, " " }, click = "v:lua.ScFa" },
-        }
-      })
-    end
+    event = "VeryLazy",
   },
 
   ["rest"] = {
     path = "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {"<Plug>RestNvim"},
+    keys = { "<Plug>RestNvim" },
     config = function()
       require("rest-nvim").setup()
-    end
+    end,
   },
 
   ["distant"] = {
-    path = "chipsenkbeil/distant.nvim", 
-    branch = 'v0.3',
+    path = "chipsenkbeil/distant.nvim",
+    branch = "v0.3",
     config = function()
-      require('distant'):setup()
+      require("distant"):setup()
     end,
-    cmd = { "DistantConnect" }
-  }
+    cmd = { "DistantConnect" },
+  },
+
+  ["headlines"] = {
+    path = "lukas-reineke/headlines.nvim",
+    ft = { "markdown", "org" },
+    config = function()
+      require("headlines").setup()
+    end,
+  },
+
+  ["edgy"] = {
+    path = "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+  },
+
+  -- ["focus"] = {
+  --   path = "nvim-focus/focus.nvim",
+  --   version = "*",
+  --   config = function()
+  --     require("focus").setup()
+  --   end
+  -- }
 }

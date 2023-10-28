@@ -1,59 +1,3 @@
--- require('indent_blankline').setup {
---   use_treesitter = false,
---   show_end_of_line = false,
---   filetype_exclude = {
---     "help",
---     "mason",
---     "packer",
---     "txt",
---     "alpha",
---     "dashboard",
---     "nofile",
---     "prompt",
---     "TelescopePrompt",
---     "DiffviewFiles",
---     "fugitive",
---     "qf",
---     "",
---     "dbout",
---     "neo-tree",
---     "Outline",
---   },
---   buftype_exclude = {'terminal', 'packer'},
---   term = 238,
---   gui = '#1E272C',
---   -- char_list = {'|', '¦', '┆', '┊'},
---   char_list = {'│'},
---   context_char = "│",
---   concealcursor = 'inc',
---   conceallevel = 2,
---   context_patterns = {'class', 'function', 'def', 'method', 'if', 'for', 'while', 'block'},
---   space_char_blankline = ' ',
---
---   show_trailing_blankline_indent = false,
---   show_current_context = false,
---
---   char_highlight_list = {
---     'IndentBlanklineChar'
---   },
---   space_char_highlight_list = {
---     'IndentBlanklineChar'
---   },
--- }
-
--- local highlight = {
---   "IndentBlanklineChar",
---   "Whitespace",
--- }
--- require("ibl").setup {
---   indent = { highlight = highlight, char = "│" },
---   whitespace = {
---     highlight = highlight,
---     remove_blankline_trail = false,
---   },
---   scope = { enabled = true },
--- }
-
 local highlight = {
   "RainbowRed",
   "RainbowYellow",
@@ -81,6 +25,20 @@ require("ibl").setup {
   indent = { highlight = {"IndentBlanklineChar"}, char = "│" },
   -- scope = { highlight = highlight },
   scope = { enabled = false },
+  exclude = {
+    filetypes = {
+      'dashboard',
+      'lspinfo',
+      'packer',
+      'checkhealth',
+      'help',
+      'man',
+      'gitcommit',
+      'TelescopePrompt',
+      'TelescopeResults',
+      '',
+    }
+  }
 }
 
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)

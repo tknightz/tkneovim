@@ -1,6 +1,4 @@
-return {
-  name = "editing",
-
+local common = {
   a = {":EasyAlign<cr>",     "align"},
   y = {"\"+y",               "yanks"},
   Y = {"%y+<cr>",            "whole yanks"},
@@ -11,4 +9,11 @@ return {
   n = {":tabnext<cr>",       "next tab"},
   N = {":tabnew<cr>",        "new tab"},
   p = {":tabprevious<cr>",   "prev tab"},
+
+}
+
+return {
+  name = "editing",
+  normal = common,
+  visual = common,
 }

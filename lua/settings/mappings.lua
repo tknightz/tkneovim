@@ -10,10 +10,10 @@ local keymaps = {
     ["<C-_>"]     = "<Plug>(comment_toggle_linewise_current)",
     ["<C-y>"]     = ":%y+",
 
-    ["<M-h>"]  = ":vertical resize +3<cr>",
-    ["<M-l>"] = ":vertical resize -3<cr>",
-    ["<M-k>"]    = ":resize +3<cr>",
-    ["<M-j>"]  = ":resize -3<cr>",
+    ["<M-h>"]  = "<cmd>silent! vertical resize +3<cr>",
+    ["<M-l>"] = "<cmd>silent! vertical resize -3<cr>",
+    ["<M-k>"]    = "<cmd>silent! resize +3<cr>",
+    ["<M-j>"]  = "<cmd>silent! resize -3<cr>",
 
     ["<M-Left>"]     = ":MoveHChar(-1)<CR>",
     ["<M-Right>"]     = ":MoveHChar(1)<CR>",

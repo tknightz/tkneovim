@@ -1,13 +1,16 @@
 local options = {
   listchars     = {
-    -- tab      = "│·",
-    tab         = "» ",
+    tab      = "⟩ ",
+    -- tab         = "» ",
     trail       = "·",
     -- space       = "⋅",
     -- precedes = "←",
     extends     = "→",
     eol         = "↩",
-    -- nbsp     = "␣",
+    nbsp     = "␣",
+    -- leadmultispace = "│ ",
+    -- multispace = "│ ",
+    -- tab = "│ ",
   },
 
   fillchars     = {
@@ -17,6 +20,8 @@ local options = {
     foldopen  = "",
     foldsep   = " ",
     foldclose = ""
+    -- foldopen  = "",
+    -- foldclose = ""
   },
 
   list          = true,
@@ -25,7 +30,7 @@ local options = {
 
   termguicolors = true,
   -- undofile      = true,
-  signcolumn    = "yes:1",
+  signcolumn    = "auto:1-2",
   encoding      = "UTF-8",
   background    = "dark",
   ignorecase    = true,
@@ -45,6 +50,7 @@ local options = {
   expandtab     = true,
   re            = 0,
   number        = true,
+  relativenumber = true,
   wrap          = false,
   linebreak     = true,
   cursorline    = true,

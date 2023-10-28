@@ -23,8 +23,6 @@ local ELLIPSIS_CHAR = '…'
 local MAX_LABEL_WIDTH = 30
 local MIN_LABEL_WIDTH = 20
 
----@param name string Parameter name
----@param default number
 local has_words_before = function()
 ---@diagnostic disable-next-line: deprecated
   local unpack = table.unpack or unpack
@@ -109,12 +107,24 @@ cmp.setup({
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp', priority = 2 },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'vim-dadbod-completion' },
     { name = "luasnip", priority = 1 },
     { name = 'path' },
     { name = 'emoji' },
     { name = 'nvim_lua' },
-    { name = 'buffer' },
+    { 
+      name = 'buffer',
+      option = {
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end
+      } 
+    },
   }),
 
   formatting = {

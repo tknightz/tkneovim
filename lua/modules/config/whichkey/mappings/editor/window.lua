@@ -1,6 +1,4 @@
-return {
-  name = '+windows' ,
-
+local normal = {
   w     = {'<C-W>w',                     'other-window'          },
   d     = {'<C-W>c',                     'delete-window'         },
   ["-"] = {'<C-W>s',                     'split-window-below'    },
@@ -26,4 +24,10 @@ return {
     h       = {'<cmd>wincmd H<cr>'       , 'swap-window-horizontal' },
   },
 
+}
+
+return {
+  name = '+windows' ,
+  normal = normal,
+  visual = normal,
 }

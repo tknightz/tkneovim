@@ -33,6 +33,8 @@ require('lualine').setup {
         "dashboard",
         "toggleterm",
         "DiffviewFiles",
+        "DiffviewFileHistory",
+        "Trouble",
         "lspsagaoutline",
         "fugitive",
         "Outline",

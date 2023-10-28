@@ -1,5 +1,9 @@
 local M = {}
 
+
+-- write a documentation for this function
+--- @param path string
+--- @return table
 M.build_init_module = function(path)
   local home_config_path = vim.fn.stdpath("config") .. '/lua/'
   local module_files = vim.fn.globpath(home_config_path .. path, "*", 0, 1)

@@ -21,12 +21,12 @@ vim.fn.sign_define("DiagnosticSignWarn", {text = "󰀦 ", numhl = "LspDiagnostic
 vim.fn.sign_define("DiagnosticSignInfo", {text = "󰋼 ", numhl = "LspDiagnosticsDefaultInfo", texthl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("DiagnosticSignHint", {text = " ", numhl = "LspDiagnosticsDefaultHint", texthl = "LspDiagnosticsDefaultHint"})
 
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
---   underline = true,
---   virtual_text = {spacing = 4},
---   signs = true,
---   update_in_insert = false
--- })
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  virtual_text = {spacing = 4},
+  signs = true,
+  update_in_insert = false
+})
 
 
 -- Iterate to register servers with custom config

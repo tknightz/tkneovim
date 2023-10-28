@@ -26,11 +26,6 @@ return {
     event = "LspAttach",
   },
 
-  -- ["nullls"] = {
-  --   path = "nvimtools/none-ls.nvim",
-  --   lazy = true,
-  -- },
-
   ["lint"] = {
     path = "mfussenegger/nvim-lint",
     lazy = true,
@@ -56,5 +51,5 @@ return {
     path = "j-hui/fidget.nvim",
     tag = "legacy",
     event = "LspAttach",
-  }
+  },
 }

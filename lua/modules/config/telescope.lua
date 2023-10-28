@@ -164,6 +164,9 @@ telescope.setup {
         }
       }
     },
+    live_grep = {
+      layout_strategy = "horizontal"
+    },
   },
   symbols = {
     sources = {'emoji', 'kaomoji', 'gitmoji', 'math', 'latex'}

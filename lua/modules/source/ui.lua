@@ -17,7 +17,10 @@ return {
     path = "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
-      require("todo-comments").setup{}
+      require("todo-comments").setup{
+        sign = true,
+        sign_priority = 102
+      }
     end
   },
 

@@ -9,6 +9,7 @@ return {
       "hrsh7th/cmp-emoji",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "autopairs",
     },
     event = { "InsertEnter", "CmdlineEnter" },
