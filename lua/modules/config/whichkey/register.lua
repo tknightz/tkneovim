@@ -1,8 +1,8 @@
-local wk = require('which-key')
+local wk = require("which-key")
 local mappings = require("modules.config.whichkey.mappings")
 
 local function jump_to_window()
-  local window = require('window-picker').pick_window()
+  local window = require("window-picker").pick_window()
   if window ~= nil then
     vim.api.nvim_set_current_win(window)
   end
@@ -22,23 +22,47 @@ local base_mappings = {
   p = mappings.project,
 }
 
-wk.register(vim.tbl_deep_extend("keep", base_mappings, {
-  -- not a group mappings
-  j = { jump_to_window, "jump" },
-  y = { "<cmd>%y+<cr>", "yank to clipboard" },
-  n = { "<cmd>NeoTreeRevealToggle<cr>", "neotree" },
-}),
+local function build_mode_mapping(mode)
+  local mappings = {}
+
+  for key, val in pairs(base_mappings) do
+    if val[mode] == nil then
+      goto continue
+    end
+
+    mappings[key] = vim.tbl_deep_extend(
+      "keep",
+      { name = val.name },
+      val[mode]
+    )
+    ::continue::
+  end
+
+  return mappings
+end
+
+-- build mode mappings
+local normal_mappings = build_mode_mapping("normal")
+local visual_mappings = build_mode_mapping("visual")
+
+wk.register(
+  vim.tbl_deep_extend("keep", normal_mappings, {
+    -- not a group mappings
+    j = { jump_to_window, "jump" },
+    y = { "<cmd>%y+<cr>", "yank to clipboard" },
+    n = { "<cmd>Neotree toggle<cr>", "neotree" },
+  }),
   {
     prefix = "<Leader>",
-    mode = "n"
-  })
+    mode = "n",
+  }
+)
 
-
-wk.register(vim.tbl_deep_extend("keep", base_mappings, {
+wk.register(vim.tbl_deep_extend("keep", visual_mappings, {
   -- not a group mappings
   j = { jump_to_window, "jump" },
   y = { "<cmd>%y+<cr>", "yank to clipboard" },
-  n = { "<cmd>NeoTreeRevealToggle<cr>", "neotree" },
+  n = { "<cmd>Neotree toggle<cr>", "neotree" },
 }),
   {
     prefix = "<Leader>",

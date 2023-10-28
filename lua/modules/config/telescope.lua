@@ -34,16 +34,16 @@ function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
 end
 
 function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
-    telescope_custom_actions._multiopen(prompt_bufnr, "vsplit")
+  telescope_custom_actions._multiopen(prompt_bufnr, "vsplit")
 end
 function telescope_custom_actions.multi_selection_open_split(prompt_bufnr)
-    telescope_custom_actions._multiopen(prompt_bufnr, "split")
+  telescope_custom_actions._multiopen(prompt_bufnr, "split")
 end
 function telescope_custom_actions.multi_selection_open_tab(prompt_bufnr)
-    telescope_custom_actions._multiopen(prompt_bufnr, "tabe")
+  telescope_custom_actions._multiopen(prompt_bufnr, "tabe")
 end
 function telescope_custom_actions.multi_selection_open(prompt_bufnr)
-    telescope_custom_actions._multiopen(prompt_bufnr, "edit")
+  telescope_custom_actions._multiopen(prompt_bufnr, "edit")
 end
 
 telescope.setup {
@@ -60,8 +60,6 @@ telescope.setup {
         ["<M-j>"] = actions.preview_scrolling_down,
         ["<Esc>"] = actions.close,
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        ['<CR>']  = telescope_custom_actions.multi_selection_open,
-        ['<C-t>'] = telescope_custom_actions.multi_selection_open_tab,
         ['<C-l>'] = actions.send_selected_to_qflist + actions.open_qflist,
         ['<C-a>'] = actions.select_all,
         ['<C-u>'] = actions.drop_all,
@@ -117,8 +115,7 @@ telescope.setup {
     layout_strategy = "horizontal",
     file_sorter = require "telescope.sorters".get_fzy_sorter,
     file_ignore_patterns = {"node_modules", "build", ".git/.*", "%.min.js", "%.min.css", "%.map"},
-    generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-    winblend = 0,
+    winblend = 10,
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     color_devicons = true,
@@ -133,6 +130,12 @@ telescope.setup {
   },
   pickers = {
     find_files = {
+      mappings = {
+        i = {
+          ['<CR>']  = telescope_custom_actions.multi_selection_open,
+          ['<C-t>'] = telescope_custom_actions.multi_selection_open_tab,
+        }
+      },
       previewer = false,
       theme = "dropdown",
       find_command = {"rg", "--ignore", "--hidden", "--files"},
@@ -161,14 +164,17 @@ telescope.setup {
         }
       }
     },
+    live_grep = {
+      layout_strategy = "horizontal"
+    },
   },
-	symbols = {
-		sources = {'emoji', 'kaomoji', 'gitmoji', 'math', 'latex'}
-	},
+  symbols = {
+    sources = {'emoji', 'kaomoji', 'gitmoji', 'math', 'latex'}
+  },
   extensions = {
     fzf = {
       fuzzy = true,
-      override_generic_sorter = false,
+      override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case"
     },

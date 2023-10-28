@@ -11,6 +11,9 @@ ts_config.setup {
     "go",
     "python",
   },
+  install = {
+    prefer_git = true
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
@@ -27,11 +30,13 @@ ts_config.setup {
   },
   yati = {
     enable = true,
+    suppress_conflict_warning = true,
     default_lazy = true,
     default_fallback = "auto",
   },
   indent = {
-    enable = false
+    enable = true,
+    disable = {"python", "typescript", "typescriptreact"},
   },
   matchup = {
     enable = true,
@@ -40,6 +45,10 @@ ts_config.setup {
     move = {
       enable = true,
       goto_previous_start = {
+        ['gaf'] = '@function.outer',
+        ['gif'] = '@function.outer',
+        ['gac'] = '@class.outer',
+        ['gic'] = '@class.outer',
         ['gap'] = '@parameter.outer',
         ['gip'] = '@parameter.inner',
       },
@@ -68,6 +77,11 @@ ts_config.setup {
       },
     },
   },
+  autotag = {
+    enable = true,
+    -- enable_rename = true,
+    -- enable_close = true,
+  },
   playground = {
     enable = true,
     disable = {},
@@ -86,12 +100,6 @@ ts_config.setup {
       show_help = '?',
     },
   },
-  rainbow = {
-    enable = true,
-    disable = { "python", "html" },
-    extended_mode = false,
-    max_file_lines = nil,
-  }
 }
 
 require("modules.config.treesitter.custom")

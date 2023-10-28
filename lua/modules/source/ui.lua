@@ -4,7 +4,7 @@ return {
   ["theme"] = {
     path = "navarasu/onedark.nvim",
     colorname = "onedark",
-    event = "VimEnter",
+    priority = 50,
   },
 
   -- Show dashboard first come
@@ -17,7 +17,10 @@ return {
     path = "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
-      require("todo-comments").setup{}
+      require("todo-comments").setup{
+        sign = true,
+        sign_priority = 102
+      }
     end
   },
 
@@ -36,12 +39,12 @@ return {
   -- Rich features buffer indicator
   ["bufferline"] = {
     path = "akinsho/nvim-bufferline.lua",
-    after = "theme"
+    priority = 51,
   },
 
   -- Fast status line
   ["lualine"] = {
     path = "nvim-lualine/lualine.nvim",
-    after = "theme",
+    priority = 52,
   },
 }

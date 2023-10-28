@@ -1,19 +1,19 @@
 local M = {}
 
-local packer_reversed_key = {
-  disable = 1,
-  as = 1,
+local plugin_reversed_key = {
+  enabled = 1,
+  name = 1,
   installer = 1,
   updater = 1,
   after = 1,
   rtp = 1,
-  opt = 1,
+  lazy = 1,
   branch = 1,
-  tag = 1,
+  version = 1,
   commit = 1,
-  lock = 1,
-  run = 1,
-  requires = 1,
+  pin = 1,
+  build = 1,
+  dependencies = 1,
   rocks = 1,
   config = 1,
   setup = 1,
@@ -25,10 +25,12 @@ local packer_reversed_key = {
   cond = 1,
   module = 1,
   module_pattern = 1,
+  tag = 1,
+  main = 1,
 }
 
-M.build_packer_object = function(name, module)
-  local obj = {module.path, as = name} 
+M.build_plugin_spec = function(name, module)
+  local obj = {module.path, name = name} 
   local home_config = vim.fn.stdpath('config') .. '/lua/'
 
   local setup_path = 'modules/setup/' .. name
@@ -38,18 +40,23 @@ M.build_packer_object = function(name, module)
   local is_existed_config_file = vim.fn.filereadable(home_config .. config_path .. '.lua') + vim.fn.isdirectory(home_config .. config_path)
 
   for key, value in pairs(module) do
-    if packer_reversed_key[key] then
+    if plugin_reversed_key[key] then
       obj[key] = value
     end
   end
 
   if is_existed_setup_file ~= 0 then
-      obj["setup"] = "require('" .. setup_path .. "')"
+    obj["init"] = function()
+      require(setup_path)
+    end
   end
 
   if is_existed_config_file ~= 0 then
-      obj["config"] = "require('" .. config_path .. "')"
+    obj["config"] = function()
+      require(config_path)
+    end
   end
+
 
   return obj
 end

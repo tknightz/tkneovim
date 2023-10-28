@@ -2,12 +2,14 @@ return {
   -- Neovim lsp function
   ["lspconfig"] = {
     path = "neovim/nvim-lspconfig",
-    cmd = {"LspStart"}
+    dependencies = { "mason", "masonlspconfig", "typescript-tools" },
+    lazy = true,
+    cmd = "LspStart",
   },
 
-  -- Lsp servers manager
   ["mason"] = {
     path = "williamboman/mason.nvim",
+    cmd = "Mason",
     module = "mason",
     config = function()
       require("mason").setup()
@@ -16,52 +18,28 @@ return {
 
   ["masonlspconfig"] = {
     path = "williamboman/mason-lspconfig.nvim",
-    after = "lspconfig"
+    lazy = true,
   },
 
-  -- ["grammarguard"] = {
-  --   path = "brymer-meneses/grammar-guard.nvim",
-  --   after = "lspconfig"
-  -- },
-  --
-
-  -- Enhance lsp ui
   ["lspsaga"] = {
-    path = "glepnir/lspsaga.nvim",
-    opt = true,
-    branch = "main",
-    after = "lspconfig",
-    -- event = "LspAttach",
+    path = "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+  },
+
+  ["lint"] = {
+    path = "mfussenegger/nvim-lint",
+    lazy = true,
+  },
+
+  ["conform"] = {
+    path = "stevearc/conform.nvim",
+    lazy = true,
   },
 
   -- Find trouble in your code
   ["trouble"] = {
     path = "folke/trouble.nvim",
-    cmd = {"Trouble"}
-  },
-
-  -- Show signature while typing code
-  ["signature"] = {
-    path = "ray-x/lsp_signature.nvim",
-    module = "lsp_signature",
-    config = function()
-      require("lsp_signature").setup({
-        bind = true,
-        handler_opts = {
-          border = "rounded"
-        },
-        transparency = 1,
-      })
-    end
-  },
-
-  -- Show definitions without moving
-  ["preview"] = {
-    path = "rmagatti/goto-preview",
-    config = function()
-      require("goto-preview").setup{}
-    end,
-    after = "lspconfig",
+    cmd = { "Trouble" }
   },
 
   ["symbolsoutline"] = {
@@ -69,14 +47,9 @@ return {
     cmd = "SymbolsOutline",
   },
 
-  ["nullls"] = {
-    path = "jose-elias-alvarez/null-ls.nvim",
-    after = "lspconfig"
-  },
-
   ["fidget"] = {
     path = "j-hui/fidget.nvim",
     tag = "legacy",
-    after = "theme",
-  }
+    event = "LspAttach",
+  },
 }

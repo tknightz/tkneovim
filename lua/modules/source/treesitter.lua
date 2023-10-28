@@ -9,27 +9,24 @@
 return {
   ["treesitter"] = {
     path = "nvim-treesitter/nvim-treesitter",
-    after = "theme",
-  },
+    event = { "BufRead", "BufNewFile" },
+    build = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
 
-  ["treesitter-textobjects"] = {
-    path = "nvim-treesitter/nvim-treesitter-textobjects",
-    after = "treesitter"
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      { "nvim-treesitter/playground",  cmd = "TSPlaygroundToggle" },
+      { "yioneko/nvim-yati", version = "*" },
+    }
   },
-
-  ["treesitter-playground"] = {
-    path = "nvim-treesitter/playground",
-    cmd = "TSPlaygroundToggle",
-  },
-
-  ["treesitter-rainbow"] = {
-    path = "mrjones2014/nvim-ts-rainbow",
-    after = "treesitter"
-  },
-
-  ["yati"] = {
-    path = "yioneko/nvim-yati",
-    tag = "*",
-    after = "treesitter",
-  },
+  ["context"] = {
+    path = "nvim-treesitter/nvim-treesitter-context",
+    cmd = { "TSContextToggle", "TSContextEnable" },
+    config = function()
+      require'treesitter-context'.setup{}
+    end
+  }
 }

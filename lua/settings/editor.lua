@@ -1,28 +1,36 @@
 local options = {
   listchars     = {
-    -- tab      = "│·",
-    tab         = "» ",
+    tab      = "⟩ ",
+    -- tab         = "» ",
     trail       = "·",
     -- space       = "⋅",
     -- precedes = "←",
     extends     = "→",
     eol         = "↩",
-    -- nbsp     = "␣",
+    nbsp     = "␣",
+    -- leadmultispace = "│ ",
+    -- multispace = "│ ",
+    -- tab = "│ ",
   },
 
   fillchars     = {
     eob       = " ",
     diff      = "╱",
-    foldopen  = "",
-    foldsep   = "│",
-    foldclose = "»"
+    fold      = " ",
+    foldopen  = "",
+    foldsep   = " ",
+    foldclose = ""
+    -- foldopen  = "",
+    -- foldclose = ""
   },
 
   list          = true,
 
+  winblend      = 10,
+
   termguicolors = true,
   -- undofile      = true,
-  signcolumn    = "auto:1-3",
+  signcolumn    = "auto:1-2",
   encoding      = "UTF-8",
   background    = "dark",
   ignorecase    = true,
@@ -31,9 +39,11 @@ local options = {
   tw            = 79,
   foldmethod    = "indent",
   foldlevel     = 99,
+  foldcolumn    = "1",
   updatetime    = 2000,
   timeoutlen    = 500,
   hidden        = true,
+  splitkeep     = "topline",
   splitbelow    = true,
   splitright    = true,
   ts            = 2,
@@ -41,6 +51,7 @@ local options = {
   expandtab     = true,
   re            = 0,
   number        = true,
+  relativenumber = true,
   wrap          = false,
   linebreak     = true,
   cursorline    = true,

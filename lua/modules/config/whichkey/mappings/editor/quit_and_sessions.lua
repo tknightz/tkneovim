@@ -1,8 +1,6 @@
 local session_util = require("lib.sessions")
 
-return {
-  name = "quit/sessions",
-
+local normal = {
   a = {"<cmd>qall<cr>", "quit all"},
   q = {"<cmd>q<cr>", "quit"},
   Q = {"<cmd>qa!<cr>", "Quit without saving"},
@@ -12,4 +10,11 @@ return {
 
   l = {session_util.quick_load_session, "restore last session"},
   L = {session_util.load_session, "restore session from file"},
+
+}
+
+return {
+  name = "quit/sessions",
+  normal = normal,
+  visual = normal,
 }

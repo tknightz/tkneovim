@@ -27,7 +27,9 @@ comment.setup({
 
 -- Override Ctrl+/ to comment
 vim.keymap.set("n", "<C-_>", api.toggle.linewise.current, {});
+vim.keymap.set("n", "<C-/>", api.toggle.linewise.current, {});
 vim.keymap.set("v", "<C-_>", api.call("toggle.linewise", "g@"), { expr = true });
+vim.keymap.set("v", "<C-/>", api.call("toggle.linewise", "g@"), { expr = true });
 
 -- Set comment for some nondefault support filetypes
 ft

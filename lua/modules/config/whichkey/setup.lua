@@ -30,15 +30,16 @@ wk.setup {
     group = "+", -- symbol prepended to a group
   },
   window = {
-    border = "single", -- none, single, double, shadow
+    border = "rounded", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 1, 1, 1, 1 }, -- extra window padding [top, right, bottom, left]
+    winblend = 10,
   },
   layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
+    height = { min = 3, max = 25 }, -- min and max height of the columns
     width = { min = 25, max = 35 }, -- min and max width of the columns
-    spacing = 4, -- spacing between columns
+    spacing = 10, -- spacing between columns
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate

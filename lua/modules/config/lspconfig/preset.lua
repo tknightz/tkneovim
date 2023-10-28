@@ -1,13 +1,13 @@
 local function on_attach(client, bufnr)
   -- Load signature_help
-  require('lsp_signature').on_attach({
-    bind = true,
-    hint_prefix = "🌸 ",
-    handler_opts = {
-      border = "rounded"
-    },
-    transparency = 1,
-  }, bufnr)
+  -- require('lsp_signature').on_attach({
+  --   bind = true,
+  --   hint_prefix = "🌸 ",
+  --   handler_opts = {
+  --     border = "rounded"
+  --   },
+  --   transparency = 1,
+  -- }, bufnr)
 
   -- load nvim-navic
   if client.server_capabilities.documentSymbolProvider then
@@ -16,7 +16,7 @@ local function on_attach(client, bufnr)
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  local opts = {noremap = true, silent = true}
+  local opts = { noremap = true, silent = true }
 
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -40,7 +40,12 @@ local function on_attach(client, bufnr)
 end
 
 -- setup cmp (completion)
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local _cap = vim.lsp.protocol.make_client_capabilities()
+_cap.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
+local capabilities = require('cmp_nvim_lsp').default_capabilities(_cap)
 
 return {
   on_attach = on_attach,

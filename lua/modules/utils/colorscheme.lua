@@ -1,13 +1,12 @@
 local M = {}
 
-vim.g.material_style = "deep ocean"
+vim.g.material_style = "darker"
 
 local color_lua_setup = function(colorname)
   require(colorname).setup{
-    style = "deep",
+    style = "darker",
     dark_theme = "onedark",
-    transparent = true,
-    transparent_background = true,
+    transparent = false,
     code_style = {
       keywords = "italic,bold",
       functions = "bold"
@@ -23,9 +22,22 @@ local color_lua_setup = function(colorname)
 
     highlights = {
       ["@keyword.function"] = { fmt = "italic,bold" },
-      DiffviewNormal = { bg = "#0a0e10" },
+      DiffviewNormal = { bg = "#141b24" },
+      DiffviewEndOfBuffer = { bg = "#141b24" },
+      TroubleNormal = { bg = "#181b20" },
+      EdgyWinbar = { bg = "#12161F" },
+      EdgyTitle = { bg = "#12161F", fg = "#c75ae8", fmt = "italic" },
+      EdgyIcon = { bg = "#12161F", fg = "#c75ae8" },
+      EdgyIconActive = { bg = "#12161F", fg = "#c75ae8" },
+      NeoTreeWinSeparator = { bg = "NONE" },
+      WinSeparator = { bg = "NONE", fg = "#282c34" },
       WinBar = { bg = "#1a1c23" },
-      Folded = {bg = "#181b20", fg = "#485e69", fmt = "bold"},
+      Folded = {bg = "#12161f", fmt = "bold"},
+      -- FoldColumn = { bg = "#1a212e" },
+      FoldColumn = { bg = "NONE" },
+      CursorLineNr = { fg = "#bf68d9", fmt = "italic,bold" },
+      UfoCursorFoldedLine = {bg = "#25112C", fmt = "bold"},
+      UfoFoldedBg = {bg = "#25112c" },
       StatusLine = { bg = "NONE" },
       StatusLineNC = { bg = "NONE" },
       SymbolsOutlineBg = { bg = "#131313" },
@@ -45,13 +57,16 @@ local color_lua_setup = function(colorname)
       DashboardCenter = { fg = "#555555" },
       DashboardFooter = { fg = "#ed4a7a", fmt = "NONE" },
       DashboardShortcut = { fg = "#555555" },
+      IndentLine = { fg = "#3b3b3b", fmt = "nocombine" },
       IndentBlanklineChar = { fg = "#3b3b3b" },
       IndentBlanklineContextChar = { fg = "#7e3992" },
+      MiniIndentscopeSymbol = { fg = "#c75ae8" },
+
       Whitespace = { fg = "#353535", fmt = "nocombine" },
-      Nontext = { fg = "#353535", fmt = "nocombine" },
-      TreesitterContext = { bg = "#342b27" },
-      TreesitterContextLineNumber = { fg = "#00d364" },
-      NormalFloat = { bg = "NONE" },
+      Nontext = { fg = "#5a5b5e", fmt = "nocombine" },
+      TreesitterContext = {bg = "#2e3852"},
+      TreesitterContextLineNumber = {fg = "#c75ae8", fmt="bold,italic"},
+      NormalFloat = { bg = "#1a1c23" },
       InclineActive = { bg = "#61afef", fg = "#000000"},
       InclineInactive = { bg = "#282828", fg = "#515559"},
       FidgetTask = { fg = "gray", fmt = "italic,nocombine" },
@@ -63,6 +78,7 @@ local color_lua_setup = function(colorname)
 
       MatchWord = { bg = "#371d3f", fmt = "underline" },
       MatchParen = { fmt = "inverse" },
+      MatchParenCur = { fmt = "nocombine" },
 
       TelescopePromptBorder = { fg = "#2e3c43" },
       TelescopeResultsBorder = { fg = "#2e3c43" },
@@ -70,13 +86,15 @@ local color_lua_setup = function(colorname)
       TelescopeSelection = { bg = "#2e3c43" },
       TelescopePromptCounter = { fg = "#82aaff" },
 
-      WhichKeyFloat = { bg = "#0a0e10" },
+      WhichKeyFloat = { bg = "none" },
       WhichKeyBorder = { fg = "#2e3c43" },
       WhichKeySeparator = { fg = "#00d364", fmt = "NONE" },
 
-      LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", gui="bold" },
-      LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", gui="bold" },
-    }
+      GitSignsCurrentLineBlame = { fg = "#407F7F", fmt = "italic" },
+      DiagnosticUnnecessary =  { fg="#455574", fmt="underline" },
+      LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", fmt="bold" },
+      LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", fmt="bold" },
+    },
   }
 end
 

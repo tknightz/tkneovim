@@ -1,7 +1,7 @@
 return {
   ["sphinx"] = {
     path = "stsewd/sphinx.nvim",
-    run = ":UpdateRemotePlugins",
+    build = ":UpdateRemotePlugins",
     ft = {"python"},
   },
 
@@ -14,7 +14,7 @@ return {
   ["mdpreview"] = {
     path = "iamcco/markdown-preview.nvim",
     ft = {"markdown"},
-    run = "cd app && yarn install"
+    build = "cd app && yarn install"
   },
 
   -- Emmet, quickly expand code html, jsx, tsx
@@ -23,9 +23,21 @@ return {
     ft = {"html", "css", "javascriptreact", "typescriptreact" }
   },
 
-  -- Note-taking in neovim, orgmode is ported from Emacs
-  ["orgmode"] = {
-    path = "nvim-orgmode/orgmode",
-    ft = "org"
+  ["typescript-tools"] = {
+    path = "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "lspconfig" },
+    config = function()
+      require("typescript-tools").setup {
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
+        settings = {
+          tsserver_max_memory = 3072
+        }
+      }
+    end,
+    after = "lspconfig",
+    lazy = true,
   },
 }

@@ -23,11 +23,15 @@ lspsaga.setup({
   },
   ui = {
     theme = "round",
+    winblend = 30,
     border = "rounded",
-    code_action = "🍬",
+    -- code_action = "💡" ,
     colors = {
       normal_bg = "NONE",
     }
+  },
+  lightbulb = {
+    virtual_text = false,
   },
   diagnostic = {
     on_insert_follow = true,
