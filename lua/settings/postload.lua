@@ -1,5 +1,3 @@
-
-
 -- turn off focus for filetypes
 local ignore_filetypes = { 'neo-tree', 'TelescopePrompt', 'DiffviewFiles' }
 local ignore_buftypes = { 'nofile', 'prompt', 'popup' }

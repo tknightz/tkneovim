@@ -43,6 +43,7 @@ local options = {
   updatetime    = 2000,
   timeoutlen    = 500,
   hidden        = true,
+  splitkeep     = "topline",
   splitbelow    = true,
   splitright    = true,
   ts            = 2,

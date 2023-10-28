@@ -402,17 +402,5 @@ return {
   ["edgy"] = {
     path = "folke/edgy.nvim",
     event = "VeryLazy",
-    init = function()
-      vim.opt.laststatus = 3
-      vim.opt.splitkeep = "screen"
-    end,
   },
-
-  -- ["focus"] = {
-  --   path = "nvim-focus/focus.nvim",
-  --   version = "*",
-  --   config = function()
-  --     require("focus").setup()
-  --   end
-  -- }
 }
