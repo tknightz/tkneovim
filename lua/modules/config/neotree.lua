@@ -4,12 +4,12 @@ require("neo-tree").setup({
     git_status = {
       symbols = {
         untracked = "?",
-      }
-    }
+      },
+    },
   },
   source_selector = {
     winbar = true,
-    statusline = true
+    statusline = true,
   },
   popup_border_style = "rounded",
   window = {
@@ -17,7 +17,7 @@ require("neo-tree").setup({
     mappings = {
       ["<space>"] = "none",
       ["w"] = "open_with_window_picker",
-    }
+    },
   },
   filesystem = {
     find_by_full_path_words = true,
@@ -28,8 +28,8 @@ require("neo-tree").setup({
     use_libuv_file_watcher = true,
     bind_to_cwd = false,
     cwd_target = {
-      sidebar = "none"
-    }
+      sidebar = "none",
+    },
   },
 })
 

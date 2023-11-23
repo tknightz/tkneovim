@@ -14,6 +14,9 @@ local function on_attach(client, bufnr)
     require("nvim-navic").attach(client, bufnr)
   end
 
+  -- disable sematic token
+  -- client.server_capabilities.semanticTokensProvider = nil
+
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   local opts = { noremap = true, silent = true }
@@ -43,11 +46,11 @@ end
 local _cap = vim.lsp.protocol.make_client_capabilities()
 _cap.textDocument.foldingRange = {
   dynamicRegistration = false,
-  lineFoldingOnly = true
+  lineFoldingOnly = true,
 }
-local capabilities = require('cmp_nvim_lsp').default_capabilities(_cap)
+local capabilities = require("cmp_nvim_lsp").default_capabilities(_cap)
 
 return {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
 }

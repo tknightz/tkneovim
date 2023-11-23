@@ -1,11 +1,12 @@
-require"fidget".setup{
-  text = {
-    spinner = "arc",
-    done = " ",
+require("fidget").setup({
+  progress = {
+    display = {
+      progress_icon = {
+        pattern = "arc",
+      },
+      done_icon = " ",
+    },
   },
-  window = {
-    blend = 0,
-  },
-}
+})
 
 vim.cmd("hi FidgetTitle guifg=#bf68b9 gui=bold,nocombine")

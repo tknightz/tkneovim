@@ -1,4 +1,4 @@
-local opt = {silent = true}
+local opt = { silent = true }
 local map = vim.api.nvim_set_keymap
 
 -- MAPPINGS

@@ -13,7 +13,7 @@ return {
     module = "mason",
     config = function()
       require("mason").setup()
-    end
+    end,
   },
 
   ["masonlspconfig"] = {
@@ -39,7 +39,7 @@ return {
   -- Find trouble in your code
   ["trouble"] = {
     path = "folke/trouble.nvim",
-    cmd = { "Trouble" }
+    cmd = { "Trouble" },
   },
 
   ["symbolsoutline"] = {
@@ -49,7 +49,7 @@ return {
 
   ["fidget"] = {
     path = "j-hui/fidget.nvim",
-    tag = "legacy",
+    -- tag = "legacy",
     event = "LspAttach",
   },
 }

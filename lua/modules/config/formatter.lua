@@ -7,7 +7,7 @@ local eslint_project_func = function()
   }
 end
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-require("formatter").setup {
+require("formatter").setup({
   -- Enable or disable logging
   logging = true,
   -- Set the log level
@@ -21,5 +21,5 @@ require("formatter").setup {
     },
     typescriptreact = { require("formatter.filetypes.typescriptreact").prettier },
     javascript = { require("formatter.filetypes.javascript").prettier },
-  }
-}
+  },
+})

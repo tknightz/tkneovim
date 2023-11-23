@@ -1,5 +1,4 @@
 local g = vim.g
-
 -- vim.env.DELTA_PAGER = "less -R"
 g.mapleader = " "
 g.loaded_gzip = 1

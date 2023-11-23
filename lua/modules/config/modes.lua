@@ -1,4 +1,4 @@
-require('modes').setup({
+require("modes").setup({
   colors = {
     copy = "#5a2971",
     delete = "#7a3841",

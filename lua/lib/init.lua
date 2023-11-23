@@ -1,11 +1,10 @@
 local M = {}
 
-
 -- write a documentation for this function
 --- @param path string
 --- @return table
 M.build_init_module = function(path)
-  local home_config_path = vim.fn.stdpath("config") .. '/lua/'
+  local home_config_path = vim.fn.stdpath("config") .. "/lua/"
   local module_files = vim.fn.globpath(home_config_path .. path, "*", 0, 1)
   local exported_module = {}
 
@@ -20,16 +19,17 @@ M.build_init_module = function(path)
   return exported_module
 end
 
-
 M.load_module = function(name)
-  vim.cmd("Lazy load ".. name)
+  vim.cmd("Lazy load " .. name)
 
-  local home_config_path = vim.fn.stdpath('config') .. '/lua/'
-  local setup_path = 'modules/setup/' .. name
-  local config_path = 'modules/config/' .. name
+  local home_config_path = vim.fn.stdpath("config") .. "/lua/"
+  local setup_path = "modules/setup/" .. name
+  local config_path = "modules/config/" .. name
 
-  local is_existed_setup_file = vim.fn.filereadable(home_config_path .. setup_path .. '.lua') + vim.fn.isdirectory(home_config_path .. setup_path)
-  local is_existed_config_file = vim.fn.filereadable(home_config_path .. config_path .. '.lua') + vim.fn.isdirectory(home_config_path .. config_path)
+  local is_existed_setup_file = vim.fn.filereadable(home_config_path .. setup_path .. ".lua")
+    + vim.fn.isdirectory(home_config_path .. setup_path)
+  local is_existed_config_file = vim.fn.filereadable(home_config_path .. config_path .. ".lua")
+    + vim.fn.isdirectory(home_config_path .. config_path)
 
   if is_existed_setup_file ~= 0 then
     vim.cmd("lua require('" .. setup_path .. "')")
@@ -38,7 +38,6 @@ M.load_module = function(name)
   if is_existed_config_file ~= 0 then
     vim.cmd("lua require('" .. config_path .. "')")
   end
-
 end
 
 return M

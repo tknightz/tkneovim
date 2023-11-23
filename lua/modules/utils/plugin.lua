@@ -30,14 +30,16 @@ local plugin_reversed_key = {
 }
 
 M.build_plugin_spec = function(name, module)
-  local obj = {module.path, name = name} 
-  local home_config = vim.fn.stdpath('config') .. '/lua/'
+  local obj = { module.path, name = name }
+  local home_config = vim.fn.stdpath("config") .. "/lua/"
 
-  local setup_path = 'modules/setup/' .. name
-  local config_path = 'modules/config/' .. name
+  local setup_path = "modules/setup/" .. name
+  local config_path = "modules/config/" .. name
 
-  local is_existed_setup_file = vim.fn.filereadable(home_config .. setup_path .. '.lua') + vim.fn.isdirectory(home_config .. setup_path)
-  local is_existed_config_file = vim.fn.filereadable(home_config .. config_path .. '.lua') + vim.fn.isdirectory(home_config .. config_path)
+  local is_existed_setup_file = vim.fn.filereadable(home_config .. setup_path .. ".lua")
+    + vim.fn.isdirectory(home_config .. setup_path)
+  local is_existed_config_file = vim.fn.filereadable(home_config .. config_path .. ".lua")
+    + vim.fn.isdirectory(home_config .. config_path)
 
   for key, value in pairs(module) do
     if plugin_reversed_key[key] then
@@ -56,7 +58,6 @@ M.build_plugin_spec = function(name, module)
       require(config_path)
     end
   end
-
 
   return obj
 end

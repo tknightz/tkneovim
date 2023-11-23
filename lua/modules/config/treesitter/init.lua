@@ -1,6 +1,6 @@
 local ts_config = require("nvim-treesitter.configs")
 
-ts_config.setup {
+ts_config.setup({
   ensure_installed = {
     "javascript",
     "html",
@@ -12,12 +12,12 @@ ts_config.setup {
     "python",
   },
   install = {
-    prefer_git = true
+    prefer_git = true,
   },
   highlight = {
     enable = true,
     use_languagetree = true,
-    additional_vim_regex_highlighting = {"sql"},
+    additional_vim_regex_highlighting = { "sql" },
   },
   incremental_selection = {
     enable = true,
@@ -26,7 +26,7 @@ ts_config.setup {
       node_incremental = "gn",
       scope_incremental = "gk",
       node_decremental = "gp",
-    }
+    },
   },
   yati = {
     enable = true,
@@ -36,7 +36,7 @@ ts_config.setup {
   },
   indent = {
     enable = true,
-    disable = {"python", "typescript", "typescriptreact"},
+    disable = { "python", "typescript", "typescriptreact" },
   },
   matchup = {
     enable = true,
@@ -45,12 +45,12 @@ ts_config.setup {
     move = {
       enable = true,
       goto_previous_start = {
-        ['gaf'] = '@function.outer',
-        ['gif'] = '@function.outer',
-        ['gac'] = '@class.outer',
-        ['gic'] = '@class.outer',
-        ['gap'] = '@parameter.outer',
-        ['gip'] = '@parameter.inner',
+        ["gaf"] = "@function.outer",
+        ["gif"] = "@function.outer",
+        ["gac"] = "@class.outer",
+        ["gic"] = "@class.outer",
+        ["gap"] = "@parameter.outer",
+        ["gip"] = "@parameter.inner",
       },
     },
 
@@ -88,18 +88,18 @@ ts_config.setup {
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false, -- Whether the query persists across vim sessions
     keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
+      toggle_query_editor = "o",
+      toggle_hl_groups = "i",
+      toggle_injected_languages = "t",
+      toggle_anonymous_nodes = "a",
+      toggle_language_display = "I",
+      focus_language = "f",
+      unfocus_language = "F",
+      update = "R",
+      goto_node = "<cr>",
+      show_help = "?",
     },
   },
-}
+})
 
 require("modules.config.treesitter.custom")

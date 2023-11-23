@@ -11,12 +11,11 @@ local function stage_hunk()
   vim.api.nvim_input("<esc>")
 end
 
-
 local normal = {
   f = { ":Telescope git_files<cr>", "files" },
   s = { git_util.my_git_status, "status" },
   S = { ":Gitsigns stage_buffer<cr>", "stage buffer" },
-  u = { ":sil Git reset %<cr>", "reset stage buffer "},
+  u = { ":sil Git reset %<cr>", "reset stage buffer " },
   b = { ":Telescope git_branches<cr>", "branches" },
   c = { ":Git commit --quiet<cr>", "commit" },
   ["."] = { ":Git<cr>", "Git here" },
@@ -46,7 +45,7 @@ local normal = {
 
     s = { ":Gitsign toggle_signs<cr>", "sign" },
     w = { ":Gitsign toggle_word_diff<cr>", "word diff" },
-    b = { ":Gitsign toggle_current_blame_line<cr>", "blame line" },
+    b = { ":Gitsign toggle_current_line_blame<cr>", "blame line" },
     h = { ":Gitsign toggle_numhl<cr>", "highlight" },
   },
 
@@ -64,11 +63,11 @@ local normal = {
 
 local visual = {
   s = { ":Gitsigns stage_hunk<CR>", "stage hunk" },
-  u = { ":Gitsigns undo_stage_hunk<CR>", "undo_stage_hunk" }
+  u = { ":Gitsigns undo_stage_hunk<CR>", "undo_stage_hunk" },
 }
 
 return {
   name = "git",
   normal = normal,
-  visual = visual
+  visual = visual,
 }

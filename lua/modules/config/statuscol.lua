@@ -17,19 +17,19 @@ require("statuscol").setup({
   segments = {
     {
       sign = {
-        namespace = { "gitsigns"},
+        namespace = { "gitsigns" },
         maxwidth = 1,
         auto = false,
       },
-      condition = { 
+      condition = {
         function(args)
-          return vim.bo[args.buf].filetype ~= 'fugitive'
-        end
+          return vim.bo[args.buf].filetype ~= "fugitive"
+        end,
       },
       click = "v:lua.ScSa",
     },
     {
-      sign = { name = { "todo*"}, maxwidth = 1, auto = true },
+      sign = { name = { "todo*" }, maxwidth = 1, auto = true },
     },
     {
       sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },

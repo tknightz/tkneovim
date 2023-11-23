@@ -1,12 +1,11 @@
-local actions = require('telescope.actions')
-local finders = require('telescope.finders')
-local action_state = require('telescope.actions.state')
-local action_set = require('telescope.actions.set')
+local actions = require("telescope.actions")
+local finders = require("telescope.finders")
+local action_state = require("telescope.actions.state")
+local action_set = require("telescope.actions.set")
 local previewers = require("telescope.previewers")
-local layout_actions = require('telescope.actions.layout')
+local layout_actions = require("telescope.actions.layout")
 
 local _, telescope = pcall(require, "telescope")
-
 
 local telescope_custom_actions = {}
 
@@ -46,9 +45,9 @@ function telescope_custom_actions.multi_selection_open(prompt_bufnr)
   telescope_custom_actions._multiopen(prompt_bufnr, "edit")
 end
 
-telescope.setup {
+telescope.setup({
   defaults = {
-    cycle_layout_list = {"horizontal", "vertical", "center", "bottom_pane"},
+    cycle_layout_list = { "horizontal", "vertical", "center", "bottom_pane" },
     mappings = {
       i = {
         ["<M-h>"] = layout_actions.toggle_preview,
@@ -60,11 +59,11 @@ telescope.setup {
         ["<M-j>"] = actions.preview_scrolling_down,
         ["<Esc>"] = actions.close,
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        ['<C-l>'] = actions.send_selected_to_qflist + actions.open_qflist,
-        ['<C-a>'] = actions.select_all,
-        ['<C-u>'] = actions.drop_all,
-        ['<C-n>'] = actions.move_selection_next,
-        ['<C-p>'] = actions.move_selection_previous,
+        ["<C-l>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<C-a>"] = actions.select_all,
+        ["<C-u>"] = actions.drop_all,
+        ["<C-n>"] = actions.move_selection_next,
+        ["<C-p>"] = actions.move_selection_previous,
       },
     },
     vimgrep_arguments = {
@@ -85,14 +84,14 @@ telescope.setup {
         width = 0.8,
         mirror = false,
         preview_cutoff = 40,
-        preview_width = 0.7
+        preview_width = 0.7,
       },
       vertical = {
         width = 0.5,
         height = 0.7,
         mirror = false,
         preview_cutoff = 60,
-        preview_width = 0.7
+        preview_width = 0.7,
       },
       center = {
         width = 0.4,
@@ -103,7 +102,7 @@ telescope.setup {
         height = 25,
         preview_cutoff = 120,
         prompt_position = "top",
-        preview_width = 0.7
+        preview_width = 0.7,
       },
     },
     prompt_prefix = " 🧭 ",
@@ -113,32 +112,32 @@ telescope.setup {
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    file_sorter = require "telescope.sorters".get_fzy_sorter,
-    file_ignore_patterns = {"node_modules", "build", ".git/.*", "%.min.js", "%.min.css", "%.map"},
+    file_sorter = require("telescope.sorters").get_fzy_sorter,
+    file_ignore_patterns = { "node_modules", "build", ".git/.*", "%.min.js", "%.min.css", "%.map" },
     winblend = 10,
     border = {},
-    borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
     use_less = true,
-    set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
+    set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     file_previewer = previewers.vim_buffer_cat.new,
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
 
     -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = previewers.buffer_previewer_maker
+    buffer_previewer_maker = previewers.buffer_previewer_maker,
   },
   pickers = {
     find_files = {
       mappings = {
         i = {
-          ['<CR>']  = telescope_custom_actions.multi_selection_open,
-          ['<C-t>'] = telescope_custom_actions.multi_selection_open_tab,
-        }
+          ["<CR>"] = telescope_custom_actions.multi_selection_open,
+          ["<C-t>"] = telescope_custom_actions.multi_selection_open_tab,
+        },
       },
       previewer = false,
       theme = "dropdown",
-      find_command = {"rg", "--ignore", "--hidden", "--files"},
+      find_command = { "rg", "--ignore", "--hidden", "--files" },
       file_ignore_patterns = {
         "node_modules",
         "%.gif",
@@ -160,48 +159,47 @@ telescope.setup {
       default_selection_index = 1,
       mappings = {
         i = {
-          ["<c-x>"] = "delete_buffer"
-        }
-      }
+          ["<c-x>"] = "delete_buffer",
+        },
+      },
     },
     live_grep = {
-      layout_strategy = "horizontal"
+      layout_strategy = "horizontal",
     },
   },
   symbols = {
-    sources = {'emoji', 'kaomoji', 'gitmoji', 'math', 'latex'}
+    sources = { "emoji", "kaomoji", "gitmoji", "math", "latex" },
   },
   extensions = {
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
       override_file_sorter = true,
-      case_mode = "smart_case"
+      case_mode = "smart_case",
     },
     media_files = {
-      filetypes = {"png", "webp", "jpg", "jpeg", "svg", "gif"},
-      find_cmd = "rg" -- find command (defaults to `fd`)
+      filetypes = { "png", "webp", "jpg", "jpeg", "svg", "gif" },
+      find_cmd = "rg", -- find command (defaults to `fd`)
     },
     frecency = {
-      show_scores     = true,
-      show_unindexed  = true,
+      show_scores = true,
+      show_unindexed = true,
       ignore_patterns = { "*.git/*", "*/tmp/*" },
       workspaces = {
-        ["nvim"]      = "/home/tulen/.config/nvim",
+        ["nvim"] = "/home/tulen/.config/nvim",
         ["alacritty"] = "/home/tulen/.config/alacritty",
       },
     },
     project = {
-      hidden_files = true
+      hidden_files = true,
     },
     termfinder = {
-      start_to_insert = true
-    }
-  }
-}
-
+      start_to_insert = true,
+    },
+  },
+})
 
 pcall(require("telescope").load_extension, "fzf") -- superfast sorter
 pcall(require("telescope").load_extension, "projects") -- project
 pcall(require("telescope").load_extension, "live_grep_args") -- live_grep_raw
-pcall(require('telescope').load_extension, "termfinder")
+pcall(require("telescope").load_extension, "termfinder")

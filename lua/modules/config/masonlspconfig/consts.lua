@@ -3,7 +3,7 @@ local preset = require("modules.config.lspconfig.preset")
 local M = {}
 
 -- ensure servers for mason
-M.ensure_installed_servers = {"yamlls", "pyright"};
+M.ensure_installed_servers = { "yamlls", "pyright" }
 
 -- config that apply to all servers
 M.general_configs = {
@@ -15,12 +15,12 @@ M.general_configs = {
 -- custom configs for specify server
 M.custom_configs = {
   gopls = {
-    cmd = {"gopls", "serve"},
-    filetypes = {"go", "gomod"},
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod" },
   },
 
   tailwindcss = {
-    filetypes = {"css", "html", "svelte", "typescriptreact"},
+    filetypes = { "css", "html", "svelte", "typescriptreact" },
   },
 
   -- tsserver = {
@@ -38,21 +38,21 @@ M.custom_configs = {
   },
 
   prismals = {
-    filetypes = { "prisma" }
+    filetypes = { "prisma" },
   },
 
   yamlls = {
     settings = {
       yaml = {
         schemas = {
-          ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"] = "*/openapi.(yml|yaml)"
+          ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"] = "*/openapi.(yml|yaml)",
         },
         schemaDownload = { enable = true },
         completion = true,
         validate = true,
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
 -- helper function to check if server is lsp

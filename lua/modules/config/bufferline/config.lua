@@ -2,7 +2,7 @@ local highlights = require("modules.config.bufferline.highlights")
 
 require("modules.config.bufferline.mappings")
 
-require "bufferline".setup {
+require("bufferline").setup({
   highlights = highlights,
   options = {
     offsets = {
@@ -15,7 +15,7 @@ require "bufferline".setup {
     buffer_close_icon = "",
     modified_icon = "",
     indicator = {
-      icon = '|',
+      icon = "|",
     },
     close_icon = "",
     left_trunc_marker = " ",
@@ -42,14 +42,15 @@ require "bufferline".setup {
     end,
     custom_filter = function(buf_number, _)
       -- filter out filetypes you don't want to see
-      if vim.bo[buf_number].filetype ~= "packer" and
-          vim.bo[buf_number].filetype ~= "terminal" and
-          vim.bo[buf_number].filetype ~= "TelescopePrompt" and
-          vim.bo[buf_number].filetype ~= "alpha" and
-          vim.bo[buf_number].filetype ~= "fugitive" and
-          vim.bo[buf_number].filetype ~= "qf" and
-          vim.bo[buf_number].filetype ~= "gitcommit" and
-          vim.bo[buf_number].filetype ~= "NvimTree"
+      if
+        vim.bo[buf_number].filetype ~= "packer"
+        and vim.bo[buf_number].filetype ~= "terminal"
+        and vim.bo[buf_number].filetype ~= "TelescopePrompt"
+        and vim.bo[buf_number].filetype ~= "alpha"
+        and vim.bo[buf_number].filetype ~= "fugitive"
+        and vim.bo[buf_number].filetype ~= "qf"
+        and vim.bo[buf_number].filetype ~= "gitcommit"
+        and vim.bo[buf_number].filetype ~= "NvimTree"
       then
         return true
       else
@@ -57,4 +58,4 @@ require "bufferline".setup {
       end
     end,
   },
-}
+})

@@ -3,17 +3,17 @@ local M = {}
 vim.g.material_style = "darker"
 
 local color_lua_setup = function(colorname)
-  require(colorname).setup{
-    style = "darker",
+  require(colorname).setup({
+    style = "deep",
     dark_theme = "onedark",
     transparent = false,
     code_style = {
       keywords = "italic,bold",
-      functions = "bold"
+      functions = "bold",
     },
 
     disable = {
-      background = true
+      background = true,
     },
 
     plugins = {
@@ -32,23 +32,23 @@ local color_lua_setup = function(colorname)
       NeoTreeWinSeparator = { bg = "NONE" },
       WinSeparator = { bg = "NONE", fg = "#282c34" },
       WinBar = { bg = "#1a1c23" },
-      Folded = {bg = "#12161f", fmt = "bold"},
+      Folded = { bg = "#12161f", fmt = "bold" },
       -- FoldColumn = { bg = "#1a212e" },
       FoldColumn = { bg = "NONE" },
       CursorLineNr = { fg = "#bf68d9", fmt = "italic,bold" },
-      UfoCursorFoldedLine = {bg = "#25112C", fmt = "bold"},
-      UfoFoldedBg = {bg = "#25112c" },
+      UfoCursorFoldedLine = { bg = "#25112C", fmt = "bold" },
+      UfoFoldedBg = { bg = "#25112c" },
       StatusLine = { bg = "NONE" },
       StatusLineNC = { bg = "NONE" },
       SymbolsOutlineBg = { bg = "#131313" },
       NvimTreeNormal = { bg = "#0a0e10" },
       NvimTreeFolderIcon = { fg = "#61afef" },
       NvimTreeVertSplit = { fg = "#3c3c3c" },
-      NvimTreeWinSeparator = { fg="#131313" },
+      NvimTreeWinSeparator = { fg = "#131313" },
       QuickFixLine = { bg = "#7e3992", fg = "NONE", fmt = "NONE" },
       CmpBorder = { fg = "#2e3c43" },
-      CmpWin = { bg = "NONE"},
-      CmpItemKindText = { fg = "#dd9046"},
+      CmpWin = { bg = "NONE" },
+      CmpItemKindText = { fg = "#dd9046" },
       FloatBorder = { fg = "#2e3c43", bg = "NONE" },
       PmenuSel = { fg = "black", bg = "#4fa6ed" },
       LspSagaHoverBorder = { fg = "#2e3c43" },
@@ -61,14 +61,15 @@ local color_lua_setup = function(colorname)
       IndentBlanklineChar = { fg = "#3b3b3b" },
       IndentBlanklineContextChar = { fg = "#7e3992" },
       MiniIndentscopeSymbol = { fg = "#c75ae8" },
+      CleverFChar = { fg = "#c75ae8", fmt = "bold,underline" },
 
       Whitespace = { fg = "#353535", fmt = "nocombine" },
       Nontext = { fg = "#5a5b5e", fmt = "nocombine" },
-      TreesitterContext = {bg = "#2e3852"},
-      TreesitterContextLineNumber = {fg = "#c75ae8", fmt="bold,italic"},
+      TreesitterContext = { bg = "#2e3852" },
+      TreesitterContextLineNumber = { fg = "#c75ae8", fmt = "bold,italic" },
       NormalFloat = { bg = "#1a1c23" },
-      InclineActive = { bg = "#61afef", fg = "#000000"},
-      InclineInactive = { bg = "#282828", fg = "#515559"},
+      InclineActive = { bg = "#61afef", fg = "#000000" },
+      InclineInactive = { bg = "#282828", fg = "#515559" },
       FidgetTask = { fg = "gray", fmt = "italic,nocombine" },
       FidgetTitle = { fg = "#00d364", fmt = "nocombine" },
 
@@ -91,11 +92,11 @@ local color_lua_setup = function(colorname)
       WhichKeySeparator = { fg = "#00d364", fmt = "NONE" },
 
       GitSignsCurrentLineBlame = { fg = "#407F7F", fmt = "italic" },
-      DiagnosticUnnecessary =  { fg="#455574", fmt="underline" },
-      LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", fmt="bold" },
-      LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", fmt="bold" },
+      DiagnosticUnnecessary = { fg = "#455574", fmt = "underline" },
+      LspSignatureActiveParameter = { bg = "NONE", fg = "#ed4a7a", fmt = "bold" },
+      LspSignatureHint = { bg = "NONE", fg = "#4fa6ed", fmt = "bold" },
     },
-  }
+  })
 end
 
 M.config_colorscheme = function(colorname)
@@ -104,7 +105,7 @@ M.config_colorscheme = function(colorname)
     color_lua_setup(colorname)
   end
 
-  vim.cmd("colorscheme "..colorname)
+  vim.cmd("colorscheme " .. colorname)
 end
 
 return M

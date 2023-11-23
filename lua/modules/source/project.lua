@@ -23,10 +23,10 @@ return {
   ["project_nvim"] = {
     path = "ahmedkhalf/project.nvim",
     config = function()
-      require("project_nvim").setup {
+      require("project_nvim").setup({
         patterns = { ".git" },
         detection_methods = { "pattern" },
-      }
+      })
     end,
   },
 

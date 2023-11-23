@@ -37,6 +37,7 @@ M.icons = {
   Color = " ",
   Folder = " ",
   Database = " ",
+  Reference = "󰿨 ",
 }
 
 return M

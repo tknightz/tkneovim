@@ -1,104 +1,104 @@
-require "nvim-web-devicons".setup {
+require("nvim-web-devicons").setup({
   override = {
     html = {
       icon = "",
       color = "#DE8C92",
-      name = "html"
+      name = "html",
     },
     css = {
       icon = "",
       color = "#61afef",
-      name = "css"
+      name = "css",
     },
     js = {
       icon = "",
       color = "#EBCB8B",
-      name = "js"
+      name = "js",
     },
     ts = {
       icon = "",
       color = "#519ABA",
-      name = "ts"
+      name = "ts",
     },
     tsx = {
       icon = "",
       color = "#519ABA",
-      name = "tsx"
+      name = "tsx",
     },
     kt = {
       icon = "󱈙",
       color = "#ffcb91",
-      name = "kt"
+      name = "kt",
     },
     png = {
       icon = "",
       color = "#BD77DC",
-      name = "png"
+      name = "png",
     },
     jpg = {
       icon = "",
       color = "#BD77DC",
-      name = "jpg"
+      name = "jpg",
     },
     jpeg = {
       icon = "",
       color = "#BD77DC",
-      name = "jpeg"
+      name = "jpeg",
     },
     mp3 = {
       icon = "",
       color = "#C8CCD4",
-      name = "mp3"
+      name = "mp3",
     },
     mp4 = {
       icon = "",
       color = "#C8CCD4",
-      name = "mp4"
+      name = "mp4",
     },
     out = {
       icon = "",
       color = "#C8CCD4",
-      name = "out"
+      name = "out",
     },
     rb = {
       icon = "",
       color = "#ff75a0",
-      name = "rb"
+      name = "rb",
     },
     vue = {
       icon = "﵂",
       color = "#7eca9c",
-      name = "vue"
+      name = "vue",
     },
     py = {
       icon = "",
       color = "#a7c5eb",
-      name = "py"
+      name = "py",
     },
     toml = {
       icon = "",
       color = "#61afef",
-      name = "toml"
+      name = "toml",
     },
     lock = {
       icon = "",
       color = "#DE6B74",
-      name = "lock"
+      name = "lock",
     },
     zip = {
       icon = "",
       color = "#EBCB8B",
-      name = "zip"
+      name = "zip",
     },
     xz = {
       icon = "",
       color = "#EBCB8B",
-      name = "xz"
+      name = "xz",
     },
     org = {
       icon = "",
       color = "#EBCB8B",
-      name = "org"
+      name = "org",
     },
     default_icon = {
       icon = "",
@@ -114,22 +114,22 @@ require "nvim-web-devicons".setup {
     ["Dockerfile.dev"] = {
       icon = "",
       color = "#b8b5ff",
-      name = "Dockerfile"
+      name = "Dockerfile",
     },
     ["Dockerfile.proc"] = {
       icon = "",
       color = "#b8b5ff",
-      name = "Dockerfile"
+      name = "Dockerfile",
     },
     Dockerfile = {
       icon = "",
       color = "#b8b5ff",
-      name = "Dockerfile"
+      name = "Dockerfile",
     },
     dockerfile = {
       icon = "",
       color = "#b8b5ff",
-      name = "Dockerfile"
+      name = "Dockerfile",
     },
   },
 
@@ -137,6 +137,6 @@ require "nvim-web-devicons".setup {
     bak = {
       icon = "󰁯",
       name = "backup",
-    }
-  }
-}
+    },
+  },
+})

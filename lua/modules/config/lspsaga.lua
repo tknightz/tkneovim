@@ -1,7 +1,7 @@
-local lspsaga = require('lspsaga')
+local lspsaga = require("lspsaga")
 
 lspsaga.setup({
-  border_style = 'rounded',
+  border_style = "rounded",
   symbol_in_winbar = {
     enable = false,
     in_custom = false,
@@ -9,15 +9,15 @@ lspsaga.setup({
     separator = " ",
   },
   show_outline = {
-    win_position = 'right',
+    win_position = "right",
     --set special filetype win that outline window split.like NvimTree neotree
     -- defx, db_ui
-    win_with = '',
+    win_with = "",
     win_width = 40,
     auto_enter = false,
     auto_preview = true,
-    virt_text = '│',
-    jump_key = 'o',
+    virt_text = "│",
+    jump_key = "o",
     -- auto refresh when change buffer
     auto_refresh = true,
   },
@@ -28,7 +28,7 @@ lspsaga.setup({
     -- code_action = "💡" ,
     colors = {
       normal_bg = "NONE",
-    }
+    },
   },
   lightbulb = {
     virtual_text = false,

@@ -6,7 +6,7 @@ require("filetype").setup({
     },
 
     complex = {
-      ["Dockerfile*"] = "dockerfile"
-    }
-  }
+      ["Dockerfile*"] = "dockerfile",
+    },
+  },
 })

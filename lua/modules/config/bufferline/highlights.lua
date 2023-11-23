@@ -11,7 +11,7 @@ local preset = {
 local colors = {
   normal = { fg = "#3f3b42", bg = "#0f1218" },
   visible = { fg = "gray", bg = "#14171f" },
-  selected = { fg = "#a0a8b7", bg = "#1a1c23" }
+  selected = { fg = "#a0a8b7", bg = "#1a1c23" },
 }
 
 local highlights = {

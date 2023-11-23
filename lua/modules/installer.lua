@@ -10,7 +10,7 @@ for name, info in pairs(modules) do
   if name == "theme" then
     local colorname = info["colorname"]
     spec["config"] = function()
-      require('modules.utils.colorscheme').config_colorscheme(colorname)
+      require("modules.utils.colorscheme").config_colorscheme(colorname)
     end
   end
 

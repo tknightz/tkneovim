@@ -19,7 +19,7 @@ return {
     path = "L3MON4D3/LuaSnip",
     event = "InsertEnter",
     dependencies = {
-      "rafamadriz/friendly-snippets"
+      "rafamadriz/friendly-snippets",
     },
   },
 
@@ -32,24 +32,24 @@ return {
   -- Align code
   ["ezalign"] = {
     path = "junegunn/vim-easy-align",
-    cmd = "EasyAlign"
+    cmd = "EasyAlign",
   },
 
   -- Better playing with brackets
   ["nvim-surround"] = {
     path = "kylechui/nvim-surround",
     config = function()
-      require("nvim-surround").setup {
+      require("nvim-surround").setup({
         move_cursor = false,
-      }
+      })
     end,
-    event = "BufRead"
+    event = "BufRead",
   },
 
   -- Auto close brackets
   ["autopairs"] = {
     path = "windwp/nvim-autopairs",
-    event = "InsertEnter"
+    event = "InsertEnter",
   },
 
   ["modes"] = {

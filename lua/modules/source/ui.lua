@@ -17,23 +17,23 @@ return {
     path = "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
-      require("todo-comments").setup{
+      require("todo-comments").setup({
         sign = true,
-        sign_priority = 102
-      }
-    end
+        sign_priority = 102,
+      })
+    end,
   },
 
   -- Icons for some other stuffs
   ["devicons"] = {
     path = "kyazdani42/nvim-web-devicons",
-    module = "nvim-web-devicons"
+    module = "nvim-web-devicons",
   },
 
   -- Fastest color parser Neovim
   ["colorizer"] = {
     path = "norcalli/nvim-colorizer.lua",
-    cmd = {"ColorizerToggle", "ColorizerAttachToBuffer"},
+    cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
   },
 
   -- Rich features buffer indicator

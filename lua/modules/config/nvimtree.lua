@@ -1,13 +1,13 @@
-local nvim_tree = require('nvim-tree')
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
-nvim_tree.setup {
+local nvim_tree = require("nvim-tree")
+local tree_cb = require("nvim-tree.config").nvim_tree_callback
+nvim_tree.setup({
   hijack_cursor = true,
   update_cwd = false,
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
   update_focused_file = {
     enable = true,
-    update_root = true
+    update_root = true,
   },
 
   renderer = {
@@ -21,7 +21,7 @@ nvim_tree.setup {
         file = true,
         folder_arrow = true,
       },
-    }
+    },
   },
 
   view = {
@@ -30,8 +30,8 @@ nvim_tree.setup {
       custom_only = false,
       list = {
         { key = "e", cb = tree_cb("cd") },
-      }
-    }
+      },
+    },
   },
 
   actions = {
@@ -46,10 +46,10 @@ nvim_tree.setup {
         enable = true,
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
         exclude = {
-          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", },
-          buftype  = { "nofile", "terminal", "help", },
-        }
-      }
-    }
-  }
-}
+          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+          buftype = { "nofile", "terminal", "help" },
+        },
+      },
+    },
+  },
+})

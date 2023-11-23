@@ -1,1 +1,1 @@
-require("modules.config.bufferline.config");
+require("modules.config.bufferline.config")

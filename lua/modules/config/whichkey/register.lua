@@ -23,22 +23,15 @@ local base_mappings = {
 }
 
 local function build_mode_mapping(mode)
-  local mappings = {}
+  local lmappings = {}
 
   for key, val in pairs(base_mappings) do
-    if val[mode] == nil then
-      goto continue
+    if val[mode] ~= nil then
+      lmappings[key] = vim.tbl_deep_extend("keep", { name = val.name }, val[mode])
     end
-
-    mappings[key] = vim.tbl_deep_extend(
-      "keep",
-      { name = val.name },
-      val[mode]
-    )
-    ::continue::
   end
 
-  return mappings
+  return lmappings
 end
 
 -- build mode mappings
@@ -58,13 +51,15 @@ wk.register(
   }
 )
 
-wk.register(vim.tbl_deep_extend("keep", visual_mappings, {
-  -- not a group mappings
-  j = { jump_to_window, "jump" },
-  y = { "<cmd>%y+<cr>", "yank to clipboard" },
-  n = { "<cmd>Neotree toggle<cr>", "neotree" },
-}),
+wk.register(
+  vim.tbl_deep_extend("keep", visual_mappings, {
+    -- not a group mappings
+    j = { jump_to_window, "jump" },
+    y = { '"+y', "yank to clipboard" },
+    n = { "<cmd>Neotree toggle<cr>", "neotree" },
+  }),
   {
     prefix = "<Leader>",
-    mode = "v"
-  })
+    mode = "v",
+  }
+)

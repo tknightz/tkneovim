@@ -7,30 +7,23 @@ local lib = require("lib")
 
 -- setting up autopairs
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
-
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- I use luasnip, so let's source it to cmp.
 lib.load_module("luasnip")
 local luasnip = require("luasnip")
 
-
 -- Set min_width for completion window
-local ELLIPSIS_CHAR = '…'
+local ELLIPSIS_CHAR = "…"
 local MAX_LABEL_WIDTH = 30
 local MIN_LABEL_WIDTH = 20
 
 local has_words_before = function()
----@diagnostic disable-next-line: deprecated
+  ---@diagnostic disable-next-line: deprecated
   local unpack = table.unpack or unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-
-
 
 -- Window customization
 local cmp_win_options = {
@@ -44,10 +37,9 @@ local cmp_win_options = {
     { "╰", "CmpBorder" },
     { "│", "CmpBorder" },
   },
-  scrollbar = '│',
-  winhighlight = "Normal:CmpWin,CursorLine:PmenuSel"
+  scrollbar = "│",
+  winhighlight = "Normal:CmpWin,CursorLine:PmenuSel",
 }
-
 
 -- Set it up
 cmp.setup({
@@ -69,12 +61,11 @@ cmp.setup({
     completion = cmp_win_options,
   },
 
-
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete({ select = true }),
-    ['<C-e>'] = cmp.mapping.close(),
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete({ select = true }),
+    ["<C-e>"] = cmp.mapping.close(),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
@@ -92,9 +83,9 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-    ['<CR>'] = cmp.mapping.confirm {
+    ["<CR>"] = cmp.mapping.confirm({
       select = false,
-    },
+    }),
   }),
 
   snippet = {
@@ -106,15 +97,15 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', priority = 2 },
-    { name = 'nvim_lsp_signature_help' },
-    { name = 'vim-dadbod-completion' },
+    { name = "nvim_lsp", priority = 2 },
+    { name = "nvim_lsp_signature_help" },
+    { name = "vim-dadbod-completion" },
     { name = "luasnip", priority = 1 },
-    { name = 'path' },
-    { name = 'emoji' },
-    { name = 'nvim_lua' },
-    { 
-      name = 'buffer',
+    { name = "path" },
+    { name = "emoji" },
+    { name = "nvim_lua" },
+    {
+      name = "buffer",
       option = {
         get_bufnrs = function()
           local bufs = {}
@@ -122,8 +113,8 @@ cmp.setup({
             bufs[vim.api.nvim_win_get_buf(win)] = true
           end
           return vim.tbl_keys(bufs)
-        end
-      } 
+        end,
+      },
     },
   }),
 
@@ -138,7 +129,7 @@ cmp.setup({
       if truncated_label ~= label then
         vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
       elseif string.len(label) < MIN_LABEL_WIDTH then
-        local padding = string.rep(' ', MIN_LABEL_WIDTH - string.len(label))
+        local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
         vim_item.abbr = label .. padding
       end
 
@@ -157,8 +148,8 @@ cmp.setup({
 
       -- copied from TJ config
       function(entry1, entry2)
-        local _, entry1_under = entry1.completion_item.label:find "^_+"
-        local _, entry2_under = entry2.completion_item.label:find "^_+"
+        local _, entry1_under = entry1.completion_item.label:find("^_+")
+        local _, entry2_under = entry2.completion_item.label:find("^_+")
         entry1_under = entry1_under or 0
         entry2_under = entry2_under or 0
         if entry1_under > entry2_under then
@@ -178,50 +169,50 @@ cmp.setup({
   confirmation = {
     get_commit_characters = function(commit_characters)
       return vim.tbl_filter(function(char)
-        return char ~= ','
+        return char ~= ","
       end, commit_characters)
-    end
+    end,
   },
 
   experimental = {
     native_menu = false,
-    ghost_text = false
+    ghost_text = true,
   },
 
   cmdline = {
-    [':'] = { sources = { name = "cmdline" }},
-    ['/'] = { sources = { name = "buffer" }},
-  }
+    [":"] = { sources = { name = "cmdline" } },
+    ["/"] = { sources = { name = "buffer" } },
+  },
 })
 
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
   sources = {
-    { name = 'cmdline' }
+    { name = "cmdline" },
   },
   mapping = cmp.mapping.preset.cmdline({
-    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item()),
-    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item()),
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item()),
-    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-e>'] = cmp.mapping({
+    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
+    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+    ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item()),
+    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-  })
+  }),
 })
 
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
   sources = {
-    { name = 'buffer' }
+    { name = "buffer" },
   },
   mapping = cmp.mapping.preset.cmdline({
-    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item()),
-    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item()),
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item()),
-    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-e>'] = cmp.mapping({
+    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
+    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+    ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item()),
+    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-  })
+  }),
 })

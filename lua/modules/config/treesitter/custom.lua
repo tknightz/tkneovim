@@ -1,5 +1,8 @@
 -- Python for injecting rst
-vim.treesitter.query.set("python", "injections", [[
+vim.treesitter.query.set(
+  "python",
+  "injections",
+  [[
 ((call
 function: (attribute
   object: (identifier) @_re)
@@ -26,8 +29,8 @@ function: (attribute
   (#offset! @rst 0 3 0 -3))
 
   (comment) @comment
-  ]])
-
+  ]]
+)
 
 -- Javascript highlight undefined
 -- require("vim.treesitter.query").set_query("javascript", "highlights", "(undefined) @constant.builtin")

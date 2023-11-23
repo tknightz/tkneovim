@@ -13,21 +13,22 @@ local function setup_highlights()
     return
   end
 
-  vim.cmd("hi NavicText guibg="..winbar_colors.background)
-  vim.cmd("hi NavicSeparator guibg="..winbar_colors.background)
+  vim.cmd("hi NavicText guibg=" .. winbar_colors.background)
+  vim.cmd("hi NavicSeparator guibg=" .. winbar_colors.background)
 
   for name in pairs(icons) do
     local done, colors = pcall(get_color, "NavicIcons" .. name)
     if done then
-      local cmd_hi = string.format("hi %s guifg=%s guibg=%s", "NavicIcons" .. name, colors.foreground, winbar_colors.background)
+      local cmd_hi =
+        string.format("hi %s guifg=%s guibg=%s", "NavicIcons" .. name, colors.foreground, winbar_colors.background)
       vim.cmd(cmd_hi)
     end
   end
 end
 
 setup_highlights()
-require("nvim-navic").setup {
+require("nvim-navic").setup({
   icons = icons,
   highlight = true,
   separator = " > ",
-}
+})

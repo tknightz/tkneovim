@@ -60,6 +60,7 @@ return {
           "dirvish",
           "fugitive",
           "neo-tree",
+          "DiffviewFiles",
           "dbui",
         },
       })
@@ -132,10 +133,10 @@ return {
   -- Better search
   ["autohls"] = {
     path = "asiryk/auto-hlsearch.nvim",
-    version = "1.0.0",
+    version = "1.1.0",
     config = function()
       require("auto-hlsearch").setup({
-        remap_keys = { "/", "?", "*", "#", "n", "N" },
+        remap_keys = { "/", "?", "*", "!", "#", "n", "N" },
         create_commands = true,
       })
     end,
@@ -190,7 +191,7 @@ return {
 
   ["bqf"] = {
     path = "kevinhwang91/nvim-bqf",
-    after = "pqf",
+    dependencies = { "pqf" },
     config = function()
       require("bqf").setup({
         preview = {
@@ -207,7 +208,6 @@ return {
   -- pretty quickfix UI
   ["pqf"] = {
     path = "yorickpeterse/nvim-pqf",
-    dependencies = { "bqf" },
     config = function()
       require("pqf").setup({
         signs = {
@@ -356,13 +356,13 @@ return {
           lua = "rainbow-blocks",
         },
         highlight = {
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterOrange",
           "RainbowDelimiterRed",
+          "RainbowDelimiterCyan",
+          "RainbowDelimiterGreen",
           "RainbowDelimiterYellow",
           "RainbowDelimiterBlue",
-          "RainbowDelimiterOrange",
-          "RainbowDelimiterGreen",
-          "RainbowDelimiterViolet",
-          "RainbowDelimiterCyan",
         },
       }
     end,
@@ -377,6 +377,7 @@ return {
     path = "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = { "<Plug>RestNvim" },
+    commit = "8b62563",
     config = function()
       require("rest-nvim").setup()
     end,
@@ -403,4 +404,29 @@ return {
     path = "folke/edgy.nvim",
     event = "VeryLazy",
   },
+
+  -- ["bettersearch"] = {
+  --   path = "backdround/improved-search.nvim",
+  --   dependencies = { "autohls" },
+  --   event = "BufRead",
+  --   config = function()
+  --     local search = require("improved-search")
+  --
+  --     -- Search next / previous.
+  --     vim.keymap.set({"n", "x", "o"}, "n", search.stable_next)
+  --     vim.keymap.set({"n", "x", "o"}, "N", search.stable_previous)
+  --
+  --     -- Search current word without moving.
+  --     vim.keymap.set("n", "!", search.current_word)
+  --
+  --     -- Search selected text in visual mode
+  --     vim.keymap.set("x", "!", search.in_place) -- search selection without moving
+  --     vim.keymap.set("x", "*", search.forward)  -- search selection forward
+  --     vim.keymap.set("x", "#", search.backward) -- search selection backward
+  --
+  --     -- Search by motion in place
+  --     vim.keymap.set("n", "|", search.in_place)
+  --     -- You can also use search.forward / search.backward for motion selection.
+  --   end
+  -- }
 }
