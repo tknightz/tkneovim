@@ -31,14 +31,15 @@ return {
         on_attach = function(client)
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
-          client.server_capabilities.semanticTokensProvider = nil
+          -- client.server_capabilities.semanticTokensProvider = nil
         end,
         settings = {
+          publish_diagnostic_on = "change",
           tsserver_max_memory = 3072,
+          separate_diagnostic_server = false,
         },
       })
     end,
-    after = "lspconfig",
     lazy = true,
   },
 }

@@ -46,9 +46,9 @@ ts_config.setup({
       enable = true,
       goto_previous_start = {
         ["gaf"] = "@function.outer",
-        ["gif"] = "@function.outer",
+        ["gif"] = "@function.inner",
         ["gac"] = "@class.outer",
-        ["gic"] = "@class.outer",
+        ["gic"] = "@class.inner",
         ["gap"] = "@parameter.outer",
         ["gip"] = "@parameter.inner",
       },
@@ -83,7 +83,7 @@ ts_config.setup({
     -- enable_close = true,
   },
   playground = {
-    enable = true,
+    enable = false,
     disable = {},
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false, -- Whether the query persists across vim sessions

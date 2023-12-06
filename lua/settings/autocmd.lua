@@ -16,12 +16,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
   end,
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
-  pattern = "*",
-  group = terminal_group,
-  command = "setlocal nonumber norelativenumber signcolumn=no",
-})
-
+-- copy the location of current file
 vim.api.nvim_create_user_command("Cppath", function()
   local path = vim.fn.expand("%:p")
   vim.fn.setreg("+", path)
@@ -30,4 +25,8 @@ end, {})
 
 vim.api.nvim_create_user_command("RestNvim", function()
   require("rest-nvim").run()
+end, {})
+
+vim.api.nvim_create_user_command("DBEE", function()
+  require("dbee").toggle()
 end, {})

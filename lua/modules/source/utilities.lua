@@ -61,6 +61,8 @@ return {
           "fugitive",
           "neo-tree",
           "DiffviewFiles",
+          "aerial",
+          "DiffviewFileHistory",
           "dbui",
         },
       })
@@ -151,20 +153,31 @@ return {
   },
 
   -- Interact with databases inside Neovim
-  ["dadbodui"] = {
-    path = "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      "tpope/vim-dadbod",
-      {
-        "kristijanhusak/vim-dadbod-completion",
-        init = function()
-          vim.g.vim_dadbod_completion_mark = "Database"
-        end,
-      },
-    },
-    cmd = { "DBUI", "DBUIAddConnection", "DBUIToggle" },
-  },
+  -- ["dadbodui"] = {
+  --   path = "kristijanhusak/vim-dadbod-ui",
+  --   dependencies = {
+  --     "tpope/vim-dadbod",
+  --     {
+  --       "kristijanhusak/vim-dadbod-completion",
+  --       init = function()
+  --         vim.g.vim_dadbod_completion_mark = "Database"
+  --       end,
+  --     },
+  --   },
+  --   cmd = { "DBUI", "DBUIAddConnection", "DBUIToggle" },
+  -- },
 
+  ["dbee"] = {
+    path = "kndndrj/nvim-dbee",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    build = function()
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup()
+    end,
+    lazy = true,
+  },
   -- Nice looking notifications with animation
   ["notify"] = {
     path = "rcarriga/nvim-notify",
@@ -180,7 +193,7 @@ return {
   -- Organize keymaps
   ["whichkey"] = {
     path = "folke/which-key.nvim",
-    keys = { "<leader>", "<Space>" },
+    keys = { "<leader>", "<Space>", { "<leader>", mode = "v" } },
   },
 
   -- Measure startup-time
@@ -218,7 +231,6 @@ return {
         },
       })
     end,
-    ft = "qf",
   },
 
   -- A plugin to visualise and resolve merge conflicts in neovim
@@ -255,21 +267,22 @@ return {
     end,
   },
 
-  -- ["hlargs"] = {
-  --   path = "m-demare/hlargs.nvim",
-  --   config = function()
-  --     require("hlargs").setup({
-  --       highlight = { fg = "#dd571c", bold = true },
-  --       use_colorpalette = true,
-  --       colorpalette = {
-  --         { fg = "#dd571c", bold = true },
-  --         { fg = "#fcae1e", bold = true },
-  --         { fg = "#ed7014", bold = true },
-  --       },
-  --     })
-  --   end,
-  --   event = "Bufread",
-  -- },
+  ["hlargs"] = {
+    path = "m-demare/hlargs.nvim",
+    config = function()
+      require("hlargs").setup({
+        -- color = '#D13E9E',
+        highlight = { fg = "#FF896B", bold = true, italic = true },
+        use_colorpalette = false,
+        colorpalette = {
+          { fg = "#dd571c", bold = true },
+          { fg = "#fcae1e", bold = true },
+          { fg = "#ed7014", bold = true },
+        },
+      })
+    end,
+    event = "Bufread",
+  },
 
   ["treejoin"] = {
     path = "Wansmer/treesj",
@@ -299,6 +312,9 @@ return {
     cmd = "Codeium",
     config = function()
       vim.keymap.set("i", "<C-l>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { silent = true, expr = true })
+      vim.keymap.set("i", "<C-k>", function()
         return vim.fn["codeium#Accept"]()
       end, { silent = true, expr = true })
       vim.keymap.set("i", "<c-;>", function()

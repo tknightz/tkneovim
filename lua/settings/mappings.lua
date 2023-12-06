@@ -4,6 +4,7 @@ local keymaps = {
       to = ":set hlsearch!<CR>",
       opt = {},
     },
+    ["0"] = "^",
     ["gz"] = "<Plug>Lightspeed_s",
     ["gZ"] = "<Plug>Lightspeed_S",
 
@@ -59,7 +60,7 @@ local function setup_keymap()
     for key, map in pairs(mappings) do
       local map_to = type(map) == "table" and map.to or map
       local opt = type(map) == "table" and map.opt or {}
-      vim.api.nvim_set_keymap(named_mode, key, map_to, opt)
+      vim.keymap.set(named_mode, key, map_to, opt)
     end
   end
 end

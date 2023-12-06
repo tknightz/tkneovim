@@ -40,7 +40,14 @@ require("toggleterm").setup({
     winblend = 1,
     highlights = {
       border = "TSNumber",
-      background = "Normal",
+    },
+  },
+  highlights = {
+    WinBar = {
+      link = "EdgyWinbar",
+    },
+    Normal = {
+      link = "EdgyNormal",
     },
   },
 })

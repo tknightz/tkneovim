@@ -14,7 +14,7 @@ return {
     end,
 
     dependencies = {
-      "windwp/nvim-ts-autotag",
+      "gungun974/nvim-ts-autotag",
       "nvim-treesitter/nvim-treesitter-textobjects",
       { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
       { "yioneko/nvim-yati", version = "*" },

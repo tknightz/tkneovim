@@ -11,4 +11,10 @@ require("modes").setup({
 
   -- Highlight cursor
   set_cursor = true,
+
+  -- or ignored filetypes
+  set_cursorline = true,
+
+  -- Enable line number highlights to match cursorline
+  -- set_number = true,
 })

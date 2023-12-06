@@ -33,7 +33,7 @@ require("neo-tree").setup({
   },
 })
 
--- vim.cmd("hi NeoTreeNormal guibg=#0a0e10")
--- vim.cmd("hi NeoTreeNormalNC guibg=#0a0e10")
+-- vim.cmd("hi NeoTreeNormal guibg=#11171E")
+-- vim.cmd("hi NeoTreeNormalNC guibg=#11171E")
 vim.cmd("hi NeoTreeTitleBar guibg=NONE guifg=white")
 vim.cmd("hi NeoTreeGitUnstaged gui=NONE guifg=#e55561")

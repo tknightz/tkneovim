@@ -15,7 +15,9 @@ local function on_attach(client, bufnr)
   end
 
   -- disable sematic token
-  -- client.server_capabilities.semanticTokensProvider = nil
+  if client.server_capabilities.semanticTokensProvider then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 

@@ -5,6 +5,10 @@ local function winbar_fmt()
   -- if in diffmode I don't wanna it show lsp and long filename
   if is_in_diffmode then
     local filename = vim.fn.fnamemodify(bufname, ":t")
+    if filename == "null" then
+      return "Deleted file"
+    end
+
     local is_v1 = string.match(bufname, "/.git/")
     return is_v1 and filename .. " (v1)" or filename .. " (v2)"
   end
@@ -38,10 +42,11 @@ require("lualine").setup({
         "lspsagaoutline",
         "fugitive",
         "Outline",
+        "aerial",
         "dbui",
         "dbout",
         "qf",
-        "",
+        ""
       },
     },
   },

@@ -1,29 +1,41 @@
--- turn off focus for filetypes
-local ignore_filetypes = { "neo-tree", "TelescopePrompt", "DiffviewFiles" }
-local ignore_buftypes = { "nofile", "prompt", "popup" }
+-- sidebar highlight autocmd
+local sidebar_filetypes = {
+  "fugitive",
+  "aerial",
+  "toggleterm",
+}
 
-local augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
+local augroup = vim.api.nvim_create_augroup("AutoBGSidebar", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  callback = function(_)
+    if vim.tbl_contains(sidebar_filetypes, vim.bo.filetype) then
+      vim.api.nvim_command("setlocal nonumber norelativenumber")
+      vim.api.nvim_command("setlocal signcolumn=yes:1")
+      vim.api.nvim_command("setlocal winhighlight=Normal:EdgyNormal,NormalNC:EdgyNormal,SignColumn:EdgyNormal,WinBar:EdgyWinbar,EndOfBuffer:EdgyNormal")
+    end
+  end,
+  desc = "Bg color for sidebar",
+})
 
 vim.api.nvim_create_autocmd("WinEnter", {
   group = augroup,
   callback = function(_)
-    if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
-      vim.w.focus_disable = true
-    else
-      vim.w.focus_disable = false
+    if not vim.tbl_contains(sidebar_filetypes, vim.bo.filetype) then
+      return
     end
-  end,
-  desc = "Disable focus autoresize for BufType",
-})
 
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup,
-  callback = function(_)
-    if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
-      vim.b.focus_disable = true
-    else
-      vim.b.focus_disable = false
+    -- set for all panel
+    vim.api.nvim_command("setlocal nonumber norelativenumber")
+    vim.api.nvim_command("setlocal winhighlight=Normal:EdgyNormal,NormalNC:EdgyNormal,SignColumn:EdgyNormal,WinBar:EdgyWinbar,EndOfBuffer:EdgyNormal")
+
+    -- specify for terminals
+    if vim.bo.filetype == "toggleterm" or vim.bo.filetype == "terminal" then
+      vim.api.nvim_command("setlocal signcolumn=no")
+      return
     end
+
+    vim.api.nvim_command("setlocal signcolumn=yes:1")
   end,
-  desc = "Disable focus autoresize for FileType",
+  desc = "Bg color for sidebar",
 })

@@ -1,5 +1,6 @@
 require("fidget").setup({
   progress = {
+    ignore_empty_message = false,
     display = {
       progress_icon = {
         pattern = "arc",

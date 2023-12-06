@@ -48,10 +48,10 @@ cmp.setup({
   end,
   debug = false,
   min_length = 1,
-  preselect = "enable",
+  preselect = cmp.PreselectMode.Item,
   throttle_time = 80,
   source_timeout = 200,
-  incomplete_delay = 400,
+  incomplete_delay = 300,
   max_abbr_width = 100,
   max_kind_width = 100,
   max_menu_width = 100,
@@ -64,7 +64,8 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete({ select = true }),
+    ["<C-l>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-k>"] = cmp.mapping.confirm({ select = true }),
     ["<C-e>"] = cmp.mapping.close(),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
@@ -175,8 +176,12 @@ cmp.setup({
   },
 
   experimental = {
-    native_menu = false,
-    ghost_text = true,
+    -- native_menu = false,
+    ghost_text = { hl_group = "Nontext" },
+  },
+
+  view = {
+    entries = { name = "custom" },
   },
 
   cmdline = {

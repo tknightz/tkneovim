@@ -1,6 +1,6 @@
 local options = {
   listchars = {
-    tab = "⟩ ",
+    tab = "  ",
     -- tab         = "» ",
     trail = "·",
     -- space       = "⋅",
@@ -17,9 +17,9 @@ local options = {
     eob = " ",
     diff = "╱",
     fold = " ",
-    foldopen = "",
-    foldsep = " ",
-    foldclose = "",
+    foldopen = "",
+    foldsep = "│",
+    foldclose = "󰦰",
     -- foldopen  = "",
     -- foldclose = ""
   },
@@ -60,9 +60,11 @@ local options = {
   showmode = false,
   laststatus = 3,
   shortmess = "IF",
-  conceallevel = 2,
+  conceallevel = 0,
   concealcursor = "n",
   mousemodel = "extend",
+  scrolloff = 6,
+  sidescrolloff = 6,
 
   shada = { "!", "'1000", "<50", "s10", "h" },
 }

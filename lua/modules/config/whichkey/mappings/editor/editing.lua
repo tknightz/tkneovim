@@ -8,6 +8,7 @@ local common = {
   M = { ":set mouse=<cr>", "mouse off" },
   n = { ":tabnext<cr>", "next tab" },
   N = { ":tabnew<cr>", "new tab" },
+  x = { ":tabclose<cr>", "close tab" },
   p = { ":tabprevious<cr>", "prev tab" },
 }
 

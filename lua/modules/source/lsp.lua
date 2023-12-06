@@ -47,9 +47,13 @@ return {
     cmd = "SymbolsOutline",
   },
 
+  ["aerial"] = {
+    path = "stevearc/aerial.nvim",
+    cmd = { "AerialToggle", "AerialOpen" },
+  },
+
   ["fidget"] = {
     path = "j-hui/fidget.nvim",
-    -- tag = "legacy",
     event = "LspAttach",
   },
 }

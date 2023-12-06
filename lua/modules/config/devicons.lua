@@ -138,5 +138,9 @@ require("nvim-web-devicons").setup({
       icon = "󰁯",
       name = "backup",
     },
+    http = {
+      icon = "",
+      name = "http"
+    }
   },
 })

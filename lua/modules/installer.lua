@@ -17,4 +17,11 @@ for name, info in pairs(modules) do
   table.insert(plugins, spec)
 end
 
-require("lazy").setup(plugins)
+require("lazy").setup(plugins, {
+  install = {
+    -- install missing plugins on startup. This doesn't increase startup time.
+    missing = true,
+    -- try to load one of these colorschemes when starting an installation during startup
+    colorscheme = { "onedark" },
+  },
+})

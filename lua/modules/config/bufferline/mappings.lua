@@ -1,5 +1,5 @@
 local opt = { silent = true }
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 -- MAPPINGS
 map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab

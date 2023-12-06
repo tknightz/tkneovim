@@ -26,15 +26,19 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
+local ufo = require("ufo")
 -- global handler
 -- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
 -- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
-require("ufo").setup({
+ufo.setup({
   fold_virt_text_handler = handler,
   provider_selector = function()
-    return { "treesitter", "indent" }
+    return { "treesitter" }
   end,
 })
+
+vim.keymap.set("n", "zM", ufo.closeAllFolds, { silent = true })
+vim.keymap.set("n", "zR", ufo.openAllFolds, { silent = true })
 
 -- buffer scope handler
 -- will override global handler if it is existed

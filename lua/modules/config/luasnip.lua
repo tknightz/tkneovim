@@ -4,7 +4,6 @@ local s, i, t = ls.s, ls.insert_node, ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 local f = ls.function_node
--- vim.cmd("packadd friendlysnippet")
 require("luasnip.loaders.from_vscode").lazy_load()
 
 ls.config.setup({
@@ -46,3 +45,5 @@ ls.add_snippets("javascript", {
     )
   ),
 })
+
+ls.filetype_extend("typescript", { "javascript" })

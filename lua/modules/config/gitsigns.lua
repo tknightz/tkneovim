@@ -1,10 +1,11 @@
 require("gitsigns").setup({
   signs = {
-    add = { hl = "GitSignsAdd", text = "▏", numhl = "GitSignsAddNr" },
-    change = { hl = "GitSignsChange", text = "▏", numhl = "GitSignsChangeNr" },
-    delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr" },
-    topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-    changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr" },
+    add = { linehl = "DiffAdd", text = "┃", numhl = "GitSignsAddNr" },
+    change = { linehl = "DiffChange", text = "┃", numhl = "GitSignsChangeNr" },
+    delete = { linehl = "DiffDelete", text = "_", numhl = "GitSignsDeleteNr" },
+    topdelete = { linehl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+    changedelete = { linehl = "DiffChange", text = "~", numhl = "GitSignsChangeNr" },
+    untracked = { linehl = "DiffUntracked", text = "╎", numhl = "GitSignsUntracked" },
   },
   current_line_blame = true,
   current_line_blame_opts = {
@@ -12,7 +13,7 @@ require("gitsigns").setup({
     delay = 500,
   },
   current_line_blame_formatter = "  <author>, <author_time:%Y-%m-%d> - <summary>",
-  numhl = false,
+  numhl = true,
   watch_gitdir = {
     interval = 100,
   },

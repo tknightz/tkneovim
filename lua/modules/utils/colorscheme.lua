@@ -1,7 +1,5 @@
 local M = {}
 
-vim.g.material_style = "darker"
-
 local color_lua_setup = function(colorname)
   require(colorname).setup({
     style = "deep",
@@ -20,21 +18,38 @@ local color_lua_setup = function(colorname)
       bufferline = true,
     },
 
+    colors = {
+      bg = "#141b24",
+      sidebar = "#10151c",
+    },
+
     highlights = {
       ["@keyword.function"] = { fmt = "italic,bold" },
-      DiffviewNormal = { bg = "#141b24" },
-      DiffviewEndOfBuffer = { bg = "#141b24" },
+      Normal = { bg = "$bg" },
+      EndOfBuffer = { bg = "$bg" },
+      Sidebar = { bg = "$sidebar" },
+
+      DiffviewNormal = { bg = "$sidebar" },
+      DiffviewEndOfBuffer = { bg = "$sidebar" },
       TroubleNormal = { bg = "#181b20" },
+
       EdgyWinbar = { bg = "#12161F" },
       EdgyTitle = { bg = "#12161F", fg = "#c75ae8", fmt = "italic" },
       EdgyIcon = { bg = "#12161F", fg = "#c75ae8" },
       EdgyIconActive = { bg = "#12161F", fg = "#c75ae8" },
+      EdgyNormal = { bg = "$sidebar" },
+
       NeoTreeWinSeparator = { bg = "NONE" },
+      NeoTreeNormal = { bg = "$sidebar" },
+      NeoTreeEndOfBuffer = { bg = "$sidebar" },
+      NeoTreeNormalNC = { bg = "$sidebar" },
+
       WinSeparator = { bg = "NONE", fg = "#282c34" },
-      WinBar = { bg = "#1a1c23" },
+      WinBar = { bg = "$bg" },
       Folded = { bg = "#12161f", fmt = "bold" },
-      -- FoldColumn = { bg = "#1a212e" },
-      FoldColumn = { bg = "NONE" },
+      -- FoldColumn = { bg = "$bg" },
+      SignColumn = { bg = "NONE", fg = "#eb4d55", fmt = "nocombine" },
+      FoldColumn = { bg = "NONE", fg = "#eb4d55", fmt = "nocombine" },
       CursorLineNr = { fg = "#bf68d9", fmt = "italic,bold" },
       UfoCursorFoldedLine = { bg = "#25112C", fmt = "bold" },
       UfoFoldedBg = { bg = "#25112c" },
@@ -67,7 +82,7 @@ local color_lua_setup = function(colorname)
       Nontext = { fg = "#5a5b5e", fmt = "nocombine" },
       TreesitterContext = { bg = "#2e3852" },
       TreesitterContextLineNumber = { fg = "#c75ae8", fmt = "bold,italic" },
-      NormalFloat = { bg = "#1a1c23" },
+      NormalFloat = { bg = "$bg" },
       InclineActive = { bg = "#61afef", fg = "#000000" },
       InclineInactive = { bg = "#282828", fg = "#515559" },
       FidgetTask = { fg = "gray", fmt = "italic,nocombine" },

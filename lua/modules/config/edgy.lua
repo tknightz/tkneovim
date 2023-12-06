@@ -37,9 +37,8 @@ require("edgy").setup({
   },
   right = {
     {
-      ft = "Outline",
-      pinned = true,
-      open = "SymbolsOutline",
+      ft = "aerial",
+      open = "AerialOpen",
     },
   },
   options = {

@@ -2,9 +2,6 @@ local preset = require("modules.config.lspconfig.preset")
 
 local M = {}
 
--- ensure servers for mason
-M.ensure_installed_servers = { "yamlls", "pyright" }
-
 -- config that apply to all servers
 M.general_configs = {
   capabilities = preset.capabilities,
@@ -22,16 +19,6 @@ M.custom_configs = {
   tailwindcss = {
     filetypes = { "css", "html", "svelte", "typescriptreact" },
   },
-
-  -- tsserver = {
-  --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  --   root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
-  --   init_options = {
-  --     preferences = {
-  --       disableSuggestions = true
-  --     }
-  --   }
-  -- },
 
   emmet_ls = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -52,6 +39,24 @@ M.custom_configs = {
         validate = true,
       },
     },
+  },
+
+  ltex = {
+    filetypes = {
+      "markdown",
+      "md",
+      "latex",
+      "org",
+      "gitcommit",
+    },
+    settings = {
+      ltex = {
+        enabled = {"latex", "markdown", "gitcommit", "md", "org"},
+        setenceCacheSize=5000,
+        flags = { debounce_text_changes = 1000 },
+        completionEnabled = true
+      }
+    }
   },
 }
 

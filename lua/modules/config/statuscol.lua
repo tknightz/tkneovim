@@ -10,14 +10,18 @@ require("statuscol").setup({
     "Trouble",
     "lazy",
     "toggleterm",
-    -- "fugitive",
+    "Dashboard",
     "DiffviewFiles",
+    "aerial",
+    "",
   },
   relculright = true,
   segments = {
+    { text = { " ", builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
     {
       sign = {
         namespace = { "gitsigns" },
+        name = { "todo*" },
         maxwidth = 1,
         auto = false,
       },
@@ -28,15 +32,23 @@ require("statuscol").setup({
       },
       click = "v:lua.ScSa",
     },
+    -- {
+    --   sign = { name = { "todo*" }, maxwidth = 1, auto = true },
+    -- },
     {
-      sign = { name = { "todo*" }, maxwidth = 1, auto = true },
-    },
-    {
-      sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },
+      sign = { name = { "Diagnostic" }, maxwidth = 1, auto = true },
       condition = { builtin.not_empty },
       click = "v:lua.ScSa",
     },
-    { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
-    { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+    { text = { builtin.foldfunc }, hl = "FoldColumn", click = "v:lua.ScFa" },
+    {
+      text = {
+        function(args)
+          local string = args.cul and args.relnum == 0 and "%#CursorLineFold#" or "%#FoldColumn#"
+          return string .. " "
+        end,
+      },
+      hl = "CursorLineFold",
+    },
   },
 })
