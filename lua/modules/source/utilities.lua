@@ -51,20 +51,9 @@ return {
     path = "RRethy/vim-illuminate",
     event = "BufRead",
     config = function()
+      local special_fts = require("lib.consts").special_fts
       require("illuminate").configure({
-        filetypes_denylist = {
-          "TelescopePrompt",
-          "prompt",
-          "dashboard",
-          "NvimTree",
-          "dirvish",
-          "fugitive",
-          "neo-tree",
-          "DiffviewFiles",
-          "aerial",
-          "DiffviewFileHistory",
-          "dbui",
-        },
+        filetypes_denylist = special_fts,
       })
     end,
   },

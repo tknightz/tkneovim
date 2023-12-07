@@ -1,4 +1,5 @@
 local highlights = require("modules.config.bufferline.highlights")
+local special_fts = require("lib.consts")
 
 require("modules.config.bufferline.mappings")
 
@@ -42,20 +43,12 @@ require("bufferline").setup({
     end,
     custom_filter = function(buf_number, _)
       -- filter out filetypes you don't want to see
-      if
-        vim.bo[buf_number].filetype ~= "packer"
-        and vim.bo[buf_number].filetype ~= "terminal"
-        and vim.bo[buf_number].filetype ~= "TelescopePrompt"
-        and vim.bo[buf_number].filetype ~= "alpha"
-        and vim.bo[buf_number].filetype ~= "fugitive"
-        and vim.bo[buf_number].filetype ~= "qf"
-        and vim.bo[buf_number].filetype ~= "gitcommit"
-        and vim.bo[buf_number].filetype ~= "NvimTree"
-      then
-        return true
-      else
+      local ft = vim.bo[buf_number].filetype
+      if vim.tbl_contains(special_fts, ft) then
         return false
       end
+
+      return true
     end,
   },
 })

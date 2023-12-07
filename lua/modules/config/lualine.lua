@@ -1,3 +1,5 @@
+local special_fts = require("lib.consts").special_fts
+
 local function winbar_fmt()
   local bufname = vim.api.nvim_buf_get_name(0)
   local is_in_diffmode = vim.api.nvim_win_get_option(0, "diff")
@@ -32,22 +34,7 @@ require("lualine").setup({
     section_separators = { left = "", right = "" },
     always_divide_middle = true,
     disabled_filetypes = {
-      winbar = {
-        "neo-tree",
-        "dashboard",
-        "toggleterm",
-        "DiffviewFiles",
-        "DiffviewFileHistory",
-        "Trouble",
-        "lspsagaoutline",
-        "fugitive",
-        "Outline",
-        "aerial",
-        "dbui",
-        "dbout",
-        "qf",
-        ""
-      },
+      winbar = special_fts,
     },
   },
   sections = {
