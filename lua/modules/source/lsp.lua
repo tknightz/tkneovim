@@ -56,4 +56,24 @@ return {
     path = "j-hui/fidget.nvim",
     event = "LspAttach",
   },
+
+  ["typescript-tools"] = {
+    path = "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "lspconfig" },
+    config = function()
+      require("typescript-tools").setup({
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+          client.server_capabilities.semanticTokensProvider = false
+        end,
+        settings = {
+          publish_diagnostic_on = "change",
+          tsserver_max_memory = 3072,
+          separate_diagnostic_server = false,
+        },
+      })
+    end,
+    lazy = true,
+  },
 }
