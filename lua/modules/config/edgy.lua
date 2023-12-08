@@ -96,4 +96,8 @@ require("edgy").setup({
       win.view.edgebar:equalize()
     end,
   },
+  icons = {
+    closed = "    ",
+    open = "    ",
+  },
 })

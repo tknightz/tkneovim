@@ -1,5 +1,5 @@
 local highlights = require("modules.config.bufferline.highlights")
-local special_fts = require("lib.consts")
+local special_fts = require("lib.consts").special_fts
 
 require("modules.config.bufferline.mappings")
 

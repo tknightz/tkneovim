@@ -34,7 +34,7 @@ local color_lua_setup = function(colorname)
       TroubleNormal = { bg = "#181b20" },
 
       EdgyWinbar = { bg = "#12161F" },
-      EdgyTitle = { bg = "#12161F", fg = "#c75ae8", fmt = "italic" },
+      EdgyTitle = { bg = "#12161F", fg = "#c75ae8", fmt = "bold" },
       EdgyIcon = { bg = "#12161F", fg = "#c75ae8" },
       EdgyIconActive = { bg = "#12161F", fg = "#c75ae8" },
       EdgyNormal = { bg = "$sidebar" },

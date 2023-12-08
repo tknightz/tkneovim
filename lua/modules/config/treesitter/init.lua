@@ -102,4 +102,5 @@ ts_config.setup({
   },
 })
 
+vim.treesitter.language.register('markdown', 'octo')
 require("modules.config.treesitter.custom")

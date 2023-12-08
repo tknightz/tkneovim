@@ -410,6 +410,19 @@ return {
     event = "VeryLazy",
   },
 
+  ["octo"] = {
+    path = "pwntester/octo.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "telescope",
+      "nvim-web-devicons",
+    },
+    config = function ()
+      require("octo").setup()
+    end,
+    cmd = {"Octo"},
+  },
+
   -- ["bettersearch"] = {
   --   path = "backdround/improved-search.nvim",
   --   dependencies = { "autohls" },

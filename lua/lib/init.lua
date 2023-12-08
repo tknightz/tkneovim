@@ -1,5 +1,20 @@
 local M = {}
 
+M.get_win_id = function(buf_id)
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    -- Get the buffer ID associated with the window
+    local win_buf_id = vim.api.nvim_win_get_buf(win)
+
+    -- Check if the buffer ID matches the desired value
+    if win_buf_id == buf_id then
+      -- Print the window ID
+      return win
+    end
+  end
+
+  return nil
+end
+
 -- write a documentation for this function
 --- @param path string
 --- @return table

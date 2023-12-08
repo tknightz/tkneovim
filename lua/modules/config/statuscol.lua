@@ -1,20 +1,8 @@
 local builtin = require("statuscol.builtin")
+local special_fts = require("lib.consts").special_fts
 
 require("statuscol").setup({
-  ft_ignore = {
-    "help",
-    "vim",
-    "alpha",
-    "dashboard",
-    "neo-tree",
-    "Trouble",
-    "lazy",
-    "toggleterm",
-    "Dashboard",
-    "DiffviewFiles",
-    "aerial",
-    "",
-  },
+  ft_ignore = special_fts,
   relculright = true,
   segments = {
     { text = { " ", builtin.lnumfunc, " " }, click = "v:lua.ScLa" },

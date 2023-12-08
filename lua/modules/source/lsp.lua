@@ -61,12 +61,10 @@ return {
     path = "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "lspconfig" },
     config = function()
+      local lsp_preset = require("modules.config.lspconfig.preset")
       require("typescript-tools").setup({
-        on_attach = function(client)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-          client.server_capabilities.semanticTokensProvider = false
-        end,
+        on_attach = lsp_preset.on_attach,
+        capabilities = lsp_preset.capabilities,
         settings = {
           publish_diagnostic_on = "change",
           tsserver_max_memory = 3072,
