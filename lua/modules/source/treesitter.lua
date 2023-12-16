@@ -20,6 +20,7 @@ return {
       { "yioneko/nvim-yati", version = "*" },
     },
   },
+
   ["context"] = {
     path = "nvim-treesitter/nvim-treesitter-context",
     cmd = { "TSContextToggle", "TSContextEnable" },

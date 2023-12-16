@@ -10,7 +10,7 @@ npairs.add_rules({
 })
 
 npairs.add_rules({
-  Rule("then", "end"):end_wise(function(opts)
+  Rule("then", "end", "lua"):end_wise(function(opts)
     -- Add any context checks here, e.g. line starts with "if"
     return string.match(opts.line, "^%s*if") ~= nil
   end),

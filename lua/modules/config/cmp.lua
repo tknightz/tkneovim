@@ -10,7 +10,6 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- I use luasnip, so let's source it to cmp.
-lib.load_module("luasnip")
 local luasnip = require("luasnip")
 
 -- Set min_width for completion window
@@ -47,8 +46,8 @@ cmp.setup({
     return vim.bo.filetype ~= "TelescopePrompt"
   end,
   debug = false,
-  min_length = 1,
-  preselect = cmp.PreselectMode.Item,
+  min_length = 3,
+  preselect = cmp.PreselectMode.None,
   throttle_time = 80,
   source_timeout = 200,
   incomplete_delay = 300,
@@ -67,6 +66,13 @@ cmp.setup({
     ["<C-l>"] = cmp.mapping.confirm({ select = true }),
     ["<C-k>"] = cmp.mapping.confirm({ select = true }),
     ["<C-e>"] = cmp.mapping.close(),
+    ["<C-Space>"] = cmp.mapping(function(fallback)
+      if has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, {"i"}),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
@@ -122,7 +128,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr", "menu" },
 
-    format = function(_, vim_item)
+    format = function(entry, vim_item)
       local icon = vim_item.menu and icons[vim_item.menu] or icons[vim_item.kind]
 
       local label = vim_item.abbr
@@ -165,14 +171,6 @@ cmp.setup({
       cmp.config.compare.length,
       cmp.config.compare.order,
     },
-  },
-
-  confirmation = {
-    get_commit_characters = function(commit_characters)
-      return vim.tbl_filter(function(char)
-        return char ~= ","
-      end, commit_characters)
-    end,
   },
 
   experimental = {

@@ -45,12 +45,12 @@ ts_config.setup({
     move = {
       enable = true,
       goto_previous_start = {
-        ["gaf"] = "@function.outer",
-        ["gif"] = "@function.inner",
-        ["gac"] = "@class.outer",
-        ["gic"] = "@class.inner",
-        ["gap"] = "@parameter.outer",
-        ["gip"] = "@parameter.inner",
+        ["[f"] = "@function.outer",
+        ["[c"] = "@class.outer",
+      },
+      goto_next_start = {
+        ["]f"] = "@function.outer",
+        ["]c"] = "@class.outer",
       },
     },
 
@@ -72,6 +72,10 @@ ts_config.setup({
         ["ab"] = "@block.outer",
         ["ip"] = "@parameter.inner",
         ["ap"] = "@parameter.outer",
+        ["i/"] = "@comment.inner",
+        ["a/"] = "@comment.outer",
+        ["i_"] = "@comment.inner",
+        ["a_"] = "@comment.outer",
 
         -- Or you can define your own textobjects like this
       },

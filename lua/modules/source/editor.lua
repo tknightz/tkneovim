@@ -10,6 +10,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-signature-help",
+      "luasnip",
       "autopairs",
     },
     event = { "InsertEnter", "CmdlineEnter" },
@@ -17,7 +18,7 @@ return {
 
   ["luasnip"] = {
     path = "L3MON4D3/LuaSnip",
-    event = "InsertEnter",
+    event = "VeryLazy",
     version = "v2.*",
     build = "make install_jsregexp",
     dependencies = {
@@ -28,13 +29,18 @@ return {
   -- Smart and powerful comment plugin for neovim
   ["comment"] = {
     path = "numToStr/Comment.nvim",
+    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
     event = "BufRead",
   },
 
   -- Align code
   ["ezalign"] = {
-    path = "junegunn/vim-easy-align",
-    cmd = "EasyAlign",
+    path = "echasnovski/mini.align",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("mini.align").setup()
+    end
   },
 
   -- Better playing with brackets

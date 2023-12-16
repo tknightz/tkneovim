@@ -18,7 +18,7 @@ local M = {
     "DiffviewFileHistory",
     "aerial",
     "dbui",
-    "lspsagaoutline",
+    "sagaoutline",
     "Outline",
     "dbui",
     "dbout",

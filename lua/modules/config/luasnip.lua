@@ -47,3 +47,4 @@ ls.add_snippets("javascript", {
 })
 
 ls.filetype_extend("typescript", { "javascript" })
+ls.filetype_extend("typescriptreact", { "javascript" })

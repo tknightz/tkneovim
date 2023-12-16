@@ -8,18 +8,20 @@ lspsaga.setup({
     show_file = false,
     separator = " ",
   },
-  show_outline = {
+  outline = {
     win_position = "right",
     --set special filetype win that outline window split.like NvimTree neotree
     -- defx, db_ui
-    win_with = "",
-    win_width = 40,
+    win_width = 35,
     auto_enter = false,
     auto_preview = true,
     virt_text = "│",
-    jump_key = "o",
     -- auto refresh when change buffer
     auto_refresh = true,
+    keys = {
+      jump = "o",
+      quit = "q",
+    }
   },
   ui = {
     theme = "round",

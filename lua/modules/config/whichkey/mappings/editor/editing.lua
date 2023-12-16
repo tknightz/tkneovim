@@ -1,5 +1,5 @@
 local common = {
-  a = { ":EasyAlign<cr>", "align" },
+  -- a = { ":EasyAlign<cr>", "align" },
   y = { '"+y', "yanks" },
   Y = { "%y+<cr>", "whole yanks" },
   s = { ":set spell!<cr>", "toggle spell" },

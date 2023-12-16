@@ -1,6 +1,7 @@
 local M = {}
 
 local plugin_reversed_key = {
+  dir = 1,
   enabled = 1,
   name = 1,
   installer = 1,

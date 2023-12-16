@@ -6,6 +6,7 @@ local preset = {
   hint = "#bf68d9",
   info = "#36848d",
   error = "#ab3f48",
+  indicator = "#ed4a7a",
 }
 
 local colors = {
@@ -66,18 +67,26 @@ local highlights = {
   error_diagnostic = { fg = preset.error, italic = false },
   error_diagnostic_visible = { fg = preset.error },
   error_diagnostic_selected = { fg = preset.error, italic = false, bold = true },
+
+  indicator_visible = { sp = preset.indicator },
+  indicator_selected = { sp = preset.indicator },
 }
 
 local result = {}
 
 for key, val in pairs(highlights) do
+  local to_set_colors = {}
   if key:find("visible") then
-    result[key] = vim.tbl_extend("keep", val, colors.visible)
+    to_set_colors = vim.tbl_extend("keep", val, colors.visible)
   elseif key:find("selected") then
-    result[key] = vim.tbl_extend("keep", val, colors.selected)
+    to_set_colors = vim.tbl_extend("keep", val, colors.selected, { sp = preset.indicator })
   else
-    result[key] = vim.tbl_extend("keep", val, colors.normal)
+    to_set_colors = vim.tbl_extend("keep", val, colors.normal)
   end
+
+  -- set sp colors
+  -- to_set_colors = vim.tbl_extend("keep", to_set_colors, { sp = preset.indicator })
+  result[key] = to_set_colors
 end
 
 return result

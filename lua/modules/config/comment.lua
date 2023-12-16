@@ -23,6 +23,10 @@ comment.setup({
     ---Extra mapping; `gco`, `gcO`, `gcA`
     extra = true,
   },
+
+  pre_hook = function()
+    return vim.bo.commentstring
+  end,
 })
 
 -- Override Ctrl+/ to comment
@@ -33,3 +37,5 @@ vim.keymap.set("v", "<C-/>", api.call("toggle.linewise", "g@"), { expr = true })
 
 -- Set comment for some nondefault support filetypes
 ft.set("yaml", "#%s")
+
+-- ft.typescriptreact = {"{/* %s */}", "{/* %s */}"}

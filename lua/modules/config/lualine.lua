@@ -1,7 +1,14 @@
 local special_fts = require("lib.consts").special_fts
 
-local function winbar_fmt()
-  local bufname = vim.api.nvim_buf_get_name(0)
+local function navic(entry)
+  local _, location = pcall(require("nvim-navic").get_location)
+  if location ~= nil or location ~= '' then
+    return "  " .. location
+  end
+end
+
+local function winbar_fmt(entry, _)
+  local bufname = entry
   local is_in_diffmode = vim.api.nvim_win_get_option(0, "diff")
 
   -- if in diffmode I don't wanna it show lsp and long filename
@@ -15,13 +22,9 @@ local function winbar_fmt()
     return is_v1 and filename .. " (v1)" or filename .. " (v2)"
   end
 
-  local _, location = pcall(require("nvim-navic").get_location)
-  local filename = vim.fn.fnamemodify(bufname, ":.:h")
+  local filename = vim.fn.fnamemodify(bufname, ":.")
   filename = filename ~= "." and filename or vim.fn.fnamemodify(bufname, ":t")
   local result = string.gsub(filename, "/", "  ")
-  if location ~= "" then
-    result = result .. "  " .. location
-  end
 
   return result
 end
@@ -136,8 +139,20 @@ require("lualine").setup({
         icon_only = true,
         separator = "",
         padding = { right = 0, left = 1 },
+        color = "WinBar",
       },
-      winbar_fmt,
+      {
+        "filename",
+        path = 0,
+        file_status = false,
+        newfile_status = false,
+        color = "WinBar",
+      },
+      {
+        "navic",
+        fmt = navic,
+        color = "WinBar",
+      }
     },
   },
   inactive_winbar = {
@@ -146,9 +161,15 @@ require("lualine").setup({
         "filetype",
         icon_only = true,
         separator = "",
+        color = "InactiveWinBar",
         padding = { right = 0, left = 1 },
       },
-      "filename",
+      {
+        "filename",
+        path = 2,
+        color = "InactiveWinBar",
+        fmt = winbar_fmt,
+      }
     },
   },
   tabline = {},

@@ -2,9 +2,6 @@ require("edgy").setup({
   animate = {
     enabled = false,
   },
-  left = {
-    "neo-tree",
-  },
   bottom = {
     -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
     {
@@ -35,10 +32,17 @@ require("edgy").setup({
       size = { height = 0.3 },
     },
   },
+  left = {
+    { ft = "neo-tree", title = "Neotree" },
+  },
   right = {
     {
       ft = "aerial",
       open = "AerialOpen",
+    },
+    {
+      ft = "sagaoutline",
+      open = "LspSaga outline",
     },
   },
   options = {
@@ -97,7 +101,7 @@ require("edgy").setup({
     end,
   },
   icons = {
-    closed = "    ",
-    open = "    ",
+    closed = "   ",
+    open = "   ",
   },
 })

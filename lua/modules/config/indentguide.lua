@@ -1,3 +1,4 @@
+local special_fts = require("lib.consts").special_fts
 local highlight = {
   "RainbowRed",
   "RainbowYellow",
@@ -26,18 +27,7 @@ require("ibl").setup({
   -- scope = { highlight = highlight },
   scope = { enabled = false },
   exclude = {
-    filetypes = {
-      "dashboard",
-      "lspinfo",
-      "packer",
-      "checkhealth",
-      "help",
-      "man",
-      "gitcommit",
-      "TelescopePrompt",
-      "TelescopeResults",
-      "",
-    },
+    filetypes = special_fts,
   },
 })
 
