@@ -5,6 +5,16 @@ require("statuscol").setup({
   ft_ignore = special_fts,
   relculright = true,
   segments = {
+    { text = { builtin.foldfunc }, hl = "FoldColumn", click = "v:lua.ScFa" },
+    {
+      text = {
+        function(args)
+          local string = args.cul and args.relnum == 0 and "%#CursorLineFold#" or "%#FoldColumn#"
+          return string .. " "
+        end,
+      },
+      hl = "CursorLineFold",
+    },
     { text = { " ", builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
     {
       sign = {
@@ -27,16 +37,6 @@ require("statuscol").setup({
       sign = { name = { "Diagnostic" }, maxwidth = 1, auto = true },
       condition = { builtin.not_empty },
       click = "v:lua.ScSa",
-    },
-    { text = { builtin.foldfunc }, hl = "FoldColumn", click = "v:lua.ScFa" },
-    {
-      text = {
-        function(args)
-          local string = args.cul and args.relnum == 0 and "%#CursorLineFold#" or "%#FoldColumn#"
-          return string .. " "
-        end,
-      },
-      hl = "CursorLineFold",
     },
   },
 })

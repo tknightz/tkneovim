@@ -1,6 +1,6 @@
 local special_fts = require("lib.consts").special_fts
 
-local function navic(entry)
+local function navic()
   local _, location = pcall(require("nvim-navic").get_location)
   if location ~= nil or location ~= '' then
     return "  " .. location
@@ -32,7 +32,7 @@ end
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = "horizon",
+    theme = "tkonedark",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     always_divide_middle = true,

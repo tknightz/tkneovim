@@ -13,6 +13,7 @@ local M = {
     "NvimTree",
     "dirvish",
     "fugitive",
+    "gitcommit",
     "neo-tree",
     "DiffviewFiles",
     "DiffviewFileHistory",

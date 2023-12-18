@@ -37,7 +37,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   underline = true,
   virtual_text = { spacing = 4 },
   signs = true,
-  update_in_insert = true,
+  update_in_insert = false,
 })
 
 -- Iterate to register servers with custom config

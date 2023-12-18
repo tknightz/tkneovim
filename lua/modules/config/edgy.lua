@@ -31,6 +31,11 @@ require("edgy").setup({
       title = "Docs",
       size = { height = 0.3 },
     },
+    {
+      ft = "gitcommit",
+      title = "Gitcommit",
+      size = { height = 0.3 },
+    },
   },
   left = {
     { ft = "neo-tree", title = "Neotree" },
