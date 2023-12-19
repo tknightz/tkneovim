@@ -2,43 +2,17 @@ local highlights = require("modules.config.bufferline.highlights")
 local special_fts = require("lib.consts").special_fts
 require("modules.config.bufferline.mappings")
 
--- fix offset
--- local Offset = require("bufferline.offset")
--- if not Offset.edgy then
---   local get = Offset.get
---   Offset.get = function(entry)
---     if package.loaded.edgy then
---       local layout = require("edgy.config").layout
---       local ret = { left = "", left_size = 0, right = "", right_size = 0 }
---       for _, pos in ipairs({ "left", "right" }) do
---         local sb = layout[pos]
---         if sb and #sb.wins > 0 then
---           local title = " Sidebar" .. string.rep(" ", sb.bounds.width - 8)
---           ret[pos] = "%#EdgyTitle#" .. title .. "%*" .. "%#WinSeparator#│%*"
---           ret[pos .. "_size"] = sb.bounds.width
---         end
---       end
---       ret.total_size = ret.left_size + ret.right_size
---       if ret.total_size > 0 then
---         return ret
---       end
---     end
---     return get()
---   end
---   Offset.edgy = true
--- end
-
 
 require("bufferline").setup({
   highlights = highlights,
   options = {
     offsets = {
-      -- { filetype = "NvimTree", text = "Explorer" },
+      { filetype = "NvimTree", text = "Explorer" },
       { filetype = "neo-tree", text = "Explorer" },
       { filetype = "dbui", text = "DB Explorer" },
       { filetype = "DiffviewFiles", text = "DiffviewFiles" },
     },
-    themable = true,
+    themable = false,
     buffer_close_icon = "",
     modified_icon = "",
     indicator = {
@@ -75,8 +49,8 @@ require("bufferline").setup({
         return false
       end
 
-      return true
+      local bufname = vim.fn.bufname(buf_number)
+      return vim.fn.empty(vim.fn.matchstr(bufname, '^fugitive://')) ~= 0
     end,
   },
 })
-

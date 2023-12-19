@@ -36,9 +36,11 @@ require("lualine").setup({
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     always_divide_middle = true,
+    globalstatus = true,
     disabled_filetypes = {
       winbar = special_fts,
     },
+    ignore_focus = special_fts,
   },
   sections = {
     lualine_a = { {

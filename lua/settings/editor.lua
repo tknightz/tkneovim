@@ -31,13 +31,13 @@ local options = {
 
   list           = true,
 
-  winblend       = 10,
+  winblend       = 5,
 
   termguicolors  = true,
   -- undofile    = true,
   signcolumn     = "auto:1-2",
   encoding       = "UTF-8",
-  -- background  = "dark",
+  background     = "dark",
   ignorecase     = true,
   smartcase      = true,
   cmdheight      = 1,

@@ -9,9 +9,7 @@ M.config_colorscheme = function(colorname)
       functions = "bold",
     },
 
-    plugins = {
-      bufferline = true,
-    },
+    plugins = {},
   })
 
   vim.cmd("colorscheme " .. colorname)

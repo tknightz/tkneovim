@@ -39,12 +39,13 @@ return {
   -- Rich features buffer indicator
   ["bufferline"] = {
     path = "akinsho/nvim-bufferline.lua",
-    priority = 51,
+    version = "*",
+    dependencies = {"nvim-tree/nvim-web-devicons"},
   },
 
   -- Fast status line
   ["lualine"] = {
     path = "nvim-lualine/lualine.nvim",
-    priority = 52,
+    event = { "BufNewFile", "BufRead" },
   },
 }

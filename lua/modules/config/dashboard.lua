@@ -7,7 +7,7 @@ db.setup({
     shortcut = {
       { desc = "󰏕 Modules Update", group = "DashboardShortCut", action = "Lazy update", key = "p" },
       { desc = " TS Update", group = "DashboardShortCut", action = "TSUpdate", key = "t" },
-      { desc = " Startuptime", group = "DashboardShortCut", action = "StartupTime", key = "s" },
+      { desc = " Startuptime", group = "DashboardShortCut", action = "Lazy profile", key = "s" },
       { desc = " Newfile", group = "DashboardShortCut", action = "enew", key = "n" },
     },
     packages = { enable = false },

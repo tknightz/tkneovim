@@ -1,0 +1,9 @@
+{
+  "runtime.version": "LuaJIT",
+  "Lua.workspace.checkThirdParty": true,
+  "Lua.workspace.library": [ "/usr/share/nvim/runtime" ],
+  "Lua.workspace.ignoreDir": [ "types/nightly", "lua" ],
+    "diagnostics.globals": [
+        "vim"
+    ],
+}

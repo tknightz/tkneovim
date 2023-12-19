@@ -34,12 +34,6 @@ return {
     cmd = { "MundoShow", "MundoToggle" },
   },
 
-  -- Pretty fold with preview feature
-  -- ["prettyfold"] = {
-  --   path = "anuvyklack/pretty-fold.nvim",
-  --   event = "BufRead",
-  -- },
-
   ["ufo"] = {
     path = "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
@@ -54,6 +48,7 @@ return {
       local special_fts = require("lib.consts").special_fts
       require("illuminate").configure({
         filetypes_denylist = special_fts,
+        large_file_cutoff = 2000
       })
     end,
   },
@@ -88,26 +83,44 @@ return {
   },
 
   -- Indent guides for Neovim
-  ["indentguide"] = {
-    path = "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
+  -- ["indentguide"] = {
+  --   path = "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   event = "BufReadPre",
+  -- },
+  ["hlchunk"] = {
+    path = "shellRaining/hlchunk.nvim",
+    config = function()
+      local special_fts = require("lib.consts").special_fts
+      require("hlchunk").setup({
+        chunk = {
+          notify = false,
+          style = {
+            { fg = "#c75ae8" },
+            { fg = "#c21f30" }, -- this fg is used to highlight wrong chunk
+          },
+        },
+        line_num = { enable = false },
+        exclude_filetypes = special_fts
+      })
+    end,
     event = "BufReadPre",
   },
 
-  ["indent-scope"] = {
-    path = "echasnovski/mini.indentscope",
-    branch = "stable",
-    event = "BufRead",
-    config = function()
-      require("mini.indentscope").setup({
-        draw = {
-          priority = 100,
-        },
-        symbol = "│",
-        options = { try_as_border = true },
-      })
-    end,
-  },
+  -- ["indent-scope"] = {
+  --   path = "echasnovski/mini.indentscope",
+  --   branch = "stable",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("mini.indentscope").setup({
+  --       draw = {
+  --         priority = 100,
+  --       },
+  --       symbol = "│",
+  --       options = { try_as_border = true },
+  --     })
+  --   end,
+  -- },
 
   -- Extended f, F, t and T key mappings
   ["cleverf"] = {
@@ -183,12 +196,6 @@ return {
   ["whichkey"] = {
     path = "folke/which-key.nvim",
     keys = { "<leader>", "<Space>", { "<leader>", mode = "v" } },
-  },
-
-  -- Measure startup-time
-  ["startuptime"] = {
-    path = "tweekmonster/startuptime.vim",
-    cmd = "StartupTime",
   },
 
   ["bqf"] = {
@@ -375,7 +382,6 @@ return {
 
   ["statuscol"] = {
     path = "luukvbaal/statuscol.nvim",
-    event = "VeryLazy",
   },
 
   ["rest"] = {
@@ -407,7 +413,7 @@ return {
 
   ["edgy"] = {
     path = "folke/edgy.nvim",
-    event = "VeryLazy",
+    event = { "BufRead", "BufNewFile" },
   },
 
   ["octo"] = {

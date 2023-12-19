@@ -13,7 +13,7 @@ return {
   -- Like its name, open markdown preview on browser
   ["mdpreview"] = {
     path = "iamcco/markdown-preview.nvim",
-    ft = { "markdown" },
+    ft = "markdown",
     build = "cd app && yarn install",
   },
 
