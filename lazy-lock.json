@@ -76,7 +76,7 @@
   "sphinx": { "branch": "master", "commit": "d4eceb35975d379c6b380111627c5d4531f77d08" },
   "statuscol": { "branch": "main", "commit": "7d593a285d83c1a865219e4e7e1e5aedf4e0dd9c" },
   "symbolsoutline": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },
-  "telescope": { "branch": "master", "commit": "6213322ab56eb27356fdc09a5078e41e3ea7f3bc" },
+  "telescope": { "branch": "master", "commit": "3f5f165447d797576206e3b9bd555ea8db85b6f2" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
   "telescope-live-grep-args.nvim": { "branch": "master", "commit": "731a046da7dd3adff9de871a42f9b7fb85f60f47" },
   "telescope-symbols.nvim": { "branch": "master", "commit": "a6d0127a53d39b9fc2af75bd169d288166118aec" },
