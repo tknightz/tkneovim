@@ -14,7 +14,7 @@ require("edgy").setup({
     },
     {
       ft = "fugitive",
-      size = { height = 0.2 },
+      size = { height = 0.3 },
     },
     {
       ft = "lazyterm",
@@ -35,6 +35,10 @@ require("edgy").setup({
       ft = "gitcommit",
       title = "Gitcommit",
       size = { height = 0.3 },
+      filter = function(_)
+        local current_windows = vim.api.nvim_list_wins()
+        return #current_windows > 1
+      end,
     },
   },
   left = {

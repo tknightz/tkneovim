@@ -1,8 +1,10 @@
 local lint = require("lint")
 
+vim.g.lint_loaded = true
+
 lint.linters_by_ft = {
-  javascript = { "eslint_d" },
-  typescript = { "eslint_d" },
+  -- javascript = { "eslint_d" },
+  -- typescript = { "eslint_d" },
 }
 
 -- run try_lint when it's loaded

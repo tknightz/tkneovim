@@ -6,13 +6,13 @@ require("statuscol").setup({
   relculright = true,
   segments = {
     { text = { builtin.foldfunc, " " }, hl = "FoldColumn", click = "v:lua.ScFa" },
-    { text = { " ", builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+    { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
     {
       sign = {
         namespace = { "gitsigns" },
         name = { "todo*" },
         maxwidth = 1,
-        auto = false,
+        auto = true,
       },
       click = "v:lua.ScSa",
     },

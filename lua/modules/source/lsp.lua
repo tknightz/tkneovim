@@ -2,7 +2,7 @@ return {
   -- Neovim lsp function
   ["lspconfig"] = {
     path = "neovim/nvim-lspconfig",
-    dependencies = { "mason", "masonlspconfig", "typescript-tools" },
+    dependencies = { "mason", "masonlspconfig" },
     lazy = true,
     cmd = "LspStart",
   },
@@ -28,7 +28,7 @@ return {
 
   ["lint"] = {
     path = "mfussenegger/nvim-lint",
-    lazy = true,
+    event = "LspAttach",
   },
 
   ["conform"] = {
@@ -57,21 +57,22 @@ return {
     event = "LspAttach",
   },
 
-  ["typescript-tools"] = {
-    path = "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "lspconfig" },
-    config = function()
-      local lsp_preset = require("modules.config.lspconfig.preset")
-      require("typescript-tools").setup({
-        on_attach = lsp_preset.on_attach,
-        capabilities = lsp_preset.capabilities,
-        settings = {
-          publish_diagnostic_on = "change",
-          tsserver_max_memory = 3072,
-          separate_diagnostic_server = false,
-        },
-      })
-    end,
-    lazy = true,
-  },
+  -- ["typescript-tools"] = {
+  --   path = "pmizio/typescript-tools.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim", "lspconfig" },
+  --   config = function()
+  --     local lsp_preset = require("modules.config.lspconfig.preset")
+  --     require("typescript-tools").setup({
+  --       on_attach = lsp_preset.on_attach,
+  --       capabilities = lsp_preset.capabilities,
+  --       settings = {
+  --         publish_diagnostic_on = "change",
+  --         tsserver_max_memory = 3072,
+  --         tsserver_path = "/usr/lib/code/extensions/node_modules/typescript/lib/tsserver.js",
+  --         -- separate_diagnostic_server = false,
+  --       },
+  --     })
+  --   end,
+  --   lazy = true,
+  -- },
 }

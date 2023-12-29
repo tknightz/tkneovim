@@ -1,4 +1,5 @@
 local preset = require("modules.config.lspconfig.preset")
+local util = require("lspconfig.util")
 
 local M = {}
 
@@ -52,10 +53,26 @@ M.custom_configs = {
     settings = {
       ltex = {
         enabled = {"latex", "markdown", "gitcommit", "md", "org"},
-        setenceCacheSize=5000,
-        flags = { debounce_text_changes = 1000 },
+        setenceCacheSize = 5000,
+        additionalRules = { enablePickyRules = true },
+        -- flags = { debounce_text_changes = 1000 },
+        checkFrequency = "save",
         completionEnabled = true
       }
+    }
+  },
+  tsserver = {
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
+    init_options = {
+      maxTsServerMemory = 3072,
+      tsserver = {
+        useSyntaxServer = 'never',
+      },
+      preferences = {
+        disableSuggestions = true,
+        interactiveInlayHints = false,
+      },
     }
   },
 }

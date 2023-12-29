@@ -16,14 +16,32 @@ local function toggle_lsp()
   end
 end
 
+local function format_cb(err)
+  if err then
+    vim.notify(" 🚨 Err while formating!", "error", {
+      title = "Formater",
+    })
+    return
+  end
+
+  vim.notify(" ✨ Format done!", "info", {
+    title = "Formater",
+  })
+
+  -- call linter if any
+  if not vim.g.lint_loaded then
+    return
+  end
+
+  local lint = require("lint")
+  lint.try_lint()
+end
+
 local function format()
   require("conform").format({
     async = true,
     lsp_fallback = true,
-  })
-  vim.notify(" ✨ Format done!", "info", {
-    title = "Formater",
-  })
+  }, format_cb)
 end
 
 return {

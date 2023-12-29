@@ -2,6 +2,7 @@ return {
   -- Fuzzy search all the stuffs
   ["telescope"] = {
     path = "nvim-telescope/telescope.nvim",
+    commit = "3f5f165447d797576206e3b9bd555ea8db85b6f2",
     dependencies = {
       -- { "nvim-lua/popup.nvim", module = "popup" },
       "nvim-lua/plenary.nvim",
@@ -22,7 +23,7 @@ return {
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
+      "devicons",
       "MunifTanjim/nui.nvim",
     },
     cmd = { "Neotree" },
@@ -48,6 +49,7 @@ return {
       local special_fts = require("lib.consts").special_fts
       require("illuminate").configure({
         filetypes_denylist = special_fts,
+        modes_denylist = { "i" },
         large_file_cutoff = 2000
       })
     end,
@@ -97,8 +99,12 @@ return {
           notify = false,
           style = {
             { fg = "#c75ae8" },
-            { fg = "#c21f30" }, -- this fg is used to highlight wrong chunk
+            { fg = "#f65866" }, -- this fg is used to highlight wrong chunk
           },
+        },
+        blank = {
+          enable = true,
+          chars = { " " },
         },
         line_num = { enable = false },
         exclude_filetypes = special_fts
@@ -145,13 +151,6 @@ return {
       })
     end,
     keys = { "/", "?", "*", "#" },
-  },
-
-  -- Sometimes need to focus in one window
-  -- but dont want to close others
-  ["maximizer"] = {
-    path = "szw/vim-maximizer",
-    cmd = { "MaximizerToggle" },
   },
 
   -- Interact with databases inside Neovim
@@ -232,10 +231,11 @@ return {
   -- A plugin to visualise and resolve merge conflicts in neovim
   ["gitconflict"] = {
     path = "akinsho/git-conflict.nvim",
+    version = "*",
     config = function()
       require("git-conflict").setup()
     end,
-    event = "BufRead",
+    -- event = "BufRead",
   },
 
   -- Jump to last edit
@@ -413,7 +413,7 @@ return {
 
   ["edgy"] = {
     path = "folke/edgy.nvim",
-    event = { "BufRead", "BufNewFile" },
+    event = "BufRead",
   },
 
   ["octo"] = {
@@ -421,7 +421,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "telescope",
-      "nvim-web-devicons",
+      "devicons",
     },
     config = function ()
       require("octo").setup()
@@ -429,28 +429,19 @@ return {
     cmd = {"Octo"},
   },
 
-  -- ["bettersearch"] = {
-  --   path = "backdround/improved-search.nvim",
-  --   dependencies = { "autohls" },
-  --   event = "BufRead",
-  --   config = function()
-  --     local search = require("improved-search")
-  --
-  --     -- Search next / previous.
-  --     vim.keymap.set({"n", "x", "o"}, "n", search.stable_next)
-  --     vim.keymap.set({"n", "x", "o"}, "N", search.stable_previous)
-  --
-  --     -- Search current word without moving.
-  --     vim.keymap.set("n", "!", search.current_word)
-  --
-  --     -- Search selected text in visual mode
-  --     vim.keymap.set("x", "!", search.in_place) -- search selection without moving
-  --     vim.keymap.set("x", "*", search.forward)  -- search selection forward
-  --     vim.keymap.set("x", "#", search.backward) -- search selection backward
-  --
-  --     -- Search by motion in place
-  --     vim.keymap.set("n", "|", search.in_place)
-  --     -- You can also use search.forward / search.backward for motion selection.
-  --   end
-  -- }
+  ["gpt"] = {
+    path = "jackMort/ChatGPT.nvim",
+    cmd = {"ChatGPT", "ChatGPTRun"},
+    config = function()
+      local home = vim.fn.expand("$HOME")
+      require("chatgpt").setup({
+        api_key_cmd = "cat " .. home .. "/.openai_key"
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "telescope"
+    }
+  },
 }

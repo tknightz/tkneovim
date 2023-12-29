@@ -29,8 +29,13 @@ return {
   -- Smart and powerful comment plugin for neovim
   ["comment"] = {
     path = "numToStr/Comment.nvim",
-    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
     event = "BufRead",
+  },
+
+  -- commentstring context
+  ["comment-context"] = {
+    path = "JoosepAlviste/nvim-ts-context-commentstring",
+    ft = {"javascriptreact", "typescriptreact", "svelte"},
   },
 
   -- Align code

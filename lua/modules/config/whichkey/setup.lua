@@ -34,10 +34,10 @@ wk.setup({
     position = "bottom", -- bottom, top
     margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 1, 1, 1, 1 }, -- extra window padding [top, right, bottom, left]
-    winblend = 10,
+    winblend = 5,
   },
   layout = {
-    height = { min = 3, max = 25 }, -- min and max height of the columns
+    height = { min = 2, max = 10 }, -- min and max height of the columns
     width = { min = 25, max = 35 }, -- min and max width of the columns
     spacing = 10, -- spacing between columns
   },

@@ -1,3 +1,16 @@
+-- only do horizontal resize if there is a split window above/below
+-- the current one
+local function horizontal_resize(direction)
+  local cur_win_id = vim.api.nvim_get_current_win()
+  local cur_win_height = vim.api.nvim_win_get_height(cur_win_id)
+
+  if cur_win_height == vim.api.nvim_get_option("lines") - 3 then
+    return
+  end
+
+  vim.cmd("silent! resize " .. (direction == "up" and "+3" or "-3"))
+end
+
 local keymaps = {
   normal = {
     ["<Leader>h"] = {
@@ -13,8 +26,8 @@ local keymaps = {
 
     ["<M-h>"] = "<cmd>silent! vertical resize +3<cr>",
     ["<M-l>"] = "<cmd>silent! vertical resize -3<cr>",
-    ["<M-k>"] = "<cmd>silent! resize +3<cr>",
-    ["<M-j>"] = "<cmd>silent! resize -3<cr>",
+    ["<M-k>"] = function() horizontal_resize('up') end,
+    ["<M-j>"] = function() horizontal_resize('down') end,
 
     ["<M-Left>"] = ":MoveHChar(-1)<CR>",
     ["<M-Right>"] = ":MoveHChar(1)<CR>",

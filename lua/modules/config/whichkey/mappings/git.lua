@@ -46,7 +46,7 @@ local normal = {
     s = { ":Gitsign toggle_signs<cr>", "sign" },
     w = { ":Gitsign toggle_word_diff<cr>", "word diff" },
     b = { ":Gitsign toggle_current_line_blame<cr>", "blame line" },
-    h = { ":Gitsign toggle_numhl<cr>", "highlight" },
+    h = { ":Gitsign toggle_linehl<cr>", "highlight" },
   },
 
   h = {

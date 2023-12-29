@@ -28,6 +28,9 @@ require("diffview").setup({
       { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
     },
+    file_history_panel = {
+      { "n", "<leader>e", false },
+    },
   },
   --[[
   hooks = {

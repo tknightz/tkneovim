@@ -40,7 +40,7 @@ return {
   ["bufferline"] = {
     path = "akinsho/nvim-bufferline.lua",
     version = "*",
-    dependencies = {"nvim-tree/nvim-web-devicons"},
+    dependencies = {"devicons"},
   },
 
   -- Fast status line

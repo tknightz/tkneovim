@@ -16,6 +16,19 @@ win.default_opts = function(options)
   return opts
 end
 
+local diagnostic_opts = {
+  underline = true,
+  virtual_text = {
+    prefix = " 󰪥",
+    suffix = " ",
+    spacing = 4,
+  },
+  signs = true,
+  update_in_insert = false,
+}
+
+vim.diagnostic.config(default_opts)
+
 vim.fn.sign_define(
   "DiagnosticSignError",
   { text = " ", numhl = "LspDiagnosticsDefaultError", texthl = "LspDiagnosticsDefaultError" }
@@ -33,12 +46,7 @@ vim.fn.sign_define(
   { text = " ", numhl = "LspDiagnosticsDefaultHint", texthl = "LspDiagnosticsDefaultHint" }
 )
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  virtual_text = { spacing = 4 },
-  signs = true,
-  update_in_insert = false,
-})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diagnostic_opts)
 
 -- Iterate to register servers with custom config
 for _, server in pairs(installed_packages) do

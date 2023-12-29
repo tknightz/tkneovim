@@ -61,7 +61,7 @@ require("lualine").setup({
       {
         "diff",
         colored = true,
-        -- symbols = {added = ' ', modified = ' ', removed = ' '},
+        symbols = {added = ' 󰐙 ', modified = ' 󰣕 ', removed = ' 󰍚 '},
         diff_color = {
           added = { fg = "#3eff7b" },
           modified = { fg = "#ff722e" },
@@ -102,6 +102,15 @@ require("lualine").setup({
       },
     },
     lualine_x = {
+      {
+        "wordcount",
+        cond = function()
+          return vim.bo.filetype == "markdown"
+        end,
+        fmt = function(str)
+          return tostring(vim.fn.wordcount().words) .. " words"
+        end
+      },
       {
         "filesize",
         fmt = function(str)
