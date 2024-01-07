@@ -66,8 +66,6 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-l>"] = cmp.mapping.confirm({ select = true }),
-    ["<C-k>"] = cmp.mapping.confirm({ select = true }),
     ["<C-e>"] = cmp.mapping.close(),
     ["<C-Space>"] = cmp.mapping(function(fallback)
       if has_words_before() then
@@ -178,7 +176,7 @@ cmp.setup({
 
   experimental = {
     -- native_menu = false,
-    ghost_text = { hl_group = "Nontext" },
+    -- ghost_text = { hl_group = "Nontext" },
   },
 
   view = {

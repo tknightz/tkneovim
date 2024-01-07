@@ -5,6 +5,11 @@ local function start_lsp()
   pcall(require, "lint")
 end
 
+local function toggle_inlay_hint()
+  local is_enabled = vim.lsp.inlay_hint.is_enabled(0)
+  vim.lsp.inlay_hint.enable(0, not is_enabled)
+end
+
 local function toggle_lsp()
   if vim.g.loaded_lsp == 1 then
     vim.cmd("LspStop")
@@ -59,6 +64,7 @@ return {
     q = { ":lua vim.diagnostic.setloclist()<CR>", "quickfix" },
     f = { format, "format" },
     t = { toggle_lsp, "toggle" },
+    h = { toggle_inlay_hint, "toggle hint" },
     S = { ":SymbolsOutline<cr>", "browse" },
     ["/"] = { ":Lspsaga finder<CR>", "finder-saga" },
     ["."] = { ":Telescope lsp_references<CR>", "finder-tele" },

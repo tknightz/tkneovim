@@ -55,6 +55,11 @@ return {
       require("nvim-surround").setup({
         move_cursor = false,
       })
+
+      local v_chars = {"(", ")", "[", "]", "{", "}", "'", "\""}
+      for _, char in pairs(v_chars) do
+        vim.keymap.set("v", char, "<Plug>(nvim-surround-visual)"..char)
+      end
     end,
     event = "BufRead",
   },

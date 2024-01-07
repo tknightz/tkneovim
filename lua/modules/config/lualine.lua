@@ -2,7 +2,7 @@ local special_fts = require("lib.consts").special_fts
 
 local function navic()
   local _, location = pcall(require("nvim-navic").get_location)
-  if location ~= nil or location ~= '' then
+  if location ~= nil and location ~= '' then
     return "  " .. location
   end
 end

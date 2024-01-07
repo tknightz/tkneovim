@@ -23,6 +23,7 @@ return {
 
   ["lspsaga"] = {
     path = "nvimdev/lspsaga.nvim",
+    version = "main",
     event = "LspAttach",
   },
 

@@ -18,7 +18,8 @@ M.custom_configs = {
   },
 
   tailwindcss = {
-    filetypes = { "css", "html", "svelte", "typescriptreact" },
+    filetypes = { "css", "html", "svelte", "javascriptreact", "typescriptreact" },
+    root_dir = util.root_pattern("tailwind.config.js"),
   },
 
   emmet_ls = {
@@ -44,15 +45,12 @@ M.custom_configs = {
 
   ltex = {
     filetypes = {
-      "markdown",
-      "md",
       "latex",
       "org",
-      "gitcommit",
     },
     settings = {
       ltex = {
-        enabled = {"latex", "markdown", "gitcommit", "md", "org"},
+        enabled = {"latex", "markdown", "org"},
         setenceCacheSize = 5000,
         additionalRules = { enablePickyRules = true },
         -- flags = { debounce_text_changes = 1000 },
@@ -62,7 +60,7 @@ M.custom_configs = {
     }
   },
   tsserver = {
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
     init_options = {
       maxTsServerMemory = 3072,
@@ -71,8 +69,25 @@ M.custom_configs = {
       },
       preferences = {
         disableSuggestions = true,
-        interactiveInlayHints = false,
-      },
+
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      }
+    }
+  },
+
+  lua_ls = {
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        hint = { enable = true }
+      }
     }
   },
 }

@@ -4,6 +4,8 @@ local M = {
     "aerial",
     "toggleterm",
     "Trouble",
+    "qf",
+    "",
   },
 
   special_fts = {
@@ -26,7 +28,12 @@ local M = {
     "qf",
     "Trouble",
     "toggleterm",
+    "",
   }
 }
+
+M.is_sidebar_ft = function(ft)
+  return vim.tbl_contains(M.sidebar_fts, ft)
+end
 
 return M

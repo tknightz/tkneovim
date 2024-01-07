@@ -1,14 +1,4 @@
 local function on_attach(client, bufnr)
-  -- Load signature_help
-  -- require('lsp_signature').on_attach({
-  --   bind = true,
-  --   hint_prefix = "🌸 ",
-  --   handler_opts = {
-  --     border = "rounded"
-  --   },
-  --   transparency = 1,
-  -- }, bufnr)
-
   -- load nvim-navic
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
@@ -18,6 +8,12 @@ local function on_attach(client, bufnr)
   if client.server_capabilities.semanticTokensProvider then
     client.server_capabilities.semanticTokensProvider = nil
   end
+
+  -- enable inlay hint
+  -- if client.server_capabilities.inlayHintProvider then
+  --   vim.lsp.inlay_hint.enable(0, true)
+  --   -- vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = 'gray', italic = true })
+  -- end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -33,7 +29,7 @@ local function on_attach(client, bufnr)
   buf_set_keymap("n", "gs", "<Cmd>split | exec 'lua vim.lsp.buf.definition()' | exec 'norm zt'<CR>", opts)
   buf_set_keymap("n", "gv", "<Cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-  buf_set_keymap("i", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- buf_set_keymap("i", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   buf_set_keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "<space>D", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)

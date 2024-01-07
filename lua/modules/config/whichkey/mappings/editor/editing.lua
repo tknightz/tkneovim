@@ -1,11 +1,18 @@
+local function toggle_mouse()
+  if vim.o.mouse == "a" then
+    vim.o.mouse = ""
+  else
+    vim.o.mouse = "a"
+  end
+end
+
 local common = {
   -- a = { ":EasyAlign<cr>", "align" },
   y = { '"+y', "yanks" },
   Y = { "%y+<cr>", "whole yanks" },
   s = { ":set spell!<cr>", "toggle spell" },
   h = { ":set hlsearch!<cr>", "toggle hlsearch" },
-  m = { ":set mouse=a<cr>", "mouse on" },
-  M = { ":set mouse=<cr>", "mouse off" },
+  m = { toggle_mouse, "mouse on" },
   n = { ":tabnext<cr>", "next tab" },
   N = { ":tabnew<cr>", "new tab" },
   x = { ":tabclose<cr>", "close tab" },

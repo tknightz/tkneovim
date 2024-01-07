@@ -29,12 +29,6 @@ return {
     cmd = { "Neotree" },
   },
 
-  -- Tired of Undo things?
-  ["mundo"] = {
-    path = "simnalamburt/vim-mundo",
-    cmd = { "MundoShow", "MundoToggle" },
-  },
-
   ["ufo"] = {
     path = "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
@@ -85,33 +79,32 @@ return {
   },
 
   -- Indent guides for Neovim
-  -- ["indentguide"] = {
-  --   path = "lukas-reineke/indent-blankline.nvim",
-  --   main = "ibl",
+  ["indentguide"] = {
+    path = "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = "BufRead",
+  },
+
+  -- ["hlchunk"] = {
+  --   path = "shellRaining/hlchunk.nvim",
+  --   config = function()
+  --     require("hlchunk").setup({
+  --       chunk = {
+  --         notify = false,
+  --         style = {
+  --           { fg = "#c75ae8" },
+  --           { fg = "#f65866" }, -- this fg is used to highlight wrong chunk
+  --         },
+  --       },
+  --       blank = {
+  --         enable = true,
+  --         chars = { " " },
+  --       },
+  --       line_num = { enable = false },
+  --     })
+  --   end,
   --   event = "BufReadPre",
   -- },
-  ["hlchunk"] = {
-    path = "shellRaining/hlchunk.nvim",
-    config = function()
-      local special_fts = require("lib.consts").special_fts
-      require("hlchunk").setup({
-        chunk = {
-          notify = false,
-          style = {
-            { fg = "#c75ae8" },
-            { fg = "#f65866" }, -- this fg is used to highlight wrong chunk
-          },
-        },
-        blank = {
-          enable = true,
-          chars = { " " },
-        },
-        line_num = { enable = false },
-        exclude_filetypes = special_fts
-      })
-    end,
-    event = "BufReadPre",
-  },
 
   -- ["indent-scope"] = {
   --   path = "echasnovski/mini.indentscope",
@@ -235,7 +228,7 @@ return {
     config = function()
       require("git-conflict").setup()
     end,
-    -- event = "BufRead",
+    event = "BufReadPre",
   },
 
   -- Jump to last edit
@@ -243,14 +236,6 @@ return {
     path = "ethanholz/nvim-lastplace",
     config = function()
       require("nvim-lastplace").setup({})
-    end,
-  },
-
-  ["winshift"] = {
-    path = "sindrets/winshift.nvim",
-    cmd = "WinShift",
-    config = function()
-      require("winshift").setup()
     end,
   },
 
@@ -384,25 +369,6 @@ return {
     path = "luukvbaal/statuscol.nvim",
   },
 
-  ["rest"] = {
-    path = "rest-nvim/rest.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = { "<Plug>RestNvim" },
-    commit = "8b62563",
-    config = function()
-      require("rest-nvim").setup()
-    end,
-  },
-
-  ["distant"] = {
-    path = "chipsenkbeil/distant.nvim",
-    branch = "v0.3",
-    config = function()
-      require("distant"):setup()
-    end,
-    cmd = { "DistantConnect" },
-  },
-
   ["headlines"] = {
     path = "lukas-reineke/headlines.nvim",
     ft = { "markdown", "org" },
@@ -414,19 +380,6 @@ return {
   ["edgy"] = {
     path = "folke/edgy.nvim",
     event = "BufRead",
-  },
-
-  ["octo"] = {
-    path = "pwntester/octo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "telescope",
-      "devicons",
-    },
-    config = function ()
-      require("octo").setup()
-    end,
-    cmd = {"Octo"},
   },
 
   ["gpt"] = {

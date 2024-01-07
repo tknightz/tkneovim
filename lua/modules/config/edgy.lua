@@ -6,7 +6,6 @@ require("edgy").setup({
     -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
     {
       ft = "toggleterm",
-      size = { height = 0.3 },
       -- exclude floating windows
       filter = function(buf, win)
         return vim.api.nvim_win_get_config(win).relative == ""
@@ -14,12 +13,10 @@ require("edgy").setup({
     },
     {
       ft = "fugitive",
-      size = { height = 0.3 },
     },
     {
       ft = "lazyterm",
       title = "LazyTerm",
-      size = { height = 0.3 },
       filter = function(buf)
         return not vim.b[buf].lazyterm_cmd
       end,
@@ -29,17 +26,16 @@ require("edgy").setup({
     {
       ft = "help",
       title = "Docs",
-      size = { height = 0.3 },
     },
     {
       ft = "gitcommit",
       title = "Gitcommit",
-      size = { height = 0.3 },
       filter = function(_)
         local current_windows = vim.api.nvim_list_wins()
         return #current_windows > 1
       end,
     },
+    { ft = "DiffviewFileHistory" },
   },
   left = {
     { ft = "neo-tree", title = "Neotree" },
@@ -57,6 +53,7 @@ require("edgy").setup({
   options = {
     left = { size = 35 },
     right = { size = 35 },
+    bottom = { size = 0.3 },
   },
 
   keys = {

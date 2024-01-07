@@ -9,8 +9,7 @@ local options = {
     extends        = "→",
     eol            = "↩",
     nbsp           = "␣",
-    leadmultispace = "│ ",
-    -- multispace  = "│ ",
+    -- leadmultispace = "│ ",
     -- tab         = "│ ",
   },
 
@@ -58,6 +57,7 @@ local options = {
   number         = true,
   relativenumber = true,
   wrap           = false,
+  breakindent    = true,
   linebreak      = true,
   cursorline     = true,
   swapfile       = false,
