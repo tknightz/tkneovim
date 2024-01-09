@@ -28,7 +28,6 @@ local M = {
     "qf",
     "Trouble",
     "toggleterm",
-    "",
   }
 }
 
