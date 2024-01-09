@@ -2,8 +2,7 @@ return {
   -- Colorscheme here
   -- set colorname to automate set colorscheme
   ["theme"] = {
-    dir = "~/Repos/onedark.nvim",
-    -- path = "tknightz/onedark.nvim",
+    path = "tknightz/onedark.nvim",
     colorname = "onedark",
     priority = 50,
   },
