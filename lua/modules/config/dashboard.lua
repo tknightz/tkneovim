@@ -67,7 +67,7 @@ db.setup({
     },
     footer = {
       "",
-      " 🔥 My power grows eternal!!!!",
+      " 󰈸 My power grows eternal!!!! 󰈸 ",
     },
   },
 })

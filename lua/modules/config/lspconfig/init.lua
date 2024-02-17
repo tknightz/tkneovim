@@ -1,6 +1,8 @@
 -- marked that lsp is started
 vim.g.loaded_lsp = 1
 
+-- this is an error 
+
 local lspconfig = require("lspconfig")
 local registry = require("mason-registry")
 local installed_packages = registry.get_installed_packages()
@@ -19,9 +21,9 @@ end
 local diagnostic_opts = {
   underline = true,
   virtual_text = {
-    prefix = " 󰪥",
+    prefix = " 󰪥 ",
     suffix = " ",
-    spacing = 4,
+    spacing = 5,
   },
   signs = true,
   update_in_insert = false,

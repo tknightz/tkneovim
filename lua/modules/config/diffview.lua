@@ -4,6 +4,12 @@ local actions = require("diffview.actions")
 require("diffview").setup({
   diff_binaries = false, -- Show diffs for binaries
   use_icons = true, -- Requires nvim-web-devicons
+  view = {
+    merge_tool = {
+      layout = "diff3_mixed",
+      disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
+    }
+  },
   file_panel = {
     win_config = {
       position = "left", -- One of 'left', 'right', 'top', 'bottom'

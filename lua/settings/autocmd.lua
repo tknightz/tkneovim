@@ -1,3 +1,5 @@
+local special_fts = require("lib.consts").special_fts
+
 local terminal_group = vim.api.nvim_create_augroup("Terminal", {})
 vim.api.nvim_create_autocmd("WinEnter", {
   pattern = "*",
@@ -16,6 +18,12 @@ vim.api.nvim_create_autocmd("WinEnter", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
+  end,
+})
+
 -- copy the location of current file
 vim.api.nvim_create_user_command("Cppath", function()
   local path = vim.fn.expand("%:p")
@@ -23,10 +31,36 @@ vim.api.nvim_create_user_command("Cppath", function()
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
-vim.api.nvim_create_user_command("RestNvim", function()
-  require("rest-nvim").run()
-end, {})
-
 vim.api.nvim_create_user_command("DBEE", function()
   require("dbee").toggle()
 end, {})
+
+
+-- focus toggler
+local augroup =
+  vim.api.nvim_create_augroup('FocusDisable', { clear = true })
+
+vim.api.nvim_create_autocmd('WinEnter', {
+  group = augroup,
+  callback = function(_)
+    if vim.tbl_contains(special_fts, vim.bo.buftype)
+    then
+      vim.w.focus_disable = true
+    else
+      vim.w.focus_disable = false
+    end
+  end,
+  desc = 'Disable focus autoresize for BufType',
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup,
+  callback = function(_)
+    if vim.tbl_contains(special_fts, vim.bo.filetype) then
+      vim.b.focus_disable = true
+    else
+      vim.b.focus_disable = false
+    end
+  end,
+  desc = 'Disable focus autoresize for FileType',
+})

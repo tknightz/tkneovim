@@ -1,7 +1,5 @@
 local actions = require("telescope.actions")
-local finders = require("telescope.finders")
 local action_state = require("telescope.actions.state")
-local action_set = require("telescope.actions.set")
 local previewers = require("telescope.previewers")
 local layout_actions = require("telescope.actions.layout")
 
@@ -59,11 +57,13 @@ telescope.setup({
         ["<M-j>"] = actions.preview_scrolling_down,
         ["<Esc>"] = actions.close,
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+        ["<C-i>"] = actions.toggle_selection + actions.move_selection_previous,
         ["<C-l>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-a>"] = actions.select_all,
         ["<C-u>"] = actions.drop_all,
         ["<C-n>"] = actions.move_selection_next,
         ["<C-p>"] = actions.move_selection_previous,
+        ["<C-s>"] = actions.select_horizontal,
       },
     },
     vimgrep_arguments = {

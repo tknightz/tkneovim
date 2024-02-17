@@ -63,7 +63,8 @@ local normal = {
 
 local visual = {
   s = { ":Gitsigns stage_hunk<CR>", "stage hunk" },
-  u = { ":Gitsigns undo_stage_hunk<CR>", "undo_stage_hunk" },
+  S = { ":Gitsigns undo_stage_hunk<CR>", "undo_stage_hunk" },
+  u = { ":Gitsigns reset_hunk<CR>", "reset_hunk" },
 }
 
 return {

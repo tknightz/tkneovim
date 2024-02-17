@@ -105,10 +105,11 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = "nvim_lsp", priority = 2 },
+    { name = "codeium" },
+    { name = "luasnip" },
+    { name = "nvim_lsp" },
     { name = "nvim_lsp_signature_help" },
     -- { name = "vim-dadbod-completion" },
-    { name = "luasnip", priority = 1 },
     { name = "path" },
     { name = "emoji" },
     { name = "nvim_lua" },
@@ -143,6 +144,11 @@ cmp.setup({
 
       vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
       vim_item.kind = (icon ~= nil and icon or "icon")
+      vim_item.dup = ({
+        nvim_lsp = 0,
+        path = 0,
+        buffer = 0,
+      })[entry.source.name] or 0
 
       return vim_item
     end,

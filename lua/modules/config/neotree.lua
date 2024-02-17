@@ -22,7 +22,7 @@ require("neo-tree").setup({
   filesystem = {
     find_by_full_path_words = true,
     follow_current_file = {
-      enabled = true,
+      enabled = false,
       leave_dirs_open = true,
     },
     use_libuv_file_watcher = true,

@@ -12,7 +12,7 @@ require("statuscol").setup({
         namespace = { "gitsigns" },
         name = { "todo*" },
         maxwidth = 1,
-        auto = true,
+        auto = false,
       },
       click = "v:lua.ScSa",
     },

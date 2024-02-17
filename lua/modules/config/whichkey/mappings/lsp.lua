@@ -12,7 +12,8 @@ end
 
 local function toggle_lsp()
   if vim.g.loaded_lsp == 1 then
-    vim.cmd("LspStop")
+    -- vim.cmd("LspStop")
+    vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
     vim.g.loaded_lsp = 0
   else
     vim.cmd("LspStart")
@@ -59,7 +60,7 @@ return {
     d = { ":Lspsaga preview_definition<CR>", "definitions" },
     i = { ":Lspsaga show_line_diagnostics<CR>", "issues" },
     n = { ":Lspsaga diagnostic_jump_next<CR>", "next" },
-    o = { ":SymbolsOutline<CR>", "outline" },
+    o = { ":Outline<CR>", "outline" },
     p = { ":Lspsaga diagnostic_jump_prev<CR>", "prev" },
     q = { ":lua vim.diagnostic.setloclist()<CR>", "quickfix" },
     f = { format, "format" },

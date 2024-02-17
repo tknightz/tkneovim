@@ -2,10 +2,13 @@ local M = {
   sidebar_fts = {
     "fugitive",
     "aerial",
+    "Outline",
     "toggleterm",
     "Trouble",
     "qf",
-    "",
+    "dbee-drawer",
+    "dbee-result",
+    "dbee-call-log",
   },
 
   special_fts = {
@@ -28,6 +31,9 @@ local M = {
     "qf",
     "Trouble",
     "toggleterm",
+    "dbee-drawer",
+    "dbee-result",
+    "dbee-call-log",
   }
 }
 

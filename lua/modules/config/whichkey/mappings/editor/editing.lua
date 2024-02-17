@@ -8,6 +8,7 @@ end
 
 local common = {
   -- a = { ":EasyAlign<cr>", "align" },
+  f = { ":Neotree reveal<cr>", "filetree"},
   y = { '"+y', "yanks" },
   Y = { "%y+<cr>", "whole yanks" },
   s = { ":set spell!<cr>", "toggle spell" },

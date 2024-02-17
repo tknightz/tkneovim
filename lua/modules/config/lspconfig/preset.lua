@@ -10,10 +10,10 @@ local function on_attach(client, bufnr)
   end
 
   -- enable inlay hint
-  -- if client.server_capabilities.inlayHintProvider then
-  --   vim.lsp.inlay_hint.enable(0, true)
-  --   -- vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = 'gray', italic = true })
-  -- end
+  if client.server_capabilities.inlayHintProvider and vim.fn.has('nvim-0.10.0') == 1 then
+    vim.lsp.inlay_hint.enable(0, true)
+    -- vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = 'gray', italic = true })
+  end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 

@@ -11,6 +11,7 @@ require("edgy").setup({
         return vim.api.nvim_win_get_config(win).relative == ""
       end,
     },
+    { ft = "dbee-result", title = "DBEE Result" },
     {
       ft = "fugitive",
     },
@@ -32,18 +33,24 @@ require("edgy").setup({
       title = "Gitcommit",
       filter = function(_)
         local current_windows = vim.api.nvim_list_wins()
-        return #current_windows > 1
+        return #current_windows > 2
       end,
     },
     { ft = "DiffviewFileHistory" },
   },
   left = {
     { ft = "neo-tree", title = "Neotree" },
+    { ft = "dbee-drawer" },
+    { ft = "dbee-call-log" },
   },
   right = {
     {
       ft = "aerial",
       open = "AerialOpen",
+    },
+    {
+      ft = "Outline",
+      open = "Outline",
     },
     {
       ft = "sagaoutline",

@@ -32,12 +32,13 @@ M.icons = {
   Unit = " ",
   Value = "󰆤 ",
   Keyword = "󰌆 ",
-  Snippet = "󱊜 ",
+  Snippet = " ",
   Snippetes = " ",
   Color = " ",
   Folder = " ",
   Database = " ",
   Reference = "󰿨 ",
+  Codeium = " ",
 }
 
 return M

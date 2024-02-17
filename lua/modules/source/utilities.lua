@@ -228,7 +228,7 @@ return {
     config = function()
       require("git-conflict").setup()
     end,
-    event = "BufReadPre",
+    event = "BufRead",
   },
 
   -- Jump to last edit
@@ -253,7 +253,8 @@ return {
     config = function()
       require("hlargs").setup({
         -- color = '#D13E9E',
-        highlight = { fg = "#FF896B", bold = true, italic = true },
+        -- highlight = { fg = "#FF896B", bold = true, italic = true },
+        highlight = { fg = "#f43e5c" },
         use_colorpalette = false,
         colorpalette = {
           { fg = "#dd571c", bold = true },
@@ -282,7 +283,7 @@ return {
 
   ["comment-box"] = {
     path = "LudoPinelli/comment-box.nvim",
-    cmd = { "CBline", "CBcbox" },
+    cmd = { "CBlcline", "CBlcbox" },
     config = function()
       require("comment-box").setup()
     end,
@@ -379,7 +380,7 @@ return {
 
   ["edgy"] = {
     path = "folke/edgy.nvim",
-    event = "BufRead",
+    event = "BufEnter",
   },
 
   ["gpt"] = {
@@ -396,5 +397,25 @@ return {
       "nvim-lua/plenary.nvim",
       "telescope"
     }
+  },
+
+  ["focus"] = {
+    path = "nvim-focus/focus.nvim",
+    version = "*",
+    config = function()
+      require("focus").setup({
+        ui = { signcolumn = false }
+      })
+    end,
+    event = "BufRead",
+  },
+
+  ["hurl"] = {
+    path = "jellydn/hurl.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    ft = "hurl",
+    config = function()
+      require("hurl").setup()
+    end,
   },
 }

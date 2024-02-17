@@ -44,8 +44,8 @@ return {
   },
 
   ["symbolsoutline"] = {
-    path = "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
+    path = "hedyhli/outline.nvim",
+    cmd = "Outline",
   },
 
   ["aerial"] = {

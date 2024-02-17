@@ -100,15 +100,20 @@ require("nvim-web-devicons").setup({
       color = "#EBCB8B",
       name = "org",
     },
+    proto = {
+      icon = "󰿘",
+      color = "#EBCB8B",
+      name = "proto",
+    },
     default_icon = {
-      icon = "",
+      icon = "󰧮",
       color = "#6d8086",
       name = "Default",
     },
   },
 
   default = false,
-  strict = true,
+  strict = false,
 
   override_by_filename = {
     ["Dockerfile.dev"] = {

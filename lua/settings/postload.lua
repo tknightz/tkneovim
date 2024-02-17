@@ -3,7 +3,7 @@ local sidebar_filetypes = require("lib.consts").sidebar_fts
 local special_fts =require("lib.consts").special_fts
 
 local augroup = vim.api.nvim_create_augroup("AutoBGSidebar", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("BufWinEnter", {
   group = augroup,
   callback = function(opts)
     local ft = vim.api.nvim_buf_get_option(opts.buf, "filetype")
@@ -17,6 +17,8 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 
     vim.api.nvim_buf_set_var(opts.buf, "miniindentscope_disable", true)
+    vim.api.nvim_command("setlocal nolist")
+    vim.api.nvim_command("setlocal foldcolumn=0")
     vim.api.nvim_command("setlocal signcolumn=no")
     vim.api.nvim_command("setlocal nonumber norelativenumber")
     vim.api.nvim_command(
