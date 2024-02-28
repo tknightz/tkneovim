@@ -13,8 +13,8 @@ local luasnip = require("luasnip")
 
 -- Set min_width for completion window
 local ELLIPSIS_CHAR = "…"
-local MAX_LABEL_WIDTH = 30
-local MIN_LABEL_WIDTH = 20
+local MAX_LABEL_WIDTH = 25
+local MIN_LABEL_WIDTH = 15
 
 local has_words_before = function()
   ---@diagnostic disable-next-line: deprecated
@@ -25,16 +25,6 @@ end
 
 -- Window customization
 local cmp_win_options = {
-  border = {
-    { "╭", "CmpBorder" },
-    { "─", "CmpBorder" },
-    { "╮", "CmpBorder" },
-    { "│", "CmpBorder" },
-    { "╯", "CmpBorder" },
-    { "─", "CmpBorder" },
-    { "╰", "CmpBorder" },
-    { "│", "CmpBorder" },
-  },
   scrollbar = "│",
   winhighlight = "Normal:CmpWin,CursorLine:PmenuSel",
 }
@@ -58,8 +48,8 @@ cmp.setup({
   max_menu_width = 100,
   min_menu_width = 80,
   window = {
-    documentation = cmp_win_options,
-    completion = cmp_win_options,
+    documentation = cmp.config.window.bordered(cmp_win_options),
+    completion = cmp.config.window.bordered(cmp_win_options),
   },
 
   mapping = cmp.mapping.preset.insert({
@@ -139,14 +129,6 @@ cmp.setup({
       local icon = vim_item.menu and icons[vim_item.menu] or icons[vim_item.kind]
 
       local label = vim_item.abbr
-      local source = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
-      })[entry.source.name]
-
       local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
       if truncated_label ~= label then
         vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
@@ -155,8 +137,8 @@ cmp.setup({
         vim_item.abbr = label .. padding
       end
 
-      vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind .. "\t " .. source
       vim_item.kind = (icon ~= nil and icon or "icon")
+      vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
       vim_item.dup = ({
         nvim_lsp = 0,
         path = 0,
