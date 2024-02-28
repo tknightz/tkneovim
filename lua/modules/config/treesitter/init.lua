@@ -35,7 +35,7 @@ ts_config.setup({
     default_fallback = "auto",
   },
   indent = {
-    enable = false,
+    enable = true,
     disable = { "python", "typescript", "typescriptreact" },
   },
   matchup = {

@@ -3,7 +3,6 @@ vim.o.completeopt = "menu,menuone,noselect"
 
 local cmp = require("cmp")
 local icons = require("modules.config.lspconfig.icons").icons
-local lib = require("lib")
 
 -- setting up autopairs
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -49,7 +48,7 @@ cmp.setup({
   min_length = 3,
   preselect = cmp.PreselectMode.None,
   performance = {
-    throttle_time = 80,
+    throttle_time = 500,
     source_timeout = 200,
     incomplete_delay = 300,
     max_view_entries = 12,
@@ -75,17 +74,23 @@ cmp.setup({
       end
     end, {"i"}),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if luasnip.expand_or_jumpable() then
+      local entries = cmp.get_entries()
+      if #entries > 0 and (#entries == 1 and entries[1].exact) then
+        cmp.confirm({ select = true })
+      -- elseif cmp.visible() then
+      --   cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif has_words_before() then
-        cmp.complete()
+          cmp.complete()
       else
         fallback()
       end
     end, { "i", "s" }),
-
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(-1) then
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
@@ -107,7 +112,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "codeium" },
     { name = "luasnip" },
-    { name = "nvim_lsp" },
+    { name = "nvim_lsp", max_item_count = 100 },
     { name = "nvim_lsp_signature_help" },
     -- { name = "vim-dadbod-completion" },
     { name = "path" },
@@ -134,6 +139,14 @@ cmp.setup({
       local icon = vim_item.menu and icons[vim_item.menu] or icons[vim_item.kind]
 
       local label = vim_item.abbr
+      local source = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
+
       local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
       if truncated_label ~= label then
         vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
@@ -142,7 +155,7 @@ cmp.setup({
         vim_item.abbr = label .. padding
       end
 
-      vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
+      vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind .. "\t " .. source
       vim_item.kind = (icon ~= nil and icon or "icon")
       vim_item.dup = ({
         nvim_lsp = 0,
@@ -181,18 +194,18 @@ cmp.setup({
   },
 
   experimental = {
-    -- native_menu = false,
+    -- native_menu = true,
     -- ghost_text = { hl_group = "Nontext" },
   },
 
   view = {
-    entries = { name = "custom" },
+    entries = "custom",
   },
 
-  cmdline = {
-    [":"] = { sources = { name = "cmdline" } },
-    ["/"] = { sources = { name = "buffer" } },
-  },
+  -- cmdline = {
+  --   [":"] = { sources = { name = "cmdline" } },
+  --   ["/"] = { sources = { name = "buffer" } },
+  -- },
 })
 
 cmp.setup.cmdline(":", {

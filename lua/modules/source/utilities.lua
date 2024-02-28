@@ -399,16 +399,16 @@ return {
     }
   },
 
-  ["focus"] = {
-    path = "nvim-focus/focus.nvim",
-    version = "*",
-    config = function()
-      require("focus").setup({
-        ui = { signcolumn = false }
-      })
-    end,
-    event = "BufRead",
-  },
+  -- ["focus"] = {
+  --   path = "nvim-focus/focus.nvim",
+  --   version = "*",
+  --   config = function()
+  --     require("focus").setup({
+  --       ui = { signcolumn = false }
+  --     })
+  --   end,
+  --   event = "BufRead",
+  -- },
 
   ["hurl"] = {
     path = "jellydn/hurl.nvim",

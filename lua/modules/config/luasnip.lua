@@ -46,5 +46,17 @@ ls.add_snippets("javascript", {
   ),
 })
 
+ls.add_snippets("javascript", {
+  s(
+    "sleep",
+    fmt(
+      [[
+    const sleep = timeout => new Promise(resolve => setTimeout(resolve, timeout))
+    ]],
+      {}
+    )
+  )
+})
+
 ls.filetype_extend("typescript", { "javascript" })
 ls.filetype_extend("typescriptreact", { "javascript" })

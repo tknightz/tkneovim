@@ -1,3 +1,5 @@
+local read_file = require("lib").read_file
+
 return {
   -- Neovim lsp function
   ["lspconfig"] = {
@@ -56,6 +58,38 @@ return {
   ["fidget"] = {
     path = "j-hui/fidget.nvim",
     event = "LspAttach",
+  },
+
+  ["wtf"] = {
+    path = "piersolenski/wtf.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      {
+        "gw",
+        mode = { "n", "x" },
+        function()
+          require("wtf").ai()
+        end,
+        desc = "Debug diagnostic with AI",
+      },
+      {
+        mode = { "n" },
+        "gW",
+        function()
+          require("wtf").search()
+        end,
+        desc = "Search diagnostic with Google",
+      },
+    },
+    event = "LspAttach",
+    config = function()
+      require("wtf").setup({
+        openai_api_key = read_file('~/.openai_key'),
+        openai_model_id = "gpt-3.5-turbo",
+      })
+    end
   },
 
   -- ["typescript-tools"] = {

@@ -16,10 +16,4 @@ return {
     ft = "markdown",
     build = "cd app && yarn install",
   },
-
-  -- Emmet, quickly expand code html, jsx, tsx
-  ["emmet"] = {
-    path = "mattn/emmet-vim",
-    ft = { "html", "css", "javascriptreact", "typescriptreact" },
-  },
 }

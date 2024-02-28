@@ -47,7 +47,7 @@ local options = {
   updatetime     = 500,
   timeoutlen     = 500,
   hidden         = true,
-  splitkeep      = "topline",
+  splitkeep      = "screen",
   splitbelow     = true,
   splitright     = true,
   ts             = 2,
@@ -71,6 +71,7 @@ local options = {
   mousemodel     = "extend",
   scrolloff      = 6,
   sidescrolloff  = 6,
+  winbar         = "",
 
   shada          = { "!", "'1000", "<50", "s10", "h" },
 }

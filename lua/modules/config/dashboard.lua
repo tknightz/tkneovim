@@ -1,6 +1,9 @@
 local db = require("dashboard")
 
 db.setup({
+  hide = {
+    winbar = true
+  },
   config = {
     disable_move = true,
     project = { limit = 4, icon = " ", label = "Project", action = "Telescope find_files cwd=" },

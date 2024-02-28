@@ -55,4 +55,25 @@ M.load_module = function(name)
   end
 end
 
+M.read_file = function(path)
+  local file_path = vim.fn.expand(path) -- Full path to the file
+
+  -- Open the file in read mode
+  local file = io.open(file_path, "r")
+  if file then
+    -- Read the content of the file
+    local content = file:read("*all")
+
+    -- Close the file
+    file:close()
+
+    -- Return the API key
+    content = content:gsub("[\r\n]+$", "")
+    return content
+  else
+    -- Handle error if file doesn't exist or cannot be opened
+    return nil
+  end
+end
+
 return M
