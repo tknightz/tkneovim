@@ -2,8 +2,7 @@ return {
   -- Colorscheme here
   -- set colorname to automate set colorscheme
   ["theme"] = {
-    dir = "~/Repos/onedark.nvim",
-    -- path = "tknightz/onedark.nvim",
+    path = "tknightz/onedark.nvim",
     colorname = "onedark",
     priority = 1000,
   },
@@ -32,16 +31,19 @@ return {
   },
 
   -- Fastest color parser Neovim
-  ["colorizer"] = {
-    path = "norcalli/nvim-colorizer.lua",
-    cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
+  ["highlight-colors"] = {
+    path = "brenoprata10/nvim-highlight-colors",
+    cmd = { "HighlightColors" },
+    config = function()
+      require("nvim-highlight-colors").setup({})
+    end,
   },
 
   -- Rich features buffer indicator
   ["bufferline"] = {
     path = "akinsho/nvim-bufferline.lua",
     version = "*",
-    dependencies = {"devicons"},
+    dependencies = { "devicons" },
   },
 
   -- Fast status line

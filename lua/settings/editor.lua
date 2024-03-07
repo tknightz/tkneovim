@@ -1,3 +1,6 @@
+--
+-- what is the hell was that?
+--
 local options = {
   listchars = {
     tab            = "  ",
@@ -31,6 +34,7 @@ local options = {
   list           = true,
 
   winblend       = 5,
+  pumblend       = 0,
 
   termguicolors  = true,
   -- undofile    = true,

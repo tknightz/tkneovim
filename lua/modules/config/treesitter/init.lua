@@ -36,7 +36,7 @@ ts_config.setup({
   },
   indent = {
     enable = true,
-    disable = { "python", "typescript", "typescriptreact" },
+    disable = { "python", "typescriptreact" },
   },
   matchup = {
     enable = true,
@@ -45,11 +45,13 @@ ts_config.setup({
     move = {
       enable = true,
       goto_previous_start = {
-        ["[f"] = "@function.outer",
+        ["[f"] = "@method.def",
+        ["[p"] = "@parameter.def",
         ["[c"] = "@class.outer",
       },
       goto_next_start = {
-        ["]f"] = "@function.outer",
+        ["]f"] = "@method.def",
+        ["]p"] = "@parameter.def",
         ["]c"] = "@class.outer",
       },
     },

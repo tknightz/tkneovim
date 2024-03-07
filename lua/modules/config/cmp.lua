@@ -38,9 +38,9 @@ cmp.setup({
   min_length = 3,
   preselect = cmp.PreselectMode.None,
   performance = {
-    throttle_time = 500,
-    source_timeout = 200,
-    incomplete_delay = 300,
+    -- throttle_time = 500,
+    -- source_timeout = 200,
+    -- incomplete_delay = 300,
     max_view_entries = 12,
   },
   max_abbr_width = 100,
@@ -101,6 +101,7 @@ cmp.setup({
 
   sources = cmp.config.sources({
     { name = "codeium" },
+    { name = "cody" },
     { name = "luasnip" },
     { name = "nvim_lsp", max_item_count = 100 },
     { name = "nvim_lsp_signature_help" },
@@ -137,8 +138,8 @@ cmp.setup({
         vim_item.abbr = label .. padding
       end
 
-      vim_item.kind = (icon ~= nil and icon or "icon")
       vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
+      vim_item.kind = (icon ~= nil and icon or "icon")
       vim_item.dup = ({
         nvim_lsp = 0,
         path = 0,

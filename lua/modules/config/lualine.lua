@@ -107,7 +107,7 @@ require("lualine").setup({
         cond = function()
           return vim.bo.filetype == "markdown"
         end,
-        fmt = function(str)
+        fmt = function()
           return tostring(vim.fn.wordcount().words) .. " words"
         end
       },

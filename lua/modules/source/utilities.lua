@@ -253,8 +253,8 @@ return {
     config = function()
       require("hlargs").setup({
         -- color = '#D13E9E',
-        -- highlight = { fg = "#FF896B", bold = true, italic = true },
-        highlight = { fg = "#f43e5c" },
+        highlight = { fg = "#FF896B", bold = true, italic = true },
+        -- highlight = { fg = "#f43e5c" },
         use_colorpalette = false,
         colorpalette = {
           { fg = "#dd571c", bold = true },
@@ -263,7 +263,7 @@ return {
         },
       })
     end,
-    event = "Bufread",
+    event = "BufRead",
   },
 
   ["treejoin"] = {
@@ -372,7 +372,7 @@ return {
 
   ["headlines"] = {
     path = "lukas-reineke/headlines.nvim",
-    ft = { "markdown", "org" },
+    ft = { "markdown", "org", "norg" },
     config = function()
       require("headlines").setup()
     end,
@@ -416,6 +416,36 @@ return {
     ft = "hurl",
     config = function()
       require("hurl").setup()
+    end,
+  },
+
+  ["neorg"] = {
+    path =  "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    tag = "*",
+    ft = "norg",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.keybinds"] = {
+            config = {
+              hook = function(keybinds)
+                keybinds.unmap("norg", "n", keybinds.leader .. "nn")
+              end
+            }
+          },
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+            },
+          },
+        },
+      }
     end,
   },
 }

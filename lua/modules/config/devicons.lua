@@ -100,6 +100,11 @@ require("nvim-web-devicons").setup({
       color = "#EBCB8B",
       name = "org",
     },
+    norg = {
+      icon = "",
+      color = "#EBCB8B",
+      name = "norg",
+    },
     proto = {
       icon = "󰿘",
       color = "#EBCB8B",
