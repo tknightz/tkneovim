@@ -18,7 +18,7 @@ M.custom_configs = {
   },
 
   tailwindcss = {
-    filetypes = { "css", "html", "svelte", "javascriptreact", "typescriptreact" },
+    filetypes = { "css", "html", "svelte", "javascriptreact", "typescriptreact", "astro" },
     root_dir = util.root_pattern("tailwind.config.js"),
   },
 
@@ -90,6 +90,10 @@ M.custom_configs = {
       }
     }
   },
+
+  biome = {
+    filetypes = { "typescript", "typescriptreact", "javascript", "html", "css", "svelte", "typescript.tsx" },
+  }
 }
 
 -- helper function to check if server is lsp

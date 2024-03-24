@@ -2,7 +2,6 @@ return {
   -- Fuzzy search all the stuffs
   ["telescope"] = {
     path = "nvim-telescope/telescope.nvim",
-    commit = "3f5f165447d797576206e3b9bd555ea8db85b6f2",
     dependencies = {
       -- { "nvim-lua/popup.nvim", module = "popup" },
       "nvim-lua/plenary.nvim",
@@ -120,12 +119,6 @@ return {
   --     })
   --   end,
   -- },
-
-  -- Extended f, F, t and T key mappings
-  ["cleverf"] = {
-    path = "rhysd/clever-f.vim",
-    event = "BufRead",
-  },
 
   -- Even better % navigate and highlight matching words
   ["matchup"] = {
@@ -422,7 +415,6 @@ return {
   ["neorg"] = {
     path =  "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
-    tag = "*",
     ft = "norg",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -430,6 +422,7 @@ return {
         load = {
           ["core.defaults"] = {}, -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.export"] = {},
           ["core.keybinds"] = {
             config = {
               hook = function(keybinds)

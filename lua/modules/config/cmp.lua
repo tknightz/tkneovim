@@ -64,12 +64,7 @@ cmp.setup({
       end
     end, {"i"}),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      local entries = cmp.get_entries()
-      if #entries > 0 and (#entries == 1 and entries[1].exact) then
-        cmp.confirm({ select = true })
-      -- elseif cmp.visible() then
-      --   cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
+      if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif has_words_before() then
           cmp.complete()

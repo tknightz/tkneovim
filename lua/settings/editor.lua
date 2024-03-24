@@ -13,7 +13,7 @@ local options = {
     eol            = "↩",
     nbsp           = "␣",
     -- leadmultispace = "│ ",
-    -- tab         = "│ ",
+    tab         = "│ ",
   },
 
   fillchars = {

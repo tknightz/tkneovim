@@ -1,5 +1,10 @@
 require("nvim-web-devicons").setup({
   override = {
+    astro = {
+      icon = "󱠇",
+      color = "#DE8C92",
+      name = "astro",
+    },
     html = {
       icon = "",
       color = "#DE8C92",
