@@ -13,8 +13,8 @@ local luasnip = require("luasnip")
 
 -- Set min_width for completion window
 local ELLIPSIS_CHAR = "…"
-local MAX_LABEL_WIDTH = 25
-local MIN_LABEL_WIDTH = 15
+local MAX_LABEL_WIDTH = 30
+local MIN_LABEL_WIDTH = 20
 
 local has_words_before = function()
   ---@diagnostic disable-next-line: deprecated
@@ -41,15 +41,15 @@ cmp.setup({
     -- throttle_time = 500,
     -- source_timeout = 200,
     -- incomplete_delay = 300,
-    max_view_entries = 12,
+    -- max_view_entries = 12,
   },
-  max_abbr_width = 100,
+  max_abbr_width = 150,
   max_kind_width = 100,
-  max_menu_width = 100,
-  min_menu_width = 80,
+  -- max_menu_width = 100,
+  min_menu_width = 180,
   window = {
-    documentation = cmp.config.window.bordered(cmp_win_options),
-    completion = cmp.config.window.bordered(cmp_win_options),
+    -- documentation = cmp.config.window.bordered(cmp_win_options),
+    -- completion = cmp.config.window.bordered(cmp_win_options),
   },
 
   mapping = cmp.mapping.preset.insert({
@@ -177,7 +177,10 @@ cmp.setup({
   },
 
   view = {
-    entries = "custom",
+    entries = {
+      follow_cursor = true
+    }
+    -- entries = "custom",
   },
 
   -- cmdline = {

@@ -5,7 +5,7 @@ vim.g.lint_loaded = true
 lint.linters_by_ft = {
   -- javascript = { "biomejs" },
   -- typescript = { "biomejs" },
-  -- typescriptreact = { "biomejs" },
+  -- typescriptreact = { "eslint" },
 }
 
 -- run try_lint when it's loaded

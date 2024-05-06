@@ -75,7 +75,7 @@ local options = {
   mousemodel     = "extend",
   scrolloff      = 6,
   sidescrolloff  = 6,
-  winbar         = "",
+  winbar         = "    ",
 
   shada          = { "!", "'1000", "<50", "s10", "h" },
 }

@@ -37,10 +37,10 @@ require("lualine").setup({
     section_separators = { left = "", right = "" },
     always_divide_middle = true,
     globalstatus = true,
-    disabled_filetypes = {
-      winbar = special_fts,
-    },
-    ignore_focus = special_fts,
+    -- disabled_filetypes = {
+    --   winbar = special_fts,
+    -- },
+    -- ignore_focus = special_fts,
   },
   sections = {
     lualine_a = { {
@@ -143,46 +143,48 @@ require("lualine").setup({
     lualine_y = {},
     lualine_z = {},
   },
-  winbar = {
-    lualine_c = {
-      {
-        "filetype",
-        icon_only = true,
-        separator = "",
-        padding = { right = 0, left = 1 },
-        color = "WinBar",
-      },
-      {
-        "filename",
-        path = 0,
-        file_status = false,
-        newfile_status = false,
-        color = "WinBar",
-      },
-      {
-        "navic",
-        fmt = navic,
-        color = "WinBar",
-      }
-    },
-  },
-  inactive_winbar = {
-    lualine_c = {
-      {
-        "filetype",
-        icon_only = true,
-        separator = "",
-        color = "InactiveWinBar",
-        padding = { right = 0, left = 1 },
-      },
-      {
-        "filename",
-        path = 2,
-        color = "InactiveWinBar",
-        fmt = winbar_fmt,
-      }
-    },
-  },
+  -- winbar = {
+  --   lualine_c = {
+  --     {
+  --       "filetype",
+  --       icon_only = true,
+  --       separator = "",
+  --       padding = { right = 0, left = 1 },
+  --       color = "WinBar",
+  --     },
+  --     {
+  --       "filename",
+  --       path = 0,
+  --       file_status = false,
+  --       newfile_status = false,
+  --       color = "WinBar",
+  --     },
+  --     {
+  --       "navic",
+  --       fmt = navic,
+  --       color = "WinBar",
+  --     }
+  --   },
+  -- },
+  winbar = {},
+  -- inactive_winbar = {
+  --   lualine_c = {
+  --     {
+  --       "filetype",
+  --       icon_only = true,
+  --       separator = "",
+  --       color = "InactiveWinBar",
+  --       padding = { right = 0, left = 1 },
+  --     },
+  --     {
+  --       "filename",
+  --       path = 2,
+  --       color = "InactiveWinBar",
+  --       fmt = winbar_fmt,
+  --     }
+  --   },
+  -- },
+  inactive_winbar = {},
   tabline = {},
   extensions = {},
 })

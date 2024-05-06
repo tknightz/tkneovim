@@ -39,6 +39,9 @@ ufo.setup({
 
 vim.keymap.set("n", "zM", ufo.closeAllFolds, { silent = true })
 vim.keymap.set("n", "zR", ufo.openAllFolds, { silent = true })
+-- vim.keymap.set("n", "zm", ufo.closeAllFolds, { silent = true })
+-- vim.keymap.set("n", "za", ufo.openFoldsExceptKinds, { silent = true })
+-- vim.keymap.set("n", "zr", ufo.openAllFolds, { silent = true })
 
 -- buffer scope handler
 -- will override global handler if it is existed

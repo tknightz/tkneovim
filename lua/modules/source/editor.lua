@@ -29,7 +29,8 @@ return {
   -- Smart and powerful comment plugin for neovim
   ["comment"] = {
     path = "numToStr/Comment.nvim",
-    event = "BufRead",
+    -- event = "BufRead",
+    keys = { "<C-_>", "<C-/>" },
   },
 
   -- commentstring context
@@ -39,14 +40,14 @@ return {
   },
 
   -- Align code
-  ["ezalign"] = {
-    path = "echasnovski/mini.align",
-    version = "*",
-    event = "VeryLazy",
-    config = function()
-      require("mini.align").setup()
-    end
-  },
+  -- ["ezalign"] = {
+  --   path = "echasnovski/mini.align",
+  --   version = "*",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("mini.align").setup()
+  --   end
+  -- },
 
   -- Better playing with brackets
   ["nvim-surround"] = {

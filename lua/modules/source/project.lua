@@ -19,17 +19,6 @@ return {
     event = "BufRead",
   },
 
-  -- Projects management and navigation
-  ["project_nvim"] = {
-    path = "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup({
-        patterns = { ".git" },
-        detection_methods = { "pattern" },
-      })
-    end,
-  },
-
   ["scope"] = {
     path = "tiagovla/scope.nvim",
     config = function()

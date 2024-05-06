@@ -2,7 +2,6 @@ local highlights = require("modules.config.bufferline.highlights")
 local special_fts = require("lib.consts").special_fts
 require("modules.config.bufferline.mappings")
 
-
 require("bufferline").setup({
   highlights = highlights,
   options = {
@@ -34,7 +33,7 @@ require("bufferline").setup({
     diagnostics_indicator = function(count, level, _, _)
       local icon = " "
       if level:match("error") then
-        icon = " "
+        icon = " "
       elseif level:match("warn") then
         icon = " "
       elseif level:match("hint") then

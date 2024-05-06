@@ -50,11 +50,6 @@ return {
     cmd = "Outline",
   },
 
-  ["aerial"] = {
-    path = "stevearc/aerial.nvim",
-    cmd = { "AerialToggle", "AerialOpen" },
-  },
-
   ["fidget"] = {
     path = "j-hui/fidget.nvim",
     event = "LspAttach",

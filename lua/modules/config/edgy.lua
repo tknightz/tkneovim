@@ -15,6 +15,8 @@ require("edgy").setup({
     {
       ft = "fugitive",
     },
+    { ft = "NeogitStatus" },
+    { ft = "NeogitPopup" },
     {
       ft = "lazyterm",
       title = "LazyTerm",

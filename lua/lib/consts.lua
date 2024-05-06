@@ -9,6 +9,8 @@ local M = {
     "dbee-drawer",
     "dbee-result",
     "dbee-call-log",
+    "NeogitStatus",
+    "NeogitPopup",
   },
 
   special_fts = {
@@ -34,6 +36,8 @@ local M = {
     "dbee-drawer",
     "dbee-result",
     "dbee-call-log",
+    "NeogitStatus",
+    "NeogitPopup",
   }
 }
 

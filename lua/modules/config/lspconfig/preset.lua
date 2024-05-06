@@ -40,12 +40,17 @@ local function on_attach(client, bufnr)
 end
 
 -- setup cmp (completion)
-local _cap = vim.lsp.protocol.make_client_capabilities()
-_cap.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
-local capabilities = require("cmp_nvim_lsp").default_capabilities(_cap)
+-- local _cap = vim.lsp.protocol.make_client_capabilities()
+-- _cap.textDocument.foldingRange = {
+--   dynamicRegistration = false,
+--   lineFoldingOnly = true,
+-- }
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities(_cap)
+local capabilities = vim.tbl_deep_extend("force",
+  vim.lsp.protocol.make_client_capabilities(),
+  require('cmp_nvim_lsp').default_capabilities()
+)
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 return {
   on_attach = on_attach,

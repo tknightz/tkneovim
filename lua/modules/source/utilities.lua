@@ -43,7 +43,7 @@ return {
       require("illuminate").configure({
         filetypes_denylist = special_fts,
         modes_denylist = { "i" },
-        large_file_cutoff = 2000
+        large_file_cutoff = 2000,
       })
     end,
   },
@@ -269,10 +269,10 @@ return {
     end,
   },
 
-  ["navic"] = {
-    path = "SmiteshP/nvim-navic",
-    event = "LspAttach",
-  },
+  -- ["navic"] = {
+  --   path = "SmiteshP/nvim-navic",
+  --   event = "LspAttach",
+  -- },
 
   ["comment-box"] = {
     path = "LudoPinelli/comment-box.nvim",
@@ -282,25 +282,43 @@ return {
     end,
   },
 
-  ["codeium"] = {
-    path = "Exafunction/codeium.vim",
-    cmd = "Codeium",
+  -- ["codeium"] = {
+  --   path = "Exafunction/codeium.vim",
+  --   cmd = "Codeium",
+  --   config = function()
+  --     vim.keymap.set("i", "<C-l>", function()
+  --       return vim.fn["codeium#Accept"]()
+  --     end, { silent = true, expr = true })
+  --     vim.keymap.set("i", "<C-k>", function()
+  --       return vim.fn["codeium#Accept"]()
+  --     end, { silent = true, expr = true })
+  --     vim.keymap.set("i", "<c-;>", function()
+  --       return vim.fn["codeium#CycleCompletions"](1)
+  --     end, { expr = true })
+  --     vim.keymap.set("i", "<c-,>", function()
+  --       return vim.fn["codeium#CycleCompletions"](-1)
+  --     end, { expr = true })
+  --     vim.keymap.set("i", "<c-x>", function()
+  --       return vim.fn["codeium#Clear"]()
+  --     end, { expr = true })
+  --   end,
+  -- },
+
+  ["neocodium"] = {
+    path = "monkoose/neocodeium",
+    command = "NeoCodium",
     config = function()
-      vim.keymap.set("i", "<C-l>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { silent = true, expr = true })
-      vim.keymap.set("i", "<C-k>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { silent = true, expr = true })
-      vim.keymap.set("i", "<c-;>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true })
-      vim.keymap.set("i", "<c-,>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true })
-      vim.keymap.set("i", "<c-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true })
+      local neocodeium = require("neocodeium")
+      neocodeium.setup({
+        enabled = false,
+        show_label = false,
+      })
+      vim.keymap.set("i", "<C-l>", neocodeium.accept)
+      vim.keymap.set("i", "<C-k>", neocodeium.accept)
+      vim.keymap.set("i", "<C-;>", neocodeium.cycle_or_complete)
+      vim.keymap.set("i", "<C-,>", function()
+        neocodeium.cycle_or_complete(-1)
+      end)
     end,
   },
 
@@ -378,18 +396,18 @@ return {
 
   ["gpt"] = {
     path = "jackMort/ChatGPT.nvim",
-    cmd = {"ChatGPT", "ChatGPTRun"},
+    cmd = { "ChatGPT", "ChatGPTRun" },
     config = function()
       local home = vim.fn.expand("$HOME")
       require("chatgpt").setup({
-        api_key_cmd = "cat " .. home .. "/.openai_key"
+        api_key_cmd = "cat " .. home .. "/.openai_key",
       })
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
-      "telescope"
-    }
+      "telescope",
+    },
   },
 
   -- ["focus"] = {
@@ -413,12 +431,12 @@ return {
   },
 
   ["neorg"] = {
-    path =  "nvim-neorg/neorg",
+    path = "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
     ft = "norg",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("neorg").setup {
+      require("neorg").setup({
         load = {
           ["core.defaults"] = {}, -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
@@ -427,8 +445,8 @@ return {
             config = {
               hook = function(keybinds)
                 keybinds.unmap("norg", "n", keybinds.leader .. "nn")
-              end
-            }
+              end,
+            },
           },
           ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
@@ -438,7 +456,53 @@ return {
             },
           },
         },
-      }
+      })
     end,
+  },
+
+  ["barbecue"] = {
+    path = "utilyre/barbecue.nvim",
+    version = "*",
+    event = "BufRead",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "devicons", -- optional dependency
+    },
+    config = function()
+      require("barbecue").setup({
+        theme = {
+          normal = { bg = "#0d1117" },
+        },
+      })
+    end,
+  },
+
+  ["debugprint"] = {
+    path = "andrewferrier/debugprint.nvim",
+    config = function()
+      require("debugprint").setup({ create_keymaps = false, create_commands = false })
+    end,
+    event = "BufRead",
+    keys = {
+      {
+        "<leader>iV",
+        function()
+          return require("debugprint").debugprint({ above = true, variable = true })
+        end,
+        desc = "[i]nsert [V]ariable debug-print above the current line",
+        expr = true,
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>iv",
+        function()
+          return require("debugprint").debugprint({ above = false, variable = true })
+        end,
+        desc = "[i]nsert [v]ariable debug-print below the current line",
+        expr = true,
+        mode = { "n", "v" },
+      },
+    },
+    version = "1.*",
   },
 }

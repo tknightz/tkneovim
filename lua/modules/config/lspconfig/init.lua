@@ -48,6 +48,13 @@ vim.fn.sign_define(
   { text = " ", numhl = "LspDiagnosticsDefaultHint", texthl = "LspDiagnosticsDefaultHint" }
 )
 
+vim.diagnostic.config({
+  signs = {
+    --support diagnostic severity / diagnostic type name
+    text = { [1] = ' ', ['WARN'] = '󰀦 ', ['HINT'] = ' ' },
+  },
+})
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diagnostic_opts)
 
 -- Iterate to register servers with custom config
