@@ -26,7 +26,8 @@ notify.setup({
 --   notify(msg, level, opts)
 -- end
 
-vim.notify = notify
+-- vim.notify = notify
+vim.notify = vim.schedule_wrap(require("notify"))
 
 -- override builtin-print
 print = function(...)

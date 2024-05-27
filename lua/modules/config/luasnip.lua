@@ -10,6 +10,7 @@ ls.config.setup({
   -- delete_check_events = "TextChanged"
   region_check_events = "InsertEnter",
   delete_check_events = "InsertLeave",
+  store_selection_keys="<Tab>",
 })
 
 ls.add_snippets("all", {

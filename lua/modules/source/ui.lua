@@ -43,7 +43,6 @@ return {
   -- Rich features buffer indicator
   ["bufferline"] = {
     path = "akinsho/nvim-bufferline.lua",
-    version = "*",
     dependencies = { "devicons" },
   },
 

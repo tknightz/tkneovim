@@ -84,27 +84,6 @@ return {
     event = "BufRead",
   },
 
-  -- ["hlchunk"] = {
-  --   path = "shellRaining/hlchunk.nvim",
-  --   config = function()
-  --     require("hlchunk").setup({
-  --       chunk = {
-  --         notify = false,
-  --         style = {
-  --           { fg = "#c75ae8" },
-  --           { fg = "#f65866" }, -- this fg is used to highlight wrong chunk
-  --         },
-  --       },
-  --       blank = {
-  --         enable = true,
-  --         chars = { " " },
-  --       },
-  --       line_num = { enable = false },
-  --     })
-  --   end,
-  --   event = "BufReadPre",
-  -- },
-
   -- ["indent-scope"] = {
   --   path = "echasnovski/mini.indentscope",
   --   branch = "stable",
@@ -269,11 +248,6 @@ return {
     end,
   },
 
-  -- ["navic"] = {
-  --   path = "SmiteshP/nvim-navic",
-  --   event = "LspAttach",
-  -- },
-
   ["comment-box"] = {
     path = "LudoPinelli/comment-box.nvim",
     cmd = { "CBlcline", "CBlcbox" },
@@ -322,31 +296,18 @@ return {
     end,
   },
 
-  ["textobj"] = {
-    path = "chrisgrieser/nvim-various-textobjs",
-    event = "BufRead",
-    config = function()
-      require("various-textobjs").setup({ useDefaultKeymaps = true })
-    end,
-  },
+  -- ["textobj"] = {
+  --   path = "chrisgrieser/nvim-various-textobjs",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("various-textobjs").setup({ useDefaultKeymaps = true })
+  --   end,
+  -- },
 
   ["move"] = {
     path = "fedepujol/move.nvim",
     cmd = { "MoveBlock", "MoveLine", "MoveHBlock", "MoveHChar" },
   },
-
-  -- ["spider"] = {
-  --   path = "chrisgrieser/nvim-spider",
-  --   event = "BufRead",
-  --   config = function()
-  --     -- Keymaps
-  --     vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
-  --     vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
-  --     vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
-  --     vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
-  --     vim.keymap.set({"n", "o", "x"}, "cw", "ce", { desc = "Change word" })
-  --   end
-  -- },
 
   ["rainbow"] = {
     path = "HiPhish/rainbow-delimiters.nvim",
@@ -409,17 +370,6 @@ return {
       "telescope",
     },
   },
-
-  -- ["focus"] = {
-  --   path = "nvim-focus/focus.nvim",
-  --   version = "*",
-  --   config = function()
-  --     require("focus").setup({
-  --       ui = { signcolumn = false }
-  --     })
-  --   end,
-  --   event = "BufRead",
-  -- },
 
   ["hurl"] = {
     path = "jellydn/hurl.nvim",

@@ -9,9 +9,7 @@ local function toggle_inlay_hint()
   if vim.g.loaded_lsp == 0 then
     return
   end
-
-  local is_enabled = vim.lsp.inlay_hint.is_enabled(0)
-  vim.lsp.inlay_hint.enable(0, not is_enabled)
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), 0)
 end
 
 local function toggle_lsp()

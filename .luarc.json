@@ -6,4 +6,7 @@
     "diagnostics.globals": [
         "vim"
     ],
+    "diagnostics.disable": [
+        "unused-local"
+    ],
 }

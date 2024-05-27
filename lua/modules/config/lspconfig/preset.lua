@@ -4,16 +4,16 @@ local function on_attach(client, bufnr)
     require("nvim-navic").attach(client, bufnr)
   end
 
-  -- disable sematic token
-  if client.server_capabilities.semanticTokensProvider then
-    client.server_capabilities.semanticTokensProvider = nil
-  end
+  -- disable semantic token
+  -- if client.server_capabilities.semanticTokensProvider then
+  --   client.server_capabilities.semanticTokensProvider = nil
+  -- end
 
   -- enable inlay hint
-  -- if client.server_capabilities.inlayHintProvider and vim.fn.has('nvim-0.10.0') == 1 then
-  --   vim.lsp.inlay_hint.enable(0, true)
-  --   vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = 'gray', italic = true })
-  -- end
+  if client.server_capabilities.inlayHintProvider and vim.fn.has('nvim-0.10.0') == 1 then
+    -- vim.lsp.inlay_hint.enable(true)
+    vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = 'gray', italic = true })
+  end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 

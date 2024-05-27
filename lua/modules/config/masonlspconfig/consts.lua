@@ -93,7 +93,15 @@ M.custom_configs = {
 
   biome = {
     filetypes = { "typescript", "typescriptreact", "javascript", "html", "css", "svelte", "typescript.tsx" },
-  }
+  },
+
+  typos_lsp = {
+    cmd_env = { RUST_LOG = "error" },
+    init_options = {
+      diagnosticSeverity = "hint",
+    },
+    filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "markdown" },
+  },
 }
 
 -- helper function to check if server is lsp

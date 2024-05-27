@@ -29,10 +29,10 @@ return {
     event = "LspAttach",
   },
 
-  ["lint"] = {
-    path = "mfussenegger/nvim-lint",
-    event = "LspAttach",
-  },
+  -- ["lint"] = {
+  --   path = "mfussenegger/nvim-lint",
+  --   event = "LspAttach",
+  -- },
 
   ["conform"] = {
     path = "stevearc/conform.nvim",

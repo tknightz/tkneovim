@@ -1,17 +1,9 @@
 local function visual_grep()
   local _, tls = pcall(require, "telescope.builtin")
 
-  vim.cmd('noau normal! "vy"')
-  local text = vim.fn.getreg("v")
-  vim.fn.setreg("v", {})
-
-  text = string.gsub(text, "\n", "")
-  return tls.live_grep({
-    default_text = text,
+  return tls.grep_string({
+    word_match = true,
     only_sort_text = true,
-    additional_args = function()
-      return { "--pcre2" }
-    end,
   })
 end
 
@@ -54,5 +46,6 @@ return {
 
   visual = {
     r = { visual_grep, "grep_vi" },
+    w = { ":Telescope grep_string<CR>", "word" },
   },
 }

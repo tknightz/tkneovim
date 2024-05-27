@@ -21,8 +21,15 @@ local keymaps = {
     ["gz"] = "<Plug>Lightspeed_s",
     ["gZ"] = "<Plug>Lightspeed_S",
 
-    ["<C-_>"] = "<Plug>(comment_toggle_linewise_current)",
     ["<C-y>"] = ":%y+",
+    ["<C-_>"] = {
+      to = "gcc",
+      opt = { remap = true },
+    },
+    ["<C-/>"] = {
+      to = "gcc",
+      opt = { remap = true },
+    },
 
     ["<M-h>"] = "<cmd>silent! vertical resize +3<cr>",
     ["<M-l>"] = "<cmd>silent! vertical resize -3<cr>",
@@ -40,7 +47,14 @@ local keymaps = {
 
   visual_select = {
     ["<C-y>"] = '"+y',
-    ["<C-_>"] = "<Plug>(comment_toggle_blockwise_visual)",
+    ["<C-_>"] = {
+      to = "gc",
+      opt = { remap = true },
+    },
+    ["<C-/>"] = {
+      to = "gc",
+      opt = { remap = true },
+    },
 
     ["<A-j>"] = ":MoveBlock(1)<CR>",
     ["<A-k>"] = ":MoveBlock(-1)<CR>",
