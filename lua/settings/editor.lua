@@ -1,18 +1,11 @@
---
--- what is the hell was that?
---
 local options = {
   listchars = {
     tab            = "  ",
-    -- tab         = "» ",
-    -- trail          = "·",
-    -- space          = "⋅",
     lead           = " ",
     precedes       = "←",
     extends        = "→",
     eol            = "↩",
     nbsp           = "␣",
-    -- leadmultispace = "│ ",
     tab         = "│ ",
   },
 
@@ -24,11 +17,6 @@ local options = {
     foldsep   = "│",
     foldclose = "󰐙",
     vert = "┃",
-    -- foldopen = "",
-    -- foldsep = "│",
-    -- foldclose = "󰦰",
-    -- foldopen  = "",
-    -- foldclose = ""
   },
 
   list           = true,

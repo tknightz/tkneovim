@@ -1,8 +1,6 @@
 # TKNeovim
 The editor I use for work, and it works.
 
-![StartupTime](./images/startuptime.gif)
-
 This is my personal Neovim configuration, tailored to enhance my coding
 experience and increase productivity. It is designed to work seamlessly with
 Neovim, a highly extensible and powerful text editor built for developers.
@@ -66,8 +64,8 @@ configuration to make the most out of your coding sessions.
 2. Here is an example of plugin spec:
 ```lua
 return {
-  ["cmp"] = { -- name of plugin
-    path = "hrsh7th/nvim-cmp", -- path to clone it (creator/name-of-repo)
+  { -- name of plugin
+    "hrsh7th/nvim-cmp", -- path to clone it (creator/name-of-repo)
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -85,15 +83,7 @@ return {
 }
 ```
 
-3. You can add the `config` inside plugin spec or creating new file inside
-`📁 lua/modules/config/<name-of-plugin>.lua` when you have a big config file
-(heavy customize) and you want to keep the plugin spec clean.
-```lua
--- lua/modules/config/cmp.lua
-require('cmp').setup{}
-```
-
-4. Restart Neovim and let `Lazy` do its job
+3. Restart Neovim and let `Lazy` do its job
 ## 🤝 Contributing
 If you have suggestions, improvements, or bug fixes, feel free to contribute to
 this project. Create a pull request with your changes, and I'll review them as

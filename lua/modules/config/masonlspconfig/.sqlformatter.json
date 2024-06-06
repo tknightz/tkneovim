@@ -1,7 +1,0 @@
-{
-  "language": "spark",
-  "tabWidth": 2,
-  "keywordCase": "upper",
-  "expressionWidth": 25,
-  "linesBetweenQueries": 2
-}

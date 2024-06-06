@@ -20,7 +20,7 @@ local function get_git_root()
 end
 
 local function init()
-  lib.load_module("telescope")
+  require("telescope")
   local previewers = require("telescope.previewers")
   local builtin = require("telescope.builtin")
 

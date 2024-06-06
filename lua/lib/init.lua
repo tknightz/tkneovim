@@ -38,8 +38,8 @@ M.load_module = function(name)
   vim.cmd("Lazy! load " .. name)
 
   local home_config_path = vim.fn.stdpath("config") .. "/lua/"
-  local setup_path = "modules/setup/" .. name
-  local config_path = "modules/config/" .. name
+  local setup_path = "setup/" .. name
+  local config_path = "config/" .. name
 
   local is_existed_setup_file = vim.fn.filereadable(home_config_path .. setup_path .. ".lua")
     + vim.fn.isdirectory(home_config_path .. setup_path)
