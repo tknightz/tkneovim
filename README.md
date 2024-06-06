@@ -1,5 +1,6 @@
 # TKNeovim
 The editor I use for work, and it works.
+![Neovim Screenshot](https://github.com/tknightz/tkneovim/assets/40225276/ad8ae755-62cf-406a-b619-aabe11b7dcf6)
 
 This is my personal Neovim configuration, tailored to enhance my coding
 experience and increase productivity. It is designed to work seamlessly with
