@@ -19,7 +19,7 @@ M.custom_configs = {
 
   tailwindcss = {
     filetypes = { "css", "html", "svelte", "javascriptreact", "typescriptreact", "astro" },
-    root_dir = util.root_pattern("tailwind.config.js"),
+    root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
   },
 
   emmet_ls = {

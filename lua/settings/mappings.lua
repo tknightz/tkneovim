@@ -18,8 +18,6 @@ local keymaps = {
       opt = {},
     },
     ["0"] = "^",
-    ["gz"] = "<Plug>Lightspeed_s",
-    ["gZ"] = "<Plug>Lightspeed_S",
 
     ["<C-y>"] = ":%y+",
     ["<C-_>"] = {

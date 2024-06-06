@@ -42,7 +42,10 @@ return {
   -- Find trouble in your code
   ["trouble"] = {
     path = "folke/trouble.nvim",
-    cmd = { "Trouble" },
+    cmd = "Trouble",
+    config = function()
+      require("trouble").setup({})
+    end
   },
 
   ["symbolsoutline"] = {

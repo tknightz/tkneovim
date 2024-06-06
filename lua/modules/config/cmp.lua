@@ -66,10 +66,11 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif has_words_before() then
-          cmp.complete()
+      -- elseif has_words_before() then
+      --     cmp.complete()
       else
-        fallback()
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "")
+        -- fallback()
       end
     end, { "i", "s" }),
     ["<C-k>"] = cmp.mapping(function(fallback)
@@ -81,7 +82,8 @@ cmp.setup({
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
-        fallback()
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "")
+        -- fallback()
       end
     end, { "i", "s" }),
     ["<CR>"] = cmp.mapping.confirm({

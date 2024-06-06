@@ -24,7 +24,7 @@ require("edgy").setup({
         return not vim.b[buf].lazyterm_cmd
       end,
     },
-    "Trouble",
+    "trouble",
     { ft = "qf", title = "QuickFix" },
     {
       ft = "help",
@@ -41,7 +41,13 @@ require("edgy").setup({
     { ft = "DiffviewFileHistory" },
   },
   left = {
-    { ft = "neo-tree", title = "Neotree" },
+    {
+      ft = "neo-tree",
+      title = "Neotree",
+      filter = function(buf)
+        return vim.b[buf].neo_tree_source == "filesystem"
+      end,
+    },
     { ft = "dbee-drawer" },
     { ft = "dbee-call-log" },
   },
@@ -53,6 +59,15 @@ require("edgy").setup({
     {
       ft = "Outline",
       open = "Outline",
+    },
+    {
+      title = "Neo-Tree Git",
+      ft = "neo-tree",
+      filter = function(buf)
+        return vim.b[buf].neo_tree_source == "git_status"
+      end,
+      pinned = true,
+      open = "Neotree position=right git_status",
     },
     {
       ft = "sagaoutline",

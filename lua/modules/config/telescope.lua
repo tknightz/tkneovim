@@ -113,7 +113,7 @@ telescope.setup({
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
     file_sorter = require("telescope.sorters").get_fzy_sorter,
-    file_ignore_patterns = { "node_modules", "build", ".git/.*", "%.min.js", "%.min.css", "%.map" },
+    file_ignore_patterns = { "node_modules", ".next", "build", ".git/.*", "%.min.js", "%.min.css", "%.map" },
     winblend = 10,
     border = {},
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },

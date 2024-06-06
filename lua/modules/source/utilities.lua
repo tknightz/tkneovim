@@ -355,31 +355,6 @@ return {
     event = "BufEnter",
   },
 
-  ["gpt"] = {
-    path = "jackMort/ChatGPT.nvim",
-    cmd = { "ChatGPT", "ChatGPTRun" },
-    config = function()
-      local home = vim.fn.expand("$HOME")
-      require("chatgpt").setup({
-        api_key_cmd = "cat " .. home .. "/.openai_key",
-      })
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "telescope",
-    },
-  },
-
-  ["hurl"] = {
-    path = "jellydn/hurl.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    ft = "hurl",
-    config = function()
-      require("hurl").setup()
-    end,
-  },
-
   ["neorg"] = {
     path = "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
@@ -454,5 +429,51 @@ return {
       },
     },
     version = "1.*",
+  },
+
+  ["supermaven"] = {
+    path = "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<C-k>",
+          clear_suggestion = "<C-]>",
+          accept_word = "<C-j>",
+        },
+      })
+    end,
+    cmd = { "SupermavenUseFree" },
+  },
+
+  ["tabout"] = {
+    path = "abecodes/tabout.nvim",
+    dependencies = { -- These are optional
+      "treesitter",
+      "luasnip",
+      "cmp",
+    },
+    event = "InsertCharPre",
+    config = function()
+      require("tabout").setup({
+        tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
+        backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
+        act_as_tab = true, -- shift content if tab out is not possible
+        act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+        default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+        default_shift_tab = "<C-d>", -- reverse shift default action,
+        enable_backwards = true, -- well ...
+        completion = false, -- if the tabkey is used in a completion pum
+        tabouts = {
+          { open = "'", close = "'" },
+          { open = '"', close = '"' },
+          { open = "`", close = "`" },
+          { open = "(", close = ")" },
+          { open = "[", close = "]" },
+          { open = "{", close = "}" },
+        },
+        ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+        exclude = {}, -- tabout will ignore these filetypes
+      })
+    end,
   },
 }

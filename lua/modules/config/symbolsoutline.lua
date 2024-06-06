@@ -3,6 +3,7 @@ local icons = require("modules.config.lspconfig.icons").icons
 require("outline").setup({
   outline_window = {
     width = 25,
+    winhl = "Normal:EdgyNormal,NormalNC:EdgyNormal,SignColumn:EdgyNormal,WinBar:EdgyWinbar,EndOfBuffer:EdgyNormal",
   },
   keymaps = { -- These keymaps can be a string or a table for multiple keys
     close = { "<Esc>", "q" },

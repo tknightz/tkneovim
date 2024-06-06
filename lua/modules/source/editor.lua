@@ -18,7 +18,8 @@ return {
 
   ["luasnip"] = {
     path = "L3MON4D3/LuaSnip",
-    event = "InsertEnter",
+    lazy = true,
+    -- event = "InsertEnter",
     version = "v2.*",
     build = "make install_jsregexp",
     dependencies = {
