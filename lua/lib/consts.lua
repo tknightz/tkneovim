@@ -11,6 +11,8 @@ local M = {
     "dbee-call-log",
     "NeogitStatus",
     "NeogitPopup",
+    "dbui",
+    "dbout",
   },
 
   special_fts = {
@@ -21,6 +23,7 @@ local M = {
     "dirvish",
     "fugitive",
     "gitcommit",
+    "gitrebase",
     "neo-tree",
     "DiffviewFiles",
     "DiffviewFileHistory",

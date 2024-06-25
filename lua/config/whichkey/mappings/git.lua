@@ -19,10 +19,17 @@ local normal = {
   b = { ":Telescope git_branches<cr>", "branches" },
   c = { ":Git commit --quiet<cr>", "commit" },
   ["."] = { ":Git<cr>", "Git here" },
-  w = { ":Gitsigns blame_line<cr>", "who code it" },
+  w = { ":Gitsigns blame_line<cr>", "who code this?" },
   P = { ":Git push -u --quiet<cr>", "Push" },
   n = { ":Gitsigns next_hunk<cr>", "next hunk" },
   p = { ":Gitsigns prev_hunk<cr>", "previous hunk" },
+
+  x = {
+    name = "conflicts",
+    l = { ":GitConflictListQf<cr>", "list" },
+    n = { ":GitConflictNextConflict<cr>", "next" },
+    p = { ":GitConflictPrevConflict<cr>", "prev" },
+  },
 
   ["/"] = {
     name = "browse",
@@ -58,6 +65,12 @@ local normal = {
     h = { ":Gitsigns toggle_linehl<cr>", "highlight toggle" },
     s = { stage_hunk, "stage hunk" },
     u = { ":Gitsigns undo_stage_hunk<cr>", "undo stage hunk" },
+  },
+
+  r = {
+    name = "rebase",
+    c = { ":Git rebase --continue<cr>", "continue" },
+    a = { ":Git rebase --abort<cr>", "abort" },
   },
 }
 

@@ -3,7 +3,6 @@ return {
   -- set colorname to automate set colorscheme
   {
     "tknightz/onedark.nvim",
-    dir = "~/Repos/onedark.nvim",
     priority = 1000,
     config = function()
       require("onedark").setup({
@@ -41,8 +40,17 @@ return {
 
   -- Icons for some other stuffs
   {
-    "kyazdani42/nvim-web-devicons",
-    opts = {},
+    "nvim-tree/nvim-web-devicons",
+    opts = {
+      override = {
+        norg = {
+          icon = "󱗃",
+          color = "#ff557f",
+          cterm_color = "65",
+          name = "Orgmode",
+        },
+      },
+    },
     module = "nvim-web-devicons",
   },
 
@@ -58,7 +66,7 @@ return {
   -- Rich features buffer indicator
   {
     "akinsho/nvim-bufferline.lua",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("config.bufferline")
     end,

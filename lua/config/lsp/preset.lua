@@ -1,4 +1,8 @@
 local function on_attach(client, bufnr)
+  if vim.g.should_attach == 0 then
+    client.stop()
+  end
+
   -- load nvim-navic
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)

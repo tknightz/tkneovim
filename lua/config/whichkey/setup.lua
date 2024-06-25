@@ -2,12 +2,12 @@ local wk = require("which-key")
 
 wk.setup({
   plugins = {
-    marks = true, -- shows a list of your marks on ' and `
+    marks = true, -- shows a list attention of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-    -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+    -- the presets plugin, edds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     spelling = {
-      enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
       suggestions = 20, -- how many suggestions should be shown in the list?
     },
 
@@ -44,6 +44,14 @@ wk.setup({
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
-  -- triggers = "auto", -- automatically setup triggers
-  triggers = { "<leader>", "<C-r>" }, -- or specifiy a list manually
+  triggers = "auto", -- automatically setup triggers
+  triggers_nowait = {
+    "<leader>",
+    -- registers
+    '"',
+    "<c-r>",
+    -- spelling
+    "z=",
+  },
+  -- triggers = { "<leader>", "<C-r>", "z=" }, -- or specify a list manually
 })

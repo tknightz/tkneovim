@@ -100,7 +100,7 @@ M.custom_configs = {
     init_options = {
       diagnosticSeverity = "hint",
     },
-    filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "markdown" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "markdown", "lua" },
   },
 }
 

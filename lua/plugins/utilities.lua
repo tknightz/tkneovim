@@ -156,7 +156,7 @@ return {
   -- Organize keymaps
   {
     "folke/which-key.nvim",
-    keys = { "<leader>", "<Space>", { "<leader>", mode = "v" } },
+    keys = { "<leader>", "<Space>", "z=", { "<leader>", mode = "v" } },
     config = function()
       require("config.whichkey")
     end,
@@ -164,7 +164,7 @@ return {
 
   {
     "kevinhwang91/nvim-bqf",
-    dependencies = { "yorickpeterse/nvim-pqf" },
+    dependencies = { "ashfinal/qfview.nvim" },
     config = function()
       require("bqf").setup({
         preview = {
@@ -180,17 +180,9 @@ return {
 
   -- pretty quickfix UI
   {
-    "yorickpeterse/nvim-pqf",
-    config = function()
-      require("pqf").setup({
-        signs = {
-          error = " ",
-          warning = " ",
-          info = " ",
-          hint = " ",
-        },
-      })
-    end,
+    "ashfinal/qfview.nvim",
+    lazy = true,
+    config = true,
   },
 
   -- A plugin to visualise and resolve merge conflicts in neovim
@@ -381,7 +373,7 @@ return {
         },
       })
     end,
-    cmd = { "SupermavenUseFree" },
+    cmd = { "SupermavenUseFree", "SupermavenStart" },
   },
 
   {

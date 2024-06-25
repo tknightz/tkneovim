@@ -11,6 +11,7 @@ require("edgy").setup({
         return vim.api.nvim_win_get_config(win).relative == ""
       end,
     },
+    { ft = "dbout", title = "Dadbod Result" },
     { ft = "dbee-result", title = "DBEE Result" },
     {
       ft = "fugitive",
@@ -48,6 +49,7 @@ require("edgy").setup({
         return vim.b[buf].neo_tree_source == "filesystem"
       end,
     },
+    { ft = "dbui", title = "Dadbod UI" },
     { ft = "dbee-drawer" },
     { ft = "dbee-call-log" },
   },

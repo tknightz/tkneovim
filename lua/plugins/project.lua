@@ -11,6 +11,9 @@ return {
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewToggleFiles", "DiffviewFileHistory" },
+    config = function()
+      require("config.diffview")
+    end,
   },
 
   -- Git integration for buffers
@@ -19,12 +22,12 @@ return {
     event = "BufRead",
     opts = {
       signs = {
-        add = { linehl = "DiffAdd", text = "┃", numhl = "GitSignsAddNr" },
-        change = { linehl = "DiffChange", text = "┃", numhl = "GitSignsChangeNr" },
-        delete = { linehl = "DiffDelete", text = "_", numhl = "GitSignsDeleteNr" },
-        topdelete = { linehl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-        changedelete = { linehl = "DiffChange", text = "~", numhl = "GitSignsChangeNr" },
-        untracked = { linehl = "DiffUntracked", text = "╎", numhl = "GitSignsUntracked" },
+        add = { text = "┃" },
+        change = { text = "┃" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+        untracked = { text = "╎" },
       },
       current_line_blame = true,
       current_line_blame_opts = {
@@ -43,8 +46,51 @@ return {
 
   {
     "tiagovla/scope.nvim",
-    config = function()
-      require("scope").setup()
+    opts = {},
+  },
+
+  -- vim dadbod
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_icons = {
+        expanded = {
+          db = "  ",
+          tables = " ﴳ",
+          table = " ﴳ",
+          buffers = "  ",
+          saved_queries = "  ",
+          schemas = "  ",
+          schema = "  ",
+        },
+        collapsed = {
+          db = "  ",
+          tables = " ﴳ",
+          table = " ﴳ",
+          buffers = "  ",
+          saved_queries = "  ",
+          schemas = "  ",
+          schema = "  ",
+        },
+        new_query = "",
+        tables = "ﴳ",
+        saved_query = " ",
+        buffers = " ",
+        connection_ok = "✓",
+        connection_error = "✕",
+      }
     end,
   },
 }

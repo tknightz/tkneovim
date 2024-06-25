@@ -1,5 +1,6 @@
 -- marked that lsp is started
 vim.g.loaded_lsp = 1
+vim.g.should_attach = 1
 
 -- this is an error 
 
@@ -21,7 +22,7 @@ end
 local diagnostic_opts = {
   underline = true,
   virtual_text = {
-    prefix = " 󰪥 ",
+    prefix = "  ",
     suffix = " ",
     spacing = 5,
   },

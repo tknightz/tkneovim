@@ -6,9 +6,19 @@ local function toggle_mouse()
   end
 end
 
+local function toggle_ai()
+  if vim.g.enable_ai == 1 then
+    vim.cmd("SupermavenStop")
+    vim.g.enable_ai = 0
+  else
+    vim.cmd("SupermavenUseFree")
+    vim.g.enable_ai = 1
+  end
+end
+
 local common = {
-  -- a = { ":EasyAlign<cr>", "align" },
-  f = { ":Neotree reveal<cr>", "filetree"},
+  a = { toggle_ai, "AI completion" },
+  f = { ":Neotree reveal<cr>", "toggle file explorer" },
   y = { '"+y', "yanks" },
   Y = { "%y+<cr>", "whole yanks" },
   s = { ":set spell!<cr>", "toggle spell" },
