@@ -1,15 +1,14 @@
-return {
-  name = "buffers",
+local wk = require("which-key")
 
-  normal = {
-    n = { "<cmd>bnext<cr>", "next" },
-    p = { "<cmd>bprevious<cr>", "previous" },
-    d = { "<cmd>Bdelete<cr>", "delete" },
-    ["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "search" },
-    i = { "<cmd>Telescope buffers<cr>", "iBuffers" },
-    j = { "<cmd>BufferLinePick<cr>", "jump" },
-    s = { "<cmd>BufferLineSortByRelativeDirectory<cr>", "sort" },
-    X = { "<cmd>BufferLineCloseOthers<cr>", "close otherse" },
-    c = { "<cmd>Cppath<cr>", "copy file path" },
-  },
-}
+wk.add({
+  { "<leader>b", group = "buffers" },
+  { "<leader>bn", "<cmd>bnext<cr>", desc = "next" },
+  { "<leader>bp", "<cmd>bprevious<cr>", desc = "previous" },
+  { "<leader>bd", "<cmd>Bdelete<cr>", desc = "delete" },
+  { "<leader>bi", "<cmd>Telescope buffers<cr>", desc = "iBuffers" },
+  { "<leader>bj", "<cmd>BufferLinePick<cr>", desc = "jump" },
+  { "<leader>bs", "<cmd>BufferLineSortByRelativeDirectory<cr>", desc = "sort" },
+  { "<leader>bX", "<cmd>BufferLineCloseOthers<cr>", desc = "close otherse" },
+  { "<leader>bc", "<cmd>Cppath<cr>", desc = "copy file path" },
+  { "<leader>b/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "search" },
+})

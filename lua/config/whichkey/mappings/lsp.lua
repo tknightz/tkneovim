@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 local function start_lsp()
   pcall(require, "lspconfig")
   pcall(require, "mason-lspconfig")
@@ -54,33 +56,24 @@ local function format()
   }, format_cb)
 end
 
-return {
-  name = "lsp",
-
-  normal = {
-    a = { ":Lspsaga code_action<CR>", "actions" },
-    s = { ":Lspsaga signature_help<CR>", "signature_help" },
-    r = { ":Lspsaga rename<CR>", "rename" },
-    d = { ":lua vim.diagnostic.enable(false)<CR>", "toggle diagnostics" },
-    i = { ":Lspsaga show_line_diagnostics<CR>", "issues" },
-    n = { ":Lspsaga diagnostic_jump_next<CR>", "next" },
-    o = { ":Outline<CR>", "outline" },
-    p = { ":Lspsaga diagnostic_jump_prev<CR>", "prev" },
-    q = { ":Trouble diagnostics<CR>", "quickfix" },
-    f = { format, "format" },
-    t = { toggle_lsp, "toggle" },
-    h = { toggle_inlay_hint, "toggle hint" },
-    S = { ":SymbolsOutline<cr>", "browse" },
-    ["/"] = { ":Lspsaga finder<CR>", "finder-saga" },
-    ["."] = { ":Telescope lsp_references<CR>", "finder-tele" },
-    v = {
-      name = "view",
-      d = { ":Lspsaga peek_definition<CR>", "definition" },
-      t = { ":Lspsaga peek_type_definition<CR>", "type" },
-    },
-  },
-
-  visual = {
-    f = { format, "format" },
-  },
-}
+wk.add({
+  { "<leader>l", group = "lsp" },
+  { "<leader>la", ":Lspsaga code_action<CR>", desc = "actions" },
+  { "<leader>ls", ":Lspsaga signature_help<CR>", desc = "signature_help" },
+  { "<leader>lr", ":Lspsaga rename<CR>", desc = "rename" },
+  { "<leader>ld", ":lua vim.diagnostic.enable(false)<CR>", desc = "toggle diagnostics" },
+  { "<leader>li", ":Lspsaga show_line_diagnostics<CR>", desc = "issues" },
+  { "<leader>ln", ":Lspsaga diagnostic_jump_next<CR>", desc = "next" },
+  { "<leader>lo", ":Outline<CR>", desc = "outline" },
+  { "<leader>lp", ":Lspsaga diagnostic_jump_prev<CR>", desc = "prev" },
+  { "<leader>lq", ":Trouble diagnostics<CR>", desc = "quickfix" },
+  { "<leader>lf", format, desc = "format" },
+  { "<leader>lt", toggle_lsp, desc = "toggle" },
+  { "<leader>lh", toggle_inlay_hint, desc = "toggle hint" },
+  { "<leader>lS", ":SymbolsOutline<cr>", desc = "browse" },
+  { "<leader>l/", ":Lspsaga finder<CR>", desc ="finder-saga" },
+  { "<leader>l.",":Telescope lsp_references<CR>", desc = "finder-tele" },
+  { "<leader>lv", group = "view" },
+  { "<leader>lvd", ":Lspsaga peek_definition<CR>", desc = "definition" },
+  { "<leader>lvt", ":Lspsaga peek_type_definition<CR>", desc = "type" },
+})

@@ -1,3 +1,4 @@
+local wk = require("which-key")
 local git_util = require("lib.git")
 
 local function stage_hunk()
@@ -11,77 +12,64 @@ local function stage_hunk()
   vim.api.nvim_input("<esc>")
 end
 
-local normal = {
-  f = { ":Telescope git_files<cr>", "files" },
-  s = { git_util.my_git_status, "status" },
-  S = { ":Gitsigns stage_buffer<cr>", "stage buffer" },
-  u = { ":sil Git reset %<cr>", "reset stage buffer " },
-  b = { ":Telescope git_branches<cr>", "branches" },
-  c = { ":Git commit --quiet<cr>", "commit" },
-  ["."] = { ":Git<cr>", "Git here" },
-  w = { ":Gitsigns blame_line<cr>", "who code this?" },
-  P = { ":Git push -u --quiet<cr>", "Push" },
-  n = { ":Gitsigns next_hunk<cr>", "next hunk" },
-  p = { ":Gitsigns prev_hunk<cr>", "previous hunk" },
+wk.add({
+  { "<leader>g", group = "git" },
 
-  x = {
-    name = "conflicts",
-    l = { ":GitConflictListQf<cr>", "list" },
-    n = { ":GitConflictNextConflict<cr>", "next" },
-    p = { ":GitConflictPrevConflict<cr>", "prev" },
-  },
+  { "<leader>gf", ":Telescope git_files<cr>", desc = "files" },
+  { "<leader>gs", git_util.my_git_status, desc = "status" },
+  { "<leader>gS", ":Gitsigns stage_buffer<cr>", desc = "stage buffer" },
+  { "<leader>gu", ":sil Git reset %<cr>", desc = "reset stage buffer " },
+  { "<leader>gb", ":Telescope git_branches<cr>", desc = "branches" },
+  { "<leader>gc", ":Git commit --quiet<cr>", desc = "commit" },
+  { "<leader>g.", ":Git<cr>", desc = "Git here" },
+  { "<leader>gw", ":Gitsigns blame_line<cr>", desc = "who code this?" },
+  { "<leader>gP", ":Git push -u --quiet<cr>", desc = "Push" },
+  { "<leader>gn", ":Gitsigns next_hunk<cr>", desc = "next hunk" },
+  { "<leader>gp", ":Gitsigns prev_hunk<cr>", desc = "previous hunk" },
 
-  ["/"] = {
-    name = "browse",
-    b = { git_util.my_git_bcommits, "buffer commits" },
-    c = { git_util.my_git_commits, "commits" },
-    s = { git_util.my_git_stash, "stash" },
-  },
+  -- Git conflict mappings
+  { "<leader>gx", group = "conflicts" },
+  { "<leader>gxl", ":GitConflictListQf<cr>", desc = "list" },
+  { "<leader>gxn", ":GitConflictNextConflict<cr>", desc = "next" },
+  { "<leader>gxp", ":GitConflictPrevConflict<cr>", desc = "prev" },
 
-  d = {
-    name = "diff",
-    o = { ":DiffviewOpen<cr>", "open" },
-    v = { ":DiffviewOpen<cr>", "diffview" },
-    c = { ":DiffviewClose<cr>", "close" },
-    h = { ":DiffviewFileHistory<cr>", "history" },
-    f = { ":DiffviewFileHistory %<cr>", "history of current file" },
-  },
+  -- Git browsing/searching
+  { "<leader>g/", group = "browse" },
+  { "<leader>g/b", git_util.my_git_bcommits, desc = "buffer commits" },
+  { "<leader>g/c", git_util.my_git_commits, desc = "commits" },
+  { "<leader>g/s", git_util.my_git_stash, desc = "stash" },
 
-  t = {
-    name = "toggle",
+  -- Git diff
+  { "<leader>gd", group = "diff" },
+  { "<leader>gdo", ":DiffviewOpen<cr>", desc = "open" },
+  { "<leader>gdv", ":DiffviewOpen<cr>", desc = "diffview" },
+  { "<leader>gdc", ":DiffviewClose<cr>", desc = "close" },
+  { "<leader>gdh", ":DiffviewFileHistory<cr>", desc = "history" },
+  { "<leader>gdf", ":DiffviewFileHistory %<cr>", desc = "history of current file" },
 
-    s = { ":Gitsign toggle_signs<cr>", "sign" },
-    w = { ":Gitsign toggle_word_diff<cr>", "word diff" },
-    b = { ":Gitsign toggle_current_line_blame<cr>", "blame line" },
-    h = { ":Gitsign toggle_linehl<cr>", "highlight" },
-  },
+  -- Git toggle
+  { "<leader>gt", group = "toggle" },
+  { "<leader>gts", ":Gitsign toggle_signs<cr>", desc = "sign" },
+  { "<leader>gtw", ":Gitsign toggle_word_diff<cr>", desc = "word diff" },
+  { "<leader>gtb", ":Gitsign toggle_current_line_blame<cr>", desc = "blame line" },
+  { "<leader>gth", ":Gitsign toggle_linehl<cr>", desc = "highlight" },
 
-  h = {
-    name = "hunk",
+  -- Git hunks
+  { "<leader>gh", group = "hunks" },
+  { "<leader>ghn", ":Gitsigns next_hunk<cr>", desc = "next hunk" },
+  { "<leader>ghp", ":Gitsigns previous_hunk<cr>", desc = "previous hunk" },
+  { "<leader>ghv", ":Gitsigns preview_hunk<cr>", desc = "view hunk" },
+  { "<leader>ghh", ":Gitsigns toggle_linehl<cr>", desc = "highlight toggle" },
+  { "<leader>ghs", stage_hunk, desc = "stage hunk" },
+  { "<leader>ghu", ":Gitsigns undo_stage_hunk<cr>", desc = "undo stage hunk" },
 
-    n = { ":Gitsigns next_hunk<cr>", "next hunk" },
-    p = { ":Gitsigns previous_hunk<cr>", "previous hunk" },
-    v = { ":Gitsigns preview_hunk<cr>", "view hunk" },
-    h = { ":Gitsigns toggle_linehl<cr>", "highlight toggle" },
-    s = { stage_hunk, "stage hunk" },
-    u = { ":Gitsigns undo_stage_hunk<cr>", "undo stage hunk" },
-  },
+  -- Git rebase
+  { "<leader>gr", group = "rebase" },
+  { "<leader>grc", ":Git rebase --continue<cr>", desc = "continue" },
+  { "<leader>gra", ":Git rebase --abort<cr>", desc = "abort" },
 
-  r = {
-    name = "rebase",
-    c = { ":Git rebase --continue<cr>", "continue" },
-    a = { ":Git rebase --abort<cr>", "abort" },
-  },
-}
-
-local visual = {
-  s = { ":Gitsigns stage_hunk<CR>", "stage hunk" },
-  S = { ":Gitsigns undo_stage_hunk<CR>", "undo_stage_hunk" },
-  u = { ":Gitsigns reset_hunk<CR>", "reset_hunk" },
-}
-
-return {
-  name = "git",
-  normal = normal,
-  visual = visual,
-}
+  -- Visual mode
+  { "<leader>gs", ":Gitsigns stage_hunk<CR>", desc = "stage hunk", mode = "v" },
+  { "<leader>gS", ":Gitsigns undo_stage_hunk<CR>", desc = "undo_stage_hunk", mode = "v" },
+  { "<leader>gu", ":Gitsigns reset_hunk<CR>", desc = "reset_hunk", mode = "v" },
+})

@@ -1,6 +1,6 @@
 local options = {
   listchars = {
-    tab            = "  ",
+    -- tab            = "  ",
     lead           = " ",
     precedes       = "←",
     extends        = "→",

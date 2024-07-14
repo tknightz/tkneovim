@@ -26,7 +26,7 @@ end
 -- Window customization
 local cmp_win_options = {
   scrollbar = "│",
-  winhighlight = "Normal:CmpWin,CursorLine:PmenuSel",
+  winhighlight = "Normal:CmpWin,CursorLine:PmenuSel,FloatBorder:CmpBorder",
 }
 
 -- Set it up
@@ -41,7 +41,7 @@ cmp.setup({
     -- throttle_time = 500,
     -- source_timeout = 200,
     -- incomplete_delay = 300,
-    -- max_view_entries = 12,
+    max_view_entries = 12,
   },
   max_abbr_width = 150,
   max_kind_width = 100,
@@ -124,7 +124,7 @@ cmp.setup({
   }),
 
   formatting = {
-    fields = { "kind", "abbr", "menu" },
+    fields = { "abbr", "kind", "menu" },
 
     format = function(entry, vim_item)
       local icon = vim_item.menu and icons[vim_item.menu] or icons[vim_item.kind]
@@ -139,7 +139,9 @@ cmp.setup({
       end
 
       vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
-      vim_item.kind = (icon ~= nil and icon or "icon")
+      -- vim_item.kind = (icon ~= nil and icon or "icon") .. vim_item.menu
+      -- vim_item.menu = ""
+      vim_item.kind = " " .. (icon ~= nil and icon or "icon")
       vim_item.dup = ({
         nvim_lsp = 0,
         path = 0,
@@ -183,7 +185,7 @@ cmp.setup({
 
   view = {
     entries = {
-      follow_cursor = true
+      follow_cursor = false
     }
     -- entries = "custom",
   },

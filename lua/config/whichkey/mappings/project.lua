@@ -1,10 +1,9 @@
-return {
-  name = "project",
+local wk = require("which-key")
 
-  normal = {
-    n = { ":tabnext<cr>", "next" },
-    p = { ":tabprevious<cr>", "prev" },
-    s = { ":Telescope projects<cr>", "search" },
-    i = { ":tabnew<cr>", "init" },
-  },
-}
+wk.add({
+  { "<leader>p", group = "project" },
+  { "<leader>pn", ":tabnext<cr>", desc = "next" },
+  { "<leader>pp", ":tabprevious<cr>", desc = "prev" },
+  { "<leader>ps", ":Telescope projects<cr>", desc = "search" },
+  { "<leader>pi", ":tabnew<cr>", desc = "init" },
+})

@@ -1,6 +1,4 @@
 return {
-  -- Colorscheme here
-  -- set colorname to automate set colorscheme
   {
     "tknightz/onedark.nvim",
     priority = 1000,
@@ -49,6 +47,12 @@ return {
           cterm_color = "65",
           name = "Orgmode",
         },
+        http = {
+          icon = "",
+          color = "#ff557f",
+          cterm_color = "65",
+          name = "http",
+        },
       },
     },
     module = "nvim-web-devicons",
@@ -58,9 +62,11 @@ return {
   {
     "brenoprata10/nvim-highlight-colors",
     cmd = { "HighlightColors" },
-    config = function()
-      require("nvim-highlight-colors").setup({})
-    end,
+    opts = {
+      render = "virtual",
+      virtual_symbol = "  ",
+      enable_tailwind = true,
+    },
   },
 
   -- Rich features buffer indicator

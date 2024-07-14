@@ -1,19 +1,15 @@
+local wk = require("which-key")
 local session_util = require("lib.sessions")
 
-local normal = {
-  a = { "<cmd>qall<cr>", "quit all" },
-  q = { "<cmd>q<cr>", "quit" },
-  Q = { "<cmd>qa!<cr>", "Quit without saving" },
-  w = { "<cmd>wqall<cr>", "write changes then quit" },
-  s = { session_util.quick_save_session, "quick save current session" },
-  S = { session_util.save_session, "save current session to file" },
+wk.add({
+  { "<leader>q", group = "quit and sessions" },
+  { "<leader>qa", "<cmd>qall<cr>", desc = "quit all" },
+  { "<leader>qq", "<cmd>q<cr>", desc = "quit" },
+  { "<leader>qQ", "<cmd>qa!<cr>", desc = "Quit without saving" },
+  { "<leader>qw", "<cmd>wqall<cr>", desc = "write changes then quit" },
+  { "<leader>qs", session_util.quick_save_session, desc = "quick save current session" },
+  { "<leader>qS", session_util.save_session, desc = "save current session to file" },
 
-  l = { session_util.quick_load_session, "restore last session" },
-  L = { session_util.load_session, "restore session from file" },
-}
-
-return {
-  name = "quit/sessions",
-  normal = normal,
-  visual = normal,
-}
+  { "<leader>ql", session_util.quick_load_session, desc = "restore last session" },
+  { "<leader>qL", session_util.load_session, desc = "restore session from file" },
+})

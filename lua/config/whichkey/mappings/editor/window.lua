@@ -1,28 +1,25 @@
-local normal = {
-  w = { "<C-W>w", "other-window" },
-  d = { "<C-W>c", "delete-window" },
-  ["-"] = { "<C-W>s", "split-window-below" },
-  ["/"] = { "<C-W>v", "split-window-right" },
-  h = { "<C-W>h", "window-left" },
-  j = { "<C-W>j", "window-below" },
-  l = { "<C-W>l", "window-right" },
-  k = { "<C-W>k", "window-up" },
-  H = { "<C-W>5<", "expand-window-left" },
-  J = { "<cmd>resize +5<cr>", "expand-window-below" },
-  L = { "<C-W>5>", "expand-window-right" },
-  K = { "<cmd>resize -5<cr>", "expand-window-up" },
-  ["="] = { "<C-W>=", "balance-window" },
-  v = { "<C-W>v", "split-window-below" },
+local wk = require("which-key")
 
-  t = {
-    name = "transform",
-    j = { "<cmd>wincmd J<cr>", "swap-window-vertical" },
-    h = { "<cmd>wincmd H<cr>", "swap-window-horizontal" },
-  },
-}
+wk.add({
+  { "<leader>w", group = "windows" },
 
-return {
-  name = "+windows",
-  normal = normal,
-  visual = normal,
-}
+  { "<leader>ww", "<C-W>w", desc = "other-window" },
+  { "<leader>wd", "<C-W>c", desc = "delete-window" },
+  { "<leader>wh", "<C-W>h", desc = "window-left" },
+  { "<leader>wj", "<C-W>j", desc = "window-below" },
+  { "<leader>wl", "<C-W>l", desc = "window-right" },
+  { "<leader>wk", "<C-W>k", desc = "window-up" },
+  { "<leader>wH", "<C-W>5<", desc = "expand-window-left" },
+  { "<leader>wJ", "<cmd>resize +5<cr>", desc = "expand-window-below" },
+  { "<leader>wL", "<C-W>5>", desc = "expand-window-right" },
+  { "<leader>wK", "<cmd>resize -5<cr>", desc = "expand-window-up" },
+  { "<leader>wv", "<C-W>v", desc = "split-window-below" },
+  { "<leader>w=", "<C-W>=", desc = "balance-window" },
+  { "<leader>w-", "<C-W>s", desc = "split-window-below" },
+  { "<leader>w/", "<C-W>v", desc = "split-window-right" },
+
+  -- Window transform
+  { "<leader>wt", group = "transform" },
+  { "<leader>wtj", "<cmd>wincmd J<cr>", desc = "swap-window-vertical" },
+  { "<leader>wth", "<cmd>wincmd H<cr>", desc = "swap-window-horizontal" },
+})

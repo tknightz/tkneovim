@@ -157,6 +157,7 @@ return {
   {
     "folke/which-key.nvim",
     keys = { "<leader>", "<Space>", "z=", { "<leader>", mode = "v" } },
+    event = "VeryLazy",
     config = function()
       require("config.whichkey")
     end,
@@ -404,6 +405,18 @@ return {
         },
         ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
         exclude = {}, -- tabout will ignore these filetypes
+      })
+    end,
+  },
+
+  {
+    "mistweaverco/kulala.nvim",
+    ft = "http",
+    config = function()
+      require("kulala").setup({
+        default_view = "body",
+        default_env = "dev",
+        debug = false,
       })
     end,
   },

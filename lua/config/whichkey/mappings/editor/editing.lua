@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 local function toggle_mouse()
   if vim.o.mouse == "a" then
     vim.o.mouse = ""
@@ -16,22 +18,18 @@ local function toggle_ai()
   end
 end
 
-local common = {
-  a = { toggle_ai, "AI completion" },
-  f = { ":Neotree reveal<cr>", "toggle file explorer" },
-  y = { '"+y', "yanks" },
-  Y = { "%y+<cr>", "whole yanks" },
-  s = { ":set spell!<cr>", "toggle spell" },
-  h = { ":set hlsearch!<cr>", "toggle hlsearch" },
-  m = { toggle_mouse, "mouse on" },
-  n = { ":tabnext<cr>", "next tab" },
-  N = { ":tabnew<cr>", "new tab" },
-  x = { ":tabclose<cr>", "close tab" },
-  p = { ":tabprevious<cr>", "prev tab" },
-}
+wk.add({
+  { "<leader>e", group = "editing" },
 
-return {
-  name = "editing",
-  normal = common,
-  visual = common,
-}
+  { "<leader>ea", toggle_ai, desc = "AI completion" },
+  { "<leader>ef", ":Neotree reveal<cr>", desc = "toggle file explorer" },
+  { "<leader>ey", '"+y', desc = "yanks" },
+  { "<leader>eY", "%y+<cr>", desc = "whole yanks" },
+  { "<leader>es", ":set spell!<cr>", desc = "toggle spell" },
+  { "<leader>eh", ":set hlsearch!<cr>", desc = "toggle hlsearch" },
+  { "<leader>em", toggle_mouse, desc = "mouse on" },
+  { "<leader>en", ":tabnext<cr>", desc = "next tab" },
+  { "<leader>eN", ":tabnew<cr>", desc = "new tab" },
+  { "<leader>ex", ":tabclose<cr>", desc = "close tab" },
+  { "<leader>ep", ":tabprevious<cr>", desc = "prev tab" },
+})

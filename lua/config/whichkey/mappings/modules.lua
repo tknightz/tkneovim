@@ -1,12 +1,11 @@
-return {
-  name = "modules",
+local wk = require("which-key")
 
-  normal = {
-    i = { ":Lazy install<cr>", "install" },
-    c = { ":Lazy clean<cr>", "clean" },
-    s = { ":Lazy sync<cr>", "sync" },
-    S = { ":Lazy show<cr>", "status" },
-    u = { ":Lazy update<cr>", "update" },
-    l = { ":Lazy load<cr>", "load" },
-  },
-}
+wk.add({
+  { "<leader>m", group = "modules" },
+  { "<leader>mi", ":Lazy install<cr>", desc = "install" },
+  { "<leader>mc", ":Lazy clean<cr>", desc = "clean" },
+  { "<leader>ms", ":Lazy sync<cr>", desc = "sync" },
+  { "<leader>mS", ":Lazy show<cr>", desc = "status" },
+  { "<leader>mu", ":Lazy update<cr>", desc = "update" },
+  { "<leader>ml", ":Lazy load<cr>", desc = "load" },
+})

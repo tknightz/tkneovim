@@ -8,6 +8,10 @@ local function jump_to_window()
   end
 end
 
+local function execute_http()
+  require("kulala").run()
+end
+
 local base_mappings = {
   f = mappings.file,
   w = mappings.editor.window,
@@ -44,6 +48,7 @@ wk.register(
     j = { jump_to_window, "jump" },
     y = { "<cmd>%y+<cr>", "yank to clipboard" },
     n = { "<cmd>Neotree toggle<cr>", "neotree" },
+    x = { execute_http, "execute http"},
   }),
   {
     prefix = "<Leader>",

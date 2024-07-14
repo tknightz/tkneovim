@@ -1,15 +1,11 @@
-return {
-  name = "files",
+local wk = require("which-key")
 
-  normal = {
-    b = { ":Telescope marks<cr>", "Book marks" },
-    f = { ":Telescope find_files hidden=true<cr>", "Find File" },
-    s = { ":update<cr>", "Save File" },
-    h = { ":Telescope oldfiles<cr>", "History Files" },
-    n = { ":new<cr>", "New File" },
-    m = { ":Telescope media_files<cr>", "media_files" },
-    r = { ":Telescope live_grep_args<cr>", "Grep" },
-  },
-
-  visual = {},
-}
+wk.add({
+  { "<leader>f", group = "files" },
+  { "<leader>fb", ":Telescope marks<cr>", desc = "Book marks" },
+  { "<leader>ff", ":Telescope find_files hidden=true<cr>", desc = "Find File" },
+  { "<leader>fs", ":update<cr>", desc = "Save File" },
+  { "<leader>fh", ":Telescope oldfiles<cr>", desc = "History Files" },
+  { "<leader>fn", ":new<cr>", desc = "New File" },
+  { "<leader>fr", ":Telescope live_grep_args<cr>", desc = "Grep" },
+})
