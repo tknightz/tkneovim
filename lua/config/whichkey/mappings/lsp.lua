@@ -68,11 +68,13 @@ wk.add({
   { "<leader>lp", ":Lspsaga diagnostic_jump_prev<CR>", desc = "prev" },
   { "<leader>lq", ":Trouble diagnostics<CR>", desc = "quickfix" },
   { "<leader>lf", format, desc = "format" },
+  { "<leader>lf", format, desc = "format", mode = "v" },
   { "<leader>lt", toggle_lsp, desc = "toggle" },
   { "<leader>lh", toggle_inlay_hint, desc = "toggle hint" },
   { "<leader>lS", ":SymbolsOutline<cr>", desc = "browse" },
   { "<leader>l/", ":Lspsaga finder<CR>", desc ="finder-saga" },
   { "<leader>l.",":Telescope lsp_references<CR>", desc = "finder-tele" },
+
   { "<leader>lv", group = "view" },
   { "<leader>lvd", ":Lspsaga peek_definition<CR>", desc = "definition" },
   { "<leader>lvt", ":Lspsaga peek_type_definition<CR>", desc = "type" },

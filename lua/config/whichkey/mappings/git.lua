@@ -13,7 +13,7 @@ local function stage_hunk()
 end
 
 wk.add({
-  { "<leader>g", group = "git" },
+  { "<leader>g", group = "git", mode = "v,n" },
 
   { "<leader>gf", ":Telescope git_files<cr>", desc = "files" },
   { "<leader>gs", git_util.my_git_status, desc = "status" },

@@ -13,7 +13,6 @@ wk.setup({
     },
 
     presets = {
-      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = true, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
@@ -24,7 +23,6 @@ wk.setup({
   },
   -- add operators that will trigger motion and text object completion
   -- to enable all native operators, set the preset / operators plugin above
-  operators = { gc = "Comments", ["v"] = "Visual Mode" },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
@@ -45,17 +43,7 @@ wk.setup({
     align = "center",
     spacing = 5, -- spacing between columns
   },
-  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
-  triggers_nowait = {
-    "<leader>",
-    -- registers
-    '"',
-    "<c-r>",
-    -- spelling
-    "z=",
-  },
   -- triggers = { "<leader>", "<C-r>", "z=" }, -- or specify a list manually
 })
