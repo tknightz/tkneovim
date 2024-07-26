@@ -38,9 +38,9 @@ cmp.setup({
   min_length = 3,
   preselect = cmp.PreselectMode.None,
   performance = {
-    -- throttle_time = 500,
-    -- source_timeout = 200,
-    -- incomplete_delay = 300,
+    throttle_time = 500,
+    source_timeout = 200,
+    incomplete_delay = 300,
     max_view_entries = 12,
   },
   max_abbr_width = 150,
@@ -129,14 +129,14 @@ cmp.setup({
     format = function(entry, vim_item)
       local icon = vim_item.menu and icons[vim_item.menu] or icons[vim_item.kind]
 
-      local label = vim_item.abbr
-      local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
-      if truncated_label ~= label then
-        vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
-      elseif string.len(label) < MIN_LABEL_WIDTH then
-        local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
-        vim_item.abbr = label .. padding
-      end
+      -- local label = vim_item.abbr
+      -- local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+      -- if truncated_label ~= label then
+      --   vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
+      -- elseif string.len(label) < MIN_LABEL_WIDTH then
+      --   local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
+      --   vim_item.abbr = label .. padding
+      -- end
 
       vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
       -- vim_item.kind = (icon ~= nil and icon or "icon") .. vim_item.menu

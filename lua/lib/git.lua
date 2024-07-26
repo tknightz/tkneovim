@@ -1,5 +1,3 @@
-local lib = require("lib")
-
 local E = {}
 
 local function exec(command)

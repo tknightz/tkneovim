@@ -1,6 +1,7 @@
 return {
   {
     "tknightz/onedark.nvim",
+    dir = "~/Repos/onedark.nvim",
     priority = 1000,
     config = function()
       require("onedark").setup({
@@ -76,6 +77,7 @@ return {
     config = function()
       require("config.bufferline")
     end,
+    -- event = "VeryLazy",
   },
 
   -- Fast status line
@@ -85,5 +87,13 @@ return {
     config = function()
       require("config.lualine")
     end,
+  },
+
+  {
+    "luukvbaal/statuscol.nvim",
+    config = function()
+      require("config.statuscol")
+    end,
+    -- event = "VeryLazy",
   },
 }

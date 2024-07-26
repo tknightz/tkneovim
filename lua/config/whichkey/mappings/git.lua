@@ -15,23 +15,23 @@ end
 wk.add({
   { "<leader>g", group = "git", mode = "v,n" },
 
-  { "<leader>gf", ":Telescope git_files<cr>", desc = "files" },
+  { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "files" },
   { "<leader>gs", git_util.my_git_status, desc = "status" },
-  { "<leader>gS", ":Gitsigns stage_buffer<cr>", desc = "stage buffer" },
-  { "<leader>gu", ":sil Git reset %<cr>", desc = "reset stage buffer " },
-  { "<leader>gb", ":Telescope git_branches<cr>", desc = "branches" },
-  { "<leader>gc", ":Git commit --quiet<cr>", desc = "commit" },
-  { "<leader>g.", ":Git<cr>", desc = "Git here" },
-  { "<leader>gw", ":Gitsigns blame_line<cr>", desc = "who code this?" },
-  { "<leader>gP", ":Git push -u --quiet<cr>", desc = "Push" },
-  { "<leader>gn", ":Gitsigns next_hunk<cr>", desc = "next hunk" },
-  { "<leader>gp", ":Gitsigns prev_hunk<cr>", desc = "previous hunk" },
+  { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "stage buffer" },
+  { "<leader>gu", "<cmd>sil Git reset %<cr>", desc = "reset stage buffer " },
+  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "branches" },
+  { "<leader>gc", "<cmd>Git commit --quiet<cr>", desc = "commit" },
+  { "<leader>g.", "<cmd>Git<cr>", desc = "Git here" },
+  { "<leader>gw", "<cmd>Gitsigns blame_line<cr>", desc = "who code this?" },
+  { "<leader>gP", "<cmd>Git push -u --quiet<cr>", desc = "Push" },
+  { "<leader>gn", "<cmd>Gitsigns next_hunk<cr>", desc = "next hunk" },
+  { "<leader>gp", "<cmd>Gitsigns prev_hunk<cr>", desc = "previous hunk" },
 
   -- Git conflict mappings
   { "<leader>gx", group = "conflicts" },
-  { "<leader>gxl", ":GitConflictListQf<cr>", desc = "list" },
-  { "<leader>gxn", ":GitConflictNextConflict<cr>", desc = "next" },
-  { "<leader>gxp", ":GitConflictPrevConflict<cr>", desc = "prev" },
+  { "<leader>gxl", "<cmd>GitConflictListQf<cr>", desc = "list" },
+  { "<leader>gxn", "<cmd>GitConflictNextConflict<cr>", desc = "next" },
+  { "<leader>gxp", "<cmd>GitConflictPrevConflict<cr>", desc = "prev" },
 
   -- Git browsing/searching
   { "<leader>g/", group = "browse" },
@@ -41,35 +41,35 @@ wk.add({
 
   -- Git diff
   { "<leader>gd", group = "diff" },
-  { "<leader>gdo", ":DiffviewOpen<cr>", desc = "open" },
-  { "<leader>gdv", ":DiffviewOpen<cr>", desc = "diffview" },
-  { "<leader>gdc", ":DiffviewClose<cr>", desc = "close" },
-  { "<leader>gdh", ":DiffviewFileHistory<cr>", desc = "history" },
-  { "<leader>gdf", ":DiffviewFileHistory %<cr>", desc = "history of current file" },
+  { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "open" },
+  { "<leader>gdv", "<cmd>DiffviewOpen<cr>", desc = "diffview" },
+  { "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "close" },
+  { "<leader>gdh", "<cmd>DiffviewFileHistory<cr>", desc = "history" },
+  { "<leader>gdf", "<cmd>DiffviewFileHistory %<cr>", desc = "history of current file" },
 
   -- Git toggle
   { "<leader>gt", group = "toggle" },
-  { "<leader>gts", ":Gitsign toggle_signs<cr>", desc = "sign" },
-  { "<leader>gtw", ":Gitsign toggle_word_diff<cr>", desc = "word diff" },
-  { "<leader>gtb", ":Gitsign toggle_current_line_blame<cr>", desc = "blame line" },
-  { "<leader>gth", ":Gitsign toggle_linehl<cr>", desc = "highlight" },
+  { "<leader>gts", "<cmd>Gitsign toggle_signs<cr>", desc = "sign" },
+  { "<leader>gtw", "<cmd>Gitsign toggle_word_diff<cr>", desc = "word diff" },
+  { "<leader>gtb", "<cmd>Gitsign toggle_current_line_blame<cr>", desc = "blame line" },
+  { "<leader>gth", "<cmd>Gitsign toggle_linehl<cr>", desc = "highlight" },
 
   -- Git hunks
   { "<leader>gh", group = "hunks" },
-  { "<leader>ghn", ":Gitsigns next_hunk<cr>", desc = "next hunk" },
-  { "<leader>ghp", ":Gitsigns previous_hunk<cr>", desc = "previous hunk" },
-  { "<leader>ghv", ":Gitsigns preview_hunk<cr>", desc = "view hunk" },
-  { "<leader>ghh", ":Gitsigns toggle_linehl<cr>", desc = "highlight toggle" },
+  { "<leader>ghn", "<cmd>Gitsigns next_hunk<cr>", desc = "next hunk" },
+  { "<leader>ghp", "<cmd>Gitsigns previous_hunk<cr>", desc = "previous hunk" },
+  { "<leader>ghv", "<cmd>Gitsigns preview_hunk<cr>", desc = "view hunk" },
+  { "<leader>ghh", "<cmd>Gitsigns toggle_linehl<cr>", desc = "highlight toggle" },
   { "<leader>ghs", stage_hunk, desc = "stage hunk" },
-  { "<leader>ghu", ":Gitsigns undo_stage_hunk<cr>", desc = "undo stage hunk" },
+  { "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "undo stage hunk" },
 
   -- Git rebase
   { "<leader>gr", group = "rebase" },
-  { "<leader>grc", ":Git rebase --continue<cr>", desc = "continue" },
-  { "<leader>gra", ":Git rebase --abort<cr>", desc = "abort" },
+  { "<leader>grc", "<cmd>Git rebase --continue<cr>", desc = "continue" },
+  { "<leader>gra", "<cmd>Git rebase --abort<cr>", desc = "abort" },
 
   -- Visual mode
-  { "<leader>gs", ":Gitsigns stage_hunk<CR>", desc = "stage hunk", mode = "v" },
-  { "<leader>gS", ":Gitsigns undo_stage_hunk<CR>", desc = "undo_stage_hunk", mode = "v" },
+  { "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", desc = "stage hunk", mode = "v" },
+  { "<leader>gS", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "undo_stage_hunk", mode = "v" },
   { "<leader>gu", ":Gitsigns reset_hunk<CR>", desc = "reset_hunk", mode = "v" },
 })

@@ -16,7 +16,7 @@ require("edgy").setup({
     {
       ft = "fugitive",
     },
-    { ft = "NeogitStatus" },
+    { ft = "NeogitStatus", title = "Git files" },
     { ft = "NeogitPopup" },
     {
       ft = "lazyterm",
@@ -63,13 +63,13 @@ require("edgy").setup({
       open = "Outline",
     },
     {
-      title = "Neo-Tree Git",
+      title = "Git status",
       ft = "neo-tree",
       filter = function(buf)
         return vim.b[buf].neo_tree_source == "git_status"
       end,
       pinned = true,
-      open = "Neotree position=right git_status",
+      open = "Neotree position=right selector=false git_status",
     },
     {
       ft = "sagaoutline",

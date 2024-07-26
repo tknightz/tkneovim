@@ -28,14 +28,10 @@ local function on_attach(client, bufnr)
   end
 
   -- Mappings.
-  buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  -- buf_set_keymap("n", "gs", "<Cmd>split | exec 'lua vim.lsp.buf.definition()'<CR>", opts)
-  -- buf_set_keymap("n", "gv", "<Cmd>vsplit | exec 'lua vim.lsp.buf.definition()'<CR>", opts)
   buf_set_keymap("n", "gs", '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="split"})<CR>', opts)
   buf_set_keymap("n", "gv", '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', opts)
   buf_set_keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-  -- buf_set_keymap("i", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   buf_set_keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)

@@ -8,7 +8,6 @@ return {
     end,
 
     dependencies = {
-      "gungun974/nvim-ts-autotag",
       "nvim-treesitter/nvim-treesitter-textobjects",
       { "yioneko/nvim-yati", version = "*" },
     },

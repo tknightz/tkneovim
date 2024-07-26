@@ -181,9 +181,9 @@ return {
 
   -- pretty quickfix UI
   {
-    "ashfinal/qfview.nvim",
-    lazy = true,
-    config = true,
+    "yorickpeterse/nvim-pqf",
+    event = "VeryLazy",
+    opts = {},
   },
 
   -- A plugin to visualise and resolve merge conflicts in neovim
@@ -248,24 +248,6 @@ return {
   },
 
   {
-    "monkoose/neocodeium",
-    cmd = "NeoCodium",
-    config = function()
-      local neocodeium = require("neocodeium")
-      neocodeium.setup({
-        enabled = false,
-        show_label = false,
-      })
-      vim.keymap.set("i", "<C-l>", neocodeium.accept)
-      vim.keymap.set("i", "<C-k>", neocodeium.accept)
-      vim.keymap.set("i", "<C-;>", neocodeium.cycle_or_complete)
-      vim.keymap.set("i", "<C-,>", function()
-        neocodeium.cycle_or_complete(-1)
-      end)
-    end,
-  },
-
-  {
     "HiPhish/rainbow-delimiters.nvim",
     event = "BufRead",
     config = function()
@@ -295,15 +277,8 @@ return {
   },
 
   {
-    "luukvbaal/statuscol.nvim",
-    config = function()
-      require("config.statuscol")
-    end,
-  },
-
-  {
     "lukas-reineke/headlines.nvim",
-    ft = { "markdown", "org", "norg" },
+    ft = { "org", "norg" },
     config = function()
       require("headlines").setup()
     end,
@@ -332,35 +307,6 @@ return {
         },
       })
     end,
-  },
-
-  {
-    "andrewferrier/debugprint.nvim",
-    config = function()
-      require("debugprint").setup({ create_keymaps = false, create_commands = false })
-    end,
-    event = "BufRead",
-    keys = {
-      {
-        "<leader>iV",
-        function()
-          return require("debugprint").debugprint({ above = true, variable = true })
-        end,
-        desc = "[i]nsert [V]ariable debug-print above the current line",
-        expr = true,
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>iv",
-        function()
-          return require("debugprint").debugprint({ above = false, variable = true })
-        end,
-        desc = "[i]nsert [v]ariable debug-print below the current line",
-        expr = true,
-        mode = { "n", "v" },
-      },
-    },
-    version = "1.*",
   },
 
   {
@@ -419,5 +365,11 @@ return {
         debug = false,
       })
     end,
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    event = { "BufReadPre", "BufNewFile" },
+    config = true
   },
 }
