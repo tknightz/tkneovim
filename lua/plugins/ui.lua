@@ -1,7 +1,7 @@
 return {
   {
     "tknightz/onedark.nvim",
-    dir = "~/Repos/onedark.nvim",
+    -- dir = "~/Repos/onedark.nvim",
     priority = 1000,
     config = function()
       require("onedark").setup({
