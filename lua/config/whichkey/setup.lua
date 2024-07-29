@@ -44,6 +44,6 @@ wk.setup({
     spacing = 5, -- spacing between columns
   },
   show_help = true, -- show help message on the command line when the popup is visible
-  triggers = "auto", -- automatically setup triggers
+  -- triggers = "auto", -- automatically setup triggers
   -- triggers = { "<leader>", "<C-r>", "z=" }, -- or specify a list manually
 })

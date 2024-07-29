@@ -1,7 +1,6 @@
 return {
   {
     "tknightz/onedark.nvim",
-    -- dir = "~/Repos/onedark.nvim",
     priority = 1000,
     config = function()
       require("onedark").setup({
@@ -30,7 +29,7 @@ return {
   -- Highlight comments
   {
     "folke/todo-comments.nvim",
-    event = "BufRead",
+    event = "User FilePost",
     opts = {
       sign = true,
       sign_priority = 102,
@@ -77,13 +76,14 @@ return {
     config = function()
       require("config.bufferline")
     end,
-    -- event = "VeryLazy",
+    -- event = "User FilePost",
   },
 
   -- Fast status line
   {
     "nvim-lualine/lualine.nvim",
     event = { "BufNewFile", "BufRead" },
+    -- event = "User FilePost",
     config = function()
       require("config.lualine")
     end,
@@ -94,6 +94,6 @@ return {
     config = function()
       require("config.statuscol")
     end,
-    -- event = "VeryLazy",
+    event = "User FilePost",
   },
 }

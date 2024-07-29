@@ -34,7 +34,7 @@ return {
 
   {
     "folke/ts-comments.nvim",
-    event = "VeryLazy",
+    event = "User FilePost",
     opts = {},
   },
 
@@ -51,7 +51,7 @@ return {
         vim.keymap.set("v", char, "<Plug>(nvim-surround-visual)" .. char)
       end
     end,
-    event = "BufRead",
+    event = "User FilePost",
   },
 
   -- Auto close brackets

@@ -10,7 +10,7 @@ local function visual_grep()
 end
 
 wk.add({
-  { "<leader>s", group = "search", mode = "v,n" },
+  { "<leader>s", group = "search", mode = { "n", "v" } },
   { "<leader>ss", ":Telescope<cr>", desc = "searcher" },
   { "<leader>sf", ":Telescope find_files<cr>", desc = "file" },
   { "<leader>sm", ":Telescope media_files<cr>", desc = "media_files" },

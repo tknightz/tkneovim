@@ -37,6 +37,9 @@ require("lualine").setup({
     section_separators = { left = "", right = "" },
     always_divide_middle = true,
     globalstatus = true,
+    refresh = {
+      statusline = 0,
+    }
     -- disabled_filetypes = {
     --   winbar = special_fts,
     -- },
@@ -79,7 +82,6 @@ require("lualine").setup({
       {
         "filename",
         path = 1,
-        color = { fg = "#ffffff" },
         shorting_target = 30,
         fmt = function(str)
           local filetype = vim.api.nvim_buf_get_option(0, "filetype")

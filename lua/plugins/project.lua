@@ -19,7 +19,7 @@ return {
   -- Git integration for buffers
   {
     "lewis6991/gitsigns.nvim",
-    event = "BufRead",
+    event = "User FilePost",
     opts = {
       signs = {
         add = { text = "┃" },

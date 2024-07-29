@@ -35,7 +35,7 @@ ts_config.setup({
     default_fallback = "auto",
   },
   indent = {
-    enable = true,
+    enable = false,
     disable = { "python", "typescriptreact" },
   },
   matchup = {
@@ -82,11 +82,6 @@ ts_config.setup({
         -- Or you can define your own textobjects like this
       },
     },
-  },
-  autotag = {
-    enable = true,
-    -- enable_rename = true,
-    -- enable_close = true,
   },
   playground = {
     enable = false,

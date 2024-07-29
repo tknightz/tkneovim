@@ -1,19 +1,27 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufRead", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = false })
       ts_update()
     end,
-
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      { "yioneko/nvim-yati", version = "*" },
-    },
     config = function()
       require("config.treesitter")
     end
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = "User FilePost",
+  },
+
+  {
+    "yioneko/nvim-yati",
+    version = "*" ,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = "User FilePost",
   },
 
   {

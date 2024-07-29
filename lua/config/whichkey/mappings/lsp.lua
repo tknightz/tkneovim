@@ -48,11 +48,11 @@ local function format()
 end
 
 wk.add({
-  { "<leader>l", group = "lsp" },
+  { "<leader>l", group = "lsp", mode = { "n", "v" } },
   { "<leader>la", "<cmd>Lspsaga code_action<CR>", desc = "actions" },
   { "<leader>ls", "<cmd>Lspsaga signature_help<CR>", desc = "signature_help" },
   { "<leader>lr", "<cmd>Lspsaga rename<CR>", desc = "rename" },
-  { "<leader>ld", "<cmd>lua vim.diagnostic.enable(false)<CR>", desc = "toggle diagnostics" },
+  { "<leader>ld", "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>", desc = "toggle diagnostics" },
   { "<leader>li", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "issues" },
   { "<leader>ln", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "next" },
   { "<leader>lo", "<cmd>Outline<CR>", desc = "outline" },

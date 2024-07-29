@@ -38,7 +38,7 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
-    event = "BufRead",
+    event = "User FilePost",
     config = function()
       require("config.ufo")
     end,
@@ -47,7 +47,7 @@ return {
   -- Highlight cursor word
   {
     "RRethy/vim-illuminate",
-    event = "BufRead",
+    event = "User FilePost",
     config = function()
       local special_fts = require("lib.consts").special_fts
       require("illuminate").configure({
@@ -91,7 +91,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = "BufRead",
+    event = "User FilePost",
     config = function()
       local special_fts = require("lib.consts").special_fts
 
@@ -110,7 +110,7 @@ return {
   -- Even better % navigate and highlight matching words
   {
     "andymass/vim-matchup",
-    event = "BufRead",
+    event = "User FilePost",
     init = function()
       local vim = vim
 
@@ -149,7 +149,7 @@ return {
   -- Smooth scrolling
   {
     "karb94/neoscroll.nvim",
-    event = "BufRead",
+    event = "User FilePost",
     opts = {},
   },
 
@@ -182,7 +182,7 @@ return {
   -- pretty quickfix UI
   {
     "yorickpeterse/nvim-pqf",
-    event = "VeryLazy",
+    event = "User FilePost",
     opts = {},
   },
 
@@ -193,7 +193,7 @@ return {
     config = function()
       require("git-conflict").setup()
     end,
-    event = "BufRead",
+    event = "User FilePost",
   },
 
   -- Jump to last edit
@@ -228,7 +228,7 @@ return {
         },
       })
     end,
-    event = "BufRead",
+    event = "User FilePost",
   },
 
   {
@@ -249,7 +249,7 @@ return {
 
   {
     "HiPhish/rainbow-delimiters.nvim",
-    event = "BufRead",
+    event = "User FilePost",
     config = function()
       -- This module contains a number of default definitions
       local rainbow_delimiters = require("rainbow-delimiters")
@@ -295,16 +295,15 @@ return {
   {
     "utilyre/barbecue.nvim",
     version = "*",
-    event = "BufRead",
+    event = "User FilePost",
     dependencies = {
       "SmiteshP/nvim-navic",
       "kyazdani42/nvim-web-devicons", -- optional dependency
     },
     config = function()
+      local theme = require("onedark.barbecue")
       require("barbecue").setup({
-        theme = {
-          normal = { bg = "#0d1117" },
-        },
+        theme = theme
       })
     end,
   },
@@ -370,6 +369,6 @@ return {
   {
     "windwp/nvim-ts-autotag",
     event = { "BufReadPre", "BufNewFile" },
-    config = true
+    opts = {}
   },
 }
