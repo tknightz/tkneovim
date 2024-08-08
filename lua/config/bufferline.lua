@@ -10,7 +10,7 @@ require("bufferline").setup({
       { filetype = "dbui", text = "DB Explorer" },
       { filetype = "DiffviewFiles", text = "DiffviewFiles" },
     },
-    themable = false,
+    themable = true,
     buffer_close_icon = "",
     modified_icon = "",
     indicator = {

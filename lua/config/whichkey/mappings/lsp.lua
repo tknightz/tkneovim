@@ -41,10 +41,7 @@ local function format_cb(err)
 end
 
 local function format()
-  require("conform").format({
-    async = true,
-    lsp_fallback = true,
-  }, format_cb)
+  require("conform").format({ async = true }, format_cb)
 end
 
 wk.add({
@@ -58,8 +55,7 @@ wk.add({
   { "<leader>lo", "<cmd>Outline<CR>", desc = "outline" },
   { "<leader>lp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "prev" },
   { "<leader>lq", "<cmd>Trouble diagnostics<CR>", desc = "quickfix" },
-  { "<leader>lf", format, desc = "format" },
-  { "<leader>lf", format, desc = "format", mode = "v" },
+  { "<leader>lf", format, desc = "format", mode = {"n", "v"} },
   { "<leader>lt", toggle_lsp, desc = "toggle" },
   { "<leader>lh", toggle_inlay_hint, desc = "toggle hint" },
   { "<leader>lS", "<cmd>SymbolsOutline<cr>", desc = "browse" },

@@ -47,17 +47,18 @@ M.custom_configs = {
     filetypes = {
       "latex",
       "org",
+      "markdown",
     },
     settings = {
       ltex = {
-        enabled = {"latex", "markdown", "org"},
+        enabled = { "latex", "markdown", "org" },
         setenceCacheSize = 5000,
         additionalRules = { enablePickyRules = true },
         -- flags = { debounce_text_changes = 1000 },
         checkFrequency = "save",
-        completionEnabled = true
-      }
-    }
+        completionEnabled = true,
+      },
+    },
   },
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -65,12 +66,12 @@ M.custom_configs = {
     init_options = {
       maxTsServerMemory = 3072,
       tsserver = {
-        useSyntaxServer = 'never',
+        useSyntaxServer = "never",
       },
       preferences = {
         disableSuggestions = true,
 
-        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHints = "all",
         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
         includeInlayFunctionParameterTypeHints = true,
         includeInlayVariableTypeHints = true,
@@ -78,17 +79,17 @@ M.custom_configs = {
         includeInlayPropertyDeclarationTypeHints = true,
         includeInlayFunctionLikeReturnTypeHints = true,
         includeInlayEnumMemberValueHints = true,
-      }
-    }
+      },
+    },
   },
 
   lua_ls = {
     settings = {
       Lua = {
         workspace = { checkThirdParty = false },
-        hint = { enable = true }
-      }
-    }
+        hint = { enable = true },
+      },
+    },
   },
 
   biome = {
@@ -102,18 +103,24 @@ M.custom_configs = {
     },
     filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "markdown", "lua" },
   },
+
+  harper_ls = {
+    linters = {
+      spell_check = true,
+      spelled_numbers = false,
+      an_a = true,
+      sentence_capitalization = true,
+      unclosed_quotes = true,
+      wrong_quotes = false,
+      long_sentences = true,
+      repeated_words = true,
+      spaces = true,
+      matcher = true,
+      correct_number_suffix = true,
+      number_suffix_capitalization = true,
+      multiple_sequential_pronouns = true,
+    },
+  },
 }
-
--- helper function to check if server is lsp
--- only lsp server will be registered here
-M.is_lsp_server = function(server)
-  for _, name in ipairs(server.spec.categories) do
-    if name == "LSP" then
-      return true
-    end
-  end
-
-  return false
-end
 
 return M

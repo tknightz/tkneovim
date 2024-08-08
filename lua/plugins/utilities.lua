@@ -165,7 +165,6 @@ return {
 
   {
     "kevinhwang91/nvim-bqf",
-    dependencies = { "ashfinal/qfview.nvim" },
     config = function()
       require("bqf").setup({
         preview = {
@@ -179,21 +178,17 @@ return {
     ft = "qf",
   },
 
-  -- pretty quickfix UI
   {
-    "yorickpeterse/nvim-pqf",
-    event = "User FilePost",
+    "stevearc/quicker.nvim",
     opts = {},
+    event = "User FilePost",
   },
 
   -- A plugin to visualise and resolve merge conflicts in neovim
   {
     "akinsho/git-conflict.nvim",
     version = "*",
-    config = function()
-      require("git-conflict").setup()
-    end,
-    event = "User FilePost",
+    config = true,
   },
 
   -- Jump to last edit
@@ -280,7 +275,11 @@ return {
     "lukas-reineke/headlines.nvim",
     ft = { "org", "norg" },
     config = function()
-      require("headlines").setup()
+      require("headlines").setup({
+        markdown = {
+          query = false,
+        },
+      })
     end,
   },
 
@@ -303,7 +302,7 @@ return {
     config = function()
       local theme = require("onedark.barbecue")
       require("barbecue").setup({
-        theme = theme
+        theme = theme,
       })
     end,
   },
@@ -369,6 +368,12 @@ return {
   {
     "windwp/nvim-ts-autotag",
     event = { "BufReadPre", "BufNewFile" },
-    opts = {}
+    opts = {},
+  },
+
+  {
+    "MagicDuck/grug-far.nvim",
+    opts = {},
+    cmd = { "GrugFar" },
   },
 }

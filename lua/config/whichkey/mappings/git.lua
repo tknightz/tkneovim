@@ -32,6 +32,7 @@ wk.add({
   { "<leader>gxl", "<cmd>GitConflictListQf<cr>", desc = "list" },
   { "<leader>gxn", "<cmd>GitConflictNextConflict<cr>", desc = "next" },
   { "<leader>gxp", "<cmd>GitConflictPrevConflict<cr>", desc = "prev" },
+  { "<leader>gxr", "<cmd>GitConflictRefresh<cr>", desc = "refresh" },
 
   -- Git browsing/searching
   { "<leader>g/", group = "browse" },

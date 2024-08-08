@@ -3,7 +3,7 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle" },
-    build = "cd app && yarn install",
+    build = function() vim.fn["mkdp#util#install"]() end,
     init = function()
       vim.g.mkdp_auto_close = 0
       vim.g.mkdp_filetypes = { "markdown" }
@@ -18,7 +18,7 @@ return {
     config = function()
       require("neorg").setup({
         load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.defaults"] = {}, -- Loads default behavior
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
           ["core.keybinds"] = {
             config = {
@@ -41,6 +41,7 @@ return {
   {
     "MeanderingProgrammer/markdown.nvim",
     opts = {},
-    ft = {"markdown"}
+    cmd = { "RenderMarkdown" },
+    -- ft = {"markdown"}
   },
 }

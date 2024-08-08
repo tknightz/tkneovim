@@ -2,13 +2,8 @@
 vim.g.loaded_lsp = 1
 vim.g.should_attach = 1
 
--- this is an error 
-
 local lspconfig = require("lspconfig")
 local registry = require("mason-registry")
-local installed_packages = registry.get_installed_packages()
-local server_mapping = require("mason-lspconfig.mappings.server")
-local consts = require("config.lsp.mason.consts")
 
 local win = require("lspconfig.ui.windows")
 local _default_opts = win.default_opts
@@ -52,24 +47,27 @@ vim.fn.sign_define(
 vim.diagnostic.config({
   signs = {
     --support diagnostic severity / diagnostic type name
-    text = { [1] = ' ', ['WARN'] = '󰀦 ', ['HINT'] = ' ' },
+    text = { [1] = " ", ["WARN"] = "󰀦 ", ["HINT"] = " " },
   },
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diagnostic_opts)
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diagnostic_opts)
 
--- Iterate to register servers with custom config
-for _, server in pairs(installed_packages) do
-  if consts.is_lsp_server(server) then
-    local server_name = server_mapping.package_to_lspconfig[server.name]
-    local custom_config = consts.custom_configs[server_name]
+registry.refresh(function()
+  -- Iterate to register servers with custom config
+  local installed_servers = require("mason-lspconfig").get_installed_servers()
+  local consts = require("config.lsp.mason.consts")
+
+  for _, server in pairs(installed_servers) do
+    local custom_config = consts.custom_configs[server]
 
     local config = custom_config and vim.tbl_extend("force", consts.general_configs, custom_config)
       or consts.general_configs
 
-    if server_name == "gopls" then
+    if server == "gopls" then
       config.init_options = nil
     end
-    lspconfig[server_name].setup(config)
+    lspconfig[server].setup(config)
   end
-end
+end)
