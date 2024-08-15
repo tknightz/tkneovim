@@ -82,8 +82,7 @@ return {
   -- Fast status line
   {
     "nvim-lualine/lualine.nvim",
-    event = { "BufNewFile", "BufRead" },
-    -- event = "User FilePost",
+    event = "User FilePost",
     config = function()
       require("config.lualine")
     end,

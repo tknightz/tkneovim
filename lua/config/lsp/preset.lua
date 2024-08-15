@@ -9,9 +9,9 @@ local function on_attach(client, bufnr)
   end
 
   -- disable semantic token
-  -- if client.server_capabilities.semanticTokensProvider then
-  --   client.server_capabilities.semanticTokensProvider = nil
-  -- end
+  if client.server_capabilities.semanticTokensProvider then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
 
   -- enable inlay hint
   if client.server_capabilities.inlayHintProvider and vim.fn.has('nvim-0.10.0') == 1 then
@@ -50,7 +50,6 @@ local capabilities = vim.tbl_deep_extend("force",
   vim.lsp.protocol.make_client_capabilities(),
   require('cmp_nvim_lsp').default_capabilities()
 )
-capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 return {
   on_attach = on_attach,

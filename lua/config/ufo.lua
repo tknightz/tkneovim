@@ -1,6 +1,6 @@
 function fold_virt_text_handler(virtText, lnum, endLnum, width, truncate, ctx)
   -- include the bottom line in folded text for additional context
-  local filling = (" ⋯ ( %d lines ) "):format(endLnum - lnum)
+  local filling = ("   %d lines "):format(endLnum - lnum)
   local sufWidth = vim.fn.strdisplaywidth(suffix)
   local targetWidth = width - sufWidth
   local curWidth = 0
@@ -30,6 +30,10 @@ function fold_virt_text_handler(virtText, lnum, endLnum, width, truncate, ctx)
   return virtText
 end
 
+local provider_by_ft = {
+  typescriptreact = { 'lsp', 'indent' },
+}
+
 local ufo = require("ufo")
 -- global handler
 -- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
@@ -37,8 +41,8 @@ local ufo = require("ufo")
 ufo.setup({
   enable_get_fold_virt_text = true,
   fold_virt_text_handler = fold_virt_text_handler,
-  provider_selector = function()
-    return { "treesitter" }
+  provider_selector = function(bufnr, ft)
+    return provider_by_ft[ft] ~= nil and provider_by_ft[ft] or { "treesitter" }
   end,
 })
 

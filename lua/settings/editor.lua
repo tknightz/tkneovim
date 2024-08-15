@@ -13,9 +13,9 @@ local options = {
     eob       = " ",
     diff      = "╱",
     fold      = " ",
-    foldopen  = "󰍷",
+    foldopen  = "󰧖",
     foldsep   = "│",
-    foldclose = "󰐙",
+    foldclose = "󰧚",
     vert = "┃",
   },
 

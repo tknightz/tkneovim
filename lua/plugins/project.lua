@@ -47,6 +47,7 @@ return {
   {
     "tiagovla/scope.nvim",
     opts = {},
+    event = "User FilePost",
   },
 
   -- vim dadbod

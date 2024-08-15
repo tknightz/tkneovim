@@ -48,7 +48,7 @@ return {
         javascript = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
         javascriptreact = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
 
-        json = { "fixjson" },
+        json = { "prettier", "fixjson" },
 
         typescript = { "biome", "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true } ,
         typescriptreact = { "biome", "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },

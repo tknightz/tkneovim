@@ -1,6 +1,7 @@
 -- set vim completeopt
 vim.o.completeopt = "menu,menuone,noselect"
 
+require("tabout")
 local cmp = require("cmp")
 local icons = require("config.lsp.icons").icons
 
