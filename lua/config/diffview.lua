@@ -17,26 +17,30 @@ require("diffview").setup({
       height = 10, -- Only applies when position is 'top' or 'bottom'
     },
   },
-  key_bindings = {
+  keymaps = {
     disable_defaults = false, -- Disable the default key bindings
     -- The `view` bindings are active in the diff buffers, only when the current
     -- tabpage is a Diffview.
     view = {
       { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
+      { "n", "<Space>e", false },
     },
     file_panel = {
       { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
       { "n", "t",         actions.listing_style, { desc = "Toggle between 'list' and 'tree' views" } },
       { "n", "<leader>e", false },
+      { "n", "<Space>e", false },
     },
     panel = {
       { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
+      { "n", "<Space>e", false },
     },
     file_history_panel = {
-      { "n", "<leader>e", false },
       { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
+      { "n", "<leader>e", false },
+      { "n", "<Space>e", false },
     },
   },
 })

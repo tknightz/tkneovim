@@ -30,18 +30,22 @@ local function format_cb(err)
   vim.notify(" ✨ Format done!", "info", {
     title = "Formatter",
   })
-
-  -- call linter if any
-  if not vim.g.lint_loaded then
-    return
-  end
-
-  local lint = require("lint")
-  lint.try_lint()
 end
 
 local function format()
   require("conform").format({ async = true }, format_cb)
+end
+
+local function toggle_linter()
+  local lint = require("lint")
+
+  if vim.g.linter_enabled then
+    lint.linters_by_ft = {}
+    vim.g.linter_enabled = false
+  else
+    lint.try_lint()
+    vim.g.linter_enabled = true
+  end
 end
 
 wk.add({
@@ -55,6 +59,7 @@ wk.add({
   { "<leader>lo", "<cmd>Outline<CR>", desc = "outline" },
   { "<leader>lp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "prev" },
   { "<leader>lq", "<cmd>Trouble diagnostics<CR>", desc = "quickfix" },
+  { "<leader>ll", toggle_linter, desc = "toggle_linter" },
   { "<leader>lf", format, desc = "format", mode = {"n", "v"} },
   { "<leader>lt", toggle_lsp, desc = "toggle" },
   { "<leader>lh", toggle_inlay_hint, desc = "toggle hint" },

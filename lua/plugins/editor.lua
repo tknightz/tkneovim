@@ -1,16 +1,16 @@
 return {
   -- Providing completion out of the box
   {
-    "hrsh7th/nvim-cmp",
+    "yioneko/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
+      { "FelipeLema/cmp-async-path", url = "https://codeberg.org/FelipeLema/cmp-async-path" },
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
+      -- "hrsh7th/cmp-nvim-lsp-signature-help",
       "L3MON4D3/LuaSnip",
-      "windwp/nvim-autopairs",
+      -- "windwp/nvim-autopairs",
     },
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
@@ -56,7 +56,8 @@ return {
   -- Auto close brackets
   {
     "windwp/nvim-autopairs",
-    event = "InsertEnter",
+    -- event = "InsertEnter",
+    lazy = true,
     config = function()
       local npairs = require("nvim-autopairs")
       local Rule = require("nvim-autopairs.rule")

@@ -208,23 +208,11 @@ return {
     end,
   },
 
-  {
-    "m-demare/hlargs.nvim",
-    config = function()
-      require("hlargs").setup({
-        -- color = '#D13E9E',
-        highlight = { fg = "#FF896B", bold = true, italic = true },
-        -- highlight = { fg = "#f43e5c" },
-        use_colorpalette = false,
-        colorpalette = {
-          { fg = "#dd571c", bold = true },
-          { fg = "#fcae1e", bold = true },
-          { fg = "#ed7014", bold = true },
-        },
-      })
-    end,
-    event = "User FilePost",
-  },
+  -- {
+  --   "m-demare/hlargs.nvim",
+  --   opts = {},
+  --   event = "User FilePost",
+  -- },
 
   {
     "Wansmer/treesj",
@@ -247,13 +235,7 @@ return {
     event = "User FilePost",
     config = function()
       -- This module contains a number of default definitions
-      local rainbow_delimiters = require("rainbow-delimiters")
-
-      vim.g.rainbow_delimiters = {
-        strategy = {
-          [""] = rainbow_delimiters.strategy["global"],
-          vim = rainbow_delimiters.strategy["local"],
-        },
+      require("rainbow-delimiters.setup").setup({
         query = {
           [""] = "rainbow-delimiters",
           lua = "rainbow-blocks",
@@ -267,7 +249,8 @@ return {
           "RainbowDelimiterYellow",
           "RainbowDelimiterBlue",
         },
-      }
+        blacklist = { "markdown" },
+      })
     end,
   },
 

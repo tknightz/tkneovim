@@ -22,7 +22,7 @@ local diagnostic_opts = {
     spacing = 5,
   },
   signs = true,
-  update_in_insert = false,
+  update_in_insert = true,
 }
 
 vim.diagnostic.config(diagnostic_opts)

@@ -39,10 +39,22 @@ cmp.setup({
   min_length = 3,
   preselect = cmp.PreselectMode.None,
   performance = {
-    throttle_time = 500,
-    source_timeout = 200,
+    -- throttle_time = 500,
+    -- source_timeout = 200,
+    -- throttle = 500,
+    -- debounce = 100,
+    -- debounce = 0,
+    -- throttle = 0,
     incomplete_delay = 300,
     max_view_entries = 12,
+    fetching_timeout = 2000,
+  },
+  matching = {
+    disallow_fuzzy_matching = true,
+    disallow_fullfuzzy_matching = true,
+    disallow_partial_fuzzy_matching = true,
+    disallow_partial_matching = false,
+    disallow_prefix_unmatching = true,
   },
   max_abbr_width = 150,
   max_kind_width = 100,
@@ -101,15 +113,11 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = "codeium" },
-    { name = "cody" },
     { name = "luasnip" },
-    { name = "nvim_lsp", max_item_count = 100 },
-    { name = "nvim_lsp_signature_help" },
+    { name = "nvim_lsp", max_item_count = 20 },
+    -- { name = "nvim_lsp_signature_help" },
     -- { name = "vim-dadbod-completion" },
-    { name = "path" },
-    { name = "emoji" },
-    { name = "nvim_lua" },
+    { name = "async_path" },
     {
       name = "buffer",
       option = {
@@ -139,7 +147,7 @@ cmp.setup({
       --   vim_item.abbr = label .. padding
       -- end
 
-      vim_item.menu = vim_item.menu and vim_item.menu or vim_item.kind
+      vim_item.menu = vim_item.menu ~= "" and vim_item.menu or vim_item.kind
       -- vim_item.kind = (icon ~= nil and icon or "icon") .. vim_item.menu
       -- vim_item.menu = ""
       vim_item.kind = " " .. (icon ~= nil and icon or "icon")

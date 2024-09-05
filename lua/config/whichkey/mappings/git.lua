@@ -61,7 +61,7 @@ wk.add({
   { "<leader>ghp", "<cmd>Gitsigns previous_hunk<cr>", desc = "previous hunk" },
   { "<leader>ghv", "<cmd>Gitsigns preview_hunk<cr>", desc = "view hunk" },
   { "<leader>ghh", "<cmd>Gitsigns toggle_linehl<cr>", desc = "highlight toggle" },
-  { "<leader>ghs", stage_hunk, desc = "stage hunk" },
+  { "<leader>ghs", stage_hunk, desc = "stage hunk", mode = { "n", "v" } },
   { "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "undo stage hunk" },
 
   -- Git rebase

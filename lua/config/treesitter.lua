@@ -36,7 +36,7 @@ ts_config.setup({
   },
   indent = {
     enable = false,
-    disable = { "python", "typescriptreact" },
+    -- disable = { "python", "typescriptreact" },
   },
   matchup = {
     enable = true,

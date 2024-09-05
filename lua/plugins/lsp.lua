@@ -4,7 +4,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason.nvim" },
     lazy = true,
-    cmd =  "LspStart",
+    cmd = "LspStart",
     config = function()
       require("config.lsp")
     end,
@@ -50,8 +50,8 @@ return {
 
         json = { "prettier", "fixjson" },
 
-        typescript = { "biome", "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true } ,
-        typescriptreact = { "biome", "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
+        typescript = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
+        typescriptreact = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
 
         css = { "prettier", stop_after_first = true },
         astro = { "biome", "prettier", stop_after_first = true },
@@ -60,6 +60,17 @@ return {
       },
     },
   },
+
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   event = "LspAttach",
+  --   config = function()
+  --     require("lint").linters_by_ft = {
+  --       yaml = { "actionlint" },
+  --       css = { "stylelint" },
+  --     }
+  --   end,
+  -- },
 
   -- Find trouble in your code
   {
@@ -94,17 +105,17 @@ return {
     },
   },
 
-  {
-    "dnlhc/glance.nvim",
-    event = "LspAttach",
-    config = function()
-      require("glance").setup()
-
-      -- mappings
-      vim.keymap.set('n', 'gD', '<CMD>Glance definitions<CR>')
-      vim.keymap.set('n', 'gR', '<CMD>Glance references<CR>')
-      vim.keymap.set('n', 'gY', '<CMD>Glance type_definitions<CR>')
-      vim.keymap.set('n', 'gM', '<CMD>Glance implementations<CR>')
-    end
-  },
+  -- {
+  --   "dnlhc/glance.nvim",
+  --   event = "LspAttach",
+  --   config = function()
+  --     require("glance").setup()
+  --
+  --     -- mappings
+  --     vim.keymap.set("n", "gD", "<CMD>Glance definitions<CR>")
+  --     vim.keymap.set("n", "gR", "<CMD>Glance references<CR>")
+  --     vim.keymap.set("n", "gY", "<CMD>Glance type_definitions<CR>")
+  --     vim.keymap.set("n", "gM", "<CMD>Glance implementations<CR>")
+  --   end,
+  -- },
 }

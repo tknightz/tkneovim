@@ -22,6 +22,11 @@ M.custom_configs = {
     root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
   },
 
+  unocss = {
+    filetypes = { "css", "html", "svelte", "javascriptreact", "typescriptreact", "astro" },
+    root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
+  },
+
   emmet_ls = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   },
@@ -63,6 +68,9 @@ M.custom_configs = {
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
+    settings = {
+      diagnostics = { ignoredCodes = { 6133 } },
+    },
     init_options = {
       maxTsServerMemory = 3072,
       tsserver = {
@@ -119,6 +127,29 @@ M.custom_configs = {
       correct_number_suffix = true,
       number_suffix_capitalization = true,
       multiple_sequential_pronouns = true,
+    },
+  },
+
+  vtsls = {
+    settings = {
+      vtsls = {
+        experimental = {
+          completion = {
+            enableServerSideFuzzyMatch = true,
+            entriesLimit = 30,
+          },
+        },
+      },
+      typescript = {
+        inlayHints = {
+          parameterNames = { enabled = "literals" },
+          parameterTypes = { enabled = true },
+          variableTypes = { enabled = true },
+          propertyDeclarationTypes = { enabled = true },
+          functionLikeReturnTypes = { enabled = true },
+          enumMemberValues = { enabled = true },
+        },
+      },
     },
   },
 }
