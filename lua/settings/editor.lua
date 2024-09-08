@@ -51,6 +51,7 @@ local options = {
   wrap           = false,
   breakindent    = true,
   linebreak      = true,
+  showbreak      = "   ",
   cursorline     = true,
   swapfile       = false,
   incsearch      = true,

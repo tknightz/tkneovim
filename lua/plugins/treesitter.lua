@@ -9,7 +9,7 @@ return {
     end,
     config = function()
       require("config.treesitter")
-    end
+    end,
   },
 
   {
@@ -18,18 +18,32 @@ return {
     event = "User FilePost",
   },
 
-  {
-    "yioneko/nvim-yati",
-    version = "*" ,
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "User FilePost",
-  },
+  -- {
+  --   "yioneko/nvim-yati",
+  --   version = "*",
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     {
+  --       "yioneko/vim-tmindent",
+  --       opts = {
+  --         enabled = function() return true end,
+  --         use_treesitter = function() return true end,
+  --       },
+  --     },
+  --   },
+  --   event = "User FilePost",
+  -- },
 
   {
     "nvim-treesitter/nvim-treesitter-context",
     cmd = { "TSContextToggle", "TSContextEnable" },
     config = function()
-      require("treesitter-context").setup({})
+      require("treesitter-context").setup({
+        max_lines = 3,
+        multiline_threshold = 1,
+        separator = "─",
+        min_window_height = 20,
+      })
     end,
   },
 }

@@ -204,7 +204,12 @@ return {
     version = "*",
     cmd = "ToggleTerm",
     config = function()
-      require("toggleterm").setup()
+      require("toggleterm").setup({
+        highlights = {
+          StatusLine = { link = "StatusLine" },
+          StatusLineNC = { link = "StatusLineNC" },
+        },
+      })
     end,
   },
 

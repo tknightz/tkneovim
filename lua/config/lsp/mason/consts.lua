@@ -7,6 +7,9 @@ local M = {}
 M.general_configs = {
   capabilities = preset.capabilities,
   on_attach = preset.on_attach,
+  flags = {
+    debounce_text_changes = 1000
+  },
   init_options = { hostInfo = "neovim" },
 }
 

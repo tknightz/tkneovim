@@ -9,7 +9,7 @@ require("lualine").setup({
     always_divide_middle = true,
     globalstatus = true,
     refresh = {
-      statusline = 0,
+      statusline = 100,
     }
   },
   sections = {
