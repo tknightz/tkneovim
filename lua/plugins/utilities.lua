@@ -26,7 +26,7 @@ return {
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
     cmd = { "Neotree" },
@@ -261,14 +261,8 @@ return {
 
   {
     "lukas-reineke/headlines.nvim",
-    ft = { "org", "norg" },
-    config = function()
-      require("headlines").setup({
-        markdown = {
-          query = false,
-        },
-      })
-    end,
+    ft = { "org", "norg", "markdown" },
+    config = true,
   },
 
   {
@@ -285,7 +279,7 @@ return {
     event = "User FilePost",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "kyazdani42/nvim-web-devicons", -- optional dependency
+      "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     config = function()
       local theme = require("onedark.barbecue")
@@ -338,5 +332,15 @@ return {
     "MagicDuck/grug-far.nvim",
     opts = {},
     cmd = { "GrugFar" },
+  },
+
+  {
+    "chrisgrieser/nvim-early-retirement",
+    config = true,
+    opts = {
+      retirementAgeMins = 10,
+      ignoredFiletypes = require("lib.consts").special_fts,
+    },
+    event = "User FilePost",
   },
 }

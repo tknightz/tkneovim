@@ -254,6 +254,16 @@ function M.encoding_component()
     or ""
 end
 
+function M.wordcount_component()
+  if vim.bo.filetype ~= "markdown" then
+    return ""
+  end
+
+  local words = vim.fn.wordcount().words
+
+  return string.format("%%#StatusLineTitle#%s words ", words)
+end
+
 --- The current line, total line count, and column position.
 ---@return string
 function M.position_component()
@@ -286,6 +296,7 @@ function M.render()
     }),
     "%#StatusLine#%=",
     concat_components({
+      M.wordcount_component(),
       M.filesize_component(),
       M.encoding_component(),
       M.position_component(),

@@ -15,22 +15,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "User FilePost",
+    event = { "BufReadPost" },
   },
 
   -- {
   --   "yioneko/nvim-yati",
   --   version = "*",
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     {
-  --       "yioneko/vim-tmindent",
-  --       opts = {
-  --         enabled = function() return true end,
-  --         use_treesitter = function() return true end,
-  --       },
-  --     },
-  --   },
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
   --   event = "User FilePost",
   -- },
 

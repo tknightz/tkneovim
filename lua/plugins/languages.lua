@@ -38,10 +38,4 @@ return {
   --     })
   --   end,
   -- },
-  {
-    "MeanderingProgrammer/markdown.nvim",
-    opts = {},
-    cmd = { "RenderMarkdown" },
-    -- ft = {"markdown"}
-  },
 }
