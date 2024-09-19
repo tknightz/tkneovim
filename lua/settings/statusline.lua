@@ -98,7 +98,7 @@ end
 
 --- Git status (if any).
 ---@return string
-function M.git_component()
+function M.git_branch_component()
   local head = vim.b.gitsigns_head
   if not head then
     return string.format("%%#StatusLineGitSeparator#")
@@ -223,6 +223,21 @@ function M.diagnostics_component()
   return last_diagnostic_component
 end
 
+
+function M.git_status_component()
+  local status = vim.b.gitsigns_status_dict
+  if not status then
+    return ""
+  end
+
+  local added = (status.added and status.added > 0) and string.format("%%#%s#+%d", M.get_or_create_hl('GitSignsAdd'), status.added) or ""
+  local removed = (status.removed and status.removed > 0) and string.format("%%#%s#-%d", M.get_or_create_hl('GitSignsDelete'), status.removed) or ""
+  local changed = (status.changed and status.changed > 0) and string.format("%%#%s#~%d", M.get_or_create_hl('GitSignsChange'), status.changed) or ""
+
+  local content = table.concat({ added, removed, changed }, " ")
+  return string.format("  %%#StatusLineGitStatus#%s", content)
+end
+
 -- Show the filesize of the current buffer.
 ---@return string
 function M.filesize_component()
@@ -290,8 +305,9 @@ function M.render()
   return table.concat({
     concat_components({
       M.mode_component(),
-      M.git_component(),
+      M.git_branch_component(),
       M.filename_component(),
+      M.git_status_component(),
       M.diagnostics_component(),
     }),
     "%#StatusLine#%=",

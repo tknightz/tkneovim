@@ -49,6 +49,7 @@ return {
         javascriptreact = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
 
         json = { "prettier", "fixjson" },
+        jsonc = { "prettier", "fixjson" },
 
         typescript = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
         typescriptreact = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },

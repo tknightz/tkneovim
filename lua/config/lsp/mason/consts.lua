@@ -25,13 +25,18 @@ M.custom_configs = {
     root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
   },
 
-  unocss = {
-    filetypes = { "css", "html", "svelte", "javascriptreact", "typescriptreact", "astro" },
-    root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
+  cssls = {
+    settings = {
+      css = {
+        lint = {
+          unknownAtRules = "ignore"
+        }
+      }
+    }
   },
 
-  emmet_ls = {
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  emmet_language_server = {
+    filetypes = { "javascriptreact", "typescriptreact", "svelte" },
   },
 
   prismals = {
