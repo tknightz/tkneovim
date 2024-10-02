@@ -1,5 +1,6 @@
 local special_fts = require("lib.consts").special_fts
 
+-- auto enter insert mode when jump to terminal buffer
 local terminal_group = vim.api.nvim_create_augroup("Terminal", {})
 vim.api.nvim_create_autocmd("WinEnter", {
   pattern = "*",
@@ -18,22 +19,12 @@ vim.api.nvim_create_autocmd("WinEnter", {
   end,
 })
 
+-- disable break comment line
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
   end,
 })
-
--- copy the location of current file
-vim.api.nvim_create_user_command("Cppath", function()
-  local path = vim.fn.expand("%:p")
-  vim.fn.setreg("+", path)
-  vim.notify('Copied "' .. path .. '" to the clipboard!')
-end, {})
-
-vim.api.nvim_create_user_command("DBEE", function()
-  require("dbee").toggle()
-end, {})
 
 
 -- user event that loads after UIEnter + only if file buf is there

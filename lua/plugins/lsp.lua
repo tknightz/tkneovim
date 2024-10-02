@@ -28,7 +28,7 @@ return {
   },
 
   {
-    "nvimdev/lspsaga.nvim",
+    "Kyren223/lspsaga.nvim",
     version = "main",
     event = "LspAttach",
     config = function()
@@ -51,8 +51,21 @@ return {
         json = { "prettier", "fixjson" },
         jsonc = { "prettier", "fixjson" },
 
-        typescript = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
-        typescriptreact = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
+        -- typescript = { "prettier", "eslint", "eslint_d", stop_after_first = true },
+        typescript = function(bufnr)
+          if require("conform").get_formatter_info("biome", bufnr).available then
+            return { "biome" }
+          else
+            return { "prettier", "eslint", "eslint_d", stop_after_first = true }
+          end
+        end,
+        typescriptreact = function(bufnr)
+          if require("conform").get_formatter_info("biome", bufnr).available then
+            return { "biome" }
+          else
+            return { "prettier", "eslint", "eslint_d", stop_after_first = true }
+          end
+        end,
 
         css = { "prettier", stop_after_first = true },
         astro = { "biome", "prettier", stop_after_first = true },
@@ -68,25 +81,7 @@ return {
     "mfussenegger/nvim-lint",
     event = "LspAttach",
     config = function()
-      require("lint").linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
-        yaml = { "actionlint" },
-        css = { "stylelint" },
-      }
-
-      vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-        callback = function()
-          -- try_lint without arguments runs the linters defined in `linters_by_ft`
-          -- for the current filetype
-          require("lint").try_lint()
-
-          -- You can call `try_lint` with a linter name or a list of names to always
-          -- run specific linters, independent of the `linters_by_ft` configuration
-          -- require("lint").try_lint("cspell")
-        end,
-      })
+      require("config.lint")
     end,
   },
 
@@ -121,29 +116,6 @@ return {
         },
       },
     },
-  },
-
-  {
-    "zbirenbaum/neodim",
-    event = "LspAttach",
-    config = function()
-      require("neodim").setup({
-        alpha = 0.65,
-        blend_color = "#000000",
-        hide = {
-          underline = true,
-          virtual_text = false,
-          signs = true,
-        },
-        regex = {
-          "[uU]nused",
-          "[nN]ever [rR]ead",
-          "[nN]ot [rR]ead",
-        },
-        priority = 128,
-        disable = {},
-      })
-    end,
   },
 
   -- {

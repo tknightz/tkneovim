@@ -18,12 +18,11 @@ return {
     event = { "BufReadPost" },
   },
 
-  -- {
-  --   "yioneko/nvim-yati",
-  --   version = "*",
-  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
-  --   event = "User FilePost",
-  -- },
+  {
+    "chrisgrieser/nvim-various-textobjs",
+    event = "User FilePost",
+    opts = { useDefaultKeymaps = true },
+  },
 
   {
     "nvim-treesitter/nvim-treesitter-context",

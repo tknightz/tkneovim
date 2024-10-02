@@ -37,13 +37,13 @@ local function format()
 end
 
 local function toggle_linter()
-  local lint = require("lint")
+  -- local lint = require("lint")
 
   if vim.g.linter_enabled then
     lint.linters_by_ft = {}
     vim.g.linter_enabled = false
   else
-    lint.try_lint()
+    -- lint.try_lint()
     vim.g.linter_enabled = true
   end
 end
@@ -51,7 +51,7 @@ end
 wk.add({
   { "<leader>l", group = "lsp", mode = { "n", "v" } },
   { "<leader>la", "<cmd>Lspsaga code_action<CR>", desc = "actions" },
-  { "<leader>ls", "<cmd>Lspsaga signature_help<CR>", desc = "signature_help" },
+  { "<leader>ls", function() vim.lsp.buf.signature_help() end, desc = "signature_help" },
   { "<leader>lr", "<cmd>Lspsaga rename<CR>", desc = "rename" },
   { "<leader>ld", "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>", desc = "toggle diagnostics" },
   { "<leader>li", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "issues" },

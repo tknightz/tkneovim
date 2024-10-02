@@ -48,10 +48,10 @@ local options = {
   re             = 0,
   number         = true,
   relativenumber = true,
-  wrap           = false,
+  wrap           = true,
   breakindent    = true,
   linebreak      = true,
-  showbreak      = "   ",
+  showbreak      = "",
   cursorline     = true,
   swapfile       = false,
   incsearch      = true,
@@ -67,6 +67,7 @@ local options = {
   winbar         = "    ",
 
   shada          = { "!", "'1000", "<50", "s10", "h" },
+  indentkeys     = "0{,0},0),0],:,(,0#,!^F,o,O,e"
 }
 
 for option, value in pairs(options) do

@@ -14,9 +14,9 @@ local function on_attach(client, bufnr)
   end
 
   -- enable inlay hint
-  if client.server_capabilities.inlayHintProvider and vim.fn.has('nvim-0.10.0') == 1 then
+  if client.server_capabilities.inlayHintProvider and vim.fn.has("nvim-0.10.0") == 1 then
     -- vim.lsp.inlay_hint.enable(true)
-    vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = 'gray', italic = true })
+    vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "gray", italic = true })
   end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -31,7 +31,7 @@ local function on_attach(client, bufnr)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "gs", '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="split"})<CR>', opts)
   buf_set_keymap("n", "gv", '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', opts)
-  buf_set_keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
+  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   buf_set_keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
@@ -46,9 +46,10 @@ end
 --   lineFoldingOnly = true,
 -- }
 -- local capabilities = require("cmp_nvim_lsp").default_capabilities(_cap)
-local capabilities = vim.tbl_deep_extend("force",
+local capabilities = vim.tbl_deep_extend(
+  "force",
   vim.lsp.protocol.make_client_capabilities(),
-  require('cmp_nvim_lsp').default_capabilities()
+  require("cmp_nvim_lsp").default_capabilities()
 )
 
 return {

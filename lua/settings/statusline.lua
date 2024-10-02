@@ -1,7 +1,6 @@
 -- Run away from lualine because its flicker issue caught by my OCD
 -- most of code below is from MariaSolOs
 
-
 local M = {}
 
 -- Don't show the command that produced the quickfix list.
@@ -223,18 +222,42 @@ function M.diagnostics_component()
   return last_diagnostic_component
 end
 
-
 function M.git_status_component()
   local status = vim.b.gitsigns_status_dict
   if not status then
     return ""
   end
 
-  local added = (status.added and status.added > 0) and string.format("%%#%s#+%d", M.get_or_create_hl('GitSignsAdd'), status.added) or ""
-  local removed = (status.removed and status.removed > 0) and string.format("%%#%s#-%d", M.get_or_create_hl('GitSignsDelete'), status.removed) or ""
-  local changed = (status.changed and status.changed > 0) and string.format("%%#%s#~%d", M.get_or_create_hl('GitSignsChange'), status.changed) or ""
+  local opts = {
+    added = {
+      icon = "+",
+      highlight = "GitSignsAdd",
+    },
+    changed = {
+      icon = "~",
+      highlight = "GitSignsChange",
+    },
+    removed = {
+      icon = "-",
+      highlight = "GitSignsDelete",
+    },
+  }
+  local keys = { "added", "changed", "removed" }
+  local components = {}
+  for i, key in pairs(keys) do
+    if status[key] ~= nil and status[key] > 0  then
+      table.insert(
+        components,
+        string.format("%%#%s#%s%d", M.get_or_create_hl(opts[key].highlight), opts[key].icon, status[key])
+      )
+    end
+  end
 
-  local content = table.concat({ added, removed, changed }, " ")
+  if #components == 0 then
+    return ""
+  end
+
+  local content = table.concat(components, " ")
   return string.format("  %%#StatusLineGitStatus#%s", content)
 end
 

@@ -2,14 +2,15 @@ return {
   -- Providing completion out of the box
   {
     "yioneko/nvim-cmp",
+    branch = "perf-up",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       { "FelipeLema/cmp-async-path", url = "https://codeberg.org/FelipeLema/cmp-async-path" },
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-cmdline",
-      -- "hrsh7th/cmp-nvim-lsp-signature-help",
-      "L3MON4D3/LuaSnip",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      -- "L3MON4D3/LuaSnip",
       -- "windwp/nvim-autopairs",
     },
     event = { "InsertEnter", "CmdlineEnter" },

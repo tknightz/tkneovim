@@ -24,6 +24,17 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+-- local filter_lsp = function(entry, _)
+--   local kinds = require("cmp.types").lsp.CompletionItemKind
+--   local in_capture = require("cmp.config.context").in_treesitter_capture
+--   if kinds[entry:get_kind()] == "Snippet" then
+--     local name = vim.split(entry.source:get_debug_name(), ":")[2]
+--     if name == "emmet_ls" then
+--       return not in_capture("return_statement")
+--     end
+--   end
+-- end
+
 -- Window customization
 local cmp_win_options = {
   scrollbar = "│",
@@ -39,8 +50,6 @@ cmp.setup({
   min_length = 3,
   preselect = cmp.PreselectMode.None,
   performance = {
-    -- throttle_time = 500,
-    -- source_timeout = 200,
     -- throttle = 500,
     -- debounce = 100,
     -- debounce = 0,
@@ -48,13 +57,6 @@ cmp.setup({
     incomplete_delay = 300,
     max_view_entries = 12,
     fetching_timeout = 2000,
-  },
-  matching = {
-    disallow_fuzzy_matching = true,
-    disallow_fullfuzzy_matching = true,
-    disallow_partial_fuzzy_matching = true,
-    disallow_partial_matching = false,
-    disallow_prefix_unmatching = true,
   },
   max_abbr_width = 150,
   max_kind_width = 100,
@@ -75,12 +77,12 @@ cmp.setup({
       else
         fallback()
       end
-    end, {"i"}),
+    end, { "i" }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      -- elseif has_words_before() then
-      --     cmp.complete()
+      -- elseif cmp.visible() then
+      --   cmp.select_next_item()
       else
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "")
         -- fallback()
@@ -90,10 +92,10 @@ cmp.setup({
       luasnip.expand()
     end, { "s" }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
+      -- elseif cmp.visible() then
+      --   cmp.select_prev_item()
       else
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "")
         -- fallback()
@@ -105,8 +107,6 @@ cmp.setup({
   }),
 
   snippet = {
-    -- We recommend using *actual* snippet engine.
-    -- It's a simple implementation so it might not work in some of the cases.
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
@@ -115,7 +115,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "luasnip" },
     { name = "nvim_lsp", max_item_count = 20 },
-    -- { name = "nvim_lsp_signature_help" },
+    { name = "nvim_lsp_signature_help" },
     -- { name = "vim-dadbod-completion" },
     { name = "async_path" },
     {
@@ -194,8 +194,8 @@ cmp.setup({
 
   view = {
     entries = {
-      follow_cursor = false
-    }
+      follow_cursor = false,
+    },
     -- entries = "custom",
   },
 
