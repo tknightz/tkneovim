@@ -1,17 +1,6 @@
 local wk = require("which-key")
 local git_util = require("lib.git")
 
-local function stage_hunk()
-  if vim.api.nvim_win_get_option(0, "diff") then
-    vim.cmd("diffput")
-  else
-    vim.cmd("Gitsigns stage_hunk")
-  end
-
-  -- little hacking here cause I don't know how to back to normal mode
-  vim.api.nvim_input("<esc>")
-end
-
 wk.add({
   { "<leader>g", group = "git", mode = { "n", "v" } },
 
@@ -61,8 +50,8 @@ wk.add({
   { "<leader>ghp", "<cmd>Gitsigns previous_hunk<cr>", desc = "previous hunk" },
   { "<leader>ghv", "<cmd>Gitsigns preview_hunk<cr>", desc = "view hunk" },
   { "<leader>ghh", "<cmd>Gitsigns toggle_linehl<cr>", desc = "highlight toggle" },
-  { "<leader>ghs", stage_hunk, desc = "stage hunk", mode = { "n", "v" } },
-  { "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "undo stage hunk" },
+  { "<leader>ghs", ":Gitsigns stage_hunk<cr>", desc = "stage hunk", mode = { "n", "v" } },
+  { "<leader>ghu", ":Gitsigns undo_stage_hunk<cr>", desc = "undo stage hunk" },
 
   -- Git rebase
   { "<leader>gr", group = "rebase" },
@@ -70,7 +59,7 @@ wk.add({
   { "<leader>gra", "<cmd>Git rebase --abort<cr>", desc = "abort" },
 
   -- Visual mode
-  { "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", desc = "stage hunk", mode = "v" },
-  { "<leader>gS", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "undo_stage_hunk", mode = "v" },
-  { "<leader>gu", ":Gitsigns reset_hunk<CR>", desc = "reset_hunk", mode = "v" },
+  { "<leader>gs", ":Gitsigns stage_hunk<cr>", desc = "stage hunk", mode = {"v", "x"} },
+  { "<leader>gS", ":Gitsigns undo_stage_hunk<cr>", desc = "undo_stage_hunk", mode = {"v", "x"} },
+  { "<leader>gu", ":Gitsigns reset_hunk<cr>", desc = "reset_hunk", mode = {"v", "x"} },
 })

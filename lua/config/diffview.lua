@@ -7,8 +7,8 @@ require("diffview").setup({
   view = {
     merge_tool = {
       layout = "diff3_mixed",
-      disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
-    }
+      disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
+    },
   },
   file_panel = {
     win_config = {
@@ -22,25 +22,31 @@ require("diffview").setup({
     -- The `view` bindings are active in the diff buffers, only when the current
     -- tabpage is a Diffview.
     view = {
-      { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
+      { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
       { "n", "<Space>e", false },
     },
     file_panel = {
-      { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
-      { "n", "t",         actions.listing_style, { desc = "Toggle between 'list' and 'tree' views" } },
+      { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
+      { "n", "t", actions.listing_style, { desc = "Toggle between 'list' and 'tree' views" } },
       { "n", "<leader>e", false },
       { "n", "<Space>e", false },
     },
     panel = {
-      { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
+      { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
       { "n", "<Space>e", false },
     },
     file_history_panel = {
-      { "n", "<leader>n", actions.toggle_files,  { desc = "Toggle to the file panel" } },
+      { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
       { "n", "<Space>e", false },
     },
+  },
+  hooks = {
+    diff_buf_read = function(bufnr)
+      vim.opt_local.wrap = false
+      vim.opt_local.list = false
+    end,
   },
 })

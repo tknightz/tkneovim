@@ -149,7 +149,7 @@ telescope.setup({
         "%.min.js",
         "%.min.css",
         "%.map",
-        ".git/.*",
+        "^.git/.*",
       },
     },
     buffers = {

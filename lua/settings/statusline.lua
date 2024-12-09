@@ -23,6 +23,9 @@ function M.get_or_create_hl(hl)
     if fg_hl.link ~= nil then
       fg_hl = vim.api.nvim_get_hl(0, { name = fg_hl.link })
     end
+    if fg_hl.fg == nil then
+      fg_hl = vim.api.nvim_get_hl(0, { name = 'Normal' })
+    end
     vim.api.nvim_set_hl(0, hl_name, { bg = ("#%06x"):format(bg_hl.bg or 0), fg = ("#%06x"):format(fg_hl.fg or 0) })
     statusline_hls[hl] = true
   end
@@ -102,7 +105,7 @@ end
 ---@return string
 function M.git_branch_component()
   local head = vim.b.gitsigns_head
-  if not head then
+  if not head or head == "" then
     return string.format("%%#StatusLineGitSeparator#")
   end
 

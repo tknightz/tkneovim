@@ -76,4 +76,33 @@ M.read_file = function(path)
   end
 end
 
+M.debounce = function(func, timeout)
+  local timer = nil
+  return function(...)
+    local args = { ... }
+    if timer then
+      timer:stop()
+      timer:close()
+    end
+    timer = vim.loop.new_timer()
+    timer:start(
+      timeout,
+      0,
+      vim.schedule_wrap(function()
+        func(unpack(args))
+      end)
+    )
+  end
+end
+
+M.truncate_message = function(message, max_length)
+  if #message <= max_length then
+    return message
+  end
+  message = message:gsub("\n", " ")
+  local first_part = message:sub(1, 80)
+  local last_part = message:sub(-80)
+  return first_part .. "  " .. last_part
+end
+
 return M
