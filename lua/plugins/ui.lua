@@ -80,15 +80,6 @@ return {
     -- event = "User FilePost",
   },
 
-  -- Fast status line
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   event = "User FilePost",
-  --   config = function()
-  --     require("config.lualine")
-  --   end,
-  -- },
-
   {
     "luukvbaal/statuscol.nvim",
     config = function()

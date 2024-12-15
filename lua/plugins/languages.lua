@@ -3,7 +3,11 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle" },
-    build = "cd app && npm install && git reset --hard",
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
   },
   {
     "davidmh/mdx.nvim",

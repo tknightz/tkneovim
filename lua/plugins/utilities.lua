@@ -181,7 +181,8 @@ return {
   {
     "stevearc/quicker.nvim",
     opts = {},
-    event = "User FilePost",
+    -- event = "User FilePost",
+    ft = "qf",
   },
 
   -- A plugin to visualise and resolve merge conflicts in neovim
@@ -189,11 +190,13 @@ return {
     "akinsho/git-conflict.nvim",
     version = "*",
     config = true,
+    event = "User FilePost",
   },
 
   -- Jump to last edit
   {
     "ethanholz/nvim-lastplace",
+    event = "User FilePost",
     config = function()
       require("nvim-lastplace").setup({})
     end,
@@ -367,6 +370,14 @@ return {
     event = "User FilePost",
   },
 
+  -- powerful move text around
+  {
+    "fedepujol/move.nvim",
+    opts = {},
+    cmd = { "MoveBlock", "MoveLine", "MoveWord" },
+  },
+
+  -- pick the line when type :<line-number>
   {
     "nacro90/numb.nvim",
     opts = {},

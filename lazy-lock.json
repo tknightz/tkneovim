@@ -1,7 +1,7 @@
 {
   "auto-hlsearch.nvim": { "branch": "main", "commit": "8f28246d53e9478717ca3b51c8112083fbebd7e3" },
   "barbecue.nvim": { "branch": "main", "commit": "cd7e7da622d68136e13721865b4d919efd6325ed" },
-  "blink.cmp": { "branch": "main", "commit": "9fa3fe2d37975c6b5a8b9539ddce97d6d20357d7" },
+  "blink.cmp": { "branch": "main", "commit": "12d9ecd98055423fa76dfcf05b856967129b8847" },
   "bufdelete.nvim": { "branch": "master", "commit": "f6bcea78afb3060b198125256f897040538bcb81" },
   "comment-box.nvim": { "branch": "main", "commit": "06bb771690bc9df0763d14769b779062d8f12bc5" },
   "conform.nvim": { "branch": "master", "commit": "e76afe8f7976071fae308e31bf426f557a8ef339" },
@@ -24,6 +24,7 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "8e46de9241d3997927af12196bd8faa0ed08c29a" },
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
   "mdx.nvim": { "branch": "main", "commit": "ae83959b61a9fec8da228ebb5d6b045fd532d2cc" },
+  "move.nvim": { "branch": "main", "commit": "cccbd4ea9049ca5f99f025ffaddb7392359c7d6a" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "a77af2e764c5ed4038d27d1c463fa49cd4794e07" },
   "neoscroll.nvim": { "branch": "master", "commit": "f957373912e88579e26fdaea4735450ff2ef5c9c" },
   "nui.nvim": { "branch": "main", "commit": "b1b9b75a2d8041e1c2234f7448c61f8468a4258d" },

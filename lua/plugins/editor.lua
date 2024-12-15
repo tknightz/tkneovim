@@ -1,29 +1,4 @@
 return {
-  -- Providing completion out of the box
-  -- {
-  --   "iguanacucumber/magazine.nvim",
-  --   name = "nvim-cmp",
-  --   dependencies = {
-  --     { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
-  --     { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
-  --     { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
-  --     { "FelipeLema/cmp-async-path", url = "https://codeberg.org/FelipeLema/cmp-async-path" },
-  --     "saadparwaiz1/cmp_luasnip",
-  --     "hrsh7th/cmp-nvim-lsp-signature-help",
-  --   },
-  --   event = { "InsertEnter", "CmdlineEnter" },
-  --   config = function()
-  --     require("config.cmp")
-  --   end,
-  -- },
-  --
-  -- {
-  --   "abecodes/tabout.nvim",
-  --   lazy = true,
-  --   -- event = "InsertCharPre",
-  --   opts = {},
-  -- },
-
   {
     "saghen/blink.cmp",
     -- lazy = false, -- lazy loading handled internally
@@ -40,19 +15,6 @@ return {
       require("config.blink")
     end
   },
-
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   lazy = true,
-  --   version = "v2.*",
-  --   build = "make install_jsregexp",
-  --   dependencies = {
-  --     "rafamadriz/friendly-snippets",
-  --   },
-  --   config = function()
-  --     require("config.luasnip")
-  --   end,
-  -- },
 
   {
     "folke/ts-comments.nvim",
