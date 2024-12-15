@@ -23,6 +23,10 @@ local diagnostic_opts = {
   },
   signs = true,
   update_in_insert = true,
+  float = {
+    header = false,
+    border = "rounded",
+  },
 }
 
 vim.diagnostic.config(diagnostic_opts)

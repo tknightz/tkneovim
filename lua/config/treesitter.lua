@@ -1,5 +1,7 @@
 local ts_config = require("nvim-treesitter.configs")
 
+vim.treesitter.language.register('markdown', 'mdx')
+
 ts_config.setup({
   ensure_installed = {
     "javascript",

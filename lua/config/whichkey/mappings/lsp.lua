@@ -37,7 +37,7 @@ local function format()
 end
 
 local function toggle_linter()
-  -- local lint = require("lint")
+  local lint = require("lint")
 
   if vim.g.linter_enabled then
     lint.linters_by_ft = {}
@@ -50,14 +50,13 @@ end
 
 wk.add({
   { "<leader>l", group = "lsp", mode = { "n", "v" } },
-  { "<leader>la", "<cmd>Lspsaga code_action<CR>", desc = "actions" },
+  { "<leader>la", "<cmd>lua require('fastaction').code_action()<CR>", desc = "actions" },
   { "<leader>ls", function() vim.lsp.buf.signature_help() end, desc = "signature_help" },
-  { "<leader>lr", "<cmd>Lspsaga rename<CR>", desc = "rename" },
   { "<leader>ld", "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>", desc = "toggle diagnostics" },
-  { "<leader>li", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "issues" },
-  { "<leader>ln", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "next" },
+  { "<leader>li", "<cmd>lua vim.diagnostic.show()<CR>", desc = "issues" },
+  { "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "next" },
   { "<leader>lo", "<cmd>Outline<CR>", desc = "outline" },
-  { "<leader>lp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "prev" },
+  { "<leader>lp", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "prev" },
   { "<leader>lq", "<cmd>Trouble diagnostics<CR>", desc = "quickfix" },
   { "<leader>ll", toggle_linter, desc = "toggle_linter" },
   { "<leader>lf", format, desc = "format", mode = {"n", "v"} },

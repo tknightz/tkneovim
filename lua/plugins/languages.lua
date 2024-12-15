@@ -5,6 +5,12 @@ return {
     cmd = { "MarkdownPreviewToggle" },
     build = "cd app && npm install && git reset --hard",
   },
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ft = {"mdx"},
+  },
   -- {
   --   "nvim-neorg/neorg",
   --   -- build = ":Neorg sync-parsers",

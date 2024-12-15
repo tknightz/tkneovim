@@ -31,7 +31,7 @@ function fold_virt_text_handler(virtText, lnum, endLnum, width, truncate, ctx)
 end
 
 local provider_by_ft = {
-  typescriptreact = { 'lsp', 'indent' },
+  typescriptreact = { 'treesitter', 'indent' },
 }
 
 local ufo = require("ufo")

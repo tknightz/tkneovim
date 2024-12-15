@@ -1,7 +1,7 @@
 local notify = require("notify")
 
 notify.setup({
-  -- background_colour = "#000000",
+  -- background_colour = "NormalFloat",
   -- stages = "slide",
   on_open = function(win)
     local width = vim.api.nvim_win_get_width(win)

@@ -261,8 +261,8 @@ return {
 
   {
     "lukas-reineke/headlines.nvim",
-    ft = { "org", "norg", "markdown" },
-    config = true,
+    ft = { "org", "norg", "markdown", "mdx", "yaml" },
+    opts = {},
   },
 
   {
@@ -301,13 +301,6 @@ return {
       })
     end,
     cmd = { "SupermavenUseFree", "SupermavenStart" },
-  },
-
-  {
-    "abecodes/tabout.nvim",
-    lazy = true,
-    -- event = "InsertCharPre",
-    opts = {},
   },
 
   {

@@ -16,12 +16,13 @@ local options = {
     foldopen  = "󰧖",
     foldsep   = "│",
     foldclose = "󰧚",
-    vert = "┃",
+    vert = "│",
+    horiz = '─',
   },
 
   list           = true,
 
-  winblend       = 5,
+  winblend       = 0,
   pumblend       = 0,
 
   termguicolors  = true,
@@ -33,8 +34,9 @@ local options = {
   smartcase      = true,
   cmdheight      = 1,
   tw             = 79,
-  foldmethod     = "indent",
-  foldlevel      = 99,
+  foldlevelstart = 99,
+  foldmethod     = 'expr',
+  foldexpr       = 'nvim_treesitter#foldexpr()',
   foldcolumn     = "1",
   updatetime     = 100,
   timeoutlen     = 500,
@@ -67,7 +69,7 @@ local options = {
   winbar         = "    ",
 
   shada          = { "!", "'1000", "<50", "s10", "h" },
-  indentkeys     = "0{,0},0),0],:,(,0#,!^F,o,O,e"
+  -- indentkeys     = "0{,0},0),0],:,(,0#,!^F,o,O,e"
 }
 
 for option, value in pairs(options) do

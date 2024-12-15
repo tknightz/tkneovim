@@ -1,5 +1,5 @@
 vim.filetype.add({
-  extension = { http = "http", hurl = "hurl" },
+  extension = { http = "http", hurl = "hurl", mdx = "mdx" },
   -- filename = {
   --   ["Dockerfile-dev"] = 'dockerfile',
   -- },

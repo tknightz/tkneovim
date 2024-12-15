@@ -1,6 +1,6 @@
 -- sidebar highlight autocmd
 local sidebar_filetypes = require("lib.consts").sidebar_fts
-local special_fts =require("lib.consts").special_fts
+local special_fts = require("lib.consts").special_fts
 
 local augroup = vim.api.nvim_create_augroup("AutoBGSidebar", { clear = true })
 vim.api.nvim_create_autocmd("BufWinEnter", {

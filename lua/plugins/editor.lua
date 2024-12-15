@@ -1,36 +1,58 @@
 return {
   -- Providing completion out of the box
-  {
-    "yioneko/nvim-cmp",
-    branch = "perf-up",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      { "FelipeLema/cmp-async-path", url = "https://codeberg.org/FelipeLema/cmp-async-path" },
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      -- "L3MON4D3/LuaSnip",
-      -- "windwp/nvim-autopairs",
-    },
-    event = { "InsertEnter", "CmdlineEnter" },
-    config = function()
-      require("config.cmp")
-    end,
-  },
+  -- {
+  --   "iguanacucumber/magazine.nvim",
+  --   name = "nvim-cmp",
+  --   dependencies = {
+  --     { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+  --     { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+  --     { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+  --     { "FelipeLema/cmp-async-path", url = "https://codeberg.org/FelipeLema/cmp-async-path" },
+  --     "saadparwaiz1/cmp_luasnip",
+  --     "hrsh7th/cmp-nvim-lsp-signature-help",
+  --   },
+  --   event = { "InsertEnter", "CmdlineEnter" },
+  --   config = function()
+  --     require("config.cmp")
+  --   end,
+  -- },
+  --
+  -- {
+  --   "abecodes/tabout.nvim",
+  --   lazy = true,
+  --   -- event = "InsertCharPre",
+  --   opts = {},
+  -- },
 
   {
-    "L3MON4D3/LuaSnip",
-    lazy = true,
-    version = "v2.*",
-    build = "make install_jsregexp",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-    },
-    config = function()
-      require("config.luasnip")
-    end,
+    "saghen/blink.cmp",
+    -- lazy = false, -- lazy loading handled internally
+    event = "User FilePost",
+    -- optional: provides snippets for the snippet source
+    dependencies = "rafamadriz/friendly-snippets",
+
+    -- use a release tag to download pre-built binaries
+    -- version = "v0.*",
+    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    build = "cargo build --release",
+
+    config = function ()
+      require("config.blink")
+    end
   },
+
+  -- {
+  --   "L3MON4D3/LuaSnip",
+  --   lazy = true,
+  --   version = "v2.*",
+  --   build = "make install_jsregexp",
+  --   dependencies = {
+  --     "rafamadriz/friendly-snippets",
+  --   },
+  --   config = function()
+  --     require("config.luasnip")
+  --   end,
+  -- },
 
   {
     "folke/ts-comments.nvim",
@@ -57,8 +79,8 @@ return {
   -- Auto close brackets
   {
     "windwp/nvim-autopairs",
-    -- event = "InsertEnter",
-    lazy = true,
+    event = "InsertEnter",
+    -- lazy = true,
     config = function()
       local npairs = require("nvim-autopairs")
       local Rule = require("nvim-autopairs.rule")
@@ -79,31 +101,6 @@ return {
       })
     end,
   },
-
-  -- {
-  --   "mvllow/modes.nvim",
-  --   event = "BufRead",
-  --   opts = {
-  --     colors = {
-  --       copy = "#5a2971",
-  --       delete = "#7a3841",
-  --       insert = "#182826",
-  --       visual = "#2f3d5b",
-  --     },
-  --
-  --     -- Cursorline highlight opacity
-  --     line_opacity = 0.6,
-  --
-  --     -- Highlight cursor
-  --     set_cursor = true,
-  --
-  --     -- or ignored filetypes
-  --     set_cursorline = true,
-  --
-  --     -- Enable line number highlights to match cursorline
-  --     -- set_number = true,
-  --   },
-  -- },
 
   {
     "folke/flash.nvim",

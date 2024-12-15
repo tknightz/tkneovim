@@ -27,56 +27,43 @@ return {
     end,
   },
 
+  -- {
+  --   "Kyren223/lspsaga.nvim",
+  --   version = "main",
+  --   event = "LspAttach",
+  --   config = function()
+  --     require("config.lspsaga")
+  --   end,
+  -- },
   {
-    "Kyren223/lspsaga.nvim",
-    version = "main",
+    "Chaitanyabsprip/fastaction.nvim",
+    event = "LspAttach",
+    opts = {},
+    config = function(opts)
+      require("fastaction").setup(opts)
+
+      vim.keymap.set("n", "<leader>lr", ":IncRename ")
+    end
+  },
+
+  {
+    "smjonas/inc-rename.nvim",
     event = "LspAttach",
     config = function()
-      require("config.lspsaga")
+      require("inc_rename").setup()
     end,
   },
 
+  -- conform for formatting
   {
     "stevearc/conform.nvim",
     lazy = true,
-    opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-        -- Conform will run multiple formatters sequentially
-        python = { "isort", "black" },
-        -- Use a sub-list to run only the first available formatter
-        javascript = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
-        javascriptreact = { "prettier", "prettierd", "eslint", "eslint_d", stop_after_first = true },
-
-        json = { "prettier", "fixjson" },
-        jsonc = { "prettier", "fixjson" },
-
-        -- typescript = { "prettier", "eslint", "eslint_d", stop_after_first = true },
-        typescript = function(bufnr)
-          if require("conform").get_formatter_info("biome", bufnr).available then
-            return { "biome" }
-          else
-            return { "prettier", "eslint", "eslint_d", stop_after_first = true }
-          end
-        end,
-        typescriptreact = function(bufnr)
-          if require("conform").get_formatter_info("biome", bufnr).available then
-            return { "biome" }
-          else
-            return { "prettier", "eslint", "eslint_d", stop_after_first = true }
-          end
-        end,
-
-        css = { "prettier", stop_after_first = true },
-        astro = { "biome", "prettier", stop_after_first = true },
-
-        svelte = { "prettier", stop_after_first = true },
-
-        sql = { "sql_formatter" },
-      },
-    },
+    config = function()
+      require("config.conform")
+    end
   },
 
+  -- lint for diagnostics
   {
     "mfussenegger/nvim-lint",
     event = "LspAttach",
@@ -102,6 +89,7 @@ return {
     end,
   },
 
+  -- fidget for showing progress
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
