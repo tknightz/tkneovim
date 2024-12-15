@@ -36,7 +36,7 @@ require("edgy").setup({
       title = "Gitcommit",
       filter = function(_)
         local current_windows = vim.api.nvim_list_wins()
-        return #current_windows > 2
+        return #current_windows > 1
       end,
     },
     { ft = "DiffviewFileHistory" },

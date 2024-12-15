@@ -2,7 +2,7 @@ return {
   {
     "tknightz/onedark.nvim",
     dir = "~/Repos/onedark.nvim",
-    lazy = true,
+    -- lazy = true,
     -- priority = 1000,
     config = function()
       require("onedark").setup({
@@ -17,14 +17,6 @@ return {
       })
 
       vim.cmd("colorscheme onedark")
-    end,
-  },
-
-  -- Show dashboard first come
-  {
-    "glepnir/dashboard-nvim",
-    config = function()
-      require("config.dashboard")
     end,
   },
 
@@ -94,17 +86,9 @@ return {
   -- Rich features buffer indicator
   {
     "akinsho/nvim-bufferline.lua",
-    event = "VeryLazy",
+    event = "User FilePost",
     config = function(_, opts)
       require("config.bufferline")
-      -- Fix bufferline when restoring a session
-      vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-        callback = function()
-          vim.schedule(function()
-            pcall(nvim_bufferline)
-          end)
-        end,
-      })
     end,
   },
 

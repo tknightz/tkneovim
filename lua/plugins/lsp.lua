@@ -40,6 +40,7 @@ return {
   -- },
   {
     "Chaitanyabsprip/fastaction.nvim",
+    commit = "aa72077466580df1af1c70e6c45dc551fd2aabe2",
     event = "LspAttach",
     opts = {},
     config = function(opts)
@@ -90,23 +91,6 @@ return {
     config = function()
       require("config.outline")
     end,
-  },
-
-  -- fidget for showing progress
-  {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    opts = {
-      progress = {
-        ignore_empty_message = false,
-        display = {
-          progress_icon = {
-            pattern = "arc",
-          },
-          done_icon = " ",
-        },
-      },
-    },
   },
 
   {

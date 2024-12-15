@@ -1,4 +1,14 @@
 return {
+  -- snacks
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("config.snacks")
+    end
+  },
+
   -- Fuzzy search all the stuffs
   {
     "nvim-telescope/telescope.nvim",
@@ -55,12 +65,6 @@ return {
         large_file_cutoff = 2000,
       })
     end,
-  },
-
-  -- Better buffer delete
-  {
-    "famiu/bufdelete.nvim",
-    cmd = { "Bdelete", "Bwipeout" },
   },
 
   -- Quickly jump between windows
@@ -137,20 +141,13 @@ return {
   },
 
   -- Nice looking notifications with animation
-  {
-    "rcarriga/nvim-notify",
-    module = "notify",
-    config = function()
-      require("config.notify")
-    end,
-  },
-
-  -- Smooth scrolling
-  {
-    "karb94/neoscroll.nvim",
-    event = "User FilePost",
-    opts = {},
-  },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   module = "notify",
+  --   config = function()
+  --     require("config.notify")
+  --   end,
+  -- },
 
   -- Organize keymaps
   {

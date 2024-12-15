@@ -6,11 +6,6 @@ return {
     cmd = { "Git" },
   },
 
-  -- {
-  --   "tknightz/basic-git.nvim",
-  --   dir = "~/Repos/basic-git.nvim"
-  -- },
-
   -- Single tabpage interface for easily cycling through diffs for all modified
   -- files for any git rev.
   {

@@ -26,7 +26,11 @@ return {
   {
     "chrisgrieser/nvim-various-textobjs",
     event = "User FilePost",
-    opts = { useDefaultKeymaps = true },
+    opts = {
+      keymaps = {
+        useDefaults = true
+      },
+    },
   },
 
   {

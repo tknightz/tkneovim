@@ -25,6 +25,7 @@ local options = {
   winblend       = 0,
   pumblend       = 0,
 
+  tabline        = '',
   termguicolors  = true,
   -- undofile    = true,
   signcolumn     = "auto:1-2",

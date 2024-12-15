@@ -4,7 +4,7 @@ wk.add({
   { "<leader>b", group = "buffers" },
   { "<leader>bn", "<cmd>bnext<cr>", desc = "next" },
   { "<leader>bp", "<cmd>bprevious<cr>", desc = "previous" },
-  { "<leader>bd", "<cmd>Bdelete<cr>", desc = "delete" },
+  { "<leader>bd", "<cmd>lua Snacks.bufdelete()<cr>", desc = "delete" },
   { "<leader>bi", "<cmd>Telescope buffers<cr>", desc = "iBuffers" },
   { "<leader>bj", "<cmd>BufferLinePick<cr>", desc = "jump" },
   { "<leader>bs", "<cmd>BufferLineSortByRelativeDirectory<cr>", desc = "sort" },

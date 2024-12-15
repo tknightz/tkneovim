@@ -31,80 +31,14 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   desc = "Bg color for sidebar",
 })
 
--- Print cursorline diagnostic message
--- listent to event CursorMoved to echohl the message of lsp diagnostic
-local cfg = {
-  [1] = {
-    icon = "  ",
-    hl = "DiagnosticError",
-  },
-  [2] = {
-    icon = " 󰀦 ",
-    hl = "DiagnosticWarn",
-  },
-  [3] = {
-    icon = " 󰋼 ",
-    hl = "DiagnosticInfo",
-  },
-  [4] = {
-    icon = "  ",
-    hl = "DiagnosticHint",
-  },
-}
 
--- Cache for dynamically created highlight groups
-local hl_cache = {}
-
--- Function to create or reuse a styled highlight group
-local function get_styled_hl_group(base_hl)
-  if hl_cache[base_hl] then
-    return hl_cache[base_hl]
+-- disable edgy when open neovim to do git commit
+vim.api.nvim_create_autocmd("BufReadPre", {
+  pattern = "COMMIT_EDITMSG",
+  callback = function(opts)
+    local current_windows = vim.api.nvim_list_wins()
+    if #current_windows == 1 then
+      vim.b[opts.buf].edgy_disable = true
+    end
   end
-
-  -- Get the color details of the base highlight group
-  local hl_def = vim.api.nvim_get_hl_by_name(base_hl, true)
-  if not hl_def.foreground then
-    return base_hl -- Fallback to the base highlight group
-  end
-
-  -- Create a new highlight group name
-  local new_hl = base_hl .. "_Bold"
-  vim.api.nvim_set_hl(0, new_hl, { fg = string.format("#%06x", hl_def.foreground), bold = true })
-
-  -- Cache and return the new highlight group name
-  hl_cache[base_hl] = new_hl
-  return new_hl
-end
-
--- Function to check diagnostics and print a message
-local function check_diagnostics()
-  -- Check if current buffer is attached to an LSP client
-  local buf_clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
-  if vim.tbl_isempty(buf_clients) then
-    return
-  end
-
-  local current_line = vim.api.nvim_win_get_cursor(0)[1] - 1 -- Get current line (0-indexed)
-  local diagnostics = vim.diagnostic.get(0, { lnum = current_line })
-  if diagnostics and diagnostics[1] then
-    local message = truncate_message(diagnostics[1].message, 160)
-    local config = cfg[diagnostics[1].severity]
-    local styled_hl_group = get_styled_hl_group(config.hl)
-    vim.api.nvim_echo({ { string.format("(%s) %s", config.icon, message), styled_hl_group } }, false, {})
-  else
-    vim.api.nvim_echo({ { "" } }, false, {})
-  end
-end
-
--- Create a debounced version of the diagnostic check function
-local debounced_check_diagnostics = debounce(check_diagnostics, 300)
-
--- Set up the autocmd for CursorMoved only inside LspAttach
-vim.api.nvim_create_autocmd("LspAttach", {
-  once = true,
-  callback = function()
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      callback = debounced_check_diagnostics,
-    })
-  end,
 })

@@ -1,5 +1,6 @@
 require("neo-tree").setup({
   close_if_last_window = true,
+  open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy" },
   default_component_configs = {
     git_status = {
       symbols = {

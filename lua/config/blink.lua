@@ -34,8 +34,23 @@ require("blink.cmp").setup({
       winblend = 0,
       scrollbar = true,
       draw = {
+        align_to_component = "kind",
+        treesitter = true,
         padding = 1,
-        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 0 } },
+        gap = 2,
+        columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind" } },
+        components = {
+          kind = {
+            ellipsis = false,
+            width = { fill = true },
+            text = function(ctx)
+              return ctx.kind
+            end,
+            highlight = function(ctx)
+              return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx) or ("BlinkCmpKindText" .. ctx.kind)
+            end,
+          },
+        },
       },
       winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
     },
