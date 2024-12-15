@@ -1,11 +1,9 @@
-local special_fts = require("lib.consts").special_fts
-
 -- auto enter insert mode when jump to terminal buffer
 local terminal_group = vim.api.nvim_create_augroup("Terminal", {})
 vim.api.nvim_create_autocmd("WinEnter", {
   pattern = "*",
   group = terminal_group,
-  callback = function(args)
+  callback = function()
     if vim.bo.filetype ~= "toggleterm" then
       return
     end
@@ -48,3 +46,43 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     end
   end,
 })
+
+
+-- listent to event CursorMoved to echohl the message of lsp diagnostic
+local cfg = {
+  [1] = {
+    icon = " ",
+    hl = "DiagnosticError"
+  },
+  [2] = {
+    icon = "󰀦 ",
+    hl = "DiagnosticWarn"
+  },
+  [3] = {
+    icon = "󰋼 ",
+    hl = "DiagnosticInfo"
+  },
+  [4] = {
+    icon = " ",
+    hl = "DiagnosticHint"
+  },
+}
+-- vim.api.nvim_create_autocmd("CursorMoved", {
+--   callback = function()
+--     if vim.g.loaded_lsp == 0 then
+--       return
+--     end
+--
+--     local current_line = vim.api.nvim_win_get_cursor(0)[1]
+--     local diagnostics = vim.diagnostic.get(0, { lnum = current_line - 1 })
+--
+--     if diagnostics and diagnostics[1] then
+--       local message = diagnostics[1].message
+--       message = string.sub(message, 1, 160)
+--       local config = cfg[diagnostics[1].severity]
+--       vim.api.nvim_echo({ { string.format("(%s) %s", config.icon, message), config.hl } }, false, {})
+--     else
+--       vim.api.nvim_echo({ { "" } }, false, {})
+--     end
+--   end,
+-- })

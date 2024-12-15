@@ -5,6 +5,7 @@ return {
     event = "User FilePost",
     -- optional: provides snippets for the snippet source
     dependencies = "rafamadriz/friendly-snippets",
+    version = 'v0.*',
 
     -- use a release tag to download pre-built binaries
     -- version = "v0.*",

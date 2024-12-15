@@ -26,7 +26,6 @@ return {
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
     cmd = { "Neotree" },
@@ -282,7 +281,6 @@ return {
     event = "User FilePost",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     config = function()
       local theme = require("onedark.barbecue")

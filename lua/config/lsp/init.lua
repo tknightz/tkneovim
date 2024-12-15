@@ -16,11 +16,12 @@ end
 
 local diagnostic_opts = {
   underline = true,
-  virtual_text = {
-    prefix = "  ",
-    suffix = " ",
-    spacing = 5,
-  },
+  -- virtual_text = {
+  --   prefix = "  ",
+  --   suffix = " ",
+  --   spacing = 5,
+  -- },
+  virtual_text = false,
   signs = true,
   update_in_insert = true,
   float = {

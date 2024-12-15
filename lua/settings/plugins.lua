@@ -28,8 +28,26 @@ require("lazy").setup({
       "packspec",
     },
   },
+  -- defaults = { lazy = true },
   rocks = {
     root = vim.fn.stdpath("data") .. "/lazy-rocks",
     server = "https://nvim-neorocks.github.io/rocks-binaries/",
+  },
+  ui = { border = "rounded" },
+  debug = false,
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
   },
 })

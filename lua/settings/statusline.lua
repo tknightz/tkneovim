@@ -20,6 +20,9 @@ function M.get_or_create_hl(hl)
     -- and the statusline's background color.
     local bg_hl = vim.api.nvim_get_hl(0, { name = "StatusLine" })
     local fg_hl = vim.api.nvim_get_hl(0, { name = hl })
+    if fg_hl.link ~= nil then
+      fg_hl = vim.api.nvim_get_hl(0, { name = fg_hl.link })
+    end
     vim.api.nvim_set_hl(0, hl_name, { bg = ("#%06x"):format(bg_hl.bg or 0), fg = ("#%06x"):format(fg_hl.fg or 0) })
     statusline_hls[hl] = true
   end
@@ -128,7 +131,7 @@ function M.get_icon_by_filetype(filetype)
 
   local icon, icon_hl
   if special_icons[filetype] then
-    icon, icon_hl = unpack(special_icons[filetype])
+    icon, icon_hl = table.unpack(special_icons[filetype])
   else
     local buf_name = vim.api.nvim_buf_get_name(0)
     local name, ext = vim.fn.fnamemodify(buf_name, ":t"), vim.fn.fnamemodify(buf_name, ":e")
@@ -162,8 +165,6 @@ end
 ---@return string
 function M.filename_component()
   local filename = vim.fn.expand("%:.")
-  local filetype = vim.bo.filetype
-
   local icon, icon_hl = M.get_icon_by_filetype(vim.bo.filetype)
   return string.format(" %%#%s#%s %%#StatusLineTitle#%s", icon_hl, icon, filename)
 end
@@ -244,7 +245,7 @@ function M.git_status_component()
   }
   local keys = { "added", "changed", "removed" }
   local components = {}
-  for i, key in pairs(keys) do
+  for _, key in pairs(keys) do
     if status[key] ~= nil and status[key] > 0  then
       table.insert(
         components,

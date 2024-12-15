@@ -2,7 +2,8 @@ return {
   {
     "tknightz/onedark.nvim",
     dir = "~/Repos/onedark.nvim",
-    priority = 1000,
+    lazy = true,
+    -- priority = 1000,
     config = function()
       require("onedark").setup({
         style = "dark",
@@ -37,27 +38,47 @@ return {
     },
   },
 
-  -- Icons for some other stuffs
   {
-    "nvim-tree/nvim-web-devicons",
+    "echasnovski/mini.icons",
+    lazy = true,
     opts = {
-      override = {
-        norg = {
-          icon = "󱗃",
-          color = "#ff557f",
-          cterm_color = "65",
-          name = "Orgmode",
-        },
-        http = {
-          icon = "",
-          color = "#ff557f",
-          cterm_color = "65",
-          name = "http",
-        },
+      file = {
+        [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+        ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+      },
+      filetype = {
+        dotenv = { glyph = "", hl = "MiniIconsYellow" },
       },
     },
-    module = "nvim-web-devicons",
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
   },
+
+  -- Icons for some other stuffs
+  -- {
+  --   "nvim-tree/nvim-web-devicons",
+  --   opts = {
+  --     override = {
+  --       norg = {
+  --         icon = "󱗃",
+  --         color = "#ff557f",
+  --         cterm_color = "65",
+  --         name = "Orgmode",
+  --       },
+  --       http = {
+  --         icon = "",
+  --         color = "#ff557f",
+  --         cterm_color = "65",
+  --         name = "http",
+  --       },
+  --     },
+  --   },
+  --   module = "nvim-web-devicons",
+  -- },
 
   -- Fastest color parser Neovim
   {
@@ -73,11 +94,18 @@ return {
   -- Rich features buffer indicator
   {
     "akinsho/nvim-bufferline.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
+    event = "VeryLazy",
+    config = function(_, opts)
       require("config.bufferline")
+      -- Fix bufferline when restoring a session
+      vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
+        end,
+      })
     end,
-    -- event = "User FilePost",
   },
 
   {

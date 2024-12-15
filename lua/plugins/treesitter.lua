@@ -1,8 +1,13 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
-    -- event = { "BufRead" },
+    event = { "User FilePost", "VeryLazy" },
+    lazy = vim.fn.argc(-1) == 0,
+    init = function(plugin)
+      -- copy from lazynvim
+      require("lazy.core.loader").add_to_rtp(plugin)
+      require("nvim-treesitter.query_predicates")
+    end,
     build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = false })
       ts_update()
@@ -15,7 +20,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = { "BufReadPost" },
+    event = "User FilePost",
   },
 
   {

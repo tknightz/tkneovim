@@ -53,7 +53,7 @@ wk.add({
   { "<leader>la", "<cmd>lua require('fastaction').code_action()<CR>", desc = "actions" },
   { "<leader>ls", function() vim.lsp.buf.signature_help() end, desc = "signature_help" },
   { "<leader>ld", "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>", desc = "toggle diagnostics" },
-  { "<leader>li", "<cmd>lua vim.diagnostic.show()<CR>", desc = "issues" },
+  { "<leader>li", "<cmd>lua vim.diagnostic.open_float({ scope = 'line' })<CR>", desc = "issues" },
   { "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "next" },
   { "<leader>lo", "<cmd>Outline<CR>", desc = "outline" },
   { "<leader>lp", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "prev" },
