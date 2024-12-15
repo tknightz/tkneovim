@@ -23,21 +23,26 @@ local dashboard = {
 }
 
 local indent = {
+  animate = {
+    enabled = true,
+    easing = "inSine",
+  },
   scope = {
-    -- animate scopes. Enabled by default for Neovim >= 0.10
-    -- Works on older versions but has to trigger redraws during animation.
-    animate = {
-      enabled = true,
-      easing = "inSine",
-      duration = {
-        step = 20, -- ms per step
-        total = 500, -- maximum duration
-      },
-    },
+    enabled = true,
     char = "│",
     underline = true, -- underline the start of the scope
-    only_current = false, -- only show scope in the current window
+    only_current = true, -- only show scope in the current window
   },
+  chunk = {
+    enabled = true,
+    char = {
+      corner_top = "╭",
+      corner_bottom = "╰",
+      horizontal = "─",
+      vertical = "│",
+      arrow = ">",
+    },
+  }
 }
 
 require("snacks").setup({
@@ -47,10 +52,9 @@ require("snacks").setup({
   notifier = { enabled = true },
   quickfile = { enabled = true },
   scope = {
-    max_size = 1000,
+    enabled = true,
   },
-  -- indent = indent,
-  indent = { enabled = false },
+  indent = indent,
   scroll = { enabled = true },
   statuscolumn = { enabled = false },
   words = { enabled = false },

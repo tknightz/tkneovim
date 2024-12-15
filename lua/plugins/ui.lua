@@ -1,7 +1,7 @@
 return {
   {
     "tknightz/onedark.nvim",
-    dir = "~/Repos/onedark.nvim",
+    -- dir = "~/Repos/onedark.nvim",
     -- lazy = true,
     -- priority = 1000,
     config = function()

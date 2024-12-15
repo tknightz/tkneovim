@@ -4,7 +4,7 @@ function fold_virt_text_handler(virtText, lnum, endLnum, width, truncate, ctx)
   local sufWidth = vim.fn.strdisplaywidth(suffix)
   local targetWidth = width - sufWidth
   local curWidth = 0
-  table.insert(virtText, { filling, "Comment" })
+  table.insert(virtText, { filling, "SpecialComment" })
   local endVirtText = ctx.get_fold_virt_text(endLnum)
   for i, chunk in ipairs(endVirtText) do
     local chunkText = chunk[1]

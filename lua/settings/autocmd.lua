@@ -55,19 +55,19 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 -- ╰─────────────────────────────────────────────────────────╯
 local cfg = {
   [1] = {
-    icon = "  ",
+    icon = "",
     hl = "DiagnosticError",
   },
   [2] = {
-    icon = " 󰀦 ",
+    icon = "󰀦",
     hl = "DiagnosticWarn",
   },
   [3] = {
-    icon = " 󰋼 ",
+    icon = "󰋼",
     hl = "DiagnosticInfo",
   },
   [4] = {
-    icon = "  ",
+    icon = "",
     hl = "DiagnosticHint",
   },
 }
@@ -110,7 +110,7 @@ local function check_diagnostics()
     local message = truncate_message(diagnostics[1].message, 160)
     local config = cfg[diagnostics[1].severity]
     local styled_hl_group = get_styled_hl_group(config.hl)
-    vim.api.nvim_echo({ { string.format("(%s) %s", config.icon, message), styled_hl_group } }, false, {})
+    vim.api.nvim_echo({ { string.format("%s    %s", config.icon, message), styled_hl_group } }, false, {})
   else
     vim.api.nvim_echo({ { "" } }, false, {})
   end

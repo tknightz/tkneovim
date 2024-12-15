@@ -91,24 +91,24 @@ return {
   },
 
   -- Indent guides for Neovim
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = "User FilePost",
-    config = function()
-      local special_fts = require("lib.consts").special_fts
-
-      require("ibl").setup({
-        indent = {
-          char = "│",
-        },
-        scope = { enabled = true },
-        exclude = {
-          filetypes = special_fts,
-        },
-      })
-    end,
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   event = "User FilePost",
+  --   config = function()
+  --     local special_fts = require("lib.consts").special_fts
+  --
+  --     require("ibl").setup({
+  --       indent = {
+  --         char = "│",
+  --       },
+  --       scope = { enabled = true },
+  --       exclude = {
+  --         filetypes = special_fts,
+  --       },
+  --     })
+  --   end,
+  -- },
 
   -- Even better % navigate and highlight matching words
   {
@@ -192,10 +192,8 @@ return {
   -- Jump to last edit
   {
     "ethanholz/nvim-lastplace",
-    event = "User FilePost",
-    config = function()
-      require("nvim-lastplace").setup({})
-    end,
+    event = "BufReadPre",
+    opts = {}
   },
 
   {

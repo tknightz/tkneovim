@@ -2,6 +2,7 @@ local options = {
   listchars = {
     -- tab            = "  ",
     lead           = " ",
+    leadmultispace = "│ ",
     precedes       = "←",
     extends        = "→",
     eol            = "↩",
