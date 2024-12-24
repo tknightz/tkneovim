@@ -44,7 +44,7 @@ ts_config.setup({
   -- },
   indent = {
     enable = true,
-    -- disable = { "python", "typescriptreact" },
+    disable = { "gdscript" },
   },
   matchup = {
     enable = true,

@@ -11,6 +11,7 @@ require("edgy").setup({
         return vim.api.nvim_win_get_config(win).relative == ""
       end,
     },
+    { ft = "basicgit", title = "Basic Git" },
     { ft = "dbout", title = "Dadbod Result" },
     { ft = "dbee-result", title = "DBEE Result" },
     {

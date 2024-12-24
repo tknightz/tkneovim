@@ -2,25 +2,27 @@ local debounce = require("lib").debounce
 local truncate_message = require("lib").truncate_message
 
 -- sidebar highlight autocmd
-local sidebar_filetypes = require("lib.consts").sidebar_fts
+local is_sidebar_ft = require("lib.consts").is_sidebar_ft
+local is_special_ft = require("lib.consts").is_special_ft
 local special_fts = require("lib.consts").special_fts
 
 local augroup = vim.api.nvim_create_augroup("AutoBGSidebar", { clear = true })
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = augroup,
   callback = function(opts)
-    local ft = vim.api.nvim_buf_get_option(opts.buf, "filetype")
+    local ft = vim.api.nvim_get_option_value("filetype", { buf = opts.buf })
     -- turn off miniindentscope in special files
-    if vim.tbl_contains(special_fts, ft) then
+    if is_special_ft(ft) then
       vim.api.nvim_buf_set_var(opts.buf, "miniindentscope_disable", true)
     end
 
-    if not vim.tbl_contains(sidebar_filetypes, ft) then
+    if not is_sidebar_ft(ft) then
       return
     end
 
     vim.api.nvim_buf_set_var(opts.buf, "miniindentscope_disable", true)
     vim.api.nvim_command("setlocal nolist")
+    vim.api.nvim_command("setlocal winfixbuf")
     vim.api.nvim_command("setlocal foldcolumn=0")
     vim.api.nvim_command("setlocal signcolumn=no")
     vim.api.nvim_command("setlocal nonumber norelativenumber")
@@ -31,7 +33,6 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   desc = "Bg color for sidebar",
 })
 
-
 -- disable edgy when open neovim to do git commit
 vim.api.nvim_create_autocmd("BufReadPre", {
   pattern = "COMMIT_EDITMSG",
@@ -40,5 +41,11 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     if #current_windows == 1 then
       vim.b[opts.buf].edgy_disable = true
     end
-  end
+  end,
 })
+
+
+-- local projectfile = vim.fn.getcwd() .. '/project.godot'
+-- if projectfile then
+--   vim.fn.serverstart '/tmp/godot.pipe'
+-- end

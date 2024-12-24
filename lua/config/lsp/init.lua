@@ -72,6 +72,8 @@ registry.refresh(function()
   local installed_servers = require("mason-lspconfig").get_installed_servers()
   local consts = require("config.lsp.mason.consts")
 
+  installed_servers = vim.tbl_extend("force", installed_servers, consts.manual_servers)
+
   for _, server in pairs(installed_servers) do
     local custom_config = consts.custom_configs[server]
 

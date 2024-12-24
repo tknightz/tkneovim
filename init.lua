@@ -6,6 +6,7 @@ require("settings.autocmd")
 require("settings.commands")
 require("settings.mappings")
 require("settings.statusline")
+require("settings.foldtext")
 require("settings.postload")
 
 -- require("settings.gui")

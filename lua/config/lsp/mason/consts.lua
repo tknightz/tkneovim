@@ -8,10 +8,13 @@ M.general_configs = {
   capabilities = preset.capabilities,
   on_attach = preset.on_attach,
   flags = {
-    debounce_text_changes = 1000
+    debounce_text_changes = 1000,
   },
   init_options = { hostInfo = "neovim" },
 }
+
+-- manual servers are added outside of mason
+M.manual_servers = { "gdscript" }
 
 -- custom configs for specify server
 M.custom_configs = {
@@ -29,10 +32,10 @@ M.custom_configs = {
     settings = {
       css = {
         lint = {
-          unknownAtRules = "ignore"
-        }
-      }
-    }
+          unknownAtRules = "ignore",
+        },
+      },
+    },
   },
 
   emmet_language_server = {
@@ -73,6 +76,7 @@ M.custom_configs = {
       },
     },
   },
+
   tsserver = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", ".git"),

@@ -1,26 +1,24 @@
 return {
-  -- snacks
+  -- Snacks - set of some tiny useful plugins (tiny and useful I mean)
   {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
     config = function()
       require("config.snacks")
-    end
+    end,
   },
 
   -- Fuzzy search all the stuffs
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      -- { "nvim-lua/popup.nvim", module = "popup" },
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
       "tknightz/telescope-termfinder.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
       },
     },
 
@@ -31,6 +29,24 @@ return {
     end,
   },
 
+  -- {
+  --   "ibhagwan/fzf-lua",
+  --   cmd = { "FzfLua" },
+  --   dependencies = { "echasnovski/mini.icons" },
+  --   config = function()
+  --     require("fzf-lua").setup({
+  --       winopts = {
+  --         split = "belowright new",
+  --       },
+  --       defaults = {
+  --         file_icons = "mini",
+  --         copen = "topleft copen",
+  --       },
+  --     })
+  --   end,
+  -- },
+
+  -- Neo-tree - file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -41,15 +57,6 @@ return {
     cmd = { "Neotree" },
     config = function()
       require("config.neotree")
-    end,
-  },
-
-  {
-    "kevinhwang91/nvim-ufo",
-    dependencies = { "kevinhwang91/promise-async" },
-    event = "User FilePost",
-    config = function()
-      require("config.ufo")
     end,
   },
 
@@ -67,7 +74,7 @@ return {
     end,
   },
 
-  -- Quickly jump between windows
+  -- Quickly jump between windows (integrate with neo-tree)
   {
     "s1n7ax/nvim-window-picker",
     module = "window-picker",
@@ -90,26 +97,6 @@ return {
     end,
   },
 
-  -- Indent guides for Neovim
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   main = "ibl",
-  --   event = "User FilePost",
-  --   config = function()
-  --     local special_fts = require("lib.consts").special_fts
-  --
-  --     require("ibl").setup({
-  --       indent = {
-  --         char = "│",
-  --       },
-  --       scope = { enabled = true },
-  --       exclude = {
-  --         filetypes = special_fts,
-  --       },
-  --     })
-  --   end,
-  -- },
-
   -- Even better % navigate and highlight matching words
   {
     "andymass/vim-matchup",
@@ -127,27 +114,12 @@ return {
     end,
   },
 
-  -- Better search
+  -- Better search, auto turn off highlight after search
   {
-    "asiryk/auto-hlsearch.nvim",
-    version = "1.1.0",
-    config = function()
-      require("auto-hlsearch").setup({
-        remap_keys = { "/", "?", "*", "!", "#", "n", "N" },
-        create_commands = true,
-      })
-    end,
-    keys = { "/", "?", "*", "#" },
+    "nvimdev/hlsearch.nvim",
+    event = "BufRead",
+    opts = {},
   },
-
-  -- Nice looking notifications with animation
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   module = "notify",
-  --   config = function()
-  --     require("config.notify")
-  --   end,
-  -- },
 
   -- Organize keymaps
   {
@@ -159,6 +131,7 @@ return {
     end,
   },
 
+  -- Better quickfix with preview
   {
     "kevinhwang91/nvim-bqf",
     config = function()
@@ -174,6 +147,7 @@ return {
     ft = "qf",
   },
 
+  -- Quicker - better quickfix UI
   {
     "stevearc/quicker.nvim",
     opts = {},
@@ -193,9 +167,10 @@ return {
   {
     "ethanholz/nvim-lastplace",
     event = "BufReadPre",
-    opts = {}
+    opts = {},
   },
 
+  -- Toggleterm - better terminal
   {
     "akinsho/toggleterm.nvim",
     version = "*",
@@ -210,12 +185,7 @@ return {
     end,
   },
 
-  -- {
-  --   "m-demare/hlargs.nvim",
-  --   opts = {},
-  --   event = "User FilePost",
-  -- },
-
+  -- Join and split lines
   {
     "Wansmer/treesj",
     cmd = { "TSJToggle" },
@@ -226,12 +196,14 @@ return {
     end,
   },
 
+  -- Add comment box like its name
   {
     "LudoPinelli/comment-box.nvim",
     cmd = { "CBlcline", "CBlcbox" },
     opts = {},
   },
 
+  -- Rainbow delimiters for parentheses, brackets, braces, etc.
   {
     "HiPhish/rainbow-delimiters.nvim",
     event = "User FilePost",
@@ -256,12 +228,14 @@ return {
     end,
   },
 
-  {
-    "lukas-reineke/headlines.nvim",
-    ft = { "org", "norg", "markdown", "mdx", "yaml" },
-    opts = {},
-  },
+  -- -- Headlines - headlines for markdown
+  -- {
+  --   "lukas-reineke/headlines.nvim",
+  --   ft = { "org", "norg", "markdown", "mdx", "yaml" },
+  --   opts = {},
+  -- },
 
+  -- Edgy - organize your sidebar and special windows
   {
     "folke/edgy.nvim",
     event = "BufEnter",
@@ -270,6 +244,7 @@ return {
     end,
   },
 
+  -- Barbecue - display breadcrumbs
   {
     "utilyre/barbecue.nvim",
     version = "*",
@@ -285,6 +260,7 @@ return {
     end,
   },
 
+  -- Supermaven - AI assistant
   {
     "supermaven-inc/supermaven-nvim",
     config = function()
@@ -299,6 +275,7 @@ return {
     cmd = { "SupermavenUseFree", "SupermavenStart" },
   },
 
+  -- Kulala - http client
   {
     "mistweaverco/kulala.nvim",
     ft = "http",
@@ -311,18 +288,21 @@ return {
     end,
   },
 
+  -- Autotag - automatically close and rename html tags
   {
     "windwp/nvim-ts-autotag",
     event = { "BufReadPre", "BufNewFile" },
     opts = {},
   },
 
+  -- Grug-far - find and replace text
   {
     "MagicDuck/grug-far.nvim",
     opts = {},
     cmd = { "GrugFar" },
   },
 
+  -- Automatically remove buffer when it's not used for a while
   {
     "chrisgrieser/nvim-early-retirement",
     config = true,
@@ -333,6 +313,7 @@ return {
     event = "User FilePost",
   },
 
+  -- Yanky - copy and paste text
   {
     "gbprod/yanky.nvim",
     opts = {
@@ -370,7 +351,7 @@ return {
     cmd = { "MoveBlock", "MoveLine", "MoveWord" },
   },
 
-  -- pick the line when type :<line-number>
+  -- peek the line when type :<line-number>
   {
     "nacro90/numb.nvim",
     opts = {},

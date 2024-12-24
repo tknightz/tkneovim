@@ -30,5 +30,7 @@ require("conform").setup({
     svelte = { "prettier", stop_after_first = true },
 
     sql = { "sql_formatter" },
+
+    gdscript = { "gdformat" },
   },
 })

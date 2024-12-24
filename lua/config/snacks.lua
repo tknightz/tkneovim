@@ -1,3 +1,5 @@
+local is_special_ft = require("lib.consts").is_special_ft
+
 local dashboard = {
   enabled = true,
   autokeys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
@@ -55,7 +57,13 @@ require("snacks").setup({
     enabled = true,
   },
   indent = indent,
-  scroll = { enabled = true },
+  scroll = {
+    enabled = true,
+    filter = function(buf)
+      local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
+      return vim.g.snacks_scroll ~= false and vim.b[buf].snacks_scroll ~= false and is_special_ft(filetype) == false
+    end
+  },
   statuscolumn = { enabled = false },
   words = { enabled = false },
 })

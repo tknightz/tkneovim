@@ -36,7 +36,7 @@ require("blink.cmp").setup({
       -- direction_priority = { "e", "w", "n", "s" },
       draw = {
         -- align_to_component = "kind",
-        treesitter = true,
+        treesitter = { "lsp" },
         padding = 1,
         gap = 2,
         columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind" } },
@@ -48,7 +48,8 @@ require("blink.cmp").setup({
               return ctx.kind
             end,
             highlight = function(ctx)
-              return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx) or ("BlinkCmpKindText" .. ctx.kind)
+              return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
+                or ("BlinkCmpKindText" .. ctx.kind)
             end,
           },
         },
@@ -59,14 +60,6 @@ require("blink.cmp").setup({
       window = {
         border = "rounded",
         winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
-        -- which directions to show the documentation window,
-        -- for each of the possible autocomplete window directions,
-        -- falling back to the next direction when there's not enough space
-        direction_priority = {
-          autocomplete_north = { "e", "w", "n", "s" },
-          autocomplete_south = { "e", "w", "s", "n" },
-        },
-        -- Controls whether the documentation window will automatically show when selecting a completion item
       },
       auto_show = true,
       auto_show_delay_ms = 500,
@@ -74,6 +67,12 @@ require("blink.cmp").setup({
     },
     trigger = {
       show_in_snippet = false,
+      show_on_insert_on_trigger_character = false,
+      show_on_blocked_trigger_characters = { ",", " ", "\n", "\t" },
+    },
+    accept = {
+      create_undo_point = true,
+      auto_brackets = { enabled = true },
     },
     -- ghost_text = {
     --   enabled = true,
@@ -92,9 +91,20 @@ require("blink.cmp").setup({
   },
 
   sources = {
-    completion = {
-      enabled_providers = { "lsp", "path", "snippets", "buffer" },
-    },
+    default = { "lsp", "path", "snippets", "buffer" },
+
+    cmdline = function()
+      local type = vim.fn.getcmdtype()
+      -- Search forward and backward
+      if type == "/" or type == "?" then
+        return { "buffer" }
+      end
+      -- Commands
+      if type == ":" then
+        return { "cmdline" }
+      end
+      return {}
+    end,
 
     providers = {
       snippets = {
@@ -117,5 +127,4 @@ require("blink.cmp").setup({
   fuzzy = {
     use_frecency = false,
   },
-  accept = { auto_brackets = { enabled = true } },
 })

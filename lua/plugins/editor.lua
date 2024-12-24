@@ -1,4 +1,5 @@
 return {
+  -- Completion plugin
   {
     "saghen/blink.cmp",
     -- lazy = false, -- lazy loading handled internally
@@ -17,6 +18,7 @@ return {
     end
   },
 
+  -- Comment your code with treesitter
   {
     "folke/ts-comments.nvim",
     event = "User FilePost",
@@ -65,6 +67,7 @@ return {
     end,
   },
 
+  -- Move your cursor like a boss
   {
     "folke/flash.nvim",
     config = function()

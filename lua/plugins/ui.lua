@@ -7,7 +7,7 @@ return {
     config = function()
       require("onedark").setup({
         style = "dark",
-        transparent = false,
+        transparent = true,
         code_style = {
           keywords = "italic,bold",
           functions = "bold",
@@ -30,6 +30,7 @@ return {
     },
   },
 
+  -- Icons for files
   {
     "echasnovski/mini.icons",
     lazy = true,
@@ -49,28 +50,6 @@ return {
       end
     end,
   },
-
-  -- Icons for some other stuffs
-  -- {
-  --   "nvim-tree/nvim-web-devicons",
-  --   opts = {
-  --     override = {
-  --       norg = {
-  --         icon = "󱗃",
-  --         color = "#ff557f",
-  --         cterm_color = "65",
-  --         name = "Orgmode",
-  --       },
-  --       http = {
-  --         icon = "",
-  --         color = "#ff557f",
-  --         cterm_color = "65",
-  --         name = "http",
-  --       },
-  --     },
-  --   },
-  --   module = "nvim-web-devicons",
-  -- },
 
   -- Fastest color parser Neovim
   {
@@ -92,8 +71,9 @@ return {
     end,
   },
 
+  -- Statuscol
   {
-    "luukvbaal/statuscol.nvim",
+    "tknightz/statuscol.nvim",
     config = function()
       require("config.statuscol")
     end,

@@ -76,18 +76,28 @@ M.read_file = function(path)
   end
 end
 
+M.setTimeout = function(timeout, callback)
+  local timer = vim.uv.new_timer()
+  timer:start(timeout, 0, function()
+    callback()
+  end)
+  return timer
+end
+
+M.clearTimeout = function(timer)
+  timer:stop()
+  timer:close()
+end
+
 M.debounce = function(func, timeout)
   local timer = nil
   return function(...)
     local args = { ... }
     if timer then
-      timer:stop()
-      timer:close()
+      M.clearTimeout(timer)
     end
-    timer = vim.loop.new_timer()
-    timer:start(
+    timer = M.setTimeout(
       timeout,
-      0,
       vim.schedule_wrap(function()
         func(unpack(args))
       end)

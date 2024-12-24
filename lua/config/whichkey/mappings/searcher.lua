@@ -21,6 +21,7 @@ wk.add({
   { "<leader>se", ":Telescope symbols<cr>", desc = "emoji" },
   { "<leader>s.", ":Telescope current_buffer_fuzzy_find<cr>", desc = "current_buffer" },
   { "<leader>s/", ":Telescope<cr>", desc = "overview" },
+  { "<leader>sn", ":lua Snacks.notifier.show_history()<cr>", desc = "notifications" },
 
   { "<leader>sl", group = "lsp" },
   { "<leader>sla", ":Telescope lsp_code_actions<cr>", desc = "actions" },

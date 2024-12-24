@@ -44,6 +44,7 @@ return {
     },
   },
 
+  -- Scope - only show buffers that belong to the current tab
   {
     "tiagovla/scope.nvim",
     opts = {},

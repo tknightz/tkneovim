@@ -30,17 +30,9 @@ return {
     end,
   },
 
-  -- {
-  --   "Kyren223/lspsaga.nvim",
-  --   version = "main",
-  --   event = "LspAttach",
-  --   config = function()
-  --     require("config.lspsaga")
-  --   end,
-  -- },
+  -- Display float window actions for LSP
   {
     "Chaitanyabsprip/fastaction.nvim",
-    commit = "aa72077466580df1af1c70e6c45dc551fd2aabe2",
     event = "LspAttach",
     opts = {},
     config = function(opts)
@@ -50,6 +42,7 @@ return {
     end,
   },
 
+  -- LSP rename
   {
     "smjonas/inc-rename.nvim",
     event = "LspAttach",
@@ -85,6 +78,7 @@ return {
     end,
   },
 
+  -- Outline (overview) for your code
   {
     "hedyhli/outline.nvim",
     cmd = "Outline",
@@ -93,6 +87,7 @@ return {
     end,
   },
 
+  -- Inline diagnostics
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "LspAttach",

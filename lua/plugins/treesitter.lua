@@ -35,7 +35,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-context",
-    cmd = { "TSContextToggle", "TSContextEnable" },
+    event = { "User FilePost" },
     config = function()
       require("treesitter-context").setup({
         max_lines = 3,

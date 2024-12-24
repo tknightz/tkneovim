@@ -133,8 +133,8 @@ function M.get_icon_by_filetype(filetype)
   }
 
   local icon, icon_hl
-  if special_icons[filetype] then
-    icon, icon_hl = table.unpack(special_icons[filetype])
+  if special_icons[filetype] ~= nil then
+    icon, icon_hl = unpack(special_icons[filetype])
   else
     local buf_name = vim.api.nvim_buf_get_name(0)
     local name, ext = vim.fn.fnamemodify(buf_name, ":t"), vim.fn.fnamemodify(buf_name, ":e")

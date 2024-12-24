@@ -10,11 +10,11 @@ end
 
 local function toggle_ai()
   if vim.g.enable_ai == 1 then
-    vim.notify("Stopping AI...")
+    vim.notify("Stopping AI...", "info", { title = "AI Completion"})
     vim.cmd("SupermavenStop")
     vim.g.enable_ai = 0
   else
-    vim.notify("Starting AI...")
+    vim.notify("Starting AI...", "info", { title = "AI Completion" })
     vim.cmd("SupermavenUseFree")
     vim.g.enable_ai = 1
   end
