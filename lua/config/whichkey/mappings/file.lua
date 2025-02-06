@@ -1,11 +1,19 @@
 local wk = require("which-key")
+local snack_search_fn = require("lib").snack_search_fn
 
 wk.add({
   { "<leader>f", group = "files" },
-  { "<leader>fb", "<cmd>Telescope marks<cr>", desc = "Book marks" },
-  { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File" },
+  { "<leader>fb", snack_search_fn("marks"), desc = "Marks" },
+  { "<leader>ff", snack_search_fn("files"), desc = "Find Files" },
   { "<leader>fs", "<cmd>update<cr>", desc = "Save File" },
-  { "<leader>fh", "<cmd>Telescope oldfiles<cr>", desc = "History Files" },
+  { "<leader>fh", snack_search_fn("command_history"), desc = "Command History" },
   { "<leader>fn", "<cmd>new<cr>", desc = "New File" },
-  { "<leader>fr", "<cmd>Telescope live_grep_args<cr>", desc = "Grep" },
+  { "<leader>fr", snack_search_fn("grep"), desc = "Grep" },
+  {
+    "<leader>fc",
+    function()
+      Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+    end,
+    desc = "Find Config File",
+  },
 })

@@ -14,10 +14,14 @@ local M = {
     "dbui",
     "basicgit",
     "dbout",
+    "terminal",
+    "grug-far",
+    "snack_picker_preview",
   },
 
   special_fts = {
     "TelescopePrompt",
+    "TelescopeResults",
     "prompt",
     "dashboard",
     "NvimTree",
@@ -43,6 +47,9 @@ local M = {
     "NeogitStatus",
     "NeogitPopup",
     "basicgit",
+    "terminal",
+    "nofile",
+    "snack_picker_preview",
   }
 }
 

@@ -4,11 +4,18 @@ local git_util = require("lib.git")
 wk.add({
   { "<leader>g", group = "git", mode = { "n", "v" } },
 
-  { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "files" },
-  { "<leader>gs", git_util.my_git_status, desc = "status" },
+  -- { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "files" },
+  -- { "<leader>gs", git_util.my_git_status, desc = "status" },
+  {
+    "<leader>gs",
+    function()
+      Snacks.picker.git_status()
+    end,
+    desc = "Git Status",
+  },
   { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "stage buffer" },
   { "<leader>gu", "<cmd>sil Git reset %<cr>", desc = "reset stage buffer " },
-  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "branches" },
+  -- { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "branches" },
   { "<leader>gc", "<cmd>Git commit --quiet<cr>", desc = "commit" },
   { "<leader>g.", "<cmd>Git<cr>", desc = "Git here" },
   { "<leader>gw", "<cmd>Gitsigns blame_line<cr>", desc = "who code this?" },
@@ -59,7 +66,7 @@ wk.add({
   { "<leader>gra", "<cmd>Git rebase --abort<cr>", desc = "abort" },
 
   -- Visual mode
-  { "<leader>gs", ":Gitsigns stage_hunk<cr>", desc = "stage hunk", mode = {"v", "x"} },
-  { "<leader>gS", ":Gitsigns undo_stage_hunk<cr>", desc = "undo_stage_hunk", mode = {"v", "x"} },
-  { "<leader>gu", ":Gitsigns reset_hunk<cr>", desc = "reset_hunk", mode = {"v", "x"} },
+  { "<leader>gs", ":Gitsigns stage_hunk<cr>", desc = "stage hunk", mode = { "v", "x" } },
+  { "<leader>gS", ":Gitsigns undo_stage_hunk<cr>", desc = "undo_stage_hunk", mode = { "v", "x" } },
+  { "<leader>gu", ":Gitsigns reset_hunk<cr>", desc = "reset_hunk", mode = { "v", "x" } },
 })

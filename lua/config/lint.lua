@@ -2,11 +2,11 @@ local M = {}
 
 local opts = {
   -- Event to trigger linters
-  events = { "TextChanged", "BufReadPost", "InsertLeave" },
+  events = { "TextChanged", "InsertLeave" },
   linters_by_ft = {
-    javascript = { "eslint_d" },
-    typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
+    javascript = { "biome", "eslint_d" },
+    typescript = { "biome", "eslint_d" },
+    typescriptreact = { "biome", "eslint_d" },
     yaml = { "actionlint" },
   },
   -- copy from lazyvim
@@ -14,7 +14,7 @@ local opts = {
     eslint_d = {
       condition = function()
         local root = vim.fn.getcwd()
-        return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1] ~= nil
+        return vim.fs.find({ "eslint.config.js", ".eslintrc.json" }, { path = root, upward = true })[1] ~= nil
       end,
     },
   },
@@ -27,7 +27,11 @@ local eslint_d = lint.linters.eslint_d
 eslint_d.args = vim.tbl_extend("force", {
   "--config",
   function()
-    return vim.fn.getcwd() .. "/eslint.config.js"
+    if vim.fn.filereadable(vim.fn.getcwd() .. "/eslint.config.js") then
+      return vim.fn.getcwd() .. "/eslint.config.js"
+    end
+
+    return vim.fn.getcwd() .. "/.eslintrc.json"
   end,
 }, eslint_d.args)
 
@@ -78,10 +82,10 @@ function M.lint()
   ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
   names = vim.tbl_filter(function(name)
     local linter = lint.linters[name]
-    if not linter then
-      vim.notify("Linter not found: " .. name)
-    end
-    return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
+    if not linter then return false end
+
+    local binary_found = vim.fn.executable(linter.cmd()) == 1
+    return binary_found and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
   end, names)
 
   -- Run linters.
@@ -90,7 +94,11 @@ function M.lint()
   end
 end
 
-vim.api.nvim_create_autocmd(opts.events, {
-  group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-  callback = M.debounce(400, M.lint),
-})
+
+-- run the first time
+M.lint()
+
+-- vim.api.nvim_create_autocmd(opts.events, {
+--   group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+--   callback = M.debounce(500, M.lint),
+-- })

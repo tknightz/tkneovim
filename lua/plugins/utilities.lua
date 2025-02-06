@@ -2,7 +2,7 @@ return {
   -- Snacks - set of some tiny useful plugins (tiny and useful I mean)
   {
     "folke/snacks.nvim",
-    priority = 1000,
+    priority = 900,
     lazy = false,
     config = function()
       require("config.snacks")
@@ -10,39 +10,22 @@ return {
   },
 
   -- Fuzzy search all the stuffs
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-live-grep-args.nvim",
-      "tknightz/telescope-termfinder.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
-      },
-    },
-
-    module = "telescope",
-    cmd = "Telescope",
-    config = function()
-      require("config.telescope")
-    end,
-  },
-
   -- {
-  --   "ibhagwan/fzf-lua",
-  --   cmd = { "FzfLua" },
-  --   dependencies = { "echasnovski/mini.icons" },
+  --   "nvim-telescope/telescope.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope-live-grep-args.nvim",
+  --     "tknightz/telescope-termfinder.nvim",
+  --     {
+  --       "nvim-telescope/telescope-fzf-native.nvim",
+  --       build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+  --     },
+  --   },
+  --
+  --   module = "telescope",
+  --   cmd = "Telescope",
   --   config = function()
-  --     require("fzf-lua").setup({
-  --       winopts = {
-  --         split = "belowright new",
-  --       },
-  --       defaults = {
-  --         file_icons = "mini",
-  --         copen = "topleft copen",
-  --       },
-  --     })
+  --     require("config.telescope")
   --   end,
   -- },
 
@@ -150,8 +133,9 @@ return {
   -- Quicker - better quickfix UI
   {
     "stevearc/quicker.nvim",
-    opts = {},
-    -- event = "User FilePost",
+    config = function()
+      require("config.quicker")
+    end,
     ft = "qf",
   },
 
@@ -160,14 +144,7 @@ return {
     "akinsho/git-conflict.nvim",
     version = "*",
     config = true,
-    event = "User FilePost",
-  },
-
-  -- Jump to last edit
-  {
-    "ethanholz/nvim-lastplace",
-    event = "BufReadPre",
-    opts = {},
+    -- event = "User FilePost",
   },
 
   -- Toggleterm - better terminal
@@ -228,12 +205,38 @@ return {
     end,
   },
 
-  -- -- Headlines - headlines for markdown
-  -- {
-  --   "lukas-reineke/headlines.nvim",
-  --   ft = { "org", "norg", "markdown", "mdx", "yaml" },
-  --   opts = {},
-  -- },
+  -- Headlines - headlines for markdown
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    ft = { "org", "norg", "markdown", "mdx", "yaml", "svelte" },
+    config = function()
+      require("headlines").setup({
+        svelte = {
+          query = vim.treesitter.query.parse(
+            "svelte",
+            [[
+              (script_element (raw_text) @codeblock)
+              (script_element [
+                (start_tag)
+                (end_tag) 
+              ] @headline)
+            ]]
+          ),
+          headline_highlights = { "Headline" },
+          bullet_highlights = {
+            "@text.title.1.marker.markdown",
+            "@text.title.2.marker.markdown",
+            "@text.title.3.marker.markdown",
+            "@text.title.4.marker.markdown",
+            "@text.title.5.marker.markdown",
+            "@text.title.6.marker.markdown",
+          },
+          codeblock_highlight = "CodeBlock",
+        },
+      })
+    end,
+  },
 
   -- Edgy - organize your sidebar and special windows
   {

@@ -11,6 +11,7 @@ end
 
 require("statuscol").setup({
   ft_ignore = special_fts,
+  bt_ignore = {"nofile", "terminal"},
   relculright = true,
   segments = {
     { text = { builtin.foldfunc, space_after_fold }, hl = "FoldColumn", click = "v:lua.ScFa" },

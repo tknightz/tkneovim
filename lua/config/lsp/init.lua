@@ -1,6 +1,4 @@
 -- marked that lsp is started
-vim.g.loaded_lsp = 1
-vim.g.should_attach = 1
 
 local lspconfig = require("lspconfig")
 local registry = require("mason-registry")
@@ -66,6 +64,25 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
   silent = true,
 })
+
+
+-- vtsls ignore diagnostics
+local ignored_codes = { [6133] = true }
+local handler = vim.lsp.handlers[vim.lsp.protocol.Methods.textDocument_publishDiagnostics]
+vim.lsp.handlers[vim.lsp.protocol.Methods.textDocument_publishDiagnostics] = function(...)
+  local res = select(2, ...)
+  if res then
+    local filtered = vim
+      .iter(res.diagnostics or {})
+      :filter(function(d)
+        return d.source ~= "ts" or ignored_codes[d.code] == nil
+      end)
+      :totable()
+    res.diagnostics = filtered
+  end
+  return handler(...)
+end
+
 
 registry.refresh(function()
   -- Iterate to register servers with custom config

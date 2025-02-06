@@ -1,11 +1,20 @@
+local luasnip = require("luasnip")
+
 require("blink.cmp").setup({
   keymap = {
     preset = "super-tab",
-    ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-    ["<C-e>"] = { "hide" },
+    ["<C-space>"] = {
+      function(cmp)
+        cmp.show({ providers = { "lsp", "buffer" } })
+      end,
+      "show_documentation",
+      "hide_documentation",
+    },
+    ["<C-e>"] = { "hide", "fallback" },
+    ["<C-k>"] = {},
 
     ["<Tab>"] = {
-      "accept",
+      "select_and_accept",
       "snippet_forward",
       "fallback",
     },
@@ -31,11 +40,12 @@ require("blink.cmp").setup({
   completion = {
     menu = {
       border = "rounded",
+      -- border = "none",
       winblend = 0,
       scrollbar = true,
       -- direction_priority = { "e", "w", "n", "s" },
       draw = {
-        -- align_to_component = "kind",
+        align_to = "kind_icon",
         treesitter = { "lsp" },
         padding = 1,
         gap = 2,
@@ -66,13 +76,23 @@ require("blink.cmp").setup({
       update_delay_ms = 50,
     },
     trigger = {
-      show_in_snippet = false,
+      show_in_snippet = true,
       show_on_insert_on_trigger_character = false,
       show_on_blocked_trigger_characters = { ",", " ", "\n", "\t" },
     },
     accept = {
       create_undo_point = true,
       auto_brackets = { enabled = true },
+    },
+    list = {
+      selection = {
+        preselect = function(ctx)
+          return ctx.mode ~= "cmdline"
+        end,
+        auto_insert = function(ctx)
+          return ctx.mode == "cmdline"
+        end,
+      },
     },
     -- ghost_text = {
     --   enabled = true,
@@ -91,7 +111,7 @@ require("blink.cmp").setup({
   },
 
   sources = {
-    default = { "lsp", "path", "snippets", "buffer" },
+    default = { "snippets", "lsp", "path", "buffer" },
 
     cmdline = function()
       local type = vim.fn.getcmdtype()
@@ -107,24 +127,82 @@ require("blink.cmp").setup({
     end,
 
     providers = {
+      lsp = {
+        name = "lsp",
+        enabled = true,
+        async = true,
+        module = "blink.cmp.sources.lsp",
+        fallbacks = { "buffer" },
+        min_keyword_length = 1,
+      },
       snippets = {
         name = "Snippets",
         module = "blink.cmp.sources.snippets",
-        score_offset = 0,
-        opts = {
-          friendly_snippets = true,
-          search_paths = { vim.fn.stdpath("config") .. "/snippets" },
-          global_snippets = { "all" },
-          extended_filetypes = {
-            typescript = { "javascript" },
-            typescriptreact = { "javascript" },
-          },
-        },
+        min_keyword_length = 1,
+        score_offset = 1,
+        -- opts = {
+        --   friendly_snippets = true,
+        --   search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+        --   global_snippets = { "all" },
+        --   extended_filetypes = {
+        --     typescript = { "javascript" },
+        --     typescriptreact = { "javascript" },
+        --   },
+        -- },
+        should_show_items = function()
+          local buf = vim.api.nvim_get_current_buf()
+          local cursor = vim.api.nvim_win_get_cursor(0)
+          local row, col = cursor[1] - 1, cursor[2]
+
+          -- Get the current line content
+          local line = vim.api.nvim_buf_get_lines(buf, row, row + 1, true)[1]
+          if not line then
+            return false
+          end -- If the line is nil, return false
+
+          -- Case 1: Cursor is at the beginning of the line
+          if col == 0 then
+            return true
+          end
+
+          -- Extract the word under the cursor
+          local start_col, end_col = col, col
+          while start_col > 0 and line:sub(start_col, start_col):match("[%w_]") do
+            start_col = start_col - 1
+          end
+          if line:sub(start_col, start_col):match("[%w_]") then
+            start_col = start_col - 1
+          end
+
+          while end_col <= #line and line:sub(end_col + 1, end_col + 1):match("[%w_]") do
+            end_col = end_col + 1
+          end
+
+          -- Check the character before the word (start_col is 0-based)
+          local char_before_word = line:sub(start_col, start_col)
+          if start_col == 0 or char_before_word:match("%s") then
+            return true
+          end
+
+          return false
+        end,
       },
     },
   },
 
   fuzzy = {
     use_frecency = false,
+    sorts = { "score", "label" },
+    -- sorts = {
+    --   function(a, b)
+    --     print(vim.inspect(a))
+    --     print('-----')
+    --     print(vim.inspect(b))
+    --   end
+    -- }
+  },
+
+  snippets = {
+    preset = "luasnip",
   },
 })

@@ -106,13 +106,20 @@ M.debounce = function(func, timeout)
 end
 
 M.truncate_message = function(message, max_length)
-  if #message <= max_length then
-    return message
+  local formated_msg = message:gsub("[\r\n]+%s*", " ")
+  if #formated_msg <= max_length then
+    return formated_msg
   end
-  message = message:gsub("\n", " ")
-  local first_part = message:sub(1, 80)
-  local last_part = message:sub(-80)
+
+  local first_part = formated_msg:sub(1, 80)
+  local last_part = formated_msg:sub(-80)
   return first_part .. "  " .. last_part
+end
+
+M.snack_search_fn = function(func_name)
+  return function()
+    Snacks.picker[func_name]()
+  end
 end
 
 return M

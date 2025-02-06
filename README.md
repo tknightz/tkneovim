@@ -40,10 +40,11 @@ And these tools:
 
 ## 📦 Installation
 1. Backup your existing Neovim configuration files if necessary. The location
-   of configuration directory depends on your operating system:
+of configuration directory depends on your operating system:
     - Linux: `~/.config/nvim/`
     - macOS: `~/.config/nvim/`
     - Windows (PowerShell): `$HOME/AppData/Local/nvim/`
+
 ```sh
 # Unix-like
 mv ~/.config/nvim ~/.config/nvim.bak

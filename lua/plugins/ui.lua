@@ -1,9 +1,9 @@
 return {
   {
-    "tknightz/onedark.nvim",
-    -- dir = "~/Repos/onedark.nvim",
+    -- "tknightz/onedark.nvim",
+    dir = "~/Repos/onedark.nvim",
     -- lazy = true,
-    -- priority = 1000,
+    priority = 999,
     config = function()
       require("onedark").setup({
         style = "dark",
@@ -72,11 +72,12 @@ return {
   },
 
   -- Statuscol
-  {
-    "tknightz/statuscol.nvim",
-    config = function()
-      require("config.statuscol")
-    end,
-    event = "User FilePost",
-  },
+  -- {
+  --   -- "tknightz/statuscol.nvim",
+  --   dir = "~/Repos/statuscol.nvim",
+  --   config = function()
+  --     require("config.statuscol")
+  --   end,
+  --   event = "User FilePost",
+  -- },
 }

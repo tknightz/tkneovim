@@ -24,22 +24,26 @@ require("diffview").setup({
     view = {
       { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
+      { "n", "<leader>b", false },
       { "n", "<Space>e", false },
     },
     file_panel = {
       { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
       { "n", "t", actions.listing_style, { desc = "Toggle between 'list' and 'tree' views" } },
       { "n", "<leader>e", false },
+      { "n", "<leader>b", false },
       { "n", "<Space>e", false },
     },
     panel = {
       { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
+      { "n", "<leader>b", false },
       { "n", "<Space>e", false },
     },
     file_history_panel = {
       { "n", "<leader>n", actions.toggle_files, { desc = "Toggle to the file panel" } },
       { "n", "<leader>e", false },
+      { "n", "<leader>b", false },
       { "n", "<Space>e", false },
     },
   },

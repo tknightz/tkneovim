@@ -22,7 +22,6 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 
     vim.api.nvim_buf_set_var(opts.buf, "miniindentscope_disable", true)
     vim.api.nvim_command("setlocal nolist")
-    vim.api.nvim_command("setlocal winfixbuf")
     vim.api.nvim_command("setlocal foldcolumn=0")
     vim.api.nvim_command("setlocal signcolumn=no")
     vim.api.nvim_command("setlocal nonumber norelativenumber")
@@ -46,6 +45,6 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 
 
 -- local projectfile = vim.fn.getcwd() .. '/project.godot'
--- if projectfile then
---   vim.fn.serverstart '/tmp/godot.pipe'
+-- if vim.fn.filereadable(projectfile) == 1 then
+--   vim.fn.serverstart '127.0.0.1:6004'
 -- end

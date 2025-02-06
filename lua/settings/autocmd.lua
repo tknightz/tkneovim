@@ -72,78 +72,59 @@ local cfg = {
   },
 }
 
--- Cache for dynamically created highlight groups
-local hl_cache = {}
-
--- Function to create or reuse a styled highlight group
-local function get_styled_hl_group(base_hl)
-  if hl_cache[base_hl] then
-    return hl_cache[base_hl]
-  end
-
-  -- Get the color details of the base highlight group
-  local hl_def = vim.api.nvim_get_hl_by_name(base_hl, true)
-  if not hl_def.foreground then
-    return base_hl -- Fallback to the base highlight group
-  end
-
-  -- Create a new highlight group name
-  local new_hl = base_hl .. "_Bold"
-  vim.api.nvim_set_hl(0, new_hl, { fg = string.format("#%06x", hl_def.foreground), bold = true })
-
-  -- Cache and return the new highlight group name
-  hl_cache[base_hl] = new_hl
-  return new_hl
-end
-
--- Function to check diagnostics and print a message
-local function check_diagnostics()
-  -- Check if current buffer is attached to an LSP client
-  local buf_clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
-  if vim.tbl_isempty(buf_clients) then
-    return
-  end
-
-  local current_line = vim.api.nvim_win_get_cursor(0)[1] - 1 -- Get current line (0-indexed)
-  local diagnostics = vim.diagnostic.get(0, { lnum = current_line })
-  if diagnostics and diagnostics[1] then
-    local message = truncate_message(diagnostics[1].message, 160)
-    local config = cfg[diagnostics[1].severity]
-    local styled_hl_group = get_styled_hl_group(config.hl)
-    vim.api.nvim_echo({ { string.format("%s    %s", config.icon, message), styled_hl_group } }, false, {})
-  else
-    vim.api.nvim_echo({ { "" } }, false, {})
-  end
-end
-
--- Create a debounced version of the diagnostic check function
-local debounced_check_diagnostics = debounce(check_diagnostics, 300)
-
--- Set up the autocmd for CursorMoved only inside LspAttach
-vim.api.nvim_create_autocmd("LspAttach", {
-  once = true,
-  nested = true,
-  callback = function()
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      callback = debounced_check_diagnostics,
-    })
-  end,
-})
-
 -- ╭─────────────────────────────────────────────────────────╮
 -- │            Display LSP progress like fidget             │
 -- ╰─────────────────────────────────────────────────────────╯
+---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
+local progress = vim.defaulttable()
 vim.api.nvim_create_autocmd("LspProgress", {
   ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
   callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local value = ev.data.params.value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
+    if not client or type(value) ~= "table" then
+      return
+    end
+    local p = progress[client.id]
+
+    for i = 1, #p + 1 do
+      if i == #p + 1 or p[i].token == ev.data.params.token then
+        p[i] = {
+          token = ev.data.params.token,
+          msg = ("[%3d%%] %s%s"):format(
+            value.kind == "end" and 100 or value.percentage or 100,
+            value.title or "",
+            value.message and (" **%s**"):format(value.message) or ""
+          ),
+          done = value.kind == "end",
+        }
+        break
+      end
+    end
+
+    local msg = {} ---@type string[]
+    progress[client.id] = vim.tbl_filter(function(v)
+      return table.insert(msg, v.msg) or not v.done
+    end, p)
+
     local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-    vim.notify(vim.lsp.status(), "info", {
+    vim.notify(table.concat(msg, "\n"), "info", {
       id = "lsp_progress",
-      title = "LSP Progress",
+      title = client.name,
       opts = function(notif)
-        notif.icon = ev.data.params.value.kind == "end" and " "
+        notif.icon = #progress[client.id] == 0 and " "
           or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
       end,
     })
   end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = vim.api.nvim_create_augroup("auto-last-position", { clear = true }),
+  callback = function(args)
+    local position = vim.api.nvim_buf_get_mark(args.buf, [["]])
+    local winid = vim.fn.bufwinid(args.buf)
+    pcall(vim.api.nvim_win_set_cursor, winid, position)
+  end,
+  desc = "Auto jump to last position",
 })

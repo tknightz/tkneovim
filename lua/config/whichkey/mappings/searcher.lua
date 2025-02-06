@@ -1,4 +1,5 @@
 local wk = require("which-key")
+local snack_search_fn = require("lib").snack_search_fn
 
 local function visual_grep()
   local _, tls = pcall(require, "telescope.builtin")
@@ -11,34 +12,32 @@ end
 
 wk.add({
   { "<leader>s", group = "search", mode = { "n", "v" } },
-  { "<leader>ss", ":Telescope<cr>", desc = "searcher" },
-  { "<leader>sf", ":Telescope find_files<cr>", desc = "file" },
-  { "<leader>sm", ":Telescope media_files<cr>", desc = "media_files" },
-  { "<leader>sr", ":Telescope live_grep<cr>", desc = "grep" },
-  { "<leader>sb", ":Telescope buffers<cr>", desc = "buffers" },
-  { "<leader>so", ":Telescope oldfiles<cr>", desc = "oldfiles" },
-  { "<leader>sp", ":Telescope projects<cr>", desc = "project" },
-  { "<leader>se", ":Telescope symbols<cr>", desc = "emoji" },
-  { "<leader>s.", ":Telescope current_buffer_fuzzy_find<cr>", desc = "current_buffer" },
-  { "<leader>s/", ":Telescope<cr>", desc = "overview" },
+  { "<leader>,", snack_search_fn("buffers"), desc = "Buffers" },
+  { "<leader>sp", snack_search_fn("projects"), desc = "Projects" },
   { "<leader>sn", ":lua Snacks.notifier.show_history()<cr>", desc = "notifications" },
 
   { "<leader>sl", group = "lsp" },
-  { "<leader>sla", ":Telescope lsp_code_actions<cr>", desc = "actions" },
-  { "<leader>sld", ":Telescope lsp_definitions<cr>", desc = "definitions" },
-  { "<leader>slr", ":Telescope lsp_references<cr>", desc = "references" },
 
   -- History
-  { "<leader>sh", group = "history" },
-  { "<leader>shs", ":Telescope search_history<cr>", desc = "search" },
-  { "<leader>shc", ":Telescope command_history<cr>", desc = "command" },
+  { "<leader>:", snack_search_fn("command_history"), desc = "Command History", },
 
   { "<leader>st", group = "tag" },
-  { "<leader>sth", ":Telescope help_tags<cr>", desc = "help" },
-  { "<leader>st.", ":Telescope current_buffer_tags<cr>", desc = "current_buffer" },
+  {
+    "<leader>sw",
+    snack_search_fn("grep_word"),
+    desc = "Visual selection or word",
+    mode = { "n", "x" },
+  },
+  { '<leader>s"', snack_search_fn("registers"), desc = "Registers" },
+  { "<leader>sa", snack_search_fn("autocmds"), desc = "Autocmds" },
+  { "<leader>sC", snack_search_fn("commands"), desc = "Commands" },
+  { "<leader>sd", snack_search_fn("diagnostics"), desc = "Diagnostics" },
+  { "<leader>sH", snack_search_fn("highlights"), desc = "Highlights" },
+  { "<leader>sj", snack_search_fn("jumps"), desc = "Jumps" },
+  { "<leader>sk", snack_search_fn("keymaps"), desc = "Keymaps" },
+  { "<leader>sl", snack_search_fn("loclist"), desc = "Location List" },
+  { "<leader>sM", snack_search_fn("man"), desc = "Man Pages" },
 
-  { "<leader>sw", ":Telescope grep_string<CR>", desc = "word" },
-
-  { "<leader>sr", visual_grep, desc = "grep_vi", mode = "v" },
-  { "<leader>sw", ":Telescope grep_string<CR>", desc = "word", mode = "v" },
+  -- { "<leader>sr", visual_grep, desc = "grep_vi", mode = "v" },
+  { "<leader>sB", snack_search_fn("grep_buffers"), desc = "Grep Open Buffers" },
 })

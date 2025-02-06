@@ -4,10 +4,10 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
-      "rachartier/tiny-inline-diagnostic.nvim",
+      -- "rachartier/tiny-inline-diagnostic.nvim",
     },
     lazy = true,
-    cmd = "LspStart",
+    cmd = { "LspStart" },
     config = function()
       require("config.lsp")
     end,
@@ -82,6 +82,9 @@ return {
   {
     "hedyhli/outline.nvim",
     cmd = "Outline",
+    dependencies = {
+      "epheien/outline-treesitter-provider.nvim",
+    },
     config = function()
       require("config.outline")
     end,

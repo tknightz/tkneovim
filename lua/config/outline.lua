@@ -1,6 +1,9 @@
 local icons = require("config.lsp.icons").icons
 
 require("outline").setup({
+  providers = {
+    priority = { "lsp", "markdown", "treesitter" },
+  },
   outline_window = {
     width = 25,
     winhl = "Normal:EdgyNormal,NormalNC:EdgyNormal,SignColumn:EdgyNormal,WinBar:EdgyWinbar,EndOfBuffer:EdgyNormal",
@@ -50,6 +53,6 @@ require("outline").setup({
       Event = { hl = "@type" },
       Operator = { hl = "@operator" },
       TypeParameter = { hl = "@parameter" },
-    }
+    },
   },
 })

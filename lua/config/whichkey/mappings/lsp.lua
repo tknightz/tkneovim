@@ -9,7 +9,7 @@ end
 
 local function toggle_lsp()
   if vim.g.loaded_lsp == 1 then
-    vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
+    vim.lsp.stop_client(vim.lsp.get_clients(), true)
     vim.g.loaded_lsp = 0
     vim.g.should_attach = 0
   else
@@ -64,7 +64,6 @@ wk.add({
   { "<leader>lh", toggle_inlay_hint, desc = "toggle hint" },
   { "<leader>lS", "<cmd>SymbolsOutline<cr>", desc = "browse" },
   { "<leader>l/", "<cmd>Lspsaga finder<CR>", desc ="finder-saga" },
-  { "<leader>l.","<cmd>Telescope lsp_references<CR>", desc = "finder-tele" },
 
   { "<leader>lv", group = "view" },
   { "<leader>lvd", "<cmd>Lspsaga peek_definition<CR>", desc = "definition" },

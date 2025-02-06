@@ -9,4 +9,4 @@ require("settings.statusline")
 require("settings.foldtext")
 require("settings.postload")
 
--- require("settings.gui")
+require("settings.gui")

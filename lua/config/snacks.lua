@@ -44,7 +44,61 @@ local indent = {
       vertical = "│",
       arrow = ">",
     },
-  }
+  },
+}
+
+local picker = {
+  enabled = true,
+  -- layout = {
+  --   preset = "ivy",
+  -- },
+  formatters = {
+    text = {
+      ft = nil, ---@type string? filetype for highlighting
+    },
+    file = {
+      -- filename_first = true, -- display filename before the file path
+      truncate = 80, -- truncate the file path to (roughly) this length
+      filename_only = false, -- only show the filename
+    },
+    selected = {
+      show_always = false, -- only show the selected column when there are multiple selections
+      unselected = true, -- use the unselected icon for unselected items
+    },
+  },
+
+  -- Keymaps
+  win = {
+    -- input window
+    input = {
+      keys = {
+        ["<Esc>"] = { "close", mode = { "n", "i" } },
+        ["<c-l>"] = { "qflist", mode = { "i", "n" } },
+      },
+    },
+  },
+
+  -- previewers
+  previewers = {
+    git = {
+      native = true,
+    },
+  },
+
+  -- jump
+  jump = {
+    reuse_win = false,
+  },
+
+  -- Sources config
+  sources = {
+    files = {
+      layout = {
+        preview = false,
+        preset = "ivy",
+      },
+    },
+  },
 }
 
 require("snacks").setup({
@@ -53,18 +107,34 @@ require("snacks").setup({
   input = { enabled = true },
   notifier = { enabled = true },
   quickfile = { enabled = true },
+  picker = picker,
+  indent = indent,
+
   scope = {
     enabled = true,
   },
-  indent = indent,
   scroll = {
     enabled = true,
     filter = function(buf)
-      local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
+      local filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
       return vim.g.snacks_scroll ~= false and vim.b[buf].snacks_scroll ~= false and is_special_ft(filetype) == false
-    end
+    end,
   },
-  statuscolumn = { enabled = false },
+  statuscolumn = {
+    enabled = true,
+    left = { "fold", "mark", "sign" }, -- priority of signs on the left (high to low)
+    right = { "git" }, -- priority of signs on the right (high to low)
+    folds = {
+      open = true,
+      -- open = false, -- show open fold icons
+      -- git_hl = false, -- use Git Signs hl for fold icons
+    },
+    git = {
+      -- patterns to match Git signs
+      patterns = { "GitSign", "MiniDiffSign" },
+    },
+    refresh = 50, -- refresh at most every 50ms
+  },
   words = { enabled = false },
 })
 

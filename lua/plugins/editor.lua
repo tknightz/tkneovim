@@ -5,17 +5,30 @@ return {
     -- lazy = false, -- lazy loading handled internally
     event = "User FilePost",
     -- optional: provides snippets for the snippet source
-    dependencies = "rafamadriz/friendly-snippets",
-    version = 'v0.*',
+    dependencies = { "L3MON4D3/LuaSnip" },
+    -- version = "v0.*",
 
     -- use a release tag to download pre-built binaries
     -- version = "v0.*",
     -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     build = "cargo build --release",
 
-    config = function ()
+    config = function()
       require("config.blink")
-    end
+    end,
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = true,
+    version = "v2.*",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+    build = "make install_jsregexp",
+    config = function()
+      require("config.luasnip")
+    end,
   },
 
   -- Comment your code with treesitter
@@ -23,6 +36,13 @@ return {
     "folke/ts-comments.nvim",
     event = "User FilePost",
     opts = {},
+  },
+
+  {
+    "abecodes/tabout.nvim",
+    event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
+    opts = {},
+    priority = 1000,
   },
 
   -- Better playing with brackets
@@ -47,23 +67,7 @@ return {
     event = "InsertEnter",
     -- lazy = true,
     config = function()
-      local npairs = require("nvim-autopairs")
-      local Rule = require("nvim-autopairs.rule")
-
-      npairs.setup({
-        disable_filetype = { "TelescopePrompt" },
-      })
-
-      npairs.add_rules({
-        Rule('"""$', '"""', "lua"):use_regex(true),
-      })
-
-      npairs.add_rules({
-        Rule("then", "end", "lua"):end_wise(function(opts)
-          -- Add any context checks here, e.g. line starts with "if"
-          return string.match(opts.line, "^%s*if") ~= nil
-        end),
-      })
+      require("config.autopairs")
     end,
   },
 
@@ -115,5 +119,32 @@ return {
         desc = "Toggle Flash Search",
       },
     },
+  },
+
+  {
+    "jake-stewart/multicursor.nvim",
+    branch = "1.0",
+    event = "User FilePost",
+    config = function()
+      local mc = require("multicursor-nvim")
+      mc.setup()
+
+      vim.keymap.set({ "n", "i" }, "<C-d>", function()
+        mc.matchAddCursor(1)
+      end)
+      vim.keymap.set({ "n", "i" }, "<C-k>", function()
+        mc.matchSkipCursor(1)
+      end)
+
+      vim.keymap.set("n", "<esc>", function()
+        if not mc.cursorsEnabled() then
+          mc.enableCursors()
+        elseif mc.hasCursors() then
+          mc.clearCursors()
+        else
+          -- Default <esc> handler.
+        end
+      end)
+    end,
   },
 }

@@ -3,6 +3,15 @@ local util = require("lspconfig.util")
 
 local M = {}
 
+local function get_local_binary(binary)
+  local cwd = vim.fn.getcwd()
+  local local_bin = cwd .. "/node_modules/.bin/" .. binary
+  if vim.fn.executable(local_bin) == 1 then
+    return local_bin
+  end
+  return binary
+end
+
 -- config that apply to all servers
 M.general_configs = {
   capabilities = preset.capabilities,
@@ -113,6 +122,7 @@ M.custom_configs = {
   },
 
   biome = {
+    cmd = { get_local_binary("biome"), "lsp-proxy" },
     filetypes = { "typescript", "typescriptreact", "javascript", "html", "css", "svelte", "typescript.tsx" },
   },
 
@@ -144,6 +154,7 @@ M.custom_configs = {
 
   vtsls = {
     settings = {
+      diagnostics = { ignoredCodes = { 6133 } },
       vtsls = {
         experimental = {
           completion = {
