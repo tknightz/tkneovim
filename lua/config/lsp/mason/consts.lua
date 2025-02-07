@@ -154,8 +154,10 @@ M.custom_configs = {
 
   vtsls = {
     settings = {
+      complete_function_calls = true,
       diagnostics = { ignoredCodes = { 6133 } },
       vtsls = {
+        autoUseWorkspaceTsdk = true,
         experimental = {
           completion = {
             enableServerSideFuzzyMatch = true,
@@ -164,6 +166,14 @@ M.custom_configs = {
         },
       },
       typescript = {
+        tsserver = {
+          nodePath = "/usr/lib/electron32/electron",
+          maxTsServerMemory = 4096,
+        },
+        updateImportsOnFileMove = { enabled = "always" },
+        suggest = {
+          completeFunctionCalls = true,
+        },
         inlayHints = {
           parameterNames = { enabled = "literals" },
           parameterTypes = { enabled = true },
