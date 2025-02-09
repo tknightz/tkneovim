@@ -50,6 +50,7 @@ local M = {
     "terminal",
     "nofile",
     "snack_picker_preview",
+    "dropbar_menu",
   }
 }
 

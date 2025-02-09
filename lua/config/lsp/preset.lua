@@ -1,11 +1,19 @@
+local on_attach_keymaps = {
+  { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
+  { "gs", "<cmd>vertical winc ]<CR>", desc = "Select next item" },
+  { "gv", "<cmd>horizontal winc ]<CR>", desc = "Select prev item" },
+  { "K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "Hover info" },
+  { "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Go to implementation" },
+  { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "Signature help" },
+  { "gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Find references" },
+  { "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", desc = "Previous diagnostic" },
+  { "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next diagnostic" },
+  { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
+}
+
 local function on_attach(client, bufnr)
   if vim.g.should_attach == 0 then
     client.stop()
-  end
-
-  -- load nvim-navic
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
   end
 
   -- disable semantic token
@@ -20,23 +28,6 @@ local function on_attach(client, bufnr)
   end
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  local opts = { noremap = true, silent = true }
-
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-
-  -- Mappings.
-  buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gs", '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="split"})<CR>', opts)
-  buf_set_keymap("n", "gv", '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', opts)
-  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
 
 -- setup cmp (completion)
@@ -46,9 +37,10 @@ _cap.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
 }
-local capabilities = require('blink.cmp').get_lsp_capabilities(_cap)
+local capabilities = require("blink.cmp").get_lsp_capabilities(_cap)
 
 return {
   on_attach = on_attach,
+  on_attach_keymaps = on_attach_keymaps,
   capabilities = capabilities,
 }

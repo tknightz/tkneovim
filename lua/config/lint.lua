@@ -98,7 +98,7 @@ end
 -- run the first time
 M.lint()
 
--- vim.api.nvim_create_autocmd(opts.events, {
---   group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
---   callback = M.debounce(500, M.lint),
--- })
+vim.api.nvim_create_autocmd(opts.events, {
+  group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+  callback = M.debounce(500, M.lint),
+})

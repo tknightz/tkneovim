@@ -4,7 +4,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
-      -- "rachartier/tiny-inline-diagnostic.nvim",
     },
     lazy = true,
     cmd = { "LspStart" },
@@ -17,9 +16,7 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
-    config = function()
-      require("mason").setup()
-    end,
+    opts = {},
   },
 
   {
@@ -35,20 +32,6 @@ return {
     "Chaitanyabsprip/fastaction.nvim",
     event = "LspAttach",
     opts = {},
-    config = function(opts)
-      require("fastaction").setup(opts)
-
-      vim.keymap.set("n", "<leader>lr", ":IncRename ")
-    end,
-  },
-
-  -- LSP rename
-  {
-    "smjonas/inc-rename.nvim",
-    event = "LspAttach",
-    config = function()
-      require("inc_rename").setup()
-    end,
   },
 
   -- conform for formatting
@@ -73,18 +56,13 @@ return {
   {
     "folke/trouble.nvim",
     cmd = "Trouble",
-    config = function()
-      require("trouble").setup({})
-    end,
+    opts = {},
   },
 
   -- Outline (overview) for your code
   {
     "hedyhli/outline.nvim",
     cmd = "Outline",
-    dependencies = {
-      "epheien/outline-treesitter-provider.nvim",
-    },
     config = function()
       require("config.outline")
     end,
@@ -117,17 +95,27 @@ return {
     end,
   },
 
-  -- {
-  --   "dnlhc/glance.nvim",
-  --   event = "LspAttach",
-  --   config = function()
-  --     require("glance").setup()
-  --
-  --     -- mappings
-  --     vim.keymap.set("n", "gD", "<CMD>Glance definitions<CR>")
-  --     vim.keymap.set("n", "gR", "<CMD>Glance references<CR>")
-  --     vim.keymap.set("n", "gY", "<CMD>Glance type_definitions<CR>")
-  --     vim.keymap.set("n", "gM", "<CMD>Glance implementations<CR>")
-  --   end,
-  -- },
+  {
+    "dnlhc/glance.nvim",
+    event = "LspAttach",
+    config = function()
+      local glance = require('glance')
+      local actions = glance.actions
+
+      glance.setup({
+        mappings = {
+          list = {
+            ["<C-f>"] = actions.preview_scroll_win(5), -- Scroll up the preview window
+            ["<C-d>"] = actions.preview_scroll_win(-5),
+          },
+        },
+      })
+
+      -- mappings
+      vim.keymap.set("n", "gD", "<CMD>Glance definitions<CR>")
+      vim.keymap.set("n", "gR", "<CMD>Glance references<CR>")
+      vim.keymap.set("n", "gY", "<CMD>Glance type_definitions<CR>")
+      vim.keymap.set("n", "gM", "<CMD>Glance implementations<CR>")
+    end,
+  },
 }

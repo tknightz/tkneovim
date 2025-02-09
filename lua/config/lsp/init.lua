@@ -87,19 +87,10 @@ end
 registry.refresh(function()
   -- Iterate to register servers with custom config
   local installed_servers = require("mason-lspconfig").get_installed_servers()
-  local consts = require("config.lsp.mason.consts")
-
-  installed_servers = vim.tbl_extend("force", installed_servers, consts.manual_servers)
+  local build_server_config = require("config.lsp.mason.server_configs").build_server_config
 
   for _, server in pairs(installed_servers) do
-    local custom_config = consts.custom_configs[server]
-
-    local config = custom_config and vim.tbl_extend("force", consts.general_configs, custom_config)
-      or consts.general_configs
-
-    if server == "gopls" then
-      config.init_options = nil
-    end
+    local config = build_server_config(server)
     lspconfig[server].setup(config)
   end
 end)

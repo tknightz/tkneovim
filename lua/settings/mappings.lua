@@ -1,3 +1,5 @@
+local build_keymaps = require("lib").build_keymaps
+
 -- only do horizontal resize if there is a split window above/below
 -- the current one
 local function horizontal_resize(direction)
@@ -12,82 +14,41 @@ local function horizontal_resize(direction)
 end
 
 local keymaps = {
-  normal = {
-    ["<Leader>h"] = {
-      to = ":set hlsearch!<CR>",
-      opt = {},
-    },
-    ["0"] = "^",
-
-    ["<C-y>"] = ":%y+",
-    ["<C-_>"] = {
-      to = "gcc",
-      opt = { remap = true },
-    },
-    ["<C-/>"] = {
-      to = "gcc",
-      opt = { remap = true },
-    },
-
-    ["<M-h>"] = "<cmd>silent! vertical resize +3<cr>",
-    ["<M-l>"] = "<cmd>silent! vertical resize -3<cr>",
-    ["<M-k>"] = function() horizontal_resize('up') end,
-    ["<M-j>"] = function() horizontal_resize('down') end,
-
-    ["<M-Left>"] = ":MoveHChar(-1)<CR>",
-    ["<M-Right>"] = ":MoveHChar(1)<CR>",
-    ["<M-Up>"] = ":MoveLine(-1)<CR>",
-    ["<M-Down>"] = ":MoveLine(1)<CR>",
-
-    ["<Esc>"] = "<C-\\><C-n>",
-    ["S"] = ":TSJToggle<CR>",
+  { "<leader>h", "<cmd>set hlsearch!<CR>", desc = "Toggle search highlighting", mode = "n", opts = { silent = true  }},
+  { "0", "^", desc = "Start of line", mode = "n" },
+  { "<C-y>", '"+y', desc = "Yank to system clipboard", mode = { "n", "v" } },
+  { "<C-_>", "gcc", desc = "Toggle line comment", mode = { "n", "v" }, opts = { remap = true }},
+  { "<C-/>", "gcc", desc = "Toggle line comment", mode = { "n", "v" }, opts = { remap = true }},
+  { "<A-h>", "<cmd>silent! vertical resize +3<cr>", desc = "Increase window width", mode = "n" },
+  { "<A-l>", "<cmd>silent! vertical resize -3<cr>", desc = "Decrease window width", mode = "n" },
+  {
+    "<A-k>",
+    function()
+      horizontal_resize("up")
+    end,
+    desc = "Increase window height",
+    mode = "n",
   },
-
-  visual_select = {
-    ["<C-y>"] = '"+y',
-    ["<C-_>"] = {
-      to = "gc",
-      opt = { remap = true },
-    },
-    ["<C-/>"] = {
-      to = "gc",
-      opt = { remap = true },
-    },
-
-    ["<A-j>"] = ":MoveBlock(1)<CR>",
-    ["<A-k>"] = ":MoveBlock(-1)<CR>",
-    ["<A-h>"] = ":MoveHBlock(-1)<CR>",
-    ["<A-l>"] = ":MoveHBlock(1)<CR>",
+  {
+    "<A-j>",
+    function()
+      horizontal_resize("down")
+    end,
+    desc = "Decrease window height",
+    mode = "n",
   },
+  { "S", ":TSJToggle<CR>", desc = "Toggle spell check", mode = "n" },
 
-  visual_only = {
-    ["<C-y>"] = '"+y',
-  },
+  { "<A-n>", ":MoveLine(1)<CR>", desc = "Move line down", mode = "n" },
+  { "<A-p>", ":MoveLine(-1)<CR>", desc = "Move line up", mode = "n" },
+  { "<A-n>", ":MoveBlock(1)<CR>", desc = "Move block down", mode = "v" },
+  { "<A-p>", ":MoveBlock(-1)<CR>", desc = "Move block up", mode = "v" },
+  { "<A-h>", ":MoveHBlock(-1)<CR>", desc = "Move block left", mode = "v" },
+  { "<A-l>", ":MoveHBlock(1)<CR>", desc = "Move block right", mode = "v" },
 
-  terminal = {
-    ["<Esc>"] = "<C-\\><C-n>",
-  },
+  { "<C-y>", '"+y', desc = "Yank to system clipboard", mode = "x" },
+
+  { "<Esc>", "<C-\\><C-n>", desc = "Escape to normal mode", mode = "t", opts = {}},
 }
 
-local name_conversion = {
-  normal = "n",
-  visual_select = "v",
-  visual_only = "x",
-  select_only = "s",
-  insert = "i",
-  command = "c",
-  terminal = "t",
-}
-
-local function setup_keymap()
-  for mode, mappings in pairs(keymaps) do
-    local named_mode = name_conversion[mode]
-    for key, map in pairs(mappings) do
-      local map_to = type(map) == "table" and map.to or map
-      local opt = type(map) == "table" and map.opt or {}
-      vim.keymap.set(named_mode, key, map_to, opt)
-    end
-  end
-end
-
-setup_keymap()
+build_keymaps(nil, keymaps)

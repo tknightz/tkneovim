@@ -1,5 +1,3 @@
-local luasnip = require("luasnip")
-
 require("blink.cmp").setup({
   keymap = {
     preset = "super-tab",
@@ -45,11 +43,11 @@ require("blink.cmp").setup({
       scrollbar = true,
       -- direction_priority = { "e", "w", "n", "s" },
       draw = {
-        align_to = "kind_icon",
+        align_to = "label",
         treesitter = { "lsp" },
         padding = 1,
         gap = 2,
-        columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind" } },
+        columns = { { "label", "label_description", gap = 2 }, { "kind_icon", "kind", gap = 1 } },
         components = {
           kind = {
             ellipsis = false,
@@ -192,14 +190,7 @@ require("blink.cmp").setup({
 
   fuzzy = {
     use_frecency = false,
-    sorts = { "score", "label" },
-    -- sorts = {
-    --   function(a, b)
-    --     print(vim.inspect(a))
-    --     print('-----')
-    --     print(vim.inspect(b))
-    --   end
-    -- }
+    sorts = { "exact", "score", "label" },
   },
 
   snippets = {

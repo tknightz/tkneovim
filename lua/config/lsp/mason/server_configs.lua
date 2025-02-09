@@ -1,32 +1,19 @@
-local preset = require("config.lsp.preset")
 local util = require("lspconfig.util")
+local lsputils = require("config.lsp.utils")
+local preset = require("config.lsp.preset")
+local build_keymaps = require("lib").build_keymaps
 
 local M = {}
 
-local function get_local_binary(binary)
-  local cwd = vim.fn.getcwd()
-  local local_bin = cwd .. "/node_modules/.bin/" .. binary
-  if vim.fn.executable(local_bin) == 1 then
-    return local_bin
-  end
-  return binary
-end
-
--- config that apply to all servers
 M.general_configs = {
   capabilities = preset.capabilities,
-  on_attach = preset.on_attach,
   flags = {
     debounce_text_changes = 1000,
   },
   init_options = { hostInfo = "neovim" },
 }
 
--- manual servers are added outside of mason
-M.manual_servers = { "gdscript" }
-
--- custom configs for specify server
-M.custom_configs = {
+M.configs = {
   gopls = {
     cmd = { "gopls", "serve" },
     filetypes = { "go", "gomod" },
@@ -122,7 +109,7 @@ M.custom_configs = {
   },
 
   biome = {
-    cmd = { get_local_binary("biome"), "lsp-proxy" },
+    cmd = { lsputils.get_local_binary("biome"), "lsp-proxy" },
     filetypes = { "typescript", "typescriptreact", "javascript", "html", "css", "svelte", "typescript.tsx" },
   },
 
@@ -135,6 +122,7 @@ M.custom_configs = {
   },
 
   harper_ls = {
+    filetypes = { "markdown", "txt" },
     linters = {
       spell_check = true,
       spelled_numbers = false,
@@ -168,7 +156,7 @@ M.custom_configs = {
       typescript = {
         tsserver = {
           nodePath = "/usr/lib/electron32/electron",
-          maxTsServerMemory = 4096,
+          maxTsServerMemory = 3072,
         },
         updateImportsOnFileMove = { enabled = "always" },
         suggest = {
@@ -184,7 +172,51 @@ M.custom_configs = {
         },
       },
     },
+
+    keys = {
+      {
+        "gd",
+        function()
+          local params = vim.lsp.util.make_position_params(0, "utf-16")
+          lsputils.execute({
+            command = "typescript.goToSourceDefinition",
+            arguments = { params.textDocument.uri, params.position },
+            open = true,
+          })
+        end,
+        desc = "Go to definition",
+      },
+      { "<leader>lO", lsputils.action["source.organizeImports"], desc = "Organize imports" },
+      { "<leader>lC", lsputils.action["source.removeUnused.ts"], desc = "Remove unused code" },
+      { "<leader>lF", lsputils.action["source.fixAll.ts"], desc = "Fix all code" },
+      { "<leader>lI", lsputils.action["source.addMissingImports.ts"], desc = "Add missing imports" },
+    },
   },
 }
+
+M.build_server_config = function(server)
+  local server_config = M.configs[server]
+  local default_on_attach = require("config.lsp.preset").on_attach
+
+  if not server_config then
+    local config = M.general_configs
+    config.on_attach = default_on_attach
+    return config
+  end
+
+  local default_keymaps = require("config.lsp.preset").on_attach_keymaps
+  local custom_keymaps = server_config.keys and server_config.keys or {}
+
+  local keymaps = vim.tbl_extend("force", default_keymaps, custom_keymaps)
+  local on_attach = function(client, bufnr)
+    require("config.lsp.preset").on_attach(client, bufnr)
+    build_keymaps(bufnr, keymaps)
+  end
+
+  local config = server_config and vim.tbl_extend("force", M.general_configs, server_config) or M.general_configs
+  config.on_attach = on_attach
+
+  return config
+end
 
 return M

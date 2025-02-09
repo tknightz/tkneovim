@@ -247,19 +247,26 @@ return {
     end,
   },
 
-  -- Barbecue - display breadcrumbs
+  -- Dropbar - display breadcrumbs
   {
-    "utilyre/barbecue.nvim",
-    version = "*",
+    "Bekaboo/dropbar.nvim",
     event = "User FilePost",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-    },
     config = function()
-      local theme = require("onedark.barbecue")
-      require("barbecue").setup({
-        theme = theme,
+      local dropbar_api = require("dropbar.api")
+      local sources = require("dropbar.sources")
+
+      require("dropbar").setup({
+        icons = {
+          kinds = {
+            symbols = require("config.lsp.icons").icons,
+          },
+        },
+        bar = { sources = { sources.path, sources.lsp, sources.markdown } },
       })
+
+      vim.keymap.set("n", "<Leader>;", dropbar_api.pick, { desc = "Pick symbols in winbar" })
+      vim.keymap.set("n", "[;", dropbar_api.goto_context_start, { desc = "Go to start of current context" })
+      vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
     end,
   },
 

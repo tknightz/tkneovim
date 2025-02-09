@@ -1,10 +1,6 @@
-local debounce = require("lib").debounce
-local truncate_message = require("lib").truncate_message
-
 -- sidebar highlight autocmd
 local is_sidebar_ft = require("lib.consts").is_sidebar_ft
 local is_special_ft = require("lib.consts").is_special_ft
-local special_fts = require("lib.consts").special_fts
 
 local augroup = vim.api.nvim_create_augroup("AutoBGSidebar", { clear = true })
 vim.api.nvim_create_autocmd("BufWinEnter", {

@@ -1,4 +1,5 @@
 local wk = require("which-key")
+local snack_search_fn = require("lib").snack_search_fn
 
 local function toggle_inlay_hint()
   if vim.g.loaded_lsp == 0 then
@@ -51,7 +52,7 @@ end
 wk.add({
   { "<leader>l", group = "lsp", mode = { "n", "v" } },
   { "<leader>la", "<cmd>lua require('fastaction').code_action()<CR>", desc = "actions" },
-  { "<leader>ls", function() vim.lsp.buf.signature_help() end, desc = "signature_help" },
+  { "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "signature_help" },
   { "<leader>ld", "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>", desc = "toggle diagnostics" },
   { "<leader>li", "<cmd>lua vim.diagnostic.open_float({ scope = 'line' })<CR>", desc = "issues" },
   { "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "next" },
@@ -62,10 +63,11 @@ wk.add({
   { "<leader>lf", format, desc = "format", mode = {"n", "v"} },
   { "<leader>lt", toggle_lsp, desc = "toggle" },
   { "<leader>lh", toggle_inlay_hint, desc = "toggle hint" },
-  { "<leader>lS", "<cmd>SymbolsOutline<cr>", desc = "browse" },
-  { "<leader>l/", "<cmd>Lspsaga finder<CR>", desc ="finder-saga" },
+  { "<leader>l/", snack_search_fn("lsp_references"), desc ="references" },
 
   { "<leader>lv", group = "view" },
-  { "<leader>lvd", "<cmd>Lspsaga peek_definition<CR>", desc = "definition" },
-  { "<leader>lvt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "type" },
+  { "<leader>lvd", snack_search_fn("lsp_definitions"), desc = "definition" },
+  { "<leader>lvi", snack_search_fn("lsp_implementations"), desc = "implementation" },
+  { "<leader>lvr", snack_search_fn("lsp_references"), desc = "references" },
+  { "<leader>lvt", snack_search_fn("lsp_type_definitions"), desc = "types" },
 })

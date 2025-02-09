@@ -72,12 +72,11 @@ return {
   },
 
   -- Statuscol
-  -- {
-  --   -- "tknightz/statuscol.nvim",
-  --   dir = "~/Repos/statuscol.nvim",
-  --   config = function()
-  --     require("config.statuscol")
-  --   end,
-  --   event = "User FilePost",
-  -- },
+  {
+    "tknightz/statuscol.nvim",
+    config = function()
+      require("config.statuscol")
+    end,
+    event = "User FilePost",
+  },
 }

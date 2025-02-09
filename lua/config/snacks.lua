@@ -49,6 +49,7 @@ local indent = {
 
 local picker = {
   enabled = true,
+  ui_select = true,
   -- layout = {
   --   preset = "ivy",
   -- },
@@ -74,6 +75,8 @@ local picker = {
       keys = {
         ["<Esc>"] = { "close", mode = { "n", "i" } },
         ["<c-l>"] = { "qflist", mode = { "i", "n" } },
+        ["<c-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
+        ["<c-d>"] = { "preview_scroll_up", mode = { "i", "n" } },
       },
     },
   },
@@ -98,13 +101,41 @@ local picker = {
         preset = "ivy",
       },
     },
+    spelling = {
+      layout = {
+        preset = "select",
+      },
+    },
+  },
+
+  layouts = {
+    select = {
+      layout = {
+        relative = "cursor",
+        width = 30,
+        min_width = 0,
+        row = -3,
+        col = 0,
+        height =  6,
+      },
+    },
   },
 }
 
 require("snacks").setup({
   bigfile = { enabled = true },
   dashboard = dashboard,
-  input = { enabled = true },
+  input = {
+    enabled = true,
+  },
+  styles = {
+    input = {
+      relative = "cursor",
+      row = -3,
+      col = 0,
+      width = 30,
+    }
+  },
   notifier = { enabled = true },
   quickfile = { enabled = true },
   picker = picker,
@@ -121,7 +152,7 @@ require("snacks").setup({
     end,
   },
   statuscolumn = {
-    enabled = true,
+    enabled = false,
     left = { "fold", "mark", "sign" }, -- priority of signs on the left (high to low)
     right = { "git" }, -- priority of signs on the right (high to low)
     folds = {

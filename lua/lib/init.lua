@@ -122,4 +122,21 @@ M.snack_search_fn = function(func_name)
   end
 end
 
+M.build_keymaps = function(bufnr, keymaps)
+  for _, keymap in ipairs(keymaps) do
+    local default_opts = {
+      bufnr = bufnr,
+      silent = true,
+      desc = keymap.desc,
+      noremap = true,
+    }
+    vim.keymap.set(
+      keymap.mode or "n",
+      keymap[1],
+      keymap[2],
+      vim.tbl_extend("force", default_opts, keymap.opts and keymap.opts or {})
+    )
+  end
+end
+
 return M

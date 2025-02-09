@@ -69,7 +69,9 @@ local options = {
   mousemodel     = "extend",
   scrolloff      = 6,
   sidescrolloff  = 6,
-  winbar         = "    ",
+  -- winbar         = "    ",
+  spelloptions   = "camel",
+  guicursor      = "n-v-c-sm:block,i-ci-ve:ver25-iCursor-blinkwait300-blinkon200-blinkoff150,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor",
 
   shada          = { "!", "'1000", "<50", "s10", "h" },
   -- indentkeys     = "0{,0},0),0],:,(,0#,!^F,o,O,e"
@@ -81,3 +83,4 @@ end
 
 -- the special case
 vim.opt.formatoptions = vim.opt.formatoptions - "a" - "t" + "c" + "q" - "o" + "r" + "n" + "j" - "2"
+vim.opt.spelloptions = vim.opt.spelloptions - "noplainbuffer"

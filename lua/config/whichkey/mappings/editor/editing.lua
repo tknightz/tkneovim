@@ -20,6 +20,11 @@ local function toggle_ai()
   end
 end
 
+local function toggle_spell()
+  vim.cmd("set spell!")
+  vim.cmd("set spelloptions=camel")
+end
+
 wk.add({
   { "<leader>e", group = "editing" },
 
@@ -27,7 +32,7 @@ wk.add({
   { "<leader>ef", "<cmd>Neotree reveal<cr>", desc = "toggle file explorer" },
   { "<leader>ey", '"+y', desc = "yanks" },
   { "<leader>eY", "%y+<cr>", desc = "whole yanks" },
-  { "<leader>es", "<cmd>set spell!<cr>", desc = "toggle spell" },
+  { "<leader>es", toggle_spell, desc = "toggle spell" },
   { "<leader>eh", "<cmd>set hlsearch!<cr>", desc = "toggle hlsearch" },
   { "<leader>em", toggle_mouse, desc = "mouse on" },
   { "<leader>en", "<cmd>tabnext<cr>", desc = "next tab" },

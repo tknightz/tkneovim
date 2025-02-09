@@ -1,6 +1,3 @@
-local debounce = require("lib").debounce
-local truncate_message = require("lib").truncate_message
-
 -- ╭─────────────────────────────────────────────────────────╮
 -- │   auto enter insert mode when jump to terminal buffer   │
 -- ╰─────────────────────────────────────────────────────────╯
