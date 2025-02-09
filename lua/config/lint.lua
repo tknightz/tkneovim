@@ -1,5 +1,13 @@
+local lint = require("lint")
 local M = {}
 
+local eslint_config_files = {
+  "eslint.config.js",
+  "eslint.config.mjs",
+  "eslint.config.cjs",
+  "eslint.config.ts",
+  ".eslintrc.json", -- legacy eslint config
+}
 local opts = {
   -- Event to trigger linters
   events = { "TextChanged", "InsertLeave" },
@@ -14,24 +22,24 @@ local opts = {
     eslint_d = {
       condition = function()
         local root = vim.fn.getcwd()
-        return vim.fs.find({ "eslint.config.js", ".eslintrc.json" }, { path = root, upward = true })[1] ~= nil
+        return vim.fs.find(eslint_config_files, { path = root, upward = true })[1] ~= nil
       end,
     },
   },
 }
 
-local lint = require("lint")
+-- ╭─────────────────────────────────────────────────────────╮
+-- │                 Eslint config override                  │
+-- ╰─────────────────────────────────────────────────────────╯
 local eslint_d = lint.linters.eslint_d
-
--- override args
 eslint_d.args = vim.tbl_extend("force", {
   "--config",
   function()
-    if vim.fn.filereadable(vim.fn.getcwd() .. "/eslint.config.js") then
-      return vim.fn.getcwd() .. "/eslint.config.js"
+    for _, filename in ipairs(eslint_config_files) do
+      if vim.fn.filereadable(vim.fn.getcwd() .. filename) then
+        return vim.fn.getcwd() .. filename
+      end
     end
-
-    return vim.fn.getcwd() .. "/.eslintrc.json"
   end,
 }, eslint_d.args)
 
@@ -49,9 +57,16 @@ end
 lint.linters_by_ft = opts.linters_by_ft
 
 function M.debounce(ms, fn)
-  local timer = vim.uv.new_timer()
+  local timer
   return function(...)
     local argv = { ... }
+
+    -- Stop and clear the previous timer
+    if timer then
+      timer:stop()
+    end
+
+    timer = vim.uv.new_timer()
     timer:start(ms, 0, function()
       timer:stop()
       vim.schedule_wrap(fn)(unpack(argv))
@@ -82,7 +97,9 @@ function M.lint()
   ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
   names = vim.tbl_filter(function(name)
     local linter = lint.linters[name]
-    if not linter then return false end
+    if not linter then
+      return false
+    end
 
     local binary_found = vim.fn.executable(linter.cmd()) == 1
     return binary_found and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
@@ -93,7 +110,6 @@ function M.lint()
     lint.try_lint(names)
   end
 end
-
 
 -- run the first time
 M.lint()

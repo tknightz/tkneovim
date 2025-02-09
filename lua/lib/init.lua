@@ -125,7 +125,7 @@ end
 M.build_keymaps = function(bufnr, keymaps)
   for _, keymap in ipairs(keymaps) do
     local default_opts = {
-      bufnr = bufnr,
+      buffer = bufnr,
       silent = true,
       desc = keymap.desc,
       noremap = true,

@@ -74,6 +74,7 @@ local options = {
   guicursor      = "n-v-c-sm:block,i-ci-ve:ver25-iCursor-blinkwait300-blinkon200-blinkoff150,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor",
 
   shada          = { "!", "'1000", "<50", "s10", "h" },
+  exrc           = true,
   -- indentkeys     = "0{,0},0),0],:,(,0#,!^F,o,O,e"
 }
 

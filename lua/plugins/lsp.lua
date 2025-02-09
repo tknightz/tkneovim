@@ -37,7 +37,7 @@ return {
   -- conform for formatting
   {
     "stevearc/conform.nvim",
-    lazy = true,
+    event = "User FilePost",
     config = function()
       require("config.conform")
     end,

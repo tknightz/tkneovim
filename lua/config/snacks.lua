@@ -106,6 +106,21 @@ local picker = {
         preset = "select",
       },
     },
+    explorer = {
+      win = {
+        input = {
+          keys = {
+            ["<Esc>"] = { "close", mode = { "n" } },
+            ["<c-i>"] = { "toggle_focus", mode = { "n", "i" } },
+          },
+        },
+        list = {
+          keys = {
+            ["<c-i>"] = { "toggle_focus", mode = { "n", "i" } },
+          },
+        },
+      },
+    },
   },
 
   layouts = {
@@ -116,7 +131,7 @@ local picker = {
         min_width = 0,
         row = -3,
         col = 0,
-        height =  6,
+        height = 6,
       },
     },
   },
@@ -134,7 +149,7 @@ require("snacks").setup({
       row = -3,
       col = 0,
       width = 30,
-    }
+    },
   },
   notifier = { enabled = true },
   quickfile = { enabled = true },

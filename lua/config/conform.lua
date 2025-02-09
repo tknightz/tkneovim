@@ -19,10 +19,9 @@ require("conform").setup({
     json = { "prettier", "fixjson" },
     jsonc = { "prettier", "fixjson" },
 
-    -- typescript = { "prettier", "eslint", "eslint_d", stop_after_first = true },
     typescript = biome_format,
     typescriptreact = biome_format,
-    -- astro = biome_format,
+
     astro = { "prettier" },
 
     css = { "prettier", stop_after_first = true },
@@ -36,3 +35,13 @@ require("conform").setup({
     rust = { "rustfmt" },
   },
 })
+
+-- setup auto formating on save
+if vim.g.auto_format == true then
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+      require("conform").format({ bufnr = args.buf })
+    end,
+  })
+end
