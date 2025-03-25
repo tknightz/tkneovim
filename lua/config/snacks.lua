@@ -22,9 +22,17 @@ local dashboard = {
     { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
     { section = "startup" },
   },
+  wo = {
+    laststatus = 3,
+  }
 }
 
 local indent = {
+  priority = 1,
+  enabled = true, -- enable indent guides
+  char = "│",
+  only_scope = false, -- only show indent guides of the scope
+  only_current = false, -- only show indent guides in the current window
   animate = {
     enabled = true,
     easing = "inSine",
@@ -32,8 +40,8 @@ local indent = {
   scope = {
     enabled = true,
     char = "│",
-    underline = true, -- underline the start of the scope
-    only_current = true, -- only show scope in the current window
+    underline = false, -- underline the start of the scope
+    only_current = false, -- only show scope in the current window
   },
   chunk = {
     enabled = true,
@@ -49,6 +57,7 @@ local indent = {
 
 local picker = {
   enabled = true,
+  hidden = true,
   ui_select = true,
   -- layout = {
   --   preset = "ivy",
@@ -155,12 +164,16 @@ require("snacks").setup({
   quickfile = { enabled = true },
   picker = picker,
   indent = indent,
-
-  scope = {
-    enabled = true,
+  image = {
+    enabled = false,
+    doc = {
+      enabled = false,
+      inline = false,
+    }
   },
+
   scroll = {
-    enabled = true,
+    enabled = false,
     filter = function(buf)
       local filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
       return vim.g.snacks_scroll ~= false and vim.b[buf].snacks_scroll ~= false and is_special_ft(filetype) == false

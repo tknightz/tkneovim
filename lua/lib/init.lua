@@ -116,9 +116,9 @@ M.truncate_message = function(message, max_length)
   return first_part .. "  " .. last_part
 end
 
-M.snack_search_fn = function(func_name)
+M.snack_search_fn = function(func_name, opts)
   return function()
-    Snacks.picker[func_name]()
+    Snacks.picker[func_name](opts or {})
   end
 end
 

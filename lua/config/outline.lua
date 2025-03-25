@@ -2,7 +2,7 @@ local icons = require("config.lsp.icons").icons
 
 require("outline").setup({
   providers = {
-    priority = { "lsp", "markdown", "treesitter" },
+    priority = { "lsp", "markdown" },
   },
   outline_window = {
     width = 25,

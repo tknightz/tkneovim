@@ -6,6 +6,8 @@ local eslint_config_files = {
   "eslint.config.mjs",
   "eslint.config.cjs",
   "eslint.config.ts",
+  ".eslintrc.js", -- legacy eslint config
+  ".eslintrc.cjs", -- legacy eslint config
   ".eslintrc.json", -- legacy eslint config
 }
 local opts = {
@@ -98,6 +100,10 @@ function M.lint()
   names = vim.tbl_filter(function(name)
     local linter = lint.linters[name]
     if not linter then
+      return false
+    end
+
+    if type(linter.cmd) ~= "function" then
       return false
     end
 

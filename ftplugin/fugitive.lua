@@ -25,7 +25,7 @@ local function close_diff_wins()
   local diff_wins = {}
 
   for _, winnr in ipairs(current_windows) do
-    if vim.api.nvim_win_get_option(winnr, 'diff') then
+    if vim.api.nvim_win_get_option(winnr, "diff") then
       table.insert(diff_wins, winnr)
     end
   end
@@ -40,4 +40,43 @@ local function close_diff_wins()
   end
 end
 
-vim.keymap.set('n', 'dq', close_diff_wins, { noremap = true, buffer = true })
+-- local function after_git()
+--   -- Check if FugitiveResult() exists.
+--   if vim.fn.exists("*FugitiveResult") == 0 then
+--     return
+--   end
+--
+--   -- Call FugitiveResult() to get the result dictionary.
+--   local result = vim.fn.FugitiveResult()
+--
+--   -- Check that the file (if any) exists.
+--   local file = result.file or ""
+--   if vim.fn.filereadable(file) == 0 then
+--     return
+--   end
+--
+--   -- Check that the first argument is 'commit'. Note: Vim lists are 0-indexed.
+--   local args = result.args or {}
+--   local first_arg = args[0] or ""
+--   if first_arg ~= "commit" then
+--     return
+--   end
+--
+--   -- Only continue if there is a truthy exit_status.
+--   if not result.exit_status then
+--     return
+--   end
+--
+--   -- Open the commit result in a new split buffer.
+--   vim.cmd("Gsplit -")
+-- end
+
+-- Create an augroup and autocommand to trigger after Git commands.
+-- vim.api.nvim_create_augroup("my_fugitive_stuff", { clear = true })
+-- vim.api.nvim_create_autocmd("User", {
+--   group = "my_fugitive_stuff",
+--   pattern = "FugitiveChanged",
+--   callback = after_git,
+-- })
+
+vim.keymap.set("n", "dq", close_diff_wins, { noremap = true, buffer = true })

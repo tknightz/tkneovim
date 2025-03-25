@@ -3,7 +3,7 @@ return {
     -- "tknightz/onedark.nvim",
     dir = "~/Repos/onedark.nvim",
     -- lazy = true,
-    priority = 999,
+    priority = 900,
     config = function()
       require("onedark").setup({
         style = "dark",

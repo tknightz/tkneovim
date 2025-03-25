@@ -2,7 +2,7 @@ return {
   -- Snacks - set of some tiny useful plugins (tiny and useful I mean)
   {
     "folke/snacks.nvim",
-    priority = 900,
+    priority = 999,
     lazy = false,
     config = function()
       require("config.snacks")
@@ -209,7 +209,7 @@ return {
   {
     "lukas-reineke/headlines.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    ft = { "org", "norg", "markdown", "mdx", "yaml", "svelte" },
+    ft = { "org", "norg", "mdx", "yaml", "svelte" },
     config = function()
       require("headlines").setup({
         svelte = {
@@ -293,8 +293,30 @@ return {
       require("kulala").setup({
         default_view = "body",
         default_env = "dev",
+        show_icons = "signcolumn",
         debug = false,
+        additional_curl_options = { "-L" },
+
+        contenttypes = {
+          ["application/json"] = {
+            ft = "kulala-json",
+            formatter = { "jq", "." },
+            pathresolver = require("kulala.parser.jsonpath").parse,
+          },
+          ["application/xml"] = {
+            ft = "kulala-xml",
+            formatter = { "xmllint", "--format", "-" },
+            pathresolver = { "xmllint", "--xpath", "{{path}}", "-" },
+          },
+          ["text/html"] = {
+            ft = "html",
+            formatter = { "xmllint", "--format", "--html", "-" },
+            pathresolver = {},
+          },
+        },
       })
+
+      vim.treesitter.language.register("json", "kulala-json")
     end,
   },
 

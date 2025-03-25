@@ -18,7 +18,7 @@ require("blink.cmp").setup({
     },
     ["<S-Tab>"] = { "snippet_backward", "fallback" },
 
-    ["<CR>"] = { "accept", "fallback" },
+    -- ["<CR>"] = { "accept", "fallback" },
 
     ["<Up>"] = { "select_prev", "fallback" },
     ["<Down>"] = { "select_next", "fallback" },
@@ -27,6 +27,32 @@ require("blink.cmp").setup({
 
     ["<C-d>"] = { "scroll_documentation_up", "fallback" },
     ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+  },
+
+  cmdline = {
+    keymap = {
+      preset = "enter",
+      ["<Tab>"] = {
+        function(cmp)
+          cmp.show()
+        end,
+        "select_and_accept",
+      },
+      ["<CR>"] = { "accept_and_enter", "fallback" },
+    },
+
+    sources = function()
+      local type = vim.fn.getcmdtype()
+      -- Search forward and backward
+      if type == "/" or type == "?" then
+        return { "buffer" }
+      end
+      -- Commands
+      if type == ":" or type == "@" then
+        return { "cmdline" }
+      end
+      return {}
+    end,
   },
 
   appearance = {
@@ -55,9 +81,10 @@ require("blink.cmp").setup({
             text = function(ctx)
               return ctx.kind
             end,
-            highlight = function(ctx)
-              return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
-                or ("BlinkCmpKindText" .. ctx.kind)
+          },
+          kind_icon = {
+            text = function(ctx)
+              return ctx.kind_icon .. ctx.icon_gap
             end,
           },
         },
@@ -79,17 +106,17 @@ require("blink.cmp").setup({
       show_on_blocked_trigger_characters = { ",", " ", "\n", "\t" },
     },
     accept = {
+      dot_repeat = false,
       create_undo_point = true,
       auto_brackets = { enabled = true },
     },
     list = {
       selection = {
-        preselect = function(ctx)
-          return ctx.mode ~= "cmdline"
-        end,
-        auto_insert = function(ctx)
-          return ctx.mode == "cmdline"
-        end,
+        preselect = true,
+        auto_insert = false,
+        -- auto_insert = function(ctx)
+        --   return ctx.mode ~= "cmdline"
+        -- end,
       },
     },
     -- ghost_text = {
@@ -110,19 +137,9 @@ require("blink.cmp").setup({
 
   sources = {
     default = { "snippets", "lsp", "path", "buffer" },
-
-    cmdline = function()
-      local type = vim.fn.getcmdtype()
-      -- Search forward and backward
-      if type == "/" or type == "?" then
-        return { "buffer" }
-      end
-      -- Commands
-      if type == ":" then
-        return { "cmdline" }
-      end
-      return {}
-    end,
+    per_filetype = {
+      sql = { "snippets", "dadbod", "buffer" },
+    },
 
     providers = {
       lsp = {
@@ -132,6 +149,7 @@ require("blink.cmp").setup({
         module = "blink.cmp.sources.lsp",
         fallbacks = { "buffer" },
         min_keyword_length = 1,
+        opts = { tailwind_color_icon = '󱓻' },
       },
       snippets = {
         name = "Snippets",
@@ -185,6 +203,7 @@ require("blink.cmp").setup({
           return false
         end,
       },
+      dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
     },
   },
 

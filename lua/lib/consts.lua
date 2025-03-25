@@ -17,6 +17,7 @@ local M = {
     "terminal",
     "grug-far",
     "snack_picker_preview",
+    "kulala-json",
   },
 
   special_fts = {
@@ -51,6 +52,7 @@ local M = {
     "nofile",
     "snack_picker_preview",
     "dropbar_menu",
+    "kulala-json",
   }
 }
 

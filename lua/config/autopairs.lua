@@ -3,7 +3,7 @@ local Rule = require("nvim-autopairs.rule")
 local cond = require("nvim-autopairs.conds")
 
 npairs.setup({
-  disable_filetype = { "TelescopePrompt" },
+  disable_filetype = { "TelescopePrompt", "dockerfile" },
 })
 
 npairs.add_rules({

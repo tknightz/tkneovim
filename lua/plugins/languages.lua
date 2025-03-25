@@ -18,9 +18,23 @@ return {
   },
 
   {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
+    opts = {},
+    ft = { "markdown" },
+  },
+
+  {
     "davidmh/mdx.nvim",
     config = true,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = { "mdx" },
   },
+
+  -- {
+  --   "razak17/tailwind-fold.nvim",
+  --   opts = {},
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  --   ft = { "html", "svelte", "astro", "vue", "typescriptreact", "php", "blade" },
+  -- },
 }

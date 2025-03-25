@@ -1,5 +1,5 @@
 local wk = require("which-key")
-local git_util = require("lib.git")
+local snack_search_fn = require("lib").snack_search_fn
 
 wk.add({
   { "<leader>g", group = "git", mode = { "n", "v" } },
@@ -8,9 +8,7 @@ wk.add({
   -- { "<leader>gs", git_util.my_git_status, desc = "status" },
   {
     "<leader>gs",
-    function()
-      Snacks.picker.git_status()
-    end,
+    snack_search_fn("git_status"),
     desc = "Git Status",
   },
   { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "stage buffer" },
@@ -32,9 +30,9 @@ wk.add({
 
   -- Git browsing/searching
   { "<leader>g/", group = "browse" },
-  { "<leader>g/b", git_util.my_git_bcommits, desc = "buffer commits" },
-  { "<leader>g/c", git_util.my_git_commits, desc = "commits" },
-  { "<leader>g/s", git_util.my_git_stash, desc = "stash" },
+  { "<leader>g/b", snack_search_fn("git_log_file"), desc = "buffer commits" },
+  { "<leader>g/c", snack_search_fn("git_log"), desc = "commits" },
+  { "<leader>g/s", snack_search_fn("git_stash"), desc = "stash" },
 
   -- Git diff
   { "<leader>gd", group = "diff" },

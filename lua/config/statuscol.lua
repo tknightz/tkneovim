@@ -11,7 +11,7 @@ end
 
 require("statuscol").setup({
   ft_ignore = special_fts,
-  bt_ignore = {"nofile", "terminal"},
+  bt_ignore = { "nofile", "terminal" },
   relculright = true,
   segments = {
     { text = { builtin.foldfunc, space_after_fold }, hl = "FoldColumn", click = "v:lua.ScFa" },
@@ -19,7 +19,7 @@ require("statuscol").setup({
     {
       sign = {
         namespace = { "gitsigns", "diagnostic/signs" },
-        name = { "todo*" },
+        name = { "todo*", "kulala*" },
         maxwidth = 1,
         auto = false,
       },

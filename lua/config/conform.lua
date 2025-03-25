@@ -3,7 +3,7 @@ function biome_format()
   if vim.fn.filereadable(biome_config_path) ~= 0 then
     return { "biome" }
   else
-    return { "prettier", "eslint", "eslint_d" }
+    return { "prettier", "eslint_d", "eslint" }
   end
 end
 

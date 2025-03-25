@@ -39,6 +39,27 @@ vim.api.nvim_create_autocmd("BufReadPre", {
   end,
 })
 
+-- if vim.env.TMUX then
+--   local function set_tmux_title()
+--     local filepath = vim.fn.expand("%:~")
+--     if filepath ~= "" then
+--       vim.system({ "tmux", "set-option", "-g", "set-titles-string", filepath })
+--     end
+--   end
+--
+--   local function reset_tmux_title()
+--     vim.system({ "tmux", "set-option", "-g", "set-titles-string", "#{pane_current_command}" })
+--   end
+--
+--   vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained" }, {
+--     callback = set_tmux_title
+--   })
+--
+--   vim.api.nvim_create_autocmd("VimLeave", {
+--     callback = reset_tmux_title
+--   })
+-- end
+--
 
 -- local projectfile = vim.fn.getcwd() .. '/project.godot'
 -- if vim.fn.filereadable(projectfile) == 1 then
