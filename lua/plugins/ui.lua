@@ -63,12 +63,14 @@ return {
 
   -- Fastest color parser Neovim
   {
-    "brenoprata10/nvim-highlight-colors",
-    cmd = { "HighlightColors" },
+    "catgoose/nvim-colorizer.lua",
+    cmd = { "ColorizerToggle" },
     opts = {
-      render = "virtual",
-      virtual_symbol = "  ",
-      enable_tailwind = true,
+      user_default_options = {
+        virtualtext = "󱓻",
+        mode = "virtualtext",
+        virtualtext_inline = "before",
+      },
     },
   },
 

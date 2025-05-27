@@ -56,12 +56,22 @@ require("edgy").setup({
   },
   right = {
     {
+      ft = "copilot-chat",
+      open = "CopilotChat",
+      size = {
+        width = 0.3
+      }
+    },
+    {
       ft = "aerial",
       open = "AerialOpen",
     },
     {
       ft = "Outline",
       open = "Outline",
+      size = {
+        width = 0.2
+      }
     },
     {
       title = "Git status",
@@ -69,8 +79,10 @@ require("edgy").setup({
       filter = function(buf)
         return vim.b[buf].neo_tree_source == "git_status"
       end,
-      pinned = true,
       open = "Neotree position=right selector=false git_status",
+      size = {
+        width = 0.2
+      }
     },
     {
       ft = "sagaoutline",
@@ -79,7 +91,7 @@ require("edgy").setup({
   },
   options = {
     left = { size = 35 },
-    right = { size = 35 },
+    -- right = { size = 35 },
     bottom = { size = 0.3 },
   },
 

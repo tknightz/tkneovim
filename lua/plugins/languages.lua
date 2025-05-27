@@ -1,12 +1,5 @@
 return {
   -- Like its name, open markdown preview on browser
-  -- {
-  --   "MeanderingProgrammer/render-markdown.nvim",
-  --   dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
-  --   ft = "markdown",
-  --   opts = {},
-  -- },
-
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle" },
@@ -19,9 +12,23 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
-    opts = {},
-    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+    opts = {
+      file_types = { "markdown", "Avante", "codecompanion", "todo" },
+      -- anti_conceal = { enabled = false },
+      code = {
+        border = "thick",
+        style = "full",
+      },
+      -- overrides = {
+      --   buftype = {
+      --     nofile = {
+      --       code = { border = "thin", style = "normal" },
+      --     }
+      --   }
+      -- }
+    },
+    ft = { "markdown", "Avante" },
   },
 
   {
@@ -31,10 +38,19 @@ return {
     ft = { "mdx" },
   },
 
-  -- {
-  --   "razak17/tailwind-fold.nvim",
-  --   opts = {},
-  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
-  --   ft = { "html", "svelte", "astro", "vue", "typescriptreact", "php", "blade" },
-  -- },
+  {
+    "bngarren/checkmate.nvim",
+    ft = { "markdown", "todo" },
+    config = function(opts)
+      require("checkmate").setup({
+        show_todo_count = true,
+        todo_count_position = "eol",
+        todo_count_recursive = true,
+        use_metadata_keymaps = true,
+        todo_count_formatter = function(completed, total)
+          return string.format("(%s/%s) %.0f%%", completed, total, completed / total * 100)
+        end,
+      })
+    end,
+  },
 }

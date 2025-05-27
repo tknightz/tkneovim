@@ -31,7 +31,13 @@ return {
   {
     "Chaitanyabsprip/fastaction.nvim",
     event = "LspAttach",
-    opts = {},
+    opts = {
+      popup = {
+        highlight = {
+          key = "QuickFixLineNr"
+        }
+      }
+    },
   },
 
   -- conform for formatting

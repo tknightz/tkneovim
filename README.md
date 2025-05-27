@@ -64,7 +64,7 @@ Familiarize yourself with the keybindings and features provided by the
 configuration to make the most out of your coding sessions.
 
 🤔 **How to add new plugin?**
-1. Add you plugin spec to one of these files inside `📁 lua/plugins/` or
+1. Add your plugin spec to one of these files inside `📁 lua/plugins/` or
    you can create new file `.lua` inside it.
 
 2. Here is an example of plugin spec:

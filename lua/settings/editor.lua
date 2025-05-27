@@ -2,7 +2,7 @@ local options = {
   listchars = {
     -- tab            = "  ",
     lead           = " ",
-    leadmultispace = "│ ",
+    -- leadmultispace = "│ ",
     precedes       = "←",
     extends        = "→",
     eol            = "↩",
@@ -25,6 +25,7 @@ local options = {
 
   winblend       = 0,
   pumblend       = 0,
+  winborder      = 'rounded',
 
   tabline        = '',
   termguicolors  = true,

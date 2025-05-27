@@ -270,21 +270,6 @@ return {
     end,
   },
 
-  -- Supermaven - AI assistant
-  {
-    "supermaven-inc/supermaven-nvim",
-    config = function()
-      require("supermaven-nvim").setup({
-        keymaps = {
-          accept_suggestion = "<C-k>",
-          clear_suggestion = "<C-]>",
-          accept_word = "<C-l>",
-        },
-      })
-    end,
-    cmd = { "SupermavenUseFree", "SupermavenStart" },
-  },
-
   -- Kulala - http client
   {
     "mistweaverco/kulala.nvim",
@@ -388,5 +373,12 @@ return {
     "nacro90/numb.nvim",
     opts = {},
     event = "User FilePost",
+  },
+
+  {
+    "mcauley-penney/visual-whitespace.nvim",
+    config = true,
+    event = "ModeChanged *:[vV\22]", -- optionally, lazy load on entering visual mode
+    opts = {},
   },
 }

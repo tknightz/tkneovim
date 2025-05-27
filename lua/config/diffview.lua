@@ -50,6 +50,7 @@ require("diffview").setup({
   hooks = {
     diff_buf_read = function(bufnr)
       vim.opt_local.wrap = false
+      vim.opt.laststatus = 3
       -- vim.opt_local.list = false
     end,
   },

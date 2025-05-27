@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "User FilePost", "VeryLazy" },
+    branch = "master",
     lazy = vim.fn.argc(-1) == 0,
     init = function(plugin)
       -- copy from lazynvim
@@ -28,7 +29,7 @@ return {
     event = "User FilePost",
     opts = {
       keymaps = {
-        useDefaults = true
+        useDefaults = true,
       },
     },
   },

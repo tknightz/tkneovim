@@ -45,6 +45,17 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
+-- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+--   group = vim.api.nvim_create_augroup("MyFilePost", { clear = true }),
+--   callback = function(args)
+--     -- turn on message window in nightly
+--     if vim.fn.has("nvim-0.12") then
+--       require("vim._extui").enable({})
+--     end
+--   end,
+--   once = true,
+-- })
+
 -- ╭─────────────────────────────────────────────────────────╮
 -- │           Print cursorline diagnostic message           │
 -- │  listent to event CursorMoved to echohl the message of  │
@@ -124,4 +135,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     pcall(vim.api.nvim_win_set_cursor, winid, position)
   end,
   desc = "Auto jump to last position",
+})
+
+local restore_cursor_augroup = vim.api.nvim_create_augroup("restore_cursor_shape_on_exit", { clear = true })
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+  group = restore_cursor_augroup,
+  desc = "restore the cursor shape on exit of neovim",
+  command = "set guicursor=a:hor25-blinkwait300-blinkon200-blinkoff150",
 })

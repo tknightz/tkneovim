@@ -9,7 +9,6 @@ require("outline").setup({
     winhl = "Normal:EdgyNormal,NormalNC:EdgyNormal,SignColumn:EdgyNormal,WinBar:EdgyWinbar,EndOfBuffer:EdgyNormal",
   },
   keymaps = { -- These keymaps can be a string or a table for multiple keys
-    close = { "<Esc>", "q" },
     goto_location = "<Cr>",
     focus_location = "o",
     hover_symbol = "<C-space>",

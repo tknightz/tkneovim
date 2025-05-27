@@ -18,6 +18,7 @@ local M = {
     "grug-far",
     "snack_picker_preview",
     "kulala-json",
+    "copilot-chat",
   },
 
   special_fts = {
@@ -53,6 +54,8 @@ local M = {
     "snack_picker_preview",
     "dropbar_menu",
     "kulala-json",
+    "AvanteSelectedFiles",
+    "Avante",
   }
 }
 

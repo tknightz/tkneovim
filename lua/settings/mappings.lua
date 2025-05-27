@@ -17,6 +17,7 @@ local keymaps = {
   { "<leader>h", "<cmd>set hlsearch!<CR>", desc = "Toggle search highlighting", mode = "n", opts = { silent = true  }},
   { "0", "^", desc = "Start of line", mode = "n" },
   { "<C-y>", '"+y', desc = "Yank to system clipboard", mode = { "n", "v" } },
+  { "<C-/>", "gcc", desc = "Toggle line comment", mode = "n", opts = { remap = true }},
   { "<C-_>", "gcc", desc = "Toggle line comment", mode = "n", opts = { remap = true }},
   { "<C-_>", "gc", desc = "Toggle line comment", mode = "v", opts = { remap = true }},
   { "<A-h>", "<cmd>silent! vertical resize +3<cr>", desc = "Increase window width", mode = "n" },

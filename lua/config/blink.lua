@@ -39,6 +39,8 @@ require("blink.cmp").setup({
         "select_and_accept",
       },
       ["<CR>"] = { "accept_and_enter", "fallback" },
+      ["<C-p>"] = { "select_prev", "fallback" },
+      ["<C-n>"] = { "select_next", "fallback" },
     },
 
     sources = function()
@@ -62,6 +64,9 @@ require("blink.cmp").setup({
   },
 
   completion = {
+    keyword = {
+      range = 'full',
+    },
     menu = {
       border = "rounded",
       -- border = "none",
@@ -149,7 +154,7 @@ require("blink.cmp").setup({
         module = "blink.cmp.sources.lsp",
         fallbacks = { "buffer" },
         min_keyword_length = 1,
-        opts = { tailwind_color_icon = '󱓻' },
+        opts = { tailwind_color_icon = "󱓻 " },
       },
       snippets = {
         name = "Snippets",

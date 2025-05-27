@@ -34,7 +34,7 @@ end
 local _cap = vim.lsp.protocol.make_client_capabilities()
 _cap.textDocument.completion.completionItem.snippetSupport = true
 _cap.textDocument.foldingRange = {
-  dynamicRegistration = false,
+  dynamicRegistration = true,
   lineFoldingOnly = true,
 }
 local capabilities = require("blink.cmp").get_lsp_capabilities(_cap)

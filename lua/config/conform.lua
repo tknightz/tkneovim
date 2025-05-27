@@ -33,6 +33,8 @@ require("conform").setup({
     gdscript = { "gdformat" },
 
     rust = { "rustfmt" },
+
+    yaml = { "yamlfix" },
   },
 })
 

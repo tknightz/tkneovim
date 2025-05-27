@@ -14,13 +14,19 @@ local opts = {
   -- Event to trigger linters
   events = { "TextChanged", "InsertLeave" },
   linters_by_ft = {
-    javascript = { "biome", "eslint_d" },
-    typescript = { "biome", "eslint_d" },
-    typescriptreact = { "biome", "eslint_d" },
+    javascript = { "eslint_d" },
+    typescript = { "eslint_d" },
+    typescriptreact = { "eslint_d" },
     yaml = { "actionlint" },
   },
   -- copy from lazyvim
   linters = {
+    biomejs = {
+      condition = function()
+        local root = vim.fn.getcwd()
+        return vim.fs.find({ "biome.json" }, { path = root, upward = true })[1] ~= nil
+      end,
+    },
     eslint_d = {
       condition = function()
         local root = vim.fn.getcwd()
@@ -103,11 +109,12 @@ function M.lint()
       return false
     end
 
-    if type(linter.cmd) ~= "function" then
-      return false
+    local cmd = linter.cmd
+    if type(linter.cmd) == "function" then
+      cmd = linter.cmd()
     end
 
-    local binary_found = vim.fn.executable(linter.cmd()) == 1
+    local binary_found = vim.fn.executable(cmd) == 1
     return binary_found and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
   end, names)
 
