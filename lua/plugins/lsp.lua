@@ -15,16 +15,17 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
     opts = {},
+    config = function(opts)
+      require("mason").setup(opts)
+      require("config.lsp.mason")
+    end,
   },
 
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = true,
-    config = function()
-      require("config.lsp.mason")
-    end,
+    dependencies = { "williamboman/mason.nvim" },
   },
 
   -- Display float window actions for LSP
@@ -34,9 +35,9 @@ return {
     opts = {
       popup = {
         highlight = {
-          key = "QuickFixLineNr"
-        }
-      }
+          key = "QuickFixLineNr",
+        },
+      },
     },
   },
 
@@ -106,7 +107,7 @@ return {
     "dnlhc/glance.nvim",
     event = "LspAttach",
     config = function()
-      local glance = require('glance')
+      local glance = require("glance")
       local actions = glance.actions
 
       glance.setup({

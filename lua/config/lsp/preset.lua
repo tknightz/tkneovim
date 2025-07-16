@@ -1,3 +1,5 @@
+local build_keymaps = require("lib").build_keymaps
+
 local on_attach_keymaps = {
   { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
   { "gs", "<cmd>vertical winc ]<CR>", desc = "Select next item" },
@@ -27,6 +29,7 @@ local function on_attach(client, bufnr)
     vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "gray", italic = true })
   end
 
+  build_keymaps(bufnr, on_attach_keymaps)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
@@ -39,8 +42,18 @@ _cap.textDocument.foldingRange = {
 }
 local capabilities = require("blink.cmp").get_lsp_capabilities(_cap)
 
-return {
+vim.lsp.config("*", {
   on_attach = on_attach,
-  on_attach_keymaps = on_attach_keymaps,
   capabilities = capabilities,
-}
+  flags = {
+    debounce_text_changes = 1000,
+  },
+  init_options = { hostInfo = "neovim" },
+  name = "default_lsp"
+})
+
+-- return {
+--   on_attach = on_attach,
+--   on_attach_keymaps = on_attach_keymaps,
+--   capabilities = capabilities,
+-- }

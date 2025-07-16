@@ -6,12 +6,12 @@ return {
     event = "User FilePost",
     -- optional: provides snippets for the snippet source
     dependencies = { "L3MON4D3/LuaSnip" },
-    -- version = "v0.*",
+    version = "1.*",
 
     -- use a release tag to download pre-built binaries
     -- version = "v0.*",
     -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    build = "cargo build --release",
+    -- build = "cargo build --release",
 
     config = function()
       require("config.blink")

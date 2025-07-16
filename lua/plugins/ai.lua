@@ -6,13 +6,38 @@ return {
     opts = {
       -- add any opts here
       -- for example
+      mode = "legacy",
       provider = "gemini",
-      gemini = {
-        -- @see https://ai.google.dev/gemini-api/docs/models/gemini
-        model = "gemini-2.5-flash-preview-04-17",
-        timeout = 30000, -- timeout in milliseconds
-        temperature = 0, -- adjust if needed
-        max_tokens = 32768,
+      cursor_applying_provider = "groq",
+      behaviour = {
+        enable_cursor_planning_mode = true, -- enable cursor planning mode!
+      },
+      providers = {
+        gemini = {
+          -- @see https://ai.google.dev/gemini-api/docs/models/gemini
+          model = "gemini-2.5-flash",
+          timeout = 30000, -- timeout in milliseconds
+          temperature = 0, -- adjust if needed
+          max_tokens = 50768,
+        },
+        groq = { -- define groq provider
+          __inherited_from = "openai",
+          api_key_name = "GROQ_API_KEY",
+          endpoint = "https://api.groq.com/openai/v1/",
+          model = "llama-3.3-70b-versatile",
+          extra_request_body = {
+            max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
+          }
+        },
+      },
+
+      input = {
+        provider = "snacks",
+        provider_opts = {
+          -- Additional snacks.input options
+          title = "Avante Input",
+          icon = " ",
+        },
       },
 
       highlights = {
@@ -51,8 +76,8 @@ return {
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
+      "folke/snacks.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       "echasnovski/mini.icons",
@@ -118,8 +143,32 @@ return {
 
   {
     "olimorris/codecompanion.nvim",
-    cmd = {"CodeCompanion"},
-    opts = {},
+    cmd = { "CodeCompanionChat" },
+    opts = {
+      adapters = {
+        gemini = {
+          env = {
+            api_key = "GEMINI_API_KEY",
+          },
+          schema = {
+            model = {
+              default = "gemini-2.5-flash-preview",
+            },
+          },
+        },
+      },
+      strategies = {
+        chat = {
+          adapter = "gemini",
+        },
+        inline = {
+          adapter = "gemini",
+        },
+        cmd = {
+          adapter = "gemini",
+        },
+      },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",

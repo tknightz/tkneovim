@@ -1,3 +1,5 @@
+local build_keymaps = require("lib").build_keymaps
+
 -- ╭─────────────────────────────────────────────────────────╮
 -- │   auto enter insert mode when jump to terminal buffer   │
 -- ╰─────────────────────────────────────────────────────────╯
@@ -142,4 +144,15 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
   group = restore_cursor_augroup,
   desc = "restore the cursor shape on exit of neovim",
   command = "set guicursor=a:hor25-blinkwait300-blinkon200-blinkoff150",
+})
+
+
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("my.lsp", {}),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local buf_keys = client.config.keys and client.config.keys or {}
+    build_keymaps(args.bufnr, buf_keys)
+  end,
 })

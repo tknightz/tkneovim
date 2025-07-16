@@ -67,7 +67,7 @@ local picker = {
       ft = nil, ---@type string? filetype for highlighting
     },
     file = {
-      -- filename_first = true, -- display filename before the file path
+      filename_first = true, -- display filename before the file path
       truncate = 80, -- truncate the file path to (roughly) this length
       filename_only = false, -- only show the filename
     },

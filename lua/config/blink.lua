@@ -191,21 +191,13 @@ require("blink.cmp").setup({
           while start_col > 0 and line:sub(start_col, start_col):match("[%w_]") do
             start_col = start_col - 1
           end
-          if line:sub(start_col, start_col):match("[%w_]") then
-            start_col = start_col - 1
+
+          local before_word = line:sub(1, start_col)
+          if before_word:find("[^ \t]") then
+            return false
           end
 
-          while end_col <= #line and line:sub(end_col + 1, end_col + 1):match("[%w_]") do
-            end_col = end_col + 1
-          end
-
-          -- Check the character before the word (start_col is 0-based)
-          local char_before_word = line:sub(start_col, start_col)
-          if start_col == 0 or char_before_word:match("%s") then
-            return true
-          end
-
-          return false
+          return true
         end,
       },
       dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },

@@ -19,6 +19,7 @@ local M = {
     "snack_picker_preview",
     "kulala-json",
     "copilot-chat",
+    "codecompanion",
   },
 
   special_fts = {

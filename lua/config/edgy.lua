@@ -63,6 +63,13 @@ require("edgy").setup({
       }
     },
     {
+      ft = "codecompanion",
+      open = "CodeCompanion",
+      size = {
+        width = 0.3
+      }
+    },
+    {
       ft = "aerial",
       open = "AerialOpen",
     },

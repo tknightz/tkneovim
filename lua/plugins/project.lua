@@ -47,6 +47,11 @@ return {
       sign_priority = 0,
       status_formatter = nil, -- Use default
     },
+    --
+    -- config = function(opts)
+    --   require("gitsigns").setup(opts)
+    --   require("scrollbar.handlers.gitsigns").setup()
+    -- end,
   },
 
   -- Scope - only show buffers that belong to the current tab

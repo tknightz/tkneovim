@@ -14,7 +14,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
     opts = {
-      file_types = { "markdown", "Avante", "codecompanion", "todo" },
+      file_types = { "markdown", "Avante", "codecompanion", "todo", "mdx", "copilot-chat" },
       -- anti_conceal = { enabled = false },
       code = {
         border = "thick",
@@ -28,7 +28,7 @@ return {
       --   }
       -- }
     },
-    ft = { "markdown", "Avante" },
+    ft = { "markdown", "Avante", "mdx", "copilot-chat" },
   },
 
   {

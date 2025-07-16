@@ -1,4 +1,5 @@
-local lspconfig = require("lspconfig")
+require("config.lsp.preset")
+
 local registry = require("mason-registry")
 
 -- UI configurations
@@ -90,16 +91,36 @@ local function setup_vtsls_diagnostic_filter()
   end
 end
 
+local attach_lsp_to_existing_buffers = vim.schedule_wrap(function()
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    local valid = vim.api.nvim_buf_is_valid(bufnr) and vim.api.nvim_buf_get_option(bufnr, "buflisted")
+    if valid and vim.bo[bufnr].buftype == "" then
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      if bufname ~= "" then -- Only reload actual files, not scratch buffers
+        local augroup_lspconfig = vim.api.nvim_create_augroup("lspconfig", { clear = false })
+        vim.api.nvim_exec_autocmds("FileType", { group = augroup_lspconfig, buffer = bufnr })
+      end
+    end
+  end
+end)
+
 -- Server setup
 local function setup_language_servers()
   registry.refresh(function()
     local installed_servers = require("mason-lspconfig").get_installed_servers()
-    local build_server_config = require("config.lsp.mason.server_configs").build_server_config
-
     for _, server in pairs(installed_servers) do
-      local config = build_server_config(server)
-      lspconfig[server].setup(config)
+      if server ~= "" then
+        if server == "harper_ls" then
+          -- override priority
+          vim.lsp.config("harper_ls", {
+            filetypes = { "markdown", "text" },
+          })
+        end
+        vim.lsp.enable(server)
+      end
     end
+
+    attach_lsp_to_existing_buffers()
   end)
 end
 

@@ -381,4 +381,18 @@ return {
     event = "ModeChanged *:[vV\22]", -- optionally, lazy load on entering visual mode
     opts = {},
   },
+
+  {
+    "pwntester/octo.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "echasnovski/mini.icons",
+    },
+    cmd = { "Octo" },
+    opts = {
+      ssh_aliases = { ["github.com-musinsa"] = "github.com" },
+      picker = "snacks",
+    },
+  },
 }

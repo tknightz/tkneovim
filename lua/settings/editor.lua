@@ -23,7 +23,7 @@ local options = {
 
   list           = true,
 
-  winblend       = 0,
+  -- winblend       = 0,
   pumblend       = 0,
   winborder      = 'rounded',
 
@@ -55,7 +55,9 @@ local options = {
   relativenumber = true,
   numberwidth    = 2,
   wrap           = true,
-  breakindent    = true,
+  autoindent     = true,
+  copyindent     = true,
+  -- breakindent    = true,
   linebreak      = true,
   showbreak      = "",
   cursorline     = true,
