@@ -9,40 +9,6 @@ return {
     end,
   },
 
-  -- Fuzzy search all the stuffs
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope-live-grep-args.nvim",
-  --     "tknightz/telescope-termfinder.nvim",
-  --     {
-  --       "nvim-telescope/telescope-fzf-native.nvim",
-  --       build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
-  --     },
-  --   },
-  --
-  --   module = "telescope",
-  --   cmd = "Telescope",
-  --   config = function()
-  --     require("config.telescope")
-  --   end,
-  -- },
-
-  -- Neo-tree - file explorer
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    cmd = { "Neotree" },
-    config = function()
-      require("config.neotree")
-    end,
-  },
-
   -- Highlight cursor word
   {
     "RRethy/vim-illuminate",
@@ -86,6 +52,8 @@ return {
     event = "User FilePost",
     init = function()
       local vim = vim
+
+      vim.g.matchup_treesitter_disabled = { "markdown" }
 
       vim.g.matchup_matchparen_offscreen = {}
       vim.g.matchup_matchparen_timeout = 300
@@ -273,36 +241,36 @@ return {
   -- Kulala - http client
   {
     "mistweaverco/kulala.nvim",
-    ft = "http",
-    config = function()
-      require("kulala").setup({
-        default_view = "body",
-        default_env = "dev",
-        show_icons = "signcolumn",
-        debug = false,
-        additional_curl_options = { "-L" },
+    ft = "http" ,
+    opts = {
+      default_view = "body",
+      default_env = "dev",
+      show_icons = "signcolumn",
+      debug = false,
+      additional_curl_options = { "-L" },
 
-        contenttypes = {
-          ["application/json"] = {
-            ft = "kulala-json",
-            formatter = { "jq", "." },
-            pathresolver = require("kulala.parser.jsonpath").parse,
-          },
-          ["application/xml"] = {
-            ft = "kulala-xml",
-            formatter = { "xmllint", "--format", "-" },
-            pathresolver = { "xmllint", "--xpath", "{{path}}", "-" },
-          },
-          ["text/html"] = {
-            ft = "html",
-            formatter = { "xmllint", "--format", "--html", "-" },
-            pathresolver = {},
-          },
+      contenttypes = {
+        ["application/json"] = {
+          ft = "kulala-json",
+          formatter = { "jq", "." },
         },
-      })
-
-      vim.treesitter.language.register("json", "kulala-json")
-    end,
+        ["application/xml"] = {
+          ft = "kulala-xml",
+          formatter = { "xmllint", "--format", "-" },
+          pathresolver = { "xmllint", "--xpath", "{{path}}", "-" },
+        },
+        ["text/html"] = {
+          ft = "html",
+          formatter = { "xmllint", "--format", "--html", "-" },
+          pathresolver = {},
+        },
+      },
+      ui = {
+        icons = {
+          textHighlight = "SpecialComment",
+        },
+      },
+    },
   },
 
   -- Autotag - automatically close and rename html tags
@@ -395,4 +363,44 @@ return {
       picker = "snacks",
     },
   },
+
+  {
+    "keaising/im-select.nvim",
+    event = "User FilePost",
+    opts = {},
+  },
+
+  {
+    "chrisgrieser/nvim-rulebook",
+    opts = {},
+    cmd = { "Rulebook" },
+  },
+
+  --
+  -- {
+  --   "dmtrKovalenko/fff.nvim",
+  --   build = function()
+  --     -- this will download prebuild binary or try to use existing rustup toolchain to build from source
+  --     -- (if you are using lazy you can use gb for rebuilding a plugin if needed)
+  --     require("fff.download").download_or_build_binary()
+  --   end,
+  --   lazy = false, -- make fff initialize on startup
+  -- },
+  --
+  -- {
+  --   "madmaxieee/fff-snacks.nvim",
+  --   dependencies = {
+  --     "dmtrKovalenko/fff.nvim",
+  --     "folke/snacks.nvim",
+  --   },
+  --   cmd = "FFFSnacks",
+  --   keys = {
+  --     {
+  --       "<leader>ff",
+  --       "<cmd> FFFSnacks <cr>",
+  --       desc = "FFF",
+  --     },
+  --   },
+  --   config = true,
+  -- },
 }

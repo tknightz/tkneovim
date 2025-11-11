@@ -1,8 +1,10 @@
-local ts_config = require("nvim-treesitter.configs")
+local ts = require("nvim-treesitter")
 
-vim.treesitter.language.register('markdown', 'mdx')
+-- vim.treesitter.language.register("markdown", { "mdx", "Avante" })
+vim.treesitter.language.register("json", "kulala-json")
+vim.treesitter.language.register("http", { "kulala_http", "http" })
 
-ts_config.setup({
+ts.setup({
   ensure_installed = {
     "javascript",
     "html",
@@ -24,7 +26,7 @@ ts_config.setup({
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gs",
+      init_selection = "gS",
       node_incremental = "gn",
       scope_incremental = "gk",
       node_decremental = "gp",
@@ -110,3 +112,39 @@ ts_config.setup({
     },
   },
 })
+
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   group = vim.api.nvim_create_augroup("lazy_treesitter", { clear = true }),
+--   callback = function(event)
+--     local bufnr = event.buf
+--     local filetype, parser_name = event.match, vim.treesitter.language.get_lang(event.match)
+--
+--     -- Skip if no filetype
+--     if filetype == "" then
+--       return
+--     end
+--
+--
+--     -- Try to get existing parser (helpful check if filetype was returned above)
+--     local parser_configs = require("nvim-treesitter.parsers")
+--     if not parser_configs[parser_name] and parser_name ~= "kulala_http" then
+--       return -- Parser not available, skip silently
+--     end
+--
+--     local parser_installed = pcall(vim.treesitter.get_parser, bufnr, parser_name)
+--
+--     if not parser_installed then
+--       -- If not installed, install parser synchronously
+--       require("nvim-treesitter").install({ parser_name }):wait(30000)
+--     end
+--
+--     -- let's check again
+--     -- parser_installed = pcall(vim.treesitter.get_parser, bufnr, parser_name)
+--     -- print(parser_installed)
+--
+--     if parser_installed then
+--       pcall(vim.treesitter.start)
+--       -- vim.treesitter.start(bufnr, parser_name)
+--     end
+--   end,
+-- })

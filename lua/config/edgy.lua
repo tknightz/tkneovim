@@ -63,6 +63,14 @@ require("edgy").setup({
       }
     },
     {
+      ft = "sidekick_terminal",
+      open = "SideKick AI",
+      size = {
+        width = 0.3
+      }
+    },
+    { ft = "grug-far", title = "Grug Far", size = { width = 0.4 } },
+    {
       ft = "codecompanion",
       open = "CodeCompanion",
       size = {

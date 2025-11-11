@@ -10,7 +10,7 @@ require("lualine").setup({
     globalstatus = true,
     refresh = {
       statusline = 100,
-    }
+    },
   },
   sections = {
     lualine_a = { {
@@ -24,14 +24,20 @@ require("lualine").setup({
         "branch",
         color = { fg = "#00c65c", gui = "bold" },
         fmt = function(str)
-          local end_sign = string.len(str) > 20 and "..." or ""
-          return string.sub(str, 0, 20) .. end_sign
+          if #str <= 20 then
+            return str
+          end
+
+          -- take first 17 - 3 = 14 chars, add "...", then last 6 chars
+          local prefix = string.sub(str, 1, 14)
+          local suffix = string.sub(str, -6)
+          return prefix .. "..." .. suffix
         end,
       },
       {
         "diff",
         colored = true,
-        symbols = {added = ' 󰐙 ', modified = ' 󰣕 ', removed = ' 󰍚 '},
+        symbols = { added = " 󰐙 ", modified = " 󰣕 ", removed = " 󰍚 " },
         diff_color = {
           added = { fg = "#3eff7b" },
           modified = { fg = "#ff722e" },
@@ -78,7 +84,7 @@ require("lualine").setup({
         end,
         fmt = function()
           return tostring(vim.fn.wordcount().words) .. " words"
-        end
+        end,
       },
       {
         "filesize",

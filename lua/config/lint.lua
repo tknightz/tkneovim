@@ -14,9 +14,9 @@ local opts = {
   -- Event to trigger linters
   events = { "TextChanged", "InsertLeave" },
   linters_by_ft = {
-    javascript = { "eslint_d" },
-    typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
+    -- javascript = { "eslint_d" },
+    -- typescript = { "eslint_d" },
+    -- typescriptreact = { "eslint_d" },
     yaml = { "actionlint" },
   },
   -- copy from lazyvim
@@ -41,6 +41,7 @@ local opts = {
 -- ╰─────────────────────────────────────────────────────────╯
 local eslint_d = lint.linters.eslint_d
 eslint_d.args = vim.tbl_extend("force", {
+  "--no-warn-ignored",
   "--config",
   function()
     for _, filename in ipairs(eslint_config_files) do

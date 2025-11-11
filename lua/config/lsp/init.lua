@@ -1,27 +1,42 @@
-require("config.lsp.preset")
+local preset = require("config.lsp.preset")
 
 local registry = require("mason-registry")
 
 -- UI configurations
 local function setup_ui_configs()
   -- Configure LSP windows
-  local win = require("lspconfig.ui.windows")
-  local _default_opts = win.default_opts
-  win.default_opts = function(options)
-    local opts = _default_opts(options)
-    opts.border = "rounded"
-    return opts
-  end
+  -- local win = require("lspconfig.ui.windows")
+  -- local _default_opts = win.default_opts
+  -- win.default_opts = function(options)
+  --   local opts = _default_opts(options)
+  --   opts.border = "rounded"
+  --   return opts
+  -- end
 
   -- Configure handlers with rounded borders
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    { border = "rounded", close_events = { "CursorMoved", "BufHidden", "InsertCharPre" } }
-  )
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-    silent = true,
-  })
+  -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  --   vim.lsp.handlers.signature_help,
+  --   { border = "rounded", close_events = { "CursorMoved", "BufHidden", "InsertCharPre" } }
+  -- )
+  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  --   border = "rounded",
+  --   silent = true,
+  -- })
+
+  vim.lsp.handlers["client/registerCapability"] = (function(overridden)
+    return function(err, res, ctx)
+      local result = overridden(err, res, ctx)
+      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      if not client then
+        return
+      end
+      for bufnr, _ in pairs(client.attached_buffers) do
+        -- Call your custom on_attach logic...
+        preset.on_attach(client, bufnr)
+      end
+      return result
+    end
+  end)(vim.lsp.handlers["client/registerCapability"])
 end
 
 -- Diagnostic configurations
@@ -109,17 +124,20 @@ local function setup_language_servers()
   registry.refresh(function()
     local installed_servers = require("mason-lspconfig").get_installed_servers()
     for _, server in pairs(installed_servers) do
-      if server ~= "" then
-        if server == "harper_ls" then
-          -- override priority
-          vim.lsp.config("harper_ls", {
-            filetypes = { "markdown", "text" },
-          })
-        end
-        vim.lsp.enable(server)
-      end
+      -- if server ~= "" then
+      --   if server == "harper_ls" then
+      --     -- override priority
+      --     vim.lsp.config("harper_ls", {
+      --       filetypes = { "markdown", "text" },
+      --     })
+      --   end
+
+      vim.lsp.enable(server)
+      -- end
     end
 
+    -- custom server
+    -- vim.lsp.enable('tsgo')
     attach_lsp_to_existing_buffers()
   end)
 end

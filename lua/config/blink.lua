@@ -14,6 +14,12 @@ require("blink.cmp").setup({
     ["<Tab>"] = {
       "select_and_accept",
       "snippet_forward",
+      function() -- sidekick next edit suggestion
+        return require("sidekick").nes_jump_or_apply()
+      end,
+      function() -- if you are using Neovim's native inline completions
+        return vim.lsp.inline_completion.get()
+      end,
       "fallback",
     },
     ["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -30,8 +36,9 @@ require("blink.cmp").setup({
   },
 
   cmdline = {
+    enabled = true,
     keymap = {
-      preset = "enter",
+      preset = "cmdline",
       ["<Tab>"] = {
         function(cmp)
           cmp.show()
@@ -55,6 +62,27 @@ require("blink.cmp").setup({
       end
       return {}
     end,
+    completion = {
+      trigger = {
+        show_on_blocked_trigger_characters = {},
+        show_on_x_blocked_trigger_characters = {},
+      },
+      list = {
+        selection = {
+          -- When `true`, will automatically select the first item in the completion list
+          -- preselect = true,
+          -- When `true`, inserts the completion item automatically when selecting it
+          auto_insert = true,
+        },
+      },
+      -- Whether to automatically show the window when new completion items are available
+      -- Default is false for cmdline, true for cmdwin (command-line window)
+      -- menu = {
+      --   auto_show = true
+      -- },
+      -- Displays a preview of the selected item on the current line
+      ghost_text = { enabled = true },
+    },
   },
 
   appearance = {
@@ -65,7 +93,7 @@ require("blink.cmp").setup({
 
   completion = {
     keyword = {
-      range = 'full',
+      range = "full",
     },
     menu = {
       border = "rounded",
@@ -144,12 +172,14 @@ require("blink.cmp").setup({
     default = { "snippets", "lsp", "path", "buffer" },
     per_filetype = {
       sql = { "snippets", "dadbod", "buffer" },
+      mysql = { "dadbod" },
+      postgresql = { "dadbod" },
     },
 
     providers = {
       lsp = {
         name = "lsp",
-        enabled = true,
+        -- enabled = true,
         async = true,
         module = "blink.cmp.sources.lsp",
         fallbacks = { "buffer" },
@@ -170,42 +200,47 @@ require("blink.cmp").setup({
         --     typescriptreact = { "javascript" },
         --   },
         -- },
-        should_show_items = function()
-          local buf = vim.api.nvim_get_current_buf()
-          local cursor = vim.api.nvim_win_get_cursor(0)
-          local row, col = cursor[1] - 1, cursor[2]
-
-          -- Get the current line content
-          local line = vim.api.nvim_buf_get_lines(buf, row, row + 1, true)[1]
-          if not line then
-            return false
-          end -- If the line is nil, return false
-
-          -- Case 1: Cursor is at the beginning of the line
-          if col == 0 then
-            return true
-          end
-
-          -- Extract the word under the cursor
-          local start_col, end_col = col, col
-          while start_col > 0 and line:sub(start_col, start_col):match("[%w_]") do
-            start_col = start_col - 1
-          end
-
-          local before_word = line:sub(1, start_col)
-          if before_word:find("[^ \t]") then
-            return false
-          end
-
-          return true
+        should_show_items = function(ctx)
+          return ctx.trigger.initial_kind ~= "trigger_character"
         end,
+        -- should_show_items = function()
+        --   local buf = vim.api.nvim_get_current_buf()
+        --   local cursor = vim.api.nvim_win_get_cursor(0)
+        --   local row, col = cursor[1] - 1, cursor[2]
+        --
+        --   -- Get the current line content
+        --   local line = vim.api.nvim_buf_get_lines(buf, row, row + 1, true)[1]
+        --   if not line then
+        --     return false
+        --   end -- If the line is nil, return false
+        --
+        --   -- Case 1: Cursor is at the beginning of the line
+        --   if col == 0 then
+        --     return true
+        --   end
+        --
+        --   -- Extract the word under the cursor
+        --   local start_col, end_col = col, col
+        --   while start_col > 0 and line:sub(start_col, start_col):match("[%w_]") do
+        --     start_col = start_col - 1
+        --   end
+        --
+        --   local before_word = line:sub(1, start_col)
+        --   if before_word:find("[^ \t]") then
+        --     return false
+        --   end
+        --
+        --   return true
+        -- end,
       },
       dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
     },
   },
 
   fuzzy = {
-    use_frecency = false,
+    frecency = {
+      enabled = false,
+    },
     sorts = { "exact", "score", "label" },
   },
 

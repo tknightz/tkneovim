@@ -1,8 +1,7 @@
 return {
   {
-    -- "tknightz/onedark.nvim",
-    dir = "~/Repos/onedark.nvim",
-    -- lazy = true,
+    "tknightz/onedark.nvim",
+    lazy = false,
     priority = 900,
     config = function()
       require("onedark").setup({
@@ -91,4 +90,14 @@ return {
     end,
     event = "User FilePost",
   },
+
+  -- lazy.nvim
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "User FilePost",
+  --   opts = {},
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  -- },
 }

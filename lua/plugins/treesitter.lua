@@ -1,13 +1,13 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "User FilePost", "VeryLazy" },
-    branch = "master",
+    -- event = { "VeryLazy" },
+    branch = "main",
     lazy = vim.fn.argc(-1) == 0,
     init = function(plugin)
       -- copy from lazynvim
       require("lazy.core.loader").add_to_rtp(plugin)
-      require("nvim-treesitter.query_predicates")
+      -- require("nvim-treesitter.query_predicates")
     end,
     build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = false })
@@ -21,7 +21,11 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    branch = "main",
     event = "User FilePost",
+    config = function()
+      require("config.text-objects")
+    end,
   },
 
   {

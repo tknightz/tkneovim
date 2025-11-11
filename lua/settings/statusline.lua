@@ -24,7 +24,7 @@ function M.get_or_create_hl(hl)
       fg_hl = vim.api.nvim_get_hl(0, { name = fg_hl.link })
     end
     if fg_hl.fg == nil then
-      fg_hl = vim.api.nvim_get_hl(0, { name = 'Normal' })
+      fg_hl = vim.api.nvim_get_hl(0, { name = "Normal" })
     end
     vim.api.nvim_set_hl(0, hl_name, { bg = ("#%06x"):format(bg_hl.bg or 0), fg = ("#%06x"):format(fg_hl.fg or 0) })
     statusline_hls[hl] = true
@@ -106,11 +106,19 @@ end
 function M.git_branch_component()
   local head = vim.b.gitsigns_head
   if not head or head == "" then
+    -- no branch info available
     return string.format("%%#StatusLineGitSeparator#")
   end
 
+  local branch = head
+  if #head > 20 then
+    local prefix = string.sub(head, 1, 14)
+    local suffix = string.sub(head, -6)
+    branch = prefix .. "..." .. suffix
+  end
+
   return table.concat({
-    string.format("%%#StatusLineGit#  %s ", head),
+    string.format("%%#StatusLineGit#  %s ", branch),
     string.format("%%#StatusLineGitSeparator#"),
   })
 end
@@ -130,6 +138,8 @@ function M.get_icon_by_filetype(filetype)
     fzf = { "", "Special" },
     kitty_scrollback = { "󰄛", "Conditional" },
     lazyterm = { "", "Special" },
+    sidekick_terminal = { "", "Special" },
+    toggleterm = { "", "Special" },
   }
 
   local icon, icon_hl
@@ -167,7 +177,7 @@ end
 -- Show the filename of the current buffer.
 ---@return string
 function M.filename_component()
-  local filename = vim.fn.expand("%:.")
+  local filename = vim.fn.expand("%:t")
   local icon, icon_hl = M.get_icon_by_filetype(vim.bo.filetype)
   return string.format(" %%#%s#%s %%#StatusLineTitle#%s", icon_hl, icon, filename)
 end
@@ -249,7 +259,7 @@ function M.git_status_component()
   local keys = { "added", "changed", "removed" }
   local components = {}
   for _, key in pairs(keys) do
-    if status[key] ~= nil and status[key] > 0  then
+    if status[key] ~= nil and status[key] > 0 then
       table.insert(
         components,
         string.format("%%#%s#%s%d", M.get_or_create_hl(opts[key].highlight), opts[key].icon, status[key])

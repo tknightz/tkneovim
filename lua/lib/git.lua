@@ -33,7 +33,7 @@ E.my_git_commits = function(opts)
 
   local delta = config.previewers.new_termopen_previewer({
     get_command = function(entry)
-      -- this is for status
+      -- This is for status
       -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
       -- just do an if and return a different command
       if entry.status == "??" then
@@ -73,7 +73,7 @@ E.my_git_status = function(opts)
 
   local delta = config.previewers.new_termopen_previewer({
     get_command = function(entry)
-      -- this is for status
+      -- This is for status
       -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
       -- just do an if and return a different command
       if entry.status == " D" then

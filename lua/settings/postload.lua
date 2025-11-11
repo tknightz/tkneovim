@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 -- end
 --
 
--- local projectfile = vim.fn.getcwd() .. '/project.godot'
--- if vim.fn.filereadable(projectfile) == 1 then
---   vim.fn.serverstart '127.0.0.1:6004'
--- end
+local projectfile = vim.fn.getcwd() .. '/project.godot'
+if vim.fn.filereadable(projectfile) == 1 then
+  vim.fn.serverstart '127.0.0.1:6004'
+end

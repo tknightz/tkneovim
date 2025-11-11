@@ -52,8 +52,8 @@ vim.lsp.config("*", {
   name = "default_lsp"
 })
 
--- return {
---   on_attach = on_attach,
---   on_attach_keymaps = on_attach_keymaps,
---   capabilities = capabilities,
--- }
+return {
+  on_attach = on_attach,
+  on_attach_keymaps = on_attach_keymaps,
+  capabilities = capabilities,
+}

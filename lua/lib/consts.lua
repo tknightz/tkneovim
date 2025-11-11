@@ -20,6 +20,8 @@ local M = {
     "kulala-json",
     "copilot-chat",
     "codecompanion",
+    "sidekick_terminal",
+    "snacks_picker_list",
   },
 
   special_fts = {
@@ -57,6 +59,8 @@ local M = {
     "kulala-json",
     "AvanteSelectedFiles",
     "Avante",
+    "grug-far",
+    "sidekick_terminal",
   }
 }
 

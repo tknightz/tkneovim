@@ -6,7 +6,8 @@ return {
     event = "User FilePost",
     -- optional: provides snippets for the snippet source
     dependencies = { "L3MON4D3/LuaSnip" },
-    version = "1.*",
+    -- version = "1.*",
+    build = 'cargo build --release',
 
     -- use a release tag to download pre-built binaries
     -- version = "v0.*",
@@ -55,7 +56,7 @@ return {
 
       local v_chars = { "(", ")", "[", "]", "{", "}", "'", '"' }
       for _, char in pairs(v_chars) do
-        vim.keymap.set("v", char, "<Plug>(nvim-surround-visual)" .. char)
+        vim.keymap.set("x", char, "<Plug>(nvim-surround-visual)" .. char)
       end
     end,
     event = "User FilePost",

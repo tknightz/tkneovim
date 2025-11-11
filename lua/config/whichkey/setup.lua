@@ -1,6 +1,7 @@
 local wk = require("which-key")
 
 wk.setup({
+  preset = "helix",
   delay = 500,
   plugins = {
     marks = true, -- shows a list attention of your marks on ' and `

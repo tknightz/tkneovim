@@ -9,6 +9,10 @@ require("bufferline").setup({
       { filetype = "neo-tree", text = "Explorer" },
       { filetype = "dbui", text = "DB Explorer" },
       { filetype = "DiffviewFiles", text = "DiffviewFiles" },
+      {
+        filetype = "snacks_layout_box",
+        text = "󰙅  File Explorer",
+      },
     },
     themable = true,
     buffer_close_icon = "",
@@ -48,11 +52,10 @@ require("bufferline").setup({
       end
 
       local bufname = vim.fn.bufname(buf_number)
-      return vim.fn.empty(vim.fn.matchstr(bufname, '^fugitive://')) ~= 0
+      return vim.fn.empty(vim.fn.matchstr(bufname, "^fugitive://")) ~= 0
     end,
   },
 })
-
 
 local opt = { silent = true }
 local map = vim.keymap.set

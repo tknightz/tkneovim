@@ -14,20 +14,28 @@ local function horizontal_resize(direction)
 end
 
 local keymaps = {
-  { "<leader>h", "<cmd>set hlsearch!<CR>", desc = "Toggle search highlighting", mode = "n", opts = { silent = true  }},
-  { "0", "^", desc = "Start of line", mode = "n" },
-  { "<C-y>", '"+y', desc = "Yank to system clipboard", mode = { "n", "v" } },
-  { "<C-/>", "gcc", desc = "Toggle line comment", mode = "n", opts = { remap = true }},
-  { "<C-_>", "gcc", desc = "Toggle line comment", mode = "n", opts = { remap = true }},
-  { "<C-_>", "gc", desc = "Toggle line comment", mode = "v", opts = { remap = true }},
-  { "<A-h>", "<cmd>silent! vertical resize +3<cr>", desc = "Increase window width", mode = "n" },
-  { "<A-l>", "<cmd>silent! vertical resize -3<cr>", desc = "Decrease window width", mode = "n" },
+  {
+    "<leader>h",
+    "<cmd>set hlsearch!<CR>",
+    desc = "Toggle search highlighting", icon = "󰍉 ",
+    mode = "n",
+    opts = { silent = true },
+    icon = "󰸱 ",
+  },
+  { "0", "^", desc = "Start of line", icon = "󰎯 ", mode = "n" },
+  { "<C-y>", '"+y', desc = "Yank to system clipboard", mode = { "n", "v" }, icon = "󰅎 " },
+  { "<C-/>", "gcc", desc = "Toggle line comment", mode = "n", opts = { remap = true }, icon = "󰅺 " },
+  { "<C-_>", "gcc", desc = "Toggle line comment", mode = "n", opts = { remap = true } },
+  { "<C-_>", "gc", desc = "Toggle line comment", mode = "v", opts = { remap = true } },
+  { "<C-/>", "gc", desc = "Toggle line comment", mode = "v", opts = { remap = true } },
+  { "<A-h>", "<cmd>silent! vertical resize +3<cr>", desc = "Increase window width", mode = "n", icon = "󰩨 " },
+  { "<A-l>", "<cmd>silent! vertical resize -3<cr>", desc = "Decrease window width", mode = "n", icon = "󰩩 " },
   {
     "<A-k>",
     function()
       horizontal_resize("up")
     end,
-    desc = "Increase window height",
+    desc = "Increase window height", icon = "󰩨 ",
     mode = "n",
   },
   {
@@ -35,21 +43,23 @@ local keymaps = {
     function()
       horizontal_resize("down")
     end,
-    desc = "Decrease window height",
+    desc = "Decrease window height", icon = "󰩩 ",
     mode = "n",
   },
-  { "S", ":TSJToggle<CR>", desc = "Toggle spell check", mode = "n" },
+  { "S", ":TSJToggle<CR>", desc = "Toggle spell check", mode = "n", icon = "󰓆 " },
 
-  { "<A-n>", ":MoveLine(1)<CR>", desc = "Move line down", mode = "n" },
-  { "<A-p>", ":MoveLine(-1)<CR>", desc = "Move line up", mode = "n" },
-  { "<A-n>", ":MoveBlock(1)<CR>", desc = "Move block down", mode = "v" },
-  { "<A-p>", ":MoveBlock(-1)<CR>", desc = "Move block up", mode = "v" },
-  { "<A-h>", ":MoveHBlock(-1)<CR>", desc = "Move block left", mode = "v" },
-  { "<A-l>", ":MoveHBlock(1)<CR>", desc = "Move block right", mode = "v" },
+  { "<A-n>", ":MoveLine(1)<CR>", desc = "Move line down", mode = "n", icon = "󰜮 " },
+  { "<A-p>", ":MoveLine(-1)<CR>", desc = "Move line up", mode = "n", icon = "󰜷 " },
+  { "<A-n>", ":MoveBlock(1)<CR>", desc = "Move block down", mode = "v", icon = "󰜮 " },
+  { "<A-p>", ":MoveBlock(-1)<CR>", desc = "Move block up", mode = "v", icon = "󰜷 " },
+  { "<A-h>", ":MoveHBlock(-1)<CR>", desc = "Move block left", mode = "v", icon = "󰜲 " },
+  { "<A-l>", ":MoveHBlock(1)<CR>", desc = "Move block right", mode = "v", icon = "󰜵 " },
 
   { "<C-y>", '"+y', desc = "Yank to system clipboard", mode = "x" },
 
-  { "<Esc>", "<C-\\><C-n>", desc = "Escape to normal mode", mode = "t", opts = {}},
+  { "<Esc>", "<C-\\><C-n>", desc = "Escape to normal mode", mode = "t", opts = {}, icon = "󰘳 " },
+
+  -- text-objects
 }
 
 build_keymaps(nil, keymaps)

@@ -92,6 +92,10 @@ function HighlightedFoldtext()
 
   table.insert(result, { " 󰁂 " .. vim.v.foldend - vim.v.foldstart .. " lines ", "SpecialComment" })
 
+  if vim.bo.filetype == "markdown" then
+    return result
+  end
+
   local result2 = parse_line(vim.v.foldend)
   if result2 then
     local first = result2[1]

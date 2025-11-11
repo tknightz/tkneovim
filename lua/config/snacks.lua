@@ -159,6 +159,9 @@ require("snacks").setup({
       col = 0,
       width = 30,
     },
+    picker = {
+      wo = { winhighlight = "Normal:Normal" },
+    }
   },
   notifier = { enabled = true },
   quickfile = { enabled = true },

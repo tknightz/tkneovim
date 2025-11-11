@@ -29,7 +29,7 @@ wk.add({
   { "<leader>e", group = "editing" },
 
   { "<leader>ea", toggle_ai, desc = "AI completion" },
-  { "<leader>ef", "<cmd>Neotree reveal<cr>", desc = "toggle file explorer" },
+  { "<leader>ef", "<cmd>lua Snacks.explorer.reveal()<cr>", desc = "Reveal current file" },
   { "<leader>ey", '"+y', desc = "yanks" },
   { "<leader>eY", "%y+<cr>", desc = "whole yanks" },
   { "<leader>es", toggle_spell, desc = "toggle spell" },

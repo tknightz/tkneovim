@@ -15,7 +15,8 @@ end
 wk.add({
   { "<leader>j", jump_to_window, desc = "jump" },
   { "<leader>y", "<cmd>%y+<cr>", desc = "yank to clipboard", mode = "n" },
-  { "<leader>n", "<cmd>Neotree toggle<cr>", desc = "neotree" },
+  -- { "<leader>n", "<cmd>Neotree toggle<cr>", desc = "neotree" },
+  { "<leader>n", "<cmd>lua Snacks.explorer()<cr>", desc = "explorer" },
   { "<leader>x", execute_http, desc = "execute http"},
   { "<leader>y", "\"+y", desc = "yank to clipboard", mode = "v" },
 })
