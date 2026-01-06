@@ -3,5 +3,6 @@ vim.filetype.add({
   pattern = {
     [".*/Dockerfile.*"] = "dockerfile",
     [".*/.env.*"] = "sh",
+    ["config"] = "config",
   },
 })

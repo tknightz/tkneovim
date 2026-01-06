@@ -5,7 +5,7 @@ if vim.g.neovide then
   end
 
   -- Put anything you want to happen only in Neovide here
-  vim.o.guifont = "JetBrains Mono,Symbols Nerd Font Mono:h10" -- text below applies for VimScript
+  -- vim.o.guifont = "Monaspace Neon Frozen,Symbols Nerd Font Mono:h10" -- text below applies for VimScript
   vim.o.linespace = 6
 
   -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.

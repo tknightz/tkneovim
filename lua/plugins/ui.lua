@@ -1,6 +1,7 @@
 return {
   {
     "tknightz/onedark.nvim",
+    -- dir = "~/Repos/onedark.nvim",
     lazy = false,
     priority = 900,
     config = function()
@@ -32,7 +33,8 @@ return {
   -- Icons for files
   {
     "echasnovski/mini.icons",
-    lazy = true,
+    priority = 1000,
+    lazy = false,
     opts = {
       file = {
         [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },

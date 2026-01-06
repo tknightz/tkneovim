@@ -1,9 +1,5 @@
 local ts = require("nvim-treesitter")
 
--- vim.treesitter.language.register("markdown", { "mdx", "Avante" })
-vim.treesitter.language.register("json", "kulala-json")
-vim.treesitter.language.register("http", { "kulala_http", "http" })
-
 ts.setup({
   ensure_installed = {
     "javascript",

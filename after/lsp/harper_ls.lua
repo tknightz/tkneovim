@@ -1,4 +1,5 @@
 return {
+  cmd = { "harper-ls", "--stdio" },
   filetypes = { "markdown", "text" },
   linters = {
     spell_check = true,

@@ -10,6 +10,8 @@ require("blink.cmp").setup({
     },
     ["<C-e>"] = { "hide", "fallback" },
     ["<C-k>"] = {},
+    ['<C-;>'] = { 'show_signature', 'hide_signature', 'fallback' },
+
 
     ["<Tab>"] = {
       "select_and_accept",
@@ -17,12 +19,15 @@ require("blink.cmp").setup({
       function() -- sidekick next edit suggestion
         return require("sidekick").nes_jump_or_apply()
       end,
-      function() -- if you are using Neovim's native inline completions
-        return vim.lsp.inline_completion.get()
+      "fallback",
+    },
+    ["<S-Tab>"] = {
+      "snippet_backward",
+      function()
+        vim.api.nvim_replace_termcodes("<Plug>(TaboutBack)", true, true, false)
       end,
       "fallback",
     },
-    ["<S-Tab>"] = { "snippet_backward", "fallback" },
 
     -- ["<CR>"] = { "accept", "fallback" },
 

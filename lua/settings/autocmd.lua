@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   group = vim.api.nvim_create_augroup("MyFilePost2", { clear = true }),
   callback = function(args)
     -- turn on message window in nightly
-    if vim.fn.has("nvim-0.12") then
+    if vim.fn.has("nvim-0.12") ~= 0 then
       vim.schedule(function()
         require("vim._extui").enable({})
       end)

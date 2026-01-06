@@ -49,7 +49,7 @@ return {
         CheckmateTodoCountIndicator = { fg = "#c75ae8", bold = true },
       },
       todo_count_formatter = function(completed, total)
-        return string.format(" 👉 (%s/%s) %.0f%%", completed, total, completed / total * 100)
+        return string.format(" 󰣉 (%s/%s) %.0f%%", completed, total, completed / total * 100)
       end,
       todo_states = {
         -- Built-in states (cannot change markdown or type)

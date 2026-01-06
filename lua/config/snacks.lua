@@ -24,7 +24,7 @@ local dashboard = {
   },
   wo = {
     laststatus = 3,
-  }
+  },
 }
 
 local indent = {
@@ -116,6 +116,15 @@ local picker = {
       },
     },
     explorer = {
+      actions = {
+        select_window = function(picker, item, action)
+          local window = require("window-picker").pick_window()
+          if window ~= nil then
+            vim.api.nvim_set_current_win(window)
+            vim.cmd.edit(item.file)
+          end
+        end,
+      },
       win = {
         input = {
           keys = {
@@ -126,6 +135,7 @@ local picker = {
         list = {
           keys = {
             ["<c-i>"] = { "toggle_focus", mode = { "n", "i" } },
+            ["w"] = { "select_window", mode = { "n", "i" } },
           },
         },
       },
@@ -161,7 +171,7 @@ require("snacks").setup({
     },
     picker = {
       wo = { winhighlight = "Normal:Normal" },
-    }
+    },
   },
   notifier = { enabled = true },
   quickfile = { enabled = true },
@@ -172,11 +182,11 @@ require("snacks").setup({
     doc = {
       enabled = false,
       inline = false,
-    }
+    },
   },
 
   scroll = {
-    enabled = false,
+    enabled = true,
     filter = function(buf)
       local filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
       return vim.g.snacks_scroll ~= false and vim.b[buf].snacks_scroll ~= false and is_special_ft(filetype) == false

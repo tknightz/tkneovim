@@ -137,7 +137,7 @@ local function setup_language_servers()
     end
 
     -- custom server
-    -- vim.lsp.enable('tsgo')
+    vim.lsp.enable('tsgo')
     attach_lsp_to_existing_buffers()
   end)
 end

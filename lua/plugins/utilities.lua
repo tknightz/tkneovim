@@ -35,10 +35,7 @@ return {
         hint = "floating-big-letter",
         filter_rules = {
           bo = {
-            -- if the file type is one of following, the window will be ignored
-            filetype = { "notify" },
-
-            -- if the buffer type is one of following, the window will be ignored
+            filetype = { "NvimTree", "neo-tree", "notify", "snacks_notif", "snacks_picker_input", "pager" },
             buftype = {},
           },
         },
@@ -241,7 +238,7 @@ return {
   -- Kulala - http client
   {
     "mistweaverco/kulala.nvim",
-    ft = "http" ,
+    ft = "http",
     opts = {
       default_view = "body",
       default_env = "dev",
@@ -354,7 +351,6 @@ return {
     "pwntester/octo.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
       "echasnovski/mini.icons",
     },
     cmd = { "Octo" },
@@ -374,6 +370,38 @@ return {
     "chrisgrieser/nvim-rulebook",
     opts = {},
     cmd = { "Rulebook" },
+  },
+
+  {
+    "zerochae/endpoint.nvim",
+    opts = {
+      picker = {
+        type = "snacks",
+      },
+      ui = {
+        show_icons = true,
+        show_method = true,
+        methods = {
+          GET = { icon = "󰜯 ", color = "@string" },
+          POST = { icon = "󰜸 ", color = "@function" },
+          PUT = { icon = "󱆿 ", color = "@comment.warning" },
+          DELETE = { icon = "󰠙 ", color = "@text.diff.delete" },
+          PATCH = { icon = "󱑵 ", color = "@exception" },
+          ROUTE = { icon = "󰑪 ", color = "@comment.note" },
+        },
+      },
+    },
+    dependencies = {
+      "folke/snacks.nvim",
+    },
+    cmd = { "Endpoint", "EndpointRefresh" },
+    keys = {
+      {
+        "<leader>se",
+        desc = "Endpoints",
+        "<cmd> Endpoint <cr>",
+      },
+    },
   },
 
   --

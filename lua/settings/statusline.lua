@@ -127,7 +127,9 @@ end
 ---@param filetype string
 ---@return string, string
 function M.get_icon_by_filetype(filetype)
-  local devicons = require("nvim-web-devicons")
+  if _G.MiniIcons == nil then
+    return "", ""
+  end
 
   -- Special icons for some filetypes.
   local special_icons = {
@@ -149,9 +151,9 @@ function M.get_icon_by_filetype(filetype)
     local buf_name = vim.api.nvim_buf_get_name(0)
     local name, ext = vim.fn.fnamemodify(buf_name, ":t"), vim.fn.fnamemodify(buf_name, ":e")
 
-    icon, icon_hl = devicons.get_icon(name, ext)
+    icon, icon_hl = MiniIcons.get('file',buf_name)
     if not icon then
-      icon, icon_hl = devicons.get_icon_by_filetype(filetype, { default = true })
+      icon, icon_hl = MiniIcons.get('default', 'file')
     end
   end
   icon_hl = M.get_or_create_hl(icon_hl)

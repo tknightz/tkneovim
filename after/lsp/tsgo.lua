@@ -1,3 +1,5 @@
+local lsputils = require("config.lsp.utils")
+
 ---@type vim.lsp.Config
 return {
   cmd = { "tsgo", "--lsp", "--stdio" },
@@ -10,11 +12,9 @@ return {
     "typescript.tsx",
   },
   root_markers = {
-    "tsconfig.json",
-    "jsconfig.json",
     "package.json",
     ".git",
-    "tsconfig.base.json",
+    "nest-cli.json",
   },
 
   keys = {
@@ -30,7 +30,7 @@ return {
       end,
       desc = "Go to definition",
     },
-    { "<leader>lO", lsputils.action["source.organizeImports"], desc = "Organize imports" },
+    { "<leader>lO", lsputils.action["typescript-go.organizeImports"], desc = "Organize imports" },
     { "<leader>lC", lsputils.action["source.removeUnused.ts"], desc = "Remove unused code" },
     { "<leader>lF", lsputils.action["source.fixAll.ts"], desc = "Fix all code" },
     { "<leader>lI", lsputils.action["source.addMissingImports.ts"], desc = "Add missing imports" },
