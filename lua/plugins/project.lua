@@ -3,6 +3,7 @@ return {
   -- Git inside Vim
   {
     "tpope/vim-fugitive",
+    dependencies = { "barrettruth/diffs.nvim" },
     cmd = { "Git" },
   },
 

@@ -1,7 +1,7 @@
 return {
   {
-    "tknightz/onedark.nvim",
-    -- dir = "~/Repos/onedark.nvim",
+    -- "tknightz/onedark.nvim",
+    dir = "~/Repos/onedark.nvim",
     lazy = false,
     priority = 900,
     config = function()
@@ -67,10 +67,18 @@ return {
     "catgoose/nvim-colorizer.lua",
     cmd = { "ColorizerToggle" },
     opts = {
-      user_default_options = {
-        virtualtext = "󱓻",
-        mode = "virtualtext",
-        virtualtext_inline = "before",
+      filetypes = { "*" },
+      options = {
+        parsers = {
+          css = true,
+        },
+        display = {
+          mode = "virtualtext",
+          virtualtext = {
+            char = "󱓻",
+            position = "before",
+          },
+        },
       },
     },
   },

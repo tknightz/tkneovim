@@ -1,12 +1,15 @@
 return {
   -- Like its name, open markdown preview on browser
   {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle" },
-    build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
+    "selimacerbas/markdown-preview.nvim",
+    dependencies = { "selimacerbas/live-server.nvim" },
+    ft = { "markdown" },
+    opts = {
+      -- all optional; sane defaults shown
+      port = 8421,
+      open_browser = true,
+      debounce_ms = 300,
+    },
   },
 
   {
@@ -18,6 +21,9 @@ return {
       code = {
         border = "thick",
         style = "full",
+      },
+      checkbox = {
+        enabled = false,
       },
       -- overrides = {
       --   buftype = {
@@ -53,8 +59,10 @@ return {
       end,
       todo_states = {
         -- Built-in states (cannot change markdown or type)
-        unchecked = { marker = "☐" },
-        checked = { marker = "✔" },
+        -- unchecked = { marker = "☐" },
+        unchecked = { marker = "[ ]" },
+        -- checked = { marker = "✔" },
+        checked = { marker = "[x]" },
 
         -- Custom states
         in_progress = {

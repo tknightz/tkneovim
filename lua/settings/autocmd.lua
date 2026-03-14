@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     -- turn on message window in nightly
     if vim.fn.has("nvim-0.12") ~= 0 then
       vim.schedule(function()
-        require("vim._extui").enable({})
+        require("vim._core.ui2").enable({})
       end)
     end
   end,
@@ -135,7 +135,26 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   group = vim.api.nvim_create_augroup("auto-last-position", { clear = true }),
   callback = function(args)
     local position = vim.api.nvim_buf_get_mark(args.buf, [["]])
+    local line = position[1]
+    if line < 1 then
+      return
+    end
+
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
+    if filetype:match("commit") or filetype == "xxd" or filetype == "gitrebase" then
+      return
+    end
+
+    local last_line = vim.api.nvim_buf_line_count(args.buf)
+    if line > last_line then
+      return
+    end
+
     local winid = vim.fn.bufwinid(args.buf)
+    if winid == -1 then
+      return
+    end
+
     pcall(vim.api.nvim_win_set_cursor, winid, position)
   end,
   desc = "Auto jump to last position",

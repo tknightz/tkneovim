@@ -1,4 +1,6 @@
 local build_keymaps = require("lib").build_keymaps
+local open_todo_float = require("lib.misc").open_todo_float
+
 
 -- only do horizontal resize if there is a split window above/below
 -- the current one
@@ -28,6 +30,7 @@ local keymaps = {
   { "<C-_>", "gcc", desc = "Toggle line comment", mode = "n", opts = { remap = true } },
   { "<C-_>", "gc", desc = "Toggle line comment", mode = "v", opts = { remap = true } },
   { "<C-/>", "gc", desc = "Toggle line comment", mode = "v", opts = { remap = true } },
+  { "<leader>o", open_todo_float, desc = "Open todo", mode = "n", icon = "󰄬 " },
   { "<A-h>", "<cmd>silent! vertical resize +3<cr>", desc = "Increase window width", mode = "n", icon = "󰩨 " },
   { "<A-l>", "<cmd>silent! vertical resize -3<cr>", desc = "Decrease window width", mode = "n", icon = "󰩩 " },
   {

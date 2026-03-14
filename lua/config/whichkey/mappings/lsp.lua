@@ -10,11 +10,13 @@ end
 
 local function toggle_lsp()
   if vim.g.loaded_lsp == 1 then
-    vim.lsp.stop_client(vim.lsp.get_clients(), true)
+    -- vim.lsp.stop_client(vim.lsp.get_clients(), true)
+    vim.cmd("lsp disable")
     vim.g.loaded_lsp = 0
     vim.g.should_attach = 0
   else
-    vim.cmd("LspStart")
+    -- vim.cmd("LspStart")
+    vim.cmd("lsp enable")
     vim.g.loaded_lsp = 1
     vim.g.should_attach = 1
   end

@@ -20,6 +20,18 @@ ls.add_snippets("all", {
       return os.date("%d/%m/%Y - %H:%M")
     end)
   ),
+  s(
+    "today",
+    f(function()
+      return os.date("%Y-%m-%d")
+    end)
+  ),
+  s(
+    "tomorrow",
+    f(function()
+      return os.date("%Y-%m-%d", os.time() + 86400)
+    end)
+  ),
 })
 
 ls.add_snippets("python", {

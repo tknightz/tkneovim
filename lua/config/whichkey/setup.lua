@@ -35,7 +35,7 @@ wk.setup({
     border = "rounded", -- none, single, double, shadow
     padding = { 1, 1 }, -- extra window padding [top, right, bottom, left]
     wo = {
-      winblend = 5,
+      winblend = 0,
     }
   },
   layout = {

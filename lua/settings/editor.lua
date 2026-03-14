@@ -70,6 +70,7 @@ local options = {
   concealcursor  = "n",
   mouse          = "",
   mousemodel     = "extend",
+  modeline       = false,
   scrolloff      = 6,
   sidescrolloff  = 6,
   -- winbar         = "    ",

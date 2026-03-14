@@ -31,15 +31,23 @@ return {
         "javascript",
         "typescript",
         "tsx",
+        "jsx",
         "json",
-        "sql"
+        "sql",
+        "php",
+        "http",
+        "kotlin",
+        "terraform",
+        "hcl",
       }
 
       vim.treesitter.language.register("bash", { "sh" })
       vim.treesitter.language.register("markdown", { "mdx", "Avante" })
-      vim.treesitter.language.register("json", "kulala-json")
+      vim.treesitter.language.register("json", { "kulala-json", "kulala-json.kulala_ui" })
       vim.treesitter.language.register("http", { "kulala_http", "http" })
       vim.treesitter.language.register("tsx", { "typescriptreact" })
+      vim.treesitter.language.register("javascript", { "javascriptreact" })
+      vim.treesitter.language.register("terraform", { "terraform-vars" })
 
       local isnt_installed = function(lang)
         return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".*", false) == 0

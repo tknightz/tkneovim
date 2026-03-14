@@ -6,7 +6,6 @@ return {
       "williamboman/mason.nvim",
     },
     lazy = true,
-    cmd = { "LspStart" },
     config = function()
       require("config.lsp")
     end,
