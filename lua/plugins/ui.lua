@@ -33,8 +33,8 @@ return {
   -- Icons for files
   {
     "echasnovski/mini.icons",
-    priority = 1000,
-    lazy = false,
+    -- loaded on first require; init() below stubs nvim-web-devicons onto it
+    lazy = true,
     opts = {
       file = {
         [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
@@ -49,6 +49,7 @@ return {
         ["tsconfig.json"] = { glyph = "", hl = "MiniIconsAzure" },
         ["tsconfig.build.json"] = { glyph = "", hl = "MiniIconsAzure" },
         ["yarn.lock"] = { glyph = "", hl = "MiniIconsBlue" },
+        [".env"] = { glyph = "󰒒", hl = "MiniIconsBlue" },
       },
       filetype = {
         dotenv = { glyph = "", hl = "MiniIconsYellow" },

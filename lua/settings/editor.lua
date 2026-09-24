@@ -88,5 +88,8 @@ for option, value in pairs(options) do
 end
 
 -- the special case
-vim.opt.formatoptions = vim.opt.formatoptions - "a" - "t" + "c" + "q" - "o" + "r" + "n" + "j" - "2"
+-- nightly rejects chained vim.opt infix ops, and :remove() ignores tables for
+-- flaglist options, so apply one flag at a time
+for _, flag in ipairs({ "a", "t", "o", "2" }) do vim.opt.formatoptions:remove(flag) end
+for _, flag in ipairs({ "c", "q", "r", "n", "j" }) do vim.opt.formatoptions:append(flag) end
 vim.opt.spelloptions = vim.opt.spelloptions - "noplainbuffer"

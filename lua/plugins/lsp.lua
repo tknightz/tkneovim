@@ -1,17 +1,6 @@
 return {
   -- Neovim lsp function
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-    },
-    lazy = true,
-    config = function()
-      require("config.lsp")
-    end,
-  },
-
-  {
     "williamboman/mason.nvim",
     cmd = "Mason",
     opts = {},
@@ -21,10 +10,16 @@ return {
     end,
   },
 
+  -- only a source of base server configs (lsp/*.lua), loaded with mason-lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    lazy = true,
+  },
+
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = true,
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
   },
 
   -- Display float window actions for LSP

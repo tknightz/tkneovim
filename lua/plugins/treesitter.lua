@@ -15,6 +15,8 @@ return {
         "markdown_inline",
         "query",
         "bash",
+        "dart",
+        "prisma",
         "diff",
         "dockerfile",
         "gitignore",
@@ -31,7 +33,6 @@ return {
         "javascript",
         "typescript",
         "tsx",
-        "jsx",
         "json",
         "sql",
         "php",
@@ -39,6 +40,7 @@ return {
         "kotlin",
         "terraform",
         "hcl",
+        "ssh_config",
       }
 
       vim.treesitter.language.register("bash", { "sh" })
@@ -48,6 +50,7 @@ return {
       vim.treesitter.language.register("tsx", { "typescriptreact" })
       vim.treesitter.language.register("javascript", { "javascriptreact" })
       vim.treesitter.language.register("terraform", { "terraform-vars" })
+      vim.treesitter.language.register("bash", { "env" })
 
       local isnt_installed = function(lang)
         return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".*", false) == 0

@@ -151,9 +151,9 @@ function M.get_icon_by_filetype(filetype)
     local buf_name = vim.api.nvim_buf_get_name(0)
     local name, ext = vim.fn.fnamemodify(buf_name, ":t"), vim.fn.fnamemodify(buf_name, ":e")
 
-    icon, icon_hl = MiniIcons.get('file',buf_name)
+    icon, icon_hl = MiniIcons.get("file", buf_name)
     if not icon then
-      icon, icon_hl = MiniIcons.get('default', 'file')
+      icon, icon_hl = MiniIcons.get("default", "file")
     end
   end
   icon_hl = M.get_or_create_hl(icon_hl)
@@ -313,9 +313,13 @@ function M.wordcount_component()
     return ""
   end
 
-  local words = vim.fn.wordcount().words
+  local wc = vim.fn.wordcount()
+  local words = wc.words
+  -- Heuristic: ~0.75 tokens/word or ~1 token per 4 chars, take the max
+  local chars = wc.chars or 0
+  local tokens_est = math.max(math.ceil(words * 0.75), math.ceil(chars / 4))
 
-  return string.format("%%#StatusLineTitle#%s words ", words)
+  return string.format("%%#StatusLineTitle#%s words (%s tokens) ", words, tokens_est)
 end
 
 --- The current line, total line count, and column position.
@@ -330,7 +334,8 @@ function M.position_component()
   })
 end
 
---- Renders the statusline.
+local last_diagnostic_component = ""
+--- Diagnostic counts in the current buffer.
 ---@return string
 function M.render()
   ---@param components string[]

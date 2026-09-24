@@ -8,6 +8,7 @@ vim.filetype.add({
     todo = "todo",
     mdc = "markdown",
     tfvars = "terraform",
+    env = "sh",
   },
   pattern = {
     [".*/Dockerfile.*"] = "dockerfile",

@@ -206,7 +206,7 @@ return {
   -- Edgy - organize your sidebar and special windows
   {
     "folke/edgy.nvim",
-    event = "BufEnter",
+    event = "VeryLazy",
     config = function()
       require("config.edgy")
     end,
@@ -345,19 +345,6 @@ return {
     config = true,
     event = "ModeChanged *:[vV\22]", -- optionally, lazy load on entering visual mode
     opts = {},
-  },
-
-  {
-    "pwntester/octo.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "echasnovski/mini.icons",
-    },
-    cmd = { "Octo" },
-    opts = {
-      ssh_aliases = { ["github.com-musinsa"] = "github.com" },
-      picker = "snacks",
-    },
   },
 
   {

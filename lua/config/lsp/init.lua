@@ -1,5 +1,4 @@
 local preset = require("config.lsp.preset")
-
 local registry = require("mason-registry")
 
 -- UI configurations
@@ -82,8 +81,8 @@ local function setup_diagnostics()
     },
   })
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diagnostic_opts)
+  -- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  --   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diagnostic_opts)
 end
 
 -- VTS diagnostic filtering
@@ -123,21 +122,20 @@ end)
 local function setup_language_servers()
   registry.refresh(function()
     local installed_servers = require("mason-lspconfig").get_installed_servers()
-    for _, server in pairs(installed_servers) do
-      -- if server ~= "" then
-      --   if server == "harper_ls" then
-      --     -- override priority
-      --     vim.lsp.config("harper_ls", {
-      --       filetypes = { "markdown", "text" },
-      --     })
-      --   end
+    for _, server in ipairs(installed_servers) do
+      local ok, config = pcall(function()
+        return vim.lsp.config[server]
+      end)
 
-      vim.lsp.enable(server)
-      -- end
+      if ok and config then
+        vim.lsp.config(server, config)
+      else
+        vim.notify("No lspconfig for " .. server)
+      end
     end
 
     -- custom server
-    vim.lsp.enable('tsgo')
+    vim.lsp.enable("tsgo")
     attach_lsp_to_existing_buffers()
   end)
 end

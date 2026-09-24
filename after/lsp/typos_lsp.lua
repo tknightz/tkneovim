@@ -3,5 +3,5 @@ return {
   init_options = {
     diagnosticSeverity = "hint",
   },
-  filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "markdown", "lua" },
+  filetypes = { "typescript", "typescriptreact", "javascript", "markdown", "lua" },
 }

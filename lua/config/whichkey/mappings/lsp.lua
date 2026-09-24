@@ -15,7 +15,11 @@ local function toggle_lsp()
     vim.g.loaded_lsp = 0
     vim.g.should_attach = 0
   else
-    -- vim.cmd("LspStart")
+    -- require("lspconfig")
+    if not vim.g.is_lsp_setup then
+      vim.g.is_lsp_setup = true
+      require("config.lsp")
+    end
     vim.cmd("lsp enable")
     vim.g.loaded_lsp = 1
     vim.g.should_attach = 1
